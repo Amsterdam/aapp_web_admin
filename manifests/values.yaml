@@ -1,0 +1,99 @@
+name: aapp-mbs
+
+# Default values
+image:
+  registry: saks01weuacrpgpgo5qvmwo.azurecr.io
+  repository: aapp/images/mbs
+  tag: 1.0.0
+
+labels:
+  app: aapp-mbs
+
+serviceAccount: default
+serviceAccounts:
+  default:
+      enableWorkloadIdentity: true
+
+network:
+  allow-ingress:
+    selector: app == 'aapp-mbs'
+    ingress:
+      - action: Allow
+    egress:
+      - action: Allow
+
+deployments:
+  api:
+    selectorLabels:
+      component: api
+    securityContext:
+      runAsUser: 2000
+    env:
+      API_PORT_CONTACT: 8000
+      WEB_USERNAME: redactie@amsterdam.nl        
+    autoscale:
+      cpu: 70
+      memory: 90
+      min: 1
+      max: 3
+    resources:
+      requests:
+        cpu: 1
+        memory: "512Mi"
+      limits:
+        cpu: 2
+        memory: "512Mi"
+    volumes:
+      - name: tmp
+        spec:
+          emptyDir: {}           
+    containers:
+      - name: main
+        ports:
+          - port: 8000
+            name: http
+        volumes:
+          - name: tmp
+            mountPath: /tmp
+        secrets:
+          - database
+          - vault
+        # command:
+        #   - sh
+        #   - /app/deploy/docker-run.sh
+
+secrets:
+  certificate:
+    type: keyvault
+    tls: aapp-cert
+      
+services:
+  api:
+    selector:
+      component: api
+    ports:
+      - port: 8000
+        targetPort: 8000
+
+ingress:
+  modules-external:
+    className: nginx-external
+    paths:
+      - path: /modules
+        pathType: Prefix
+        service: api
+        port: 8000
+    tls: certificate 
+
+# ingress:
+#   mbs-external:
+#     className: nginx-external
+#     annotations:
+#         nginx.ingress.kubernetes.io/use-regex: "true"    
+#         nginx.ingress.kubernetes.io/rewrite-target: /modules/api/v1/$1
+#     paths:
+#       - path: /modules/api/v1/(.*)
+#         pathType: ImplementationSpecific
+#         service: api
+#         port: 8000
+#     tls: certificate

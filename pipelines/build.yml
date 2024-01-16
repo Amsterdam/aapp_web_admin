@@ -1,0 +1,93 @@
+trigger:
+  batch: true
+  tags:
+    include:
+    - '*'
+  branches:
+    exclude:
+    - '*'
+
+pr: none
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Amsterdam-App/templates
+      ref: refs/tags/1.7.0
+
+parameters:
+  - name: registry
+    type: string
+    default: saks01weuacrpgpgo5qvmwo.azurecr.io
+
+  - name: repository
+    type: string
+    default: aapp/images
+
+  - name: name
+    type: string
+    default: mbs
+
+
+extends:
+  template: pipelines/aks/template.yaml@templates
+  parameters:
+    name: ${{ parameters.name }}
+    version: $(Build.SourceBranchName)
+
+    build:
+      pool:
+        name: ContainerBuilder
+
+      # Trigger AquaSec scan
+      producedImages:
+      - ${{ parameters.repository }}/${{ parameters.name }}
+
+      # Override default preSteps
+      preSteps:
+      - task: Bash@3
+        displayName: Check if tag follows semantic versioning
+        inputs:
+            targetType: 'inline'
+            script: |
+                  #echo "Tag: $(Build.SourceBranchName)"
+
+                  # Check semantic version
+                  rx='^([0-9]+\.){0,2}(\*|[0-9]+)$'
+                  if [[ $(Build.SourceBranchName) =~ $rx ]]; then
+                    echo "INFO: Tag $(Build.SourceBranchName)"
+                  else
+                    echo "ERROR: Unable to validate tag: '$(Build.SourceBranchName)'"
+                    exit 1
+                  fi
+
+      - task: Bash@3
+        displayName: Check if tag present
+        inputs:
+            targetType: 'inline'
+            script: |
+                  az login --identity
+                  az acr login --name ${{ parameters.registry }}
+                  az acr repository list --name ${{ parameters.registry }}
+                  TAG_EXISTS=$(az acr repository show --name ${{ parameters.registry }} --image ${{ parameters.repository }}/${{ parameters.name }}:$(Build.SourceBranchName))
+                
+                  if [ -n "${TAG_EXISTS}" ]; then
+                    echo 'ERROR: tag $(Build.SourceBranchName) exists. Exiting.'
+                    exit 1
+                  else
+                    echo 'INFO: tag $(Build.SourceBranchName) does not exist. Proceeding.'  
+                  fi     
+
+      - task: Bash@3
+        displayName: Clean up
+        inputs:
+             targetType: 'inline'
+             script: |
+                   make clean
+
+      # Override default postSteps
+      postSteps:
+      - script: |
+          az acr repository show-tags --name ${{ parameters.registry }} --repository ${{ parameters.repository }}/${{ parameters.name }}
+        displayName: Show ${{ parameters.name }} image versions in S-ACR

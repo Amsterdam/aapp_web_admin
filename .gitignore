@@ -1,0 +1,9 @@
+# Pycharm
+.idea
+
+
+# VueJS build files
+**/dist
+
+/static/build
+modules-fe/.eslintcache

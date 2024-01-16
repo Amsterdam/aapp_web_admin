@@ -1,0 +1,72 @@
+version: '3.7'
+
+x-app: &base-app
+  build:
+    context: .
+  environment: &base-app-env
+    TEAM_USERNAME: USERNAME
+    TEAM_PASSWORD: bogus
+    APP_TOKEN: aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+    AES_SECRET: bogus
+    API_PORT: 8000
+    POSTGRES_PASSWORD: dev
+    POSTGRES_USER: dev
+    POSTGRES_DB: dev
+    POSTGRES_PORT: 5432
+  ports:
+    - 8000
+  depends_on:
+    db:
+      condition: service_healthy
+
+volumes:
+  db_data:
+  cache:
+
+services:
+  db:
+    image: postgres:15.3
+    environment:
+      POSTGRES_DB: dev
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      PGDATA: /data
+    volumes:
+      - db_data:/data
+    ports:
+      - "5436:5432"
+    healthcheck:
+      test: pg_isready -U dev -d dev
+      interval: 10s
+      timeout: 1s
+      retries: 5
+
+  app: &app
+    <<: *base-app
+    build:
+      context: .
+    image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-aapp/images/mbs}:${VERSION:-latest}
+    environment:
+      <<: *base-app-env
+      # DEBUG: "false"
+    healthcheck:
+      test: curl -f http://localhost:8000/status/health
+      interval: 10s
+      timeout: 1s
+      retries: 5
+
+  test:
+    <<: *base-app
+    build: .
+    environment:
+      <<: *base-app-env
+      TEAM_USERNAME: unittest@amsterdam.nl
+      TEAM_PASSWORD: bogus
+      APP_TOKEN: aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+      AES_SECRET: bogus
+      API_PORT: 8000
+      POSTGRES_PASSWORD: dev
+      POSTGRES_USER: dev
+      POSTGRES_DB: dev
+      POSTGRES_PORT: 5432
+      POSTGRES_HOST: db
