@@ -22,21 +22,3 @@ secrets:
       postgres-user: aapp-modules-o
       postgres-db: modules
       postgres-host: aapp-o-bgr6li3kaefcc.postgres.database.azure.com
-
-# deployments:
-#   echo-server:
-#     autoscale:
-#       cpu: 70
-#       memory: 90
-#       min: 2
-#       max: 4
-
-# ingress:
-#   echo-server-internal:
-#     paths:
-#       - path: /echo-server
-#         pathType: Prefix
-#         service: echo-server
-#         port: 80
-#     tls:
-#       secretNameOverride: aapp
