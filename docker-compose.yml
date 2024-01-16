@@ -3,6 +3,7 @@ version: '3.7'
 x-app: &base-app
   build:
     context: .
+    target: deploy
   environment: &base-app-env
     TEAM_USERNAME: USERNAME
     TEAM_PASSWORD: bogus
@@ -45,6 +46,7 @@ services:
     <<: *base-app
     build:
       context: .
+      target: deploy
     image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-aapp/images/mbs}:${VERSION:-latest}
     environment:
       <<: *base-app-env

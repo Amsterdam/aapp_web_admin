@@ -1,11 +1,24 @@
 FROM node:alpine as app
 
-WORKDIR /app
-
 # Add source
-COPY modules-fe /app/modules-fe
+COPY modules-fe /code/modules-fe
 
 # Build React website
-RUN cd /app/modules-fe \
+RUN cd /code/modules-fe \
  && npm install \
  && npm run build
+
+##################################################
+FROM node:alpine as deploy
+
+WORKDIR /app
+
+RUN apk add --no-cache --virtual .build-deps build-base linux-headers \
+    && apk add --no-cache postgresql15-client \
+    && apk add curl \
+    && addgroup -S app && adduser -S app -G app
+
+ # Copy sources to container
+COPY --from=app /code/modules-fe/build /app/mbs
+
+USER app
