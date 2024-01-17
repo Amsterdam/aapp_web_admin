@@ -7,14 +7,11 @@ host: ontw.app.amsterdam.nl
 nodepool: cccaappont01
 
 secrets:
-  # vault:
-  #   type: keyvault
-  #   keyVaultName: aapp-o-bgr6li3kaefcc  
-  #   secrets:
-  #     - aes-secret
-  #     - app-token
-  #     - secret-key
-  #     - applicationinsights-connection-string
+  vault:
+    type: keyvault
+    keyVaultName: aapp-o-bgr6li3kaefcc  
+    secrets:
+      - web-password
       
   database:
     type: opaque

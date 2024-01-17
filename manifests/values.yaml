@@ -66,10 +66,7 @@ deployments:
             mountPath: /var/log/nginx
         secrets:
           - database
-          #- vault
-        # command:
-        #   - sh
-        #   - /app/deploy/docker-run.sh
+          - vault
 
 secrets:
   certificate:
@@ -85,15 +82,6 @@ services:
         targetPort: 8000
 
 ingress:
-  # modules-external:
-  #   className: nginx-external
-  #   paths:
-  #     - path: /modules
-  #       pathType: Prefix
-  #       service: api
-  #       port: 8000
-  #   tls: certificate 
-
   mbs-external:
     className: nginx-external
     annotations:
