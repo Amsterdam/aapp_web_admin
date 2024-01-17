@@ -86,9 +86,9 @@ ingress:
     className: nginx-external
     annotations:
       nginx.ingress.kubernetes.io/use-regex: "true"
-      nginx.ingress.kubernetes.io/rewrite-target: /modules/$1
+      nginx.ingress.kubernetes.io/rewrite-target: /modules/$2
     paths:
-      - path: /modules/(.*)
+      - path: /modules(/?)(.*)
         pathType: ImplementationSpecific
         service: api
         port: 8000
