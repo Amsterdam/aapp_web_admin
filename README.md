@@ -1,20 +1,31 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Modules
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+MBS (Module Beheer Systeem), is a frontend application built on React. It offers developers a practical toolkit for software versioning.
+With this tool, CRUD operations on modules are simplified, providing a clean and efficient workflow. The application 
+facilitates the assignment of multiple versions to modules, accompanied by detailed descriptions and logos, 
+contributing to a more organized and visually enhanced project structure.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+A notable feature is the ability to generate mobile app versions and link specific modules to these versions. 
+MBS's functionality is allowing developers to disable malfunctioning modules, providing a strategic fail-safe mechanism
+for maintaining application stability during backend issues.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+MBS serves as a practical companion for the Amsterdam-App where it's an indispensable tool for configuring, versioning, 
+and en/disabling Amsterdam-App functionality with ease.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+MBS its backend is build on Django/Python with a PostgresSQL database for storing all configurations.
+
+## Build aapp-mbs
+
+```
+    make build
+```
+## Test aapp-mbs
+
+```
+    make test
+```
+
+## Deploy aapp-mbs
+
+```
+    make deploy
