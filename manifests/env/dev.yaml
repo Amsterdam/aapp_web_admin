@@ -12,6 +12,8 @@ secrets:
     keyVaultName: aapp-o-bgr6li3kaefcc  
     secrets:
       - web-password
+      - aes-secret
+      - secret-key      
       
   database:
     type: opaque

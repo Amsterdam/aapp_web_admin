@@ -12,10 +12,9 @@ secrets:
     type: keyvault
     keyVaultName: aapp-t-gub34v7g4neoa
     secrets:
+      - web-password
       - aes-secret
-      - app-token
-      - secret-key
-      - applicationinsights-connection-string
+      - secret-key 
       
   database:
     type: opaque
