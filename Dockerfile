@@ -19,7 +19,7 @@ RUN apk add --no-cache --virtual .build-deps build-base linux-headers \
     && addgroup -S app && adduser -S app -G app
 
  # Copy sources to container
-COPY --from=app /code/modules-fe/build /app/
+COPY --from=app /code/modules-fe/build /app/static/
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 #USER app
