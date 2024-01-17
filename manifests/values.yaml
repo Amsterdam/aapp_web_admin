@@ -22,6 +22,21 @@ network:
     egress:
       - action: Allow
 
+jobs:
+ certificate-init:
+   annotations:
+     helm.sh/hook: post-install,post-upgrade
+   labels:
+     component: certificate
+   secrets:
+     - certificate
+   containers:
+     - name: main
+       command:
+         - sleep
+       args:
+         - '1'
+
 deployments:
   api:
     selectorLabels:
@@ -29,7 +44,6 @@ deployments:
     securityContext:
       runAsUser: 2000
     env:
-      API_PORT_CONTACT: 8000
       WEB_USERNAME: redactie@amsterdam.nl        
     autoscale:
       cpu: 70
@@ -57,7 +71,7 @@ deployments:
             mountPath: /tmp
         secrets:
           - database
-          - vault
+          #- vault
         # command:
         #   - sh
         #   - /app/deploy/docker-run.sh
@@ -89,7 +103,7 @@ ingress:
     className: nginx-external
     annotations:
       nginx.ingress.kubernetes.io/use-regex: "true"
-      nginx.ingress.kubernetes.io/rewrite-target: /$1
+      nginx.ingress.kubernetes.io/rewrite-target: /modules/$1
     paths:
       - path: /modules/(.*)
         pathType: ImplementationSpecific
