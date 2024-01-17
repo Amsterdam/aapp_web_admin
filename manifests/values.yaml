@@ -22,21 +22,6 @@ network:
     egress:
       - action: Allow
 
-jobs:
- certificate-init:
-   annotations:
-     helm.sh/hook: post-install,post-upgrade
-   labels:
-     component: certificate
-   secrets:
-     - certificate
-   containers:
-     - name: main
-       command:
-         - sleep
-       args:
-         - '1'
-
 deployments:
   api:
     selectorLabels:
@@ -58,17 +43,27 @@ deployments:
         cpu: 200m
         memory: "200Mi"
     volumes:
-      - name: tmp
+      - name: cache
         spec:
-          emptyDir: {}           
+          emptyDir: {}
+      - name: run
+        spec:
+          emptyDir: {} 
+      - name: log
+        spec:
+          emptyDir: {}         
     containers:
       - name: main
         ports:
           - port: 8000
             name: http
         volumes:
-          - name: tmp
-            mountPath: /tmp
+          - name: cache
+            mountPath: /var/cache/nginx
+          - name: run
+            mountPath: /var/run
+          - name: log
+            mountPath: /var/log/nginx
         secrets:
           - database
           #- vault

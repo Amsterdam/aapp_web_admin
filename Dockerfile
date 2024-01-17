@@ -5,11 +5,11 @@ COPY modules-fe /code/modules-fe
 
 # Build React website
 RUN cd /code/modules-fe \
- && npm install \
+ && npm ci \
  && npm run build
 
 ##################################################
-FROM node:alpine as deploy
+FROM nginx:alpine as deploy
 
 WORKDIR /app
 
@@ -20,5 +20,6 @@ RUN apk add --no-cache --virtual .build-deps build-base linux-headers \
 
  # Copy sources to container
 COPY --from=app /code/modules-fe/build /app/
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
 #USER app
