@@ -44,7 +44,7 @@ export const useAuthorization = () => {
     if ('data' in result) {
       dispatch(setTokens(result.data))
     } else {
-      navigate('/modules/login')
+      navigate('/mbs/login')
     }
   }, [dispatch, navigate, refreshToken, refreshTokens])
 
@@ -70,7 +70,7 @@ export const useAuthorization = () => {
       return
     }
     // if not, navigate to login page and from there call login
-    navigate('/modules/login')
+    navigate('/mbs/login')
   }, [
     getAccessTokenWithRefreshToken,
     isAccessTokenValid,

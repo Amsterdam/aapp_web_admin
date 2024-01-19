@@ -68,7 +68,7 @@ const EditReleaseScreen = () => {
     setIsBeforeNavigation(true)
     if (!dirtyFieldKeys.length && !isModulesModified) {
       // No changes made
-      navigate('/modules/releases')
+      navigate('/mbs/releases')
     } else {
       // Only send the fields that have been modified
       dirtyFieldKeys.forEach(<K extends keyof ReleaseBase>(field: K) => {
@@ -89,7 +89,7 @@ const EditReleaseScreen = () => {
 
       const result = await editRelease(preparedData)
       if ('data' in result) {
-        navigate('/modules/releases')
+        navigate('/mbs/releases')
       }
     }
   }
