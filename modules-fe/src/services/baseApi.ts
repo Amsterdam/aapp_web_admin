@@ -26,7 +26,7 @@ const authorizedEndpoints = [
 ]
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: '/mbs',
+  baseUrl: '/modules',
   prepareHeaders: (headers, {getState, endpoint}) => {
     const token = selectAuthorizationAccessToken(getState() as RootState)
     if (authorizedEndpoints.includes(endpoint)) {
