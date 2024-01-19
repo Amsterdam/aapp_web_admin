@@ -94,7 +94,7 @@ ingress:
     className: nginx-external
     annotations:
       nginx.ingress.kubernetes.io/use-regex: "true"
-      nginx.ingress.kubernetes.io/rewrite-target: /static/$1
+      nginx.ingress.kubernetes.io/rewrite-target: /mbs/static/$1
     paths:
       - path: /mbs/static/(.*)
         pathType: ImplementationSpecific
