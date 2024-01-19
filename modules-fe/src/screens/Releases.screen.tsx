@@ -26,13 +26,13 @@ const ReleasesScreen = () => {
         <ScreenTitle title="Releases" />
         <Button
           label="Release toevoegen"
-          onClick={() => navigate('/modules/release/create')}
+          onClick={() => navigate('/mbs/release/create')}
         />
         {releases?.length ? (
           <List>
             {releases.map(({version}) => (
               <ListItem key={version}>
-                <BlockLink to={`/modules/release/${version}`}>
+                <BlockLink to={`/mbs/release/${version}`}>
                   <Box>
                     <Phrase>Release {version}</Phrase>
                   </Box>

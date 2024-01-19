@@ -122,7 +122,7 @@ const EditModuleVersionStatusScreen = () => {
     editModuleVersionStatus({slug, version, statusInReleases}).then(
       response => {
         if ('data' in response) {
-          navigate(`/modules/module/${slug}/${version}`)
+          navigate(`/mbs/module/${slug}/${version}`)
         }
       },
     )

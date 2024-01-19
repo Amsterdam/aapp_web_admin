@@ -73,13 +73,13 @@ const ModuleScreen = () => {
         <Button
           label="Moduleversie toevoegen"
           onClick={() => {
-            navigate(`/modules/module/${slug}/create`)
+            navigate(`/mbs/module/${slug}/create`)
           }}
         />
         <List>
           {module.versions.map(({icon, title, version}) => (
             <ListItem key={version}>
-              <BlockLink to={`/modules/module/${slug}/${version}`}>
+              <BlockLink to={`/mbs/module/${slug}/${version}`}>
                 <Box>
                   <Module {...{icon, title, version}} />
                 </Box>

@@ -59,7 +59,7 @@ const CreateReleaseScreen = () => {
     }
     const result = await createRelease(preparedData)
     if ('data' in result) {
-      navigate('/modules/releases')
+      navigate('/mbs/releases')
     }
   }
 

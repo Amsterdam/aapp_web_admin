@@ -23,7 +23,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (isAccessTokenValid) {
-      navigate('/modules/')
+      navigate('/mbs/')
     }
   }, [isAccessTokenValid, navigate])
 

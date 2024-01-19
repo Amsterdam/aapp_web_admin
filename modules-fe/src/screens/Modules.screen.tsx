@@ -35,14 +35,14 @@ const ModulesScreen = () => {
         <Button
           label="Module toevoegen"
           onClick={() => {
-            navigate(`/modules/module/create`)
+            navigate(`/mbs/module/create`)
           }}
         />
         {sortedModules ? (
           <List>
             {sortedModules.map(({icon, moduleSlug, title}) => (
               <ListItem key={moduleSlug}>
-                <BlockLink to={`/modules/module/${moduleSlug}`}>
+                <BlockLink to={`/mbs/module/${moduleSlug}`}>
                   <Box>
                     <Module {...{icon, title}} />
                   </Box>
