@@ -5,7 +5,7 @@ import './Logo.css'
 
 const Logo = () => (
   <Row align="start">
-    <BlockLink to="/modules">
+    <BlockLink to="/mbs">
       <img alt="Gemeente Amsterdam" className="Logo" src={LogoImage} />
     </BlockLink>
   </Row>
