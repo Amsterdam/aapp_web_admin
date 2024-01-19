@@ -27,9 +27,7 @@ deployments:
     selectorLabels:
       component: api
     securityContext:
-      runAsUser: 2000
-    env:
-      WEB_USERNAME: redactie@amsterdam.nl        
+      runAsUser: 2000        
     autoscale:
       cpu: 70
       memory: 90
@@ -92,3 +90,14 @@ ingress:
         pathType: ImplementationSpecific
         service: api
         port: 8000
+  static-external:
+    className: nginx-external
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/rewrite-target: /static/$1
+    paths:
+      - path: /mbs/static/(.*)
+        pathType: ImplementationSpecific
+        service: api
+        port: 8000
+    tls: certificate
