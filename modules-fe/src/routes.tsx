@@ -13,48 +13,48 @@ import ReleasesScreen from 'screens/Releases.screen'
 
 export const routes: RouteObject[] = [
   {
-    path: '/modules',
+    path: '/mbs',
     element: <HomeScreen />,
     errorElement: <ErrorScreen message="Pagina niet gevonden (404)." />,
   },
   {
-    path: '/modules/login',
+    path: '/mbs/login',
     element: <LoginScreen />,
   },
   {
-    path: '/modules/modules',
+    path: '/mbs/modules',
     element: <ModulesScreen />,
   },
   {
-    path: '/modules/module/create',
+    path: '/mbs/module/create',
     element: <CreateModuleScreen />,
   },
   {
-    path: '/modules/module/:slug',
+    path: '/mbs/module/:slug',
     element: <ModuleScreen />,
   },
   {
-    path: '/modules/module/:slug/create',
+    path: '/mbs/module/:slug/create',
     element: <CreateModuleScreen />,
   },
   {
-    path: '/modules/module/:slug/:version',
+    path: '/mbs/module/:slug/:version',
     element: <EditModuleVersionScreen />,
   },
   {
-    path: '/modules/module/:slug/:version/status',
+    path: '/mbs/module/:slug/:version/status',
     element: <EditModuleVersionStatusScreen />,
   },
   {
-    path: '/modules/releases',
+    path: '/mbs/releases',
     element: <ReleasesScreen />,
   },
   {
-    path: '/modules/release/create',
+    path: '/mbs/release/create',
     element: <CreateReleaseScreen />,
   },
   {
-    path: '/modules/release/:version',
+    path: '/mbs/release/:version',
     element: <EditReleaseScreen />,
   },
 ]
