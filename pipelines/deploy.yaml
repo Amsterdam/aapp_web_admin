@@ -56,13 +56,13 @@ extends:
           displayName: Helm uninstall ${{ parameters.name }}  
 
 
-    # test:
-    #   pool: Amsterdam-App
-    #   namespace: ns-ccc-aapp-tst-01-aapp-test
-    #   kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-tst-01-aapp-test
+    test:
+      pool: Amsterdam-App
+      namespace: ns-ccc-aapp-tst-01-aapp-test
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-tst-01-aapp-test
 
-    #   ${{ if eq(parameters['force'], 'true') }}:
-    #     preSteps: 
-    #     - script: |
-    #         helm uninstall ${{ parameters.name }}
-    #       displayName: Helm uninstall ${{ parameters.name }}             
+      ${{ if eq(parameters['force'], 'true') }}:
+        preSteps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}             
