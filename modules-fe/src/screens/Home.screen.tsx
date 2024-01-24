@@ -15,8 +15,16 @@ const HomeScreen = () => {
         <ScreenTitle subtitle="Amsterdam App" title="Modulebeheersysteem" />
         <Phrase>Wat wil je beheren?</Phrase>
         <Row gutter="md">
-          <Button flex label="Modules" onClick={() => navigate('/mbs/modules')} />
-          <Button flex label="Releases" onClick={() => navigate('/mbs/releases')} />
+          <Button
+            flex
+            label="Modules"
+            onClick={() => navigate('/mbs/modules')}
+          />
+          <Button
+            flex
+            label="Releases"
+            onClick={() => navigate('/mbs/releases')}
+          />
         </Row>
       </Column>
     </Screen>

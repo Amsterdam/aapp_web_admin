@@ -2,7 +2,7 @@ jobs:
   - job: "Tests"
     timeoutInMinutes: 15
     pool:
-      vmImage: "macos-11"
+      vmImage: "macos-13"
     steps:
       - template: ./install-node.yml
       - script: cd $(System.DefaultWorkingDirectory)/modules-fe && npm ci

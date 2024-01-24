@@ -1,4 +1,4 @@
-import {skipToken} from '@reduxjs/toolkit/dist/query'
+import {skipToken} from '@reduxjs/toolkit/query'
 import isEqual from 'lodash.isequal'
 import {useEffect, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'

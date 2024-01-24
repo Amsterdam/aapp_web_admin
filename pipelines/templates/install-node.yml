@@ -1,0 +1,9 @@
+# Install node based on version in package.json
+steps:
+  - script: |
+      echo "##vso[task.setvariable variable=NODE_VERSION;]$(node ./modules-fe/nodescripts/getNodeVersion.js)"
+    displayName: Read required node version
+  - task: NodeTool@0
+    displayName: Install Node
+    inputs:
+      versionSpec: $(NODE_VERSION)

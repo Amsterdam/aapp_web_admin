@@ -1,4 +1,4 @@
-import {skipToken} from '@reduxjs/toolkit/dist/query'
+import {skipToken} from '@reduxjs/toolkit/query'
 import {useCallback, useEffect, useMemo} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
