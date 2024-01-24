@@ -80,6 +80,11 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "coverageReporters": [
+      "cobertura"
+    ]
+  },
   "proxyAzureDev": "https://ontw.app.amsterdam.nl/",
   "proxyAzureTest": "https://test.app.amsterdam.nl/",
   "proxyAzureAcc": "https://acc.app.amsterdam.nl/",
