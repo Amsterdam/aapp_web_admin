@@ -2,19 +2,17 @@ trigger:
   batch: true
   branches:
     include:
-    - main
-  paths:
+      - main
+  tags:
     include:
-    - manifests
-
-pr: none
+      - "*.*.*"
 
 resources:
   repositories:
     - repository: templates
       type: git
-      name: Amsterdam-App/templates
-      ref: refs/tags/1.7.0
+      name: TAMM/templates
+      ref: refs/tags/1.7.1
 
 
 parameters:
@@ -32,11 +30,15 @@ parameters:
 
   - name: version
     type: string
-    default: 1.0.17
+    default: 1.0.18
 
   - name: force
     type: boolean
     default: false    
+
+  - name: uninstall
+    type: boolean
+    default: false
 
 extends:
   template: pipelines/aks/template.yaml@templates
@@ -55,6 +57,11 @@ extends:
             helm uninstall ${{ parameters.name }}
           displayName: Helm uninstall ${{ parameters.name }}  
 
+      ${{ if eq(parameters['uninstall'], 'true') }}:
+        steps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}
 
     test:
       pool: Amsterdam-App
@@ -65,4 +72,10 @@ extends:
         preSteps: 
         - script: |
             helm uninstall ${{ parameters.name }}
-          displayName: Helm uninstall ${{ parameters.name }}             
+          displayName: Helm uninstall ${{ parameters.name }}
+
+      ${{ if eq(parameters['uninstall'], 'true') }}:
+        steps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}                      
