@@ -4,15 +4,21 @@ import {ReactNode, FC} from 'react'
 
 type Props = {
   children: ReactNode
+  interactionType?: InteractionType
 }
 
-export const LoginBoundary: FC<Props> = ({children}) => {
+export const LoginBoundary: FC<Props> = ({
+  children,
+  interactionType = InteractionType.Redirect,
+}) => {
   const {instance} = useMsal()
+  const accounts = instance.getAllAccounts()
   const activeAccount = instance.getActiveAccount()
-  // eslint-disable-next-line no-console
-  console.log(activeAccount)
+  if (!activeAccount && accounts.length > 0) {
+    instance.setActiveAccount(accounts[0])
+  }
   return (
-    <MsalAuthenticationTemplate interactionType={InteractionType.Redirect}>
+    <MsalAuthenticationTemplate interactionType={interactionType}>
       {children}
     </MsalAuthenticationTemplate>
   )
