@@ -1,20 +1,21 @@
-import {useDispatch} from 'react-redux'
+import {InteractionType} from '@azure/msal-browser'
+import {useMsal} from '@azure/msal-react'
+import {LoginBoundary} from 'components/authentication/LoginBoundary'
 import Button from 'components/ui/button/Button'
 import Icon from 'components/ui/media/Icon'
-import {logout} from 'slices/authorization.slice'
 
 const LogoutButton = () => {
-  const dispatch = useDispatch()
+  const {instance} = useMsal()
 
   return (
-    <Button
-      icon={<Icon name="logout" />}
-      label="Uitloggen"
-      onClick={() => {
-        dispatch(logout())
-      }}
-      variant="tertiary"
-    />
+    <LoginBoundary interactionType={InteractionType.Silent}>
+      <Button
+        icon={<Icon name="logout" />}
+        label="Uitloggen"
+        onClick={() => instance.logout()}
+        variant="tertiary"
+      />
+    </LoginBoundary>
   )
 }
 

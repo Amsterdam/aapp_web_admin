@@ -7,13 +7,13 @@ const msalConfig: Configuration = {
     clientId: 'df8c1ff0-fbc7-4fdb-b67a-33b476f162ec',
     authority:
       'https://login.microsoftonline.com/72fca1b1-2c2e-4376-a445-294d80196804',
-    redirectUri: 'https://ontw.app.amsterdam.nl/mbs',
+    // redirectUri: 'https://ontw.app.amsterdam.nl/mbs',
     // redirectUri: 'https://ontw.app.amsterdam.nl',
-    // redirectUri: 'http://localhost:3000',
+    // redirectUri: 'http://localhost:3000/mbs',
   },
 }
 
-const msalInstance = new PublicClientApplication(msalConfig)
+export const msalInstance = new PublicClientApplication(msalConfig)
 
 let finished = false
 const msalInstanceLoadingPromise = msalInstance.initialize().then(() => {
