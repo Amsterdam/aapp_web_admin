@@ -92,6 +92,6 @@
   "proxy": "https://api-test-modules.app-amsterdam.nl/",
   "proxyTransIPprod": "https://api-modules.app-amsterdam.nl/",
   "volta": {
-    "node": "21.6.0"
+    "node": "20.11.0"
   }
 }
