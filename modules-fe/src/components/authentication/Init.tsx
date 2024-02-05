@@ -1,19 +1,11 @@
 import {Configuration, PublicClientApplication} from '@azure/msal-browser'
 import {MsalProvider} from '@azure/msal-react'
 import {ReactNode, FC} from 'react'
-import {Environment, environment} from 'utils/environment'
-
-const environmentClientId: Record<Environment, string> = {
-  [Environment.local]: 'df8c1ff0-fbc7-4fdb-b67a-33b476f162ec', // the same as dev
-  [Environment.development]: 'df8c1ff0-fbc7-4fdb-b67a-33b476f162ec',
-  [Environment.test]: '',
-  [Environment.acceptance]: '',
-  [Environment.production]: '',
-}
+import {currentClientId} from 'utils/environment'
 
 const msalConfig: Configuration = {
   auth: {
-    clientId: environmentClientId[environment],
+    clientId: currentClientId,
     authority:
       'https://login.microsoftonline.com/72fca1b1-2c2e-4376-a445-294d80196804',
   },
