@@ -1,4 +1,4 @@
-FROM node:alpine as app
+FROM node:20-alpine as app
 
 # Add source
 COPY modules-fe /code/modules-fe
