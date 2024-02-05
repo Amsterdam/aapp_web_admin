@@ -1,4 +1,4 @@
-import {ReactNode, Fragment, useMemo} from 'react'
+import {ReactNode, Fragment} from 'react'
 import {LoginBoundary} from 'components/authentication/LoginBoundary'
 import LogoutButton from 'components/features/LogoutButton'
 import Column from 'components/ui/layout/Column'
@@ -12,10 +12,7 @@ type Props = {
 }
 
 const Screen = ({children, noLogin = false}: Props) => {
-  const Container = useMemo(
-    () => (noLogin ? Fragment : LoginBoundary),
-    [noLogin],
-  )
+  const Container = noLogin ? Fragment : LoginBoundary
   return (
     <Container>
       <div className="Screen">
