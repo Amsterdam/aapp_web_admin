@@ -73,4 +73,32 @@ extends:
         steps: 
         - script: |
             helm uninstall ${{ parameters.name }}
-          displayName: Helm uninstall ${{ parameters.name }}                      
+          displayName: Helm uninstall ${{ parameters.name }}
+
+    acc:
+      pool: Amsterdam-App
+      namespace: ns-ccc-aapp-acc-01-aapp-acc
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-acc-01-aapp-acc
+
+      ${{ if eq(parameters['force'], 'true') }}:
+        preSteps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}
+
+      ${{ if eq(parameters['uninstall'], 'true') }}:
+        steps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }} 
+          
+    prod:
+      pool: Amsterdam-App
+      namespace: ns-ccc-aapp-prd-01-aapp-prd
+      kubernetesServiceConnection: SCN-K8S-ns-ccc-aapp-prd-01-aapp-prd
+
+      ${{ if eq(parameters['force'], 'true') }}:
+        preSteps: 
+        - script: |
+            helm uninstall ${{ parameters.name }}
+          displayName: Helm uninstall ${{ parameters.name }}                                 
