@@ -1,0 +1,23 @@
+tenantId: 72fca1b1-2c2e-4376-a445-294d80196804
+keyVaultName: shared-p-ycobncdiqz2n4
+# az ad sp list --filter "startswith(displayName, 'aapp-modules-p')" => appId
+workloadIdentity: c5fea023-fb2a-4752-8d12-feaf76d0ceb9
+
+host: app.amsterdam.nl
+nodepool: cccaappacc01
+
+secrets:
+  vault:
+    type: keyvault
+    keyVaultName: aapp-p-asctypczqftak
+    secrets:
+      - web-password
+      - aes-secret
+      - secret-key 
+
+  database:
+    type: opaque
+    secrets:
+      postgres-user: aapp-modules-p
+      postgres-db: modules
+      postgres-host: aapp-p-asctypczqftak.postgres.database.azure.com          
