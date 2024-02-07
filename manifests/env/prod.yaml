@@ -4,7 +4,7 @@ keyVaultName: shared-p-ycobncdiqz2n4
 workloadIdentity: c5fea023-fb2a-4752-8d12-feaf76d0ceb9
 
 host: app.amsterdam.nl
-nodepool: cccaappacc01
+nodepool: cccaappprd01
 
 secrets:
   vault:
