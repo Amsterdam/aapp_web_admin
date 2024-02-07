@@ -22,6 +22,14 @@ export const environmentClientId: Record<Environment, string> = {
   [Environment.production]: '6972130c-f05b-4dfa-af6f-ae77aacef456',
 }
 
+export const environmentRedirectUri: Record<Environment, string> = {
+  [Environment.local]: 'http://localhost:3000/mbs',
+  [Environment.development]: 'https://ontw.app.amsterdam.nl/mbs',
+  [Environment.test]: 'https://test.app.amsterdam.nl/mbs',
+  [Environment.acceptance]: 'https://acc.app.amsterdam.nl/mbs',
+  [Environment.production]: 'https://app.amsterdam.nl/mbs',
+}
+
 export const getEnvironment = (hostname: string): Environment =>
   hostnameEnvironment[hostname] ?? Environment.production
 
@@ -29,3 +37,5 @@ export const getEnvironment = (hostname: string): Environment =>
 export const environment = getEnvironment(location.hostname)
 
 export const currentClientId = environmentClientId[environment]
+
+export const currentRedirectUri = environmentRedirectUri[environment]
