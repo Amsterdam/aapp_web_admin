@@ -1,39 +1,45 @@
+import {skipToken} from '@reduxjs/toolkit/query'
 import {useMemo} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useSelector} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {useGetModulesQuery} from 'services/modules'
-import {
-  useCreateReleaseMutation,
-  useGetLatestReleaseQuery,
-} from 'services/releases'
+import {useCreateReleaseMutation, useGetReleaseQuery} from 'services/releases'
 import {selectReleaseModules} from 'slices/release.slice'
 import {ModuleVersion} from 'types/module'
 import {ReleaseBase, ReleaseWithModuleVersions} from 'types/release'
+import {getPreviousPatchVersion} from 'utils/getHotfixVersion'
 import ReleaseForm from '../components/features/ReleaseForm'
 import ErrorScreen from './Error.screen'
 import LoadingScreen from './Loading.screen'
 
-const CreateReleaseScreen = () => {
+type Params = {
+  version?: string
+}
+
+const CreateHotfixReleaseScreen = () => {
   const releaseModules = useSelector(selectReleaseModules)
-  const form = useForm<ReleaseBase>()
-  const {watch} = form
-  const releaseVersion = watch('version')
+  const {version: releaseVersion} = useParams<Params>()
+  const form = useForm<ReleaseBase>({defaultValues: {version: releaseVersion}})
   const [createRelease] = useCreateReleaseMutation()
   const navigate = useNavigate()
 
-  const {data: latestRelease, isLoading: isLoadingLatestRelease} =
-    useGetLatestReleaseQuery()
+  const {data: replaceRelease, isLoading: isLoadingReplaceRelease} =
+    useGetReleaseQuery(
+      releaseVersion
+        ? {version: getPreviousPatchVersion(releaseVersion)}
+        : skipToken,
+    )
 
   const {data: latestModules, isLoading: isLoadingLatestModules} =
     useGetModulesQuery(undefined, {
-      skip: isLoadingLatestRelease || !!latestRelease,
+      skip: isLoadingReplaceRelease || !!replaceRelease,
     })
 
-  const releaseIfNoLatestRelease = useMemo(() => {
+  const releaseIfNoReplaceRelease = useMemo(() => {
     if (!latestModules) {
       return null
     }
@@ -63,11 +69,11 @@ const CreateReleaseScreen = () => {
     }
   }
 
-  if (isLoadingLatestRelease || isLoadingLatestModules) {
+  if (isLoadingReplaceRelease || isLoadingLatestModules) {
     return <LoadingScreen />
   }
 
-  if (!latestRelease && !releaseIfNoLatestRelease) {
+  if (!replaceRelease && !releaseIfNoReplaceRelease) {
     return (
       <ErrorScreen message="Er zijn geen modules die aan een release toegevoegd kunnen worden." />
     )
@@ -82,11 +88,11 @@ const CreateReleaseScreen = () => {
         />
         <FormProvider {...form}>
           <ReleaseForm
-            canEditVersion
+            canEditVersion={false}
             onSubmit={handleCreateRelease}
             release={
-              latestRelease ??
-              releaseIfNoLatestRelease ??
+              replaceRelease ??
+              releaseIfNoReplaceRelease ??
               ({} as ReleaseWithModuleVersions)
             }
           />
@@ -96,4 +102,4 @@ const CreateReleaseScreen = () => {
   )
 }
 
-export default CreateReleaseScreen
+export default CreateHotfixReleaseScreen

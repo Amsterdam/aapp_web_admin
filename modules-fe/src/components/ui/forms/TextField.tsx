@@ -29,7 +29,11 @@ const TextField = ({defaultValue, label, name, rules, type, width}: Props) => {
             <Column gutter="sm">
               <Phrase color="muted">{label}</Phrase>
               <Input
-                {...{id, name, onChange, type, value}}
+                id={id}
+                name={name}
+                onChange={onChange}
+                type={type}
+                value={value}
                 hasError={!!error}
               />
             </Column>

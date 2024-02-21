@@ -36,7 +36,12 @@ const DraggableModules = ({
               index={index}>
               <ListItem>
                 <Box>
-                  <Module color={phraseColor} {...{icon, title, version}} />
+                  <Module
+                    color={phraseColor}
+                    icon={icon}
+                    title={title}
+                    version={version}
+                  />
                 </Box>
               </ListItem>
             </Draggable>

@@ -6,19 +6,27 @@ import VersionField from 'components/form-fields/VersionField'
 import Button from 'components/ui/button/Button'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
+import Phrase from 'components/ui/text/Phrase'
 import {setModules} from 'slices/release.slice'
 import {ReleaseBase, ReleaseWithModuleVersions} from 'types/release'
 
 type Props = {
+  canEditVersion?: boolean
   onSubmit: (data: ReleaseBase) => void
   release: ReleaseWithModuleVersions
   versionDefaultValue?: string
 }
 
-const ReleaseForm = ({onSubmit, release, versionDefaultValue}: Props) => {
+const ReleaseForm = ({
+  canEditVersion,
+  onSubmit,
+  release,
+  versionDefaultValue,
+}: Props) => {
   const dispatch = useDispatch()
   const form = useFormContext<ReleaseBase>()
-  const {handleSubmit} = form
+  const {handleSubmit, watch} = form
+  const version = watch('version')
 
   useEffect(() => {
     if (release) {
@@ -28,10 +36,14 @@ const ReleaseForm = ({onSubmit, release, versionDefaultValue}: Props) => {
 
   return (
     <Column gutter="lg">
-      <VersionField
-        baseVersion={release.version}
-        defaultValue={versionDefaultValue}
-      />
+      {canEditVersion ? (
+        <VersionField
+          baseVersion={release.version}
+          defaultValue={versionDefaultValue}
+        />
+      ) : (
+        <Phrase color="muted">Versie: {version}</Phrase>
+      )}
       <DragDropModules releaseVersion={release.version} />
       <TextField
         label="Gepubliceerd"

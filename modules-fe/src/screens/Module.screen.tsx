@@ -81,7 +81,7 @@ const ModuleScreen = () => {
             <ListItem key={version}>
               <BlockLink to={`/mbs/module/${slug}/${version}`}>
                 <Box>
-                  <Module {...{icon, title, version}} />
+                  <Module icon={icon} title={title} version={version} />
                 </Box>
               </BlockLink>
             </ListItem>
