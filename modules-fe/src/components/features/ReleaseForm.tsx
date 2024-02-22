@@ -52,7 +52,13 @@ const ReleaseForm = ({
         width="half"
       />
       <TextField
-        label="Ongepubliceerd"
+        label="Deprecated"
+        name="deprecated"
+        type="date"
+        width="half"
+      />
+      <TextField
+        label="Ongepubliceerd (en niet meer supported)"
         name="unpublished"
         type="date"
         width="half"

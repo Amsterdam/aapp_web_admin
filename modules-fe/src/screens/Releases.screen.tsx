@@ -4,6 +4,7 @@ import BlockLink from 'components/ui/button/BlockLink'
 import Button from 'components/ui/button/Button'
 import Box from 'components/ui/layout/Box'
 import Column from 'components/ui/layout/Column'
+import Row from 'components/ui/layout/Row'
 import Screen from 'components/ui/layout/Screen'
 import List from 'components/ui/text/List'
 import ListItem from 'components/ui/text/ListItem'
@@ -51,7 +52,7 @@ const ReleasesScreen = () => {
         )}
         {releases?.length ? (
           <List>
-            {releases.map(({version}) => {
+            {releases.map(({version, isDeprecated, isSupported}) => {
               const hotfixVersion = getHotfixVersion(version, releaseVersions)
               return (
                 <ListItem key={version}>
@@ -62,10 +63,18 @@ const ReleasesScreen = () => {
                         : `/mbs/release/${version}`
                     }>
                     <Box>
-                      <Phrase>
-                        Release {version}
-                        {addHotfix ? ` -> Hotfix: ${hotfixVersion}` : ''}
-                      </Phrase>
+                      <Row align="between">
+                        <Phrase>
+                          Release {version}
+                          {addHotfix ? ` -> Hotfix: ${hotfixVersion}` : ''}
+                        </Phrase>
+
+                        {!!isSupported && (
+                          <Phrase emphasis="italic">
+                            {isDeprecated ? 'Deprecated' : 'Supported'}
+                          </Phrase>
+                        )}
+                      </Row>
                     </Box>
                   </BlockLink>
                 </ListItem>

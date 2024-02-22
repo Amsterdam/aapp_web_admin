@@ -6,6 +6,7 @@ import {
 } from 'types/module'
 
 export type ReleaseBase = {
+  deprecated: string | null
   published: string | null
   releaseNotes: string
   unpublished: string | null
@@ -15,6 +16,8 @@ export type ReleaseBase = {
 export type Release = {
   created: string
   modified: string
+  isSupported: boolean
+  isDeprecated: boolean
 } & ReleaseBase
 
 export type ReleaseBaseWithModulesWithStatusInRelease = ReleaseBase & {
