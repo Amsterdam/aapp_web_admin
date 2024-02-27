@@ -1,4 +1,5 @@
 import {RouteObject} from 'react-router-dom'
+import CreateHotfixReleaseScreen from 'screens/CreateHotfixRelease.screen'
 import CreateModuleScreen from 'screens/CreateModule.screen'
 import CreateReleaseScreen from 'screens/CreateRelease.screen'
 import EditModuleVersionScreen from 'screens/EditModuleVersion.screen'
@@ -47,6 +48,10 @@ export const routes: RouteObject[] = [
   {
     path: '/mbs/release/create',
     element: <CreateReleaseScreen />,
+  },
+  {
+    path: '/mbs/release/hotfix/:version',
+    element: <CreateHotfixReleaseScreen />,
   },
   {
     path: '/mbs/release/:version',

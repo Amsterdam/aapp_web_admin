@@ -23,7 +23,9 @@ const RadioField = ({defaultValue, name, option, rules}: RadioProps) => {
           <label className="RadioField" htmlFor={id}>
             <Row gutter="sm" valign="center">
               <input
-                {...{id, name, onChange}}
+                id={id}
+                name={name}
+                onChange={onChange}
                 hidden
                 type="radio"
                 value={option}

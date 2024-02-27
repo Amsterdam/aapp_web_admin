@@ -44,7 +44,7 @@ const ModulesScreen = () => {
               <ListItem key={moduleSlug}>
                 <BlockLink to={`/mbs/module/${moduleSlug}`}>
                   <Box>
-                    <Module {...{icon, title}} />
+                    <Module icon={icon} title={title} />
                   </Box>
                 </BlockLink>
               </ListItem>

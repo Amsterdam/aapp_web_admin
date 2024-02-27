@@ -23,7 +23,13 @@ const RadioFieldSet = ({
       <Phrase color="muted">{label}</Phrase>
       <Column>
         {options.map(option => (
-          <RadioField key={option} {...{defaultValue, name, option, rules}} />
+          <RadioField
+            key={option}
+            defaultValue={defaultValue}
+            name={name}
+            option={option}
+            rules={rules}
+          />
         ))}
         {!!error && <Phrase color="error">{error.message as string}</Phrase>}
       </Column>

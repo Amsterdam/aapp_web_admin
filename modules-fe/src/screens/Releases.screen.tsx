@@ -1,3 +1,4 @@
+import {useMemo, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import BlockLink from 'components/ui/button/BlockLink'
 import Button from 'components/ui/button/Button'
@@ -10,11 +11,19 @@ import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import LoadingScreen from 'screens/Loading.screen'
 import {useGetReleasesQuery} from 'services/releases'
+import {getHotfixVersion} from 'utils/getHotfixVersion'
 
 const ReleasesScreen = () => {
   const navigate = useNavigate()
 
   const {data: releases, isLoading} = useGetReleasesQuery()
+
+  const [addHotfix, setAddHotfix] = useState(false)
+
+  const releaseVersions = useMemo(
+    () => releases?.map(({version}) => version),
+    [releases],
+  )
 
   if (isLoading) {
     return <LoadingScreen />
@@ -27,18 +36,41 @@ const ReleasesScreen = () => {
         <Button
           label="Release toevoegen"
           onClick={() => navigate('/mbs/release/create')}
+          variant={addHotfix ? 'secondary' : 'primary'}
         />
+        {(releases?.length ?? 0) > 0 && (
+          <Button
+            label={
+              addHotfix ? 'Hotfix toevoegen annuleren' : 'Hotfix toevoegen'
+            }
+            onClick={() => {
+              setAddHotfix(value => !value)
+            }}
+            variant={addHotfix ? 'primary' : 'secondary'}
+          />
+        )}
         {releases?.length ? (
           <List>
-            {releases.map(({version}) => (
-              <ListItem key={version}>
-                <BlockLink to={`/mbs/release/${version}`}>
-                  <Box>
-                    <Phrase>Release {version}</Phrase>
-                  </Box>
-                </BlockLink>
-              </ListItem>
-            ))}
+            {releases.map(({version}) => {
+              const hotfixVersion = getHotfixVersion(version, releaseVersions)
+              return (
+                <ListItem key={version}>
+                  <BlockLink
+                    to={
+                      addHotfix
+                        ? `/mbs/release/hotfix/${hotfixVersion}`
+                        : `/mbs/release/${version}`
+                    }>
+                    <Box>
+                      <Phrase>
+                        Release {version}
+                        {addHotfix ? ` -> Hotfix: ${hotfixVersion}` : ''}
+                      </Phrase>
+                    </Box>
+                  </BlockLink>
+                </ListItem>
+              )
+            })}
           </List>
         ) : (
           <Phrase>Geen releases gevonden.</Phrase>

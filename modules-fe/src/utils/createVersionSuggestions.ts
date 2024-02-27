@@ -1,8 +1,10 @@
+import {parseVersion} from './parseVersion'
+
 export const createVersionSuggestions = (
   baseVersion: string,
   defaultValue?: string,
 ) => {
-  const [major, minor, patch] = baseVersion.split('.').map(Number)
+  const {major, minor, patch} = parseVersion(baseVersion)
 
   return [
     defaultValue ?? `${major}.${minor}.${patch + 1}`,
