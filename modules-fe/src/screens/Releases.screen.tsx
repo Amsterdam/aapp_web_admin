@@ -38,13 +38,17 @@ const ReleasesScreen = () => {
           onClick={() => navigate('/mbs/release/create')}
           variant={addHotfix ? 'secondary' : 'primary'}
         />
-        <Button
-          label={addHotfix ? 'Hotfix toevoegen annuleren' : 'Hotfix toevoegen'}
-          onClick={() => {
-            setAddHotfix(value => !value)
-          }}
-          variant={addHotfix ? 'primary' : 'secondary'}
-        />
+        {(releases?.length ?? 0) > 0 && (
+          <Button
+            label={
+              addHotfix ? 'Hotfix toevoegen annuleren' : 'Hotfix toevoegen'
+            }
+            onClick={() => {
+              setAddHotfix(value => !value)
+            }}
+            variant={addHotfix ? 'primary' : 'secondary'}
+          />
+        )}
         {releases?.length ? (
           <List>
             {releases.map(({version}) => {
