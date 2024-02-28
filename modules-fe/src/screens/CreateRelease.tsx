@@ -73,6 +73,9 @@ const CreateRelease = ({hotfixVersion}: Props) => {
   const handleCreateRelease = async (data: ReleaseBase) => {
     const preparedData = {
       ...data,
+      published: data.published === '' ? null : data.published,
+      deprecated: data.deprecated === '' ? null : data.deprecated,
+      unpublished: data.unpublished === '' ? null : data.unpublished,
       modules: releaseModules.map(({moduleSlug, version}) => ({
         moduleSlug,
         version,
