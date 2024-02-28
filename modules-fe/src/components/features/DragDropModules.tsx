@@ -2,9 +2,9 @@ import {useCallback, useMemo} from 'react'
 import {DragDropContext, DropResult} from 'react-beautiful-dnd'
 import {useDispatch, useSelector} from 'react-redux'
 import DraggableModules from 'components/features/DraggableModules'
+import Loading from 'components/features/Loading'
 import Column from 'components/ui/layout/Column'
 import Grid from 'components/ui/layout/Grid'
-import LoadingScreen from 'screens/Loading.screen'
 import {useGetModulesAvailableForReleaseQuery} from 'services/modules'
 import {selectReleaseModules, setModules} from 'slices/release.slice'
 import {addToList, removeFromList, reorderList} from 'utils/list'
@@ -75,7 +75,7 @@ const DragDropModules = ({releaseVersion}: Props) => {
   )
 
   if (isLoadingModules) {
-    return <LoadingScreen />
+    return <Loading />
   }
 
   if (!modulesAvailableForRelease) {
