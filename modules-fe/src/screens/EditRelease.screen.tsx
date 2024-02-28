@@ -22,6 +22,20 @@ type Params = {
   version: ReleaseBase['version']
 }
 
+const dateFields = ['deprecated', 'published', 'unpublished']
+
+const replaceEmptyDates = <T,>(
+  field: keyof ReleaseBase,
+  value: T,
+): T | null => {
+  if (dateFields.includes(field)) {
+    if (typeof value === 'string' && value === '') {
+      return null
+    }
+  }
+  return value
+}
+
 const EditReleaseScreen = () => {
   const releaseModules = useSelector(selectReleaseModules)
   const [isBeforeNavigation, setIsBeforeNavigation] = useState(false)
@@ -69,7 +83,6 @@ const EditReleaseScreen = () => {
     if (!versionParam) {
       return
     }
-    const dirtyFieldsOnly: Partial<ReleaseBase> = {}
     const dirtyFieldKeys = Object.keys(dirtyFields) as Array<keyof ReleaseBase>
     const isModulesModified = !isEqual(releaseModules, initialReleaseModules)
     setIsBeforeNavigation(true)
@@ -78,9 +91,13 @@ const EditReleaseScreen = () => {
       navigate('/mbs/releases')
     } else {
       // Only send the fields that have been modified
-      dirtyFieldKeys.forEach(<K extends keyof ReleaseBase>(field: K) => {
-        dirtyFieldsOnly[field] = data[field]
-      })
+      const dirtyFieldsOnly = dirtyFieldKeys.reduce<Partial<ReleaseBase>>(
+        (acc, field) => ({
+          ...acc,
+          [field]: replaceEmptyDates(field, data[field]),
+        }),
+        {},
+      )
 
       const preparedData = {
         ...dirtyFieldsOnly,
