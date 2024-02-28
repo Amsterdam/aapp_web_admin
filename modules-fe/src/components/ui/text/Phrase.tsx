@@ -4,7 +4,7 @@ import './Phrase.css'
 export type PhraseProps = {
   children: ReactNode
   color?: 'error' | 'inverse' | 'muted'
-  emphasis?: 'strong'
+  emphasis?: 'strong' | 'italic'
 }
 
 const Phrase = ({children, color, emphasis}: PhraseProps) => (

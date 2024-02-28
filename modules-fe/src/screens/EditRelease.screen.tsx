@@ -35,11 +35,18 @@ const EditReleaseScreen = () => {
 
   useEffect(() => {
     if (release) {
-      const {created, modified, published, unpublished, ...releaseProps} =
-        release
+      const {
+        created,
+        modified,
+        published,
+        deprecated,
+        unpublished,
+        ...releaseProps
+      } = release
       reset({
         ...releaseProps,
         published: published ?? '',
+        deprecated: deprecated ?? '',
         unpublished: unpublished ?? '',
       })
     }

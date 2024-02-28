@@ -59,8 +59,11 @@ const CreateRelease = ({hotfixVersion}: Props) => {
     return {
       created: '',
       modified: '',
+      isSupported: true,
+      isDeprecated: false,
       version: '0.15.0',
       published: null,
+      deprecated: null,
       unpublished: null,
       releaseNotes: '',
       modules: previousModules || ({} as ModuleVersion[]),
