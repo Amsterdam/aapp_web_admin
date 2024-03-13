@@ -7,7 +7,7 @@ export type PhraseProps = {
   emphasis?: 'strong' | 'italic'
 }
 
-const Phrase = ({children, color, emphasis}: PhraseProps) => (
+const Phrase = ({children, color = 'default', emphasis}: PhraseProps) => (
   <span
     className="Phrase"
     data-color={color}
