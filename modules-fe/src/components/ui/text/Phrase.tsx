@@ -3,11 +3,11 @@ import './Phrase.css'
 
 export type PhraseProps = {
   children: ReactNode
-  color?: 'error' | 'inverse' | 'muted'
+  color?: 'error' | 'inverse' | 'muted' | 'default'
   emphasis?: 'strong' | 'italic'
 }
 
-const Phrase = ({children, color, emphasis}: PhraseProps) => (
+const Phrase = ({children, color = 'default', emphasis}: PhraseProps) => (
   <span
     className="Phrase"
     data-color={color}

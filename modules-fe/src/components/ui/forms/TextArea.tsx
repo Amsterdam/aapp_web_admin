@@ -1,7 +1,6 @@
 import uniqueId from 'lodash.uniqueid'
 import {HTMLProps} from 'react'
 import {Controller, UseControllerProps} from 'react-hook-form'
-import Input from 'components/ui/forms/Input'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 import './TextField.css'
@@ -15,18 +14,18 @@ type Props = {
   label: string
   width?: keyof typeof FieldWidth
 } & UseControllerProps &
-  HTMLProps<HTMLInputElement>
+  HTMLProps<HTMLTextAreaElement>
 
-const TextField = ({
+const TextArea = ({
   defaultValue,
   label,
   name,
-  maxLength,
+  rows,
   rules,
-  type,
   width,
+  maxLength,
 }: Props) => {
-  const id = uniqueId('TextField-')
+  const id = uniqueId('TextArea-')
 
   return (
     <Controller
@@ -34,17 +33,18 @@ const TextField = ({
       name={name}
       render={({field: {onChange, value}, fieldState: {error}}) => (
         <Column gutter="sm">
-          <label className="TextFieldLabel" data-width={width} htmlFor={id}>
+          <label className="TextAreaLabel" data-width={width} htmlFor={id}>
             <Column gutter="sm">
               <Phrase color="muted">{label}</Phrase>
-              <Input
+              <textarea
+                className="Input"
+                data-font="body"
+                data-has-error={!!error}
                 id={id}
-                name={name}
                 maxLength={maxLength}
                 onChange={onChange}
-                type={type}
+                rows={rows}
                 value={value}
-                hasError={!!error}
               />
             </Column>
           </label>
@@ -57,4 +57,4 @@ const TextField = ({
   )
 }
 
-export default TextField
+export default TextArea

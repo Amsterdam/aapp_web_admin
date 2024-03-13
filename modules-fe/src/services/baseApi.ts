@@ -4,7 +4,7 @@ import {currentClientId} from 'utils/environment'
 
 const baseQuery = fetchBaseQuery({
   baseUrl: '/modules',
-  prepareHeaders: async (headers, {getState, endpoint}) => {
+  prepareHeaders: async headers => {
     const {accessToken} = await msalInstance.acquireTokenSilent({
       scopes: [`api://${currentClientId}/Modules.Edit`],
     })

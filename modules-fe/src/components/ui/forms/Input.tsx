@@ -5,17 +5,27 @@ type Props = {
   hasError: boolean
   id: string
   name: FieldPath<FieldValues>
+  maxLength?: number
   onChange: (...event: unknown[]) => void
   type?: string
   value: FieldPathValue<FieldValues, FieldPath<FieldValues>>
 }
 
-const Input = ({hasError, id, name, onChange, type, value}: Props) => (
+const Input = ({
+  hasError,
+  id,
+  name,
+  maxLength,
+  onChange,
+  type,
+  value,
+}: Props) => (
   <input
     className="Input"
     data-font="body"
     data-has-error={hasError}
     id={id}
+    maxLength={maxLength}
     onChange={onChange}
     type={type}
     value={value}

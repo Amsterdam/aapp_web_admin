@@ -3,7 +3,7 @@ import {IconSize} from 'components/ui/media/types'
 import './Icon.css'
 
 export type IconProps = {
-  color?: 'error' | 'inverse' | 'muted'
+  color?: 'error' | 'inverse' | 'muted' | 'default'
   /**
    * The name of the icon to display.
    */
@@ -14,7 +14,7 @@ export type IconProps = {
   size?: keyof typeof IconSize
 }
 
-const Icon = ({color, name, size = 'md'}: IconProps) => {
+const Icon = ({color = 'default', name, size = 'md'}: IconProps) => {
   const svgSize = IconSize[size]
 
   return (

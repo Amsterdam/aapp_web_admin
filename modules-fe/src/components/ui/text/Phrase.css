@@ -1,4 +1,5 @@
-.Phrase {
+.Phrase,
+.Phrase[data-color="default"] {
   color: var(--text-color-default);
 }
 
