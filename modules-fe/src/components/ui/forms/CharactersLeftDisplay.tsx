@@ -6,11 +6,13 @@ type Props = {
 }
 
 export const CharactersLeftDisplay = ({maxLength, value}: Props) => {
-  return maxLength !== undefined &&
-    maxLength > 0 &&
-    typeof value === 'string' ? (
+  if (!maxLength || typeof value !== 'string') {
+    return null
+  }
+
+  return (
     <Phrase color={value.length > maxLength ? 'error' : 'default'}>
       {value.length}/{maxLength}
     </Phrase>
-  ) : null
+  )
 }
