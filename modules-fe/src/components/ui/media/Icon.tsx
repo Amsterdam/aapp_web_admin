@@ -14,7 +14,7 @@ export type IconProps = {
   size?: keyof typeof IconSize
 }
 
-const Icon = ({color, name, size = 'md'}: IconProps) => {
+const Icon = ({color = 'default', name, size = 'md'}: IconProps) => {
   const svgSize = IconSize[size]
 
   return (
