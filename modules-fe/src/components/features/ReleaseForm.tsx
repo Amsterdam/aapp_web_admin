@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux'
 import DragDropModules from 'components/features/DragDropModules'
 import VersionField from 'components/form-fields/VersionField'
 import Button from 'components/ui/button/Button'
+import TextArea from 'components/ui/forms/TextArea'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
@@ -63,7 +64,12 @@ const ReleaseForm = ({
         type="date"
         width="half"
       />
-      <TextField label="Release notes" name="releaseNotes" />
+      <TextArea
+        label="Release notes"
+        name="releaseNotes"
+        maxLength={500}
+        rows={15}
+      />
       <Button label="Opslaan" onClick={handleSubmit(onSubmit)} />
     </Column>
   )

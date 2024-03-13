@@ -3,7 +3,7 @@ import {IconSize} from 'components/ui/media/types'
 import './Icon.css'
 
 export type IconProps = {
-  color?: 'error' | 'inverse' | 'muted'
+  color?: 'error' | 'inverse' | 'muted' | 'default'
   /**
    * The name of the icon to display.
    */

@@ -1,15 +1,26 @@
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.Icon {
+.Icon,
+.Icon[data-color="default"] {
   flex: none;
   fill: var(--text-color-default);
 }
 
-.Icon[data-color="error"] {fill: var(--text-color-warning);}
-.Icon[data-color="inverse"] {fill: var(--text-color-inverse);}
-.Icon[data-color="muted"] {fill: var(--text-color-muted);}
+.Icon[data-color="error"] {
+  fill: var(--text-color-warning);
+}
+
+.Icon[data-color="inverse"] {
+  fill: var(--text-color-inverse);
+}
+
+.Icon[data-color="muted"] {
+  fill: var(--text-color-muted);
+}
 
 .Icon[data-spinner="true"] {
   fill: none;
@@ -18,7 +29,14 @@
   animation: spinner 1s linear infinite;
 }
 
-.Icon[data-spinner="true"][data-color="error"] {stroke: var(--text-color-warning);}
-.Icon[data-spinner="true"][data-color="inverse"] {stroke: var(--text-color-inverse);}
-.Icon[data-spinner="true"][data-color="muted"] {stroke: var(--text-color-muted);}
+.Icon[data-spinner="true"][data-color="error"] {
+  stroke: var(--text-color-warning);
+}
 
+.Icon[data-spinner="true"][data-color="inverse"] {
+  stroke: var(--text-color-inverse);
+}
+
+.Icon[data-spinner="true"][data-color="muted"] {
+  stroke: var(--text-color-muted);
+}
