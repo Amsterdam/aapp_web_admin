@@ -26,6 +26,14 @@ const HomeScreen = () => {
             onClick={() => navigate('/mbs/releases')}
           />
         </Row>
+        <Phrase>Andere mogelijkheden</Phrase>
+        <Row gutter="md">
+          <Button
+            flex
+            label="Download link QR code maker"
+            onClick={() => navigate('/mbs/download-qr-code')}
+          />
+        </Row>
       </Column>
     </Screen>
   )
