@@ -2,6 +2,7 @@ import {RouteObject} from 'react-router-dom'
 import CreateHotfixReleaseScreen from 'screens/CreateHotfixRelease.screen'
 import CreateModuleScreen from 'screens/CreateModule.screen'
 import CreateReleaseScreen from 'screens/CreateRelease.screen'
+import DownloadQRCodeScreen from 'screens/DownloadQRCode.Screen'
 import EditModuleVersionScreen from 'screens/EditModuleVersion.screen'
 import EditModuleVersionStatusScreen from 'screens/EditModuleVersionStatus.screen'
 import EditReleaseScreen from 'screens/EditRelease.screen'
@@ -56,5 +57,9 @@ export const routes: RouteObject[] = [
   {
     path: '/mbs/release/:version',
     element: <EditReleaseScreen />,
+  },
+  {
+    path: '/mbs/download-qr-code',
+    element: <DownloadQRCodeScreen />,
   },
 ]
