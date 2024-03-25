@@ -1,4 +1,4 @@
-import {toSvg} from 'html-to-image'
+import {toPng} from 'html-to-image'
 import {useCallback, useRef} from 'react'
 import QRCode from 'react-qr-code'
 import Button from 'components/ui/button/Button'
@@ -21,7 +21,7 @@ const QRCodeWithDownload = ({value}: Props) => {
   const qrCodeRef = useRef<SVGSVGElement & QRCode & HTMLElement>(null)
   const onPngPress = useCallback(() => {
     if (qrCodeRef.current) {
-      toSvg(qrCodeRef.current)
+      toPng(qrCodeRef.current)
         .then(dataUrl => {
           const link = document.createElement('a')
           link.href = dataUrl
