@@ -15,8 +15,6 @@ import '@amsterdam/design-system-css/dist/index.css'
 import {useState} from 'react'
 import Button from '../button/Button'
 
-type Props = {fuck?: string}
-
 type ContentThing = {
   title: string
   date: string
@@ -55,7 +53,7 @@ const columns = [
   }),
 ]
 
-const Table = ({fuck}: Props) => {
+const Table = () => {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
