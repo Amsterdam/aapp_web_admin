@@ -18,9 +18,7 @@ const ModulesScreen = () => {
   const {data: modules, isLoading} = useGetModulesQuery()
 
   const sortedModules = useMemo(
-    () =>
-      modules &&
-      [...modules].sort((a, b) => a.title.localeCompare(b.title, 'nl')),
+    () => modules && [...modules].sort((a, b) => a.title.localeCompare(b.title, 'nl')),
     [modules],
   )
 
@@ -44,7 +42,10 @@ const ModulesScreen = () => {
               <ListItem key={moduleSlug}>
                 <BlockLink to={`/mbs/module/${moduleSlug}`}>
                   <Box>
-                    <Module icon={icon} title={title} />
+                    <Module
+                      icon={icon}
+                      title={title}
+                    />
                   </Box>
                 </BlockLink>
               </ListItem>

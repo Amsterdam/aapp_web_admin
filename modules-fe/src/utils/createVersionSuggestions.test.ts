@@ -13,9 +13,7 @@ describe('createVersionSuggestions', () => {
     const defaultValue = '2.0.0'
     const expected = [defaultValue, '1.3.0', '2.0.0']
 
-    expect(createVersionSuggestions(baseVersion, defaultValue)).toEqual(
-      expected,
-    )
+    expect(createVersionSuggestions(baseVersion, defaultValue)).toEqual(expected)
   })
 
   it('should handle base version with non-numeric characters', () => {

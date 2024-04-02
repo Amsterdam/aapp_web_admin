@@ -7,18 +7,14 @@ import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {useGetModulesQuery} from 'services/modules'
-import {
-  useCreateReleaseMutation,
-  useGetLatestReleaseQuery,
-  useGetReleaseQuery,
-} from 'services/releases'
+import {useCreateReleaseMutation, useGetLatestReleaseQuery, useGetReleaseQuery} from 'services/releases'
 import {selectReleaseModules} from 'slices/release.slice'
 import {ModuleVersion} from 'types/module'
 import {ReleaseBase, ReleaseWithModuleVersions} from 'types/release'
 import {getPreviousPatchVersion} from 'utils/getHotfixVersion'
-import ReleaseForm from '../components/features/ReleaseForm'
+import ReleaseForm from '../../components/features/ReleaseForm'
+import LoadingScreen from '../Loading.screen'
 import ErrorScreen from './Error.screen'
-import LoadingScreen from './Loading.screen'
 
 type Props = {
   hotfixVersion?: string
@@ -26,31 +22,25 @@ type Props = {
 
 const CreateRelease = ({hotfixVersion}: Props) => {
   const releaseModules = useSelector(selectReleaseModules)
-  const form = useForm<ReleaseBase>(
-    hotfixVersion ? {defaultValues: {version: hotfixVersion}} : undefined,
-  )
+  const form = useForm<ReleaseBase>(hotfixVersion ? {defaultValues: {version: hotfixVersion}} : undefined)
   const {watch} = form
   const releaseVersion = hotfixVersion ?? watch('version')
   const [createRelease] = useCreateReleaseMutation()
   const navigate = useNavigate()
 
-  const getLatestReleaseQuery = useGetLatestReleaseQuery(
-    hotfixVersion ? skipToken : undefined,
-  )
+  const getLatestReleaseQuery = useGetLatestReleaseQuery(hotfixVersion ? skipToken : undefined)
 
   const getReplaceReleaseQuery = useGetReleaseQuery(
-    hotfixVersion
-      ? {version: getPreviousPatchVersion(releaseVersion)}
-      : skipToken,
+    hotfixVersion ? {version: getPreviousPatchVersion(releaseVersion)} : skipToken,
   )
 
-  const {data: previousRelease, isLoading: isLoadingPreviousRelease} =
-    hotfixVersion ? getReplaceReleaseQuery : getLatestReleaseQuery
+  const {data: previousRelease, isLoading: isLoadingPreviousRelease} = hotfixVersion
+    ? getReplaceReleaseQuery
+    : getLatestReleaseQuery
 
-  const {data: previousModules, isLoading: isLoadingPreviousModules} =
-    useGetModulesQuery(undefined, {
-      skip: isLoadingPreviousRelease || !!previousRelease,
-    })
+  const {data: previousModules, isLoading: isLoadingPreviousModules} = useGetModulesQuery(undefined, {
+    skip: isLoadingPreviousRelease || !!previousRelease,
+  })
 
   const releaseIfNoPreviousRelease = useMemo(() => {
     if (!previousModules) {
@@ -93,9 +83,7 @@ const CreateRelease = ({hotfixVersion}: Props) => {
   }
 
   if (!previousRelease && !releaseIfNoPreviousRelease) {
-    return (
-      <ErrorScreen message="Er zijn geen modules die aan een release toegevoegd kunnen worden." />
-    )
+    return <ErrorScreen message="Er zijn geen modules die aan een release toegevoegd kunnen worden." />
   }
 
   return (
@@ -109,11 +97,7 @@ const CreateRelease = ({hotfixVersion}: Props) => {
           <ReleaseForm
             canEditVersion={!hotfixVersion}
             onSubmit={handleCreateRelease}
-            release={
-              previousRelease ??
-              releaseIfNoPreviousRelease ??
-              ({} as ReleaseWithModuleVersions)
-            }
+            release={previousRelease ?? releaseIfNoPreviousRelease ?? ({} as ReleaseWithModuleVersions)}
           />
         </FormProvider>
       </Column>

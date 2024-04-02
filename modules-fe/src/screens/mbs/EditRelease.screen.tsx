@@ -7,16 +7,13 @@ import {useNavigate, useParams} from 'react-router-dom'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import {
-  useEditReleaseVersionMutation,
-  useGetReleaseQuery,
-} from 'services/releases'
+import {useEditReleaseVersionMutation, useGetReleaseQuery} from 'services/releases'
 import {selectReleaseModules} from 'slices/release.slice'
 import {ModuleVersionWithStatusInReleases} from 'types/module'
 import {ReleaseBase} from 'types/release'
-import ReleaseForm from '../components/features/ReleaseForm'
+import ReleaseForm from '../../components/features/ReleaseForm'
+import LoadingScreen from '../Loading.screen'
 import ErrorScreen from './Error.screen'
-import LoadingScreen from './Loading.screen'
 
 type Params = {
   version: ReleaseBase['version']
@@ -24,10 +21,7 @@ type Params = {
 
 const dateFields = ['deprecated', 'published', 'unpublished']
 
-const replaceEmptyDates = <T,>(
-  field: keyof ReleaseBase,
-  value: T,
-): T | null => {
+const replaceEmptyDates = <T,>(field: keyof ReleaseBase, value: T): T | null => {
   if (dateFields.includes(field)) {
     if (typeof value === 'string' && value === '') {
       return null
@@ -49,14 +43,7 @@ const EditReleaseScreen = () => {
 
   useEffect(() => {
     if (release) {
-      const {
-        created,
-        modified,
-        published,
-        deprecated,
-        unpublished,
-        ...releaseProps
-      } = release
+      const {created, modified, published, deprecated, unpublished, ...releaseProps} = release
       reset({
         ...releaseProps,
         published: published ?? '',
@@ -69,9 +56,7 @@ const EditReleaseScreen = () => {
   const {dirtyFields} = formState
   const navigate = useNavigate()
   const [editRelease] = useEditReleaseVersionMutation()
-  const [initialReleaseModules, setInitialReleaseModules] = useState<
-    ModuleVersionWithStatusInReleases[] | undefined
-  >()
+  const [initialReleaseModules, setInitialReleaseModules] = useState<ModuleVersionWithStatusInReleases[] | undefined>()
 
   useEffect(() => {
     if (!initialReleaseModules && releaseModules) {
@@ -103,9 +88,7 @@ const EditReleaseScreen = () => {
         ...dirtyFieldsOnly,
         modules: releaseModules.map(({moduleSlug, version}) => ({
           moduleSlug,
-          status:
-            release?.modules.find(module => module.moduleSlug === moduleSlug)
-              ?.status ?? 1,
+          status: release?.modules.find(module => module.moduleSlug === moduleSlug)?.status ?? 1,
           version,
         })),
         pathVersion: versionParam,
@@ -123,9 +106,7 @@ const EditReleaseScreen = () => {
   }
 
   if (!release) {
-    return (
-      <ErrorScreen message="De release versie kon niet worden opgehaald." />
-    )
+    return <ErrorScreen message="De release versie kon niet worden opgehaald." />
   }
 
   return (

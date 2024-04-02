@@ -21,13 +21,7 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'react-hooks',
-    'import',
-    'jsx-expressions',
-    'prefer-arrow-functions',
-  ],
+  plugins: ['react', 'react-hooks', 'import', 'jsx-expressions', 'prefer-arrow-functions'],
   rules: {
     'prettier/prettier': 'warn',
     'max-len': [
@@ -59,15 +53,7 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'type',
-        ],
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'type'],
         alphabetize: {
           order: 'asc',
         },

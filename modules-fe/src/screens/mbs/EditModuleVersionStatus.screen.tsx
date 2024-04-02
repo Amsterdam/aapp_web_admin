@@ -9,15 +9,9 @@ import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import LoadingScreen from 'screens/Loading.screen'
-import {
-  useEditModuleVersionStatusMutation,
-  useGetModuleVersionQuery,
-} from 'services/modules'
+import {useEditModuleVersionStatusMutation, useGetModuleVersionQuery} from 'services/modules'
 import {ModuleStatusInRelease} from 'types/module'
-import {
-  getActiveReleases,
-  getCombinedStatusInReleases,
-} from 'utils/getCombinedStatusInReleases'
+import {getActiveReleases, getCombinedStatusInReleases} from 'utils/getCombinedStatusInReleases'
 
 type Params = {
   slug: string
@@ -35,27 +29,21 @@ const EditModuleVersionStatusScreen = () => {
   const {handleSubmit, setValue, watch} = form
   const watchAll = watch('allSelected')
   const watchReleases = watch('releases')
-  const [
-    editModuleVersionStatus,
-    {isLoading: isLoadingModuleVersionStatusMutation},
-  ] = useEditModuleVersionStatusMutation()
+  const [editModuleVersionStatus, {isLoading: isLoadingModuleVersionStatusMutation}] =
+    useEditModuleVersionStatusMutation()
   const navigate = useNavigate()
 
-  const {data: moduleVersion, isLoading: isLoadingModuleVersion} =
-    useGetModuleVersionQuery(
-      slug && version
-        ? {
-            slug,
-            version,
-          }
-        : skipToken,
-    )
+  const {data: moduleVersion, isLoading: isLoadingModuleVersion} = useGetModuleVersionQuery(
+    slug && version
+      ? {
+          slug,
+          version,
+        }
+      : skipToken,
+  )
 
   const releases = useMemo(
-    () =>
-      moduleVersion?.statusInReleases
-        ? getCombinedStatusInReleases(moduleVersion?.statusInReleases)
-        : [],
+    () => (moduleVersion?.statusInReleases ? getCombinedStatusInReleases(moduleVersion?.statusInReleases) : []),
     [moduleVersion?.statusInReleases],
   )
 
@@ -68,10 +56,7 @@ const EditModuleVersionStatusScreen = () => {
 
   useEffect(() => {
     if (watchAll !== 'indeterminate') {
-      const newFormData =
-        watchAll === false
-          ? {releases: [], allSelected: false}
-          : {releases, allSelected: true}
+      const newFormData = watchAll === false ? {releases: [], allSelected: false} : {releases, allSelected: true}
       resetForm(newFormData)
     }
   }, [releases, resetForm, watchAll])
@@ -87,18 +72,12 @@ const EditModuleVersionStatusScreen = () => {
   }, [releases, setValue, watchReleases])
 
   useEffect(() => {
-    const activeReleases = moduleVersion?.statusInReleases
-      ? getActiveReleases(moduleVersion?.statusInReleases)
-      : []
+    const activeReleases = moduleVersion?.statusInReleases ? getActiveReleases(moduleVersion?.statusInReleases) : []
     resetForm({
       releases: activeReleases,
       allSelected:
         // eslint-disable-next-line no-nested-ternary
-        activeReleases.length === releases.length
-          ? true
-          : !activeReleases.length
-          ? false
-          : 'indeterminate',
+        activeReleases.length === releases.length ? true : !activeReleases.length ? false : 'indeterminate',
     })
   }, [resetForm, releases, moduleVersion?.statusInReleases])
 
@@ -119,13 +98,11 @@ const EditModuleVersionStatusScreen = () => {
     })
     const statusInReleases = [inactiveReleases, activeReleases]
 
-    editModuleVersionStatus({slug, version, statusInReleases}).then(
-      response => {
-        if ('data' in response) {
-          navigate(`/mbs/module/${slug}/${version}`)
-        }
-      },
-    )
+    editModuleVersionStatus({slug, version, statusInReleases}).then(response => {
+      if ('data' in response) {
+        navigate(`/mbs/module/${slug}/${version}`)
+      }
+    })
   }
 
   if (isLoadingModuleVersion) {

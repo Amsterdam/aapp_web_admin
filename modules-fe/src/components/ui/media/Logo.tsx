@@ -5,8 +5,12 @@ import './Logo.css'
 
 const Logo = () => (
   <Row align="start">
-    <BlockLink to="/mbs">
-      <img alt="Gemeente Amsterdam" className="Logo" src={LogoImage} />
+    <BlockLink to="/home">
+      <img
+        alt="Gemeente Amsterdam"
+        className="Logo"
+        src={LogoImage}
+      />
     </BlockLink>
   </Row>
 )

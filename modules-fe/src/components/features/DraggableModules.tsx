@@ -14,19 +14,13 @@ type DraggableModulesProps = {
   variant?: 'active' | 'inactive'
 }
 
-const DraggableModules = ({
-  droppableId,
-  modules,
-  variant = 'active',
-}: DraggableModulesProps) => {
+const DraggableModules = ({droppableId, modules, variant = 'active'}: DraggableModulesProps) => {
   const isActive = variant === 'active'
   const phraseColor = isActive ? undefined : 'muted'
 
   return (
     <Column gutter="md">
-      <Phrase color="muted">
-        Modules {variant !== 'active' ? 'niet' : undefined} in deze release
-      </Phrase>
+      <Phrase color="muted">Modules {variant !== 'active' ? 'niet' : undefined} in deze release</Phrase>
       <Droppable droppableId={droppableId}>
         <List>
           {modules.map(({icon, moduleSlug, title, version}, index) => (

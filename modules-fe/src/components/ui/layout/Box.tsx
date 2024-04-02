@@ -22,13 +22,7 @@ type Props = {
   negativeInsetHorizontal?: keyof typeof SpacingToken
 }
 
-const Box = ({
-  children,
-  inset = 'md',
-  insetHorizontal,
-  insetVertical,
-  negativeInsetHorizontal,
-}: Props) => (
+const Box = ({children, inset = 'md', insetHorizontal, insetVertical, negativeInsetHorizontal}: Props) => (
   <div
     className="Box"
     data-inset={inset}

@@ -29,9 +29,7 @@ const DragDropModules = ({releaseVersion}: Props) => {
       modulesAvailableForRelease?.filter(
         module =>
           !releaseModules.find(
-            activeModule =>
-              activeModule.moduleSlug === module.moduleSlug &&
-              activeModule.version === module.version,
+            activeModule => activeModule.moduleSlug === module.moduleSlug && activeModule.version === module.version,
           ),
       ) ?? [],
     [modulesAvailableForRelease, releaseModules],
@@ -47,11 +45,7 @@ const DragDropModules = ({releaseVersion}: Props) => {
         // dropped inside the same list
         if (destination.droppableId === DroppableId.includedModules) {
           // dropped inside the active modules list
-          const items = reorderList(
-            releaseModules,
-            source.index,
-            destination.index,
-          )
+          const items = reorderList(releaseModules, source.index, destination.index)
           dispatch(setModules(items))
         }
       } else if (destination.droppableId === DroppableId.excludedModules) {
@@ -62,9 +56,7 @@ const DragDropModules = ({releaseVersion}: Props) => {
         // dropped inside the active modules list
         const draggingModule = inactiveModules[source.index]
         const items = addToList(
-          releaseModules.filter(
-            module => module.moduleSlug !== draggingModule.moduleSlug,
-          ),
+          releaseModules.filter(module => module.moduleSlug !== draggingModule.moduleSlug),
           destination.index,
           draggingModule,
         )

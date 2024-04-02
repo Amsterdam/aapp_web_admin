@@ -18,12 +18,7 @@ type Props = {
   versionDefaultValue?: string
 }
 
-const ReleaseForm = ({
-  canEditVersion,
-  onSubmit,
-  release,
-  versionDefaultValue,
-}: Props) => {
+const ReleaseForm = ({canEditVersion, onSubmit, release, versionDefaultValue}: Props) => {
   const dispatch = useDispatch()
   const form = useFormContext<ReleaseBase>()
   const {handleSubmit, watch} = form
@@ -70,7 +65,10 @@ const ReleaseForm = ({
         maxLength={500}
         rows={15}
       />
-      <Button label="Opslaan" onClick={handleSubmit(onSubmit)} />
+      <Button
+        label="Opslaan"
+        onClick={handleSubmit(onSubmit)}
+      />
     </Column>
   )
 }

@@ -14,7 +14,14 @@ const LoadingButton = ({error, loading, ...buttonProps}: Props) => (
   <Column gutter="sm">
     <Button
       disabled={loading}
-      icon={loading ? <Icon color="inverse" name="spinner" /> : undefined}
+      icon={
+        loading ? (
+          <Icon
+            color="inverse"
+            name="spinner"
+          />
+        ) : undefined
+      }
       {...buttonProps}
     />
     {!!error && (

@@ -1,12 +1,7 @@
 // import {ReactNode, useMemo} from 'react'
 import './Table.css'
 import {Table} from '@amsterdam/design-system-react'
-import {
-  useReactTable,
-  getCoreRowModel,
-  flexRender,
-  createColumnHelper,
-} from '@tanstack/react-table'
+import {useReactTable, getCoreRowModel, flexRender, createColumnHelper} from '@tanstack/react-table'
 
 import '@amsterdam/design-system-tokens/dist/index.css'
 import '@amsterdam/design-system-assets/font/index.css'
@@ -56,12 +51,7 @@ const TableQ = ({fuck}: Props) => {
           <Table.Row key={headerGroup.id}>
             {headerGroup.headers.map(header => (
               <Table.HeaderCell key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
+                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
               </Table.HeaderCell>
             ))}
           </Table.Row>
@@ -71,9 +61,7 @@ const TableQ = ({fuck}: Props) => {
         {table.getRowModel().rows.map(row => (
           <Table.Row key={row.id}>
             {row.getVisibleCells().map(cell => (
-              <Table.Cell key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </Table.Cell>
+              <Table.Cell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</Table.Cell>
             ))}
           </Table.Row>
         ))}

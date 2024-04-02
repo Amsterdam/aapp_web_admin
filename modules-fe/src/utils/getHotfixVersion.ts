@@ -1,10 +1,7 @@
 import {compareVersions} from './compareVersions'
 import {parseVersion} from './parseVersion'
 
-export const getHotfixVersion = (
-  version: string,
-  existingVersions: string[] = [],
-): string => {
+export const getHotfixVersion = (version: string, existingVersions: string[] = []): string => {
   const versions = [...existingVersions].sort((a, b) => compareVersions(a, b))
   return versions.reduce((suggestedVersion, checkVersion) => {
     if (suggestedVersion === checkVersion) {

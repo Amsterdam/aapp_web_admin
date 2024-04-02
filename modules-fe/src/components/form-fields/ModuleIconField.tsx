@@ -14,8 +14,7 @@ const ModuleIconField = ({defaultValue}: Props) => (
       required: 'Geef aan welk pictogram de module illustreert.',
       validate: value =>
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        moduleIconNames.includes(value) ||
-        'Geef de naam van een bestaand pictogram.',
+        moduleIconNames.includes(value) || 'Geef de naam van een bestaand pictogram.',
     }}
     width="half"
   />

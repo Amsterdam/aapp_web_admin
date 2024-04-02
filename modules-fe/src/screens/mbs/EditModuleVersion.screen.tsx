@@ -11,8 +11,8 @@ import Button from 'components/ui/button/Button'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import ErrorScreen from 'screens/Error.screen'
 import LoadingScreen from 'screens/Loading.screen'
+import ErrorScreen from 'screens/mbs/Error.screen'
 import {
   useDeleteModuleVersionMutation,
   useEditModuleVersionMutation,
@@ -42,20 +42,15 @@ const EditModuleScreen = () => {
   const isInRelease = moduleVersion?.statusInReleases?.length
 
   const form = useForm<ModuleVersion>()
-  const [
-    editModuleVersion,
-    {isLoading: isEditingModuleVersion, error: editingModuleError},
-  ] = useEditModuleVersionMutation()
-  const [
-    deleteModuleVersion,
-    {isLoading: isDeletingModule, error: deletingModuleError},
-  ] = useDeleteModuleVersionMutation()
+  const [editModuleVersion, {isLoading: isEditingModuleVersion, error: editingModuleError}] =
+    useEditModuleVersionMutation()
+  const [deleteModuleVersion, {isLoading: isDeletingModule, error: deletingModuleError}] =
+    useDeleteModuleVersionMutation()
   const {data: latestModules} = useGetModulesQuery(undefined, {
     skip: isBeforeNavigation,
   })
   const isLatestVersion = latestModules?.some(
-    module =>
-      module.moduleSlug === slugParam && module.version === versionParam,
+    module => module.moduleSlug === slugParam && module.version === versionParam,
   )
 
   const {handleSubmit, formState} = form
@@ -68,9 +63,7 @@ const EditModuleScreen = () => {
     const {moduleSlug, version, title} = moduleVersion
     if (
       // eslint-disable-next-line no-alert
-      window.confirm(
-        `Weet je zeker dat je module ‘${title}’ v${version} wil verwijderen?`,
-      )
+      window.confirm(`Weet je zeker dat je module ‘${title}’ v${version} wil verwijderen?`)
     ) {
       setIsBeforeNavigation(true)
       deleteModuleVersion({
@@ -86,9 +79,7 @@ const EditModuleScreen = () => {
 
   const onSubmit = (data: ModuleVersion) => {
     const dirtyFieldsOnly: Partial<ModuleVersion> = {}
-    const dirtyFieldKeys = Object.keys(dirtyFields) as Array<
-      keyof ModuleVersion
-    >
+    const dirtyFieldKeys = Object.keys(dirtyFields) as Array<keyof ModuleVersion>
     if (!moduleVersion) {
       return
     }
@@ -122,11 +113,7 @@ const EditModuleScreen = () => {
   const titleFieldValue = form.watch('title') ?? moduleVersion?.title
 
   if (!moduleVersion) {
-    return (
-      <ErrorScreen
-        message={`Versie ${versionParam} van module ‘${slugParam}’ niet gevonden.`}
-      />
-    )
+    return <ErrorScreen message={`Versie ${versionParam} van module ‘${slugParam}’ niet gevonden.`} />
   }
 
   return (
@@ -156,9 +143,7 @@ const EditModuleScreen = () => {
             {isInRelease ? (
               <Button
                 label="Aan- of uitzetten"
-                onClick={() =>
-                  navigate(`/mbs/module/${slugParam}/${versionParam}/status`)
-                }
+                onClick={() => navigate(`/mbs/module/${slugParam}/${versionParam}/status`)}
                 variant="secondary"
               />
             ) : (
