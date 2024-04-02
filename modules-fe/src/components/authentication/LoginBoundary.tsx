@@ -7,19 +7,12 @@ type Props = {
   interactionType?: InteractionType
 }
 
-export const LoginBoundary: FC<Props> = ({
-  children,
-  interactionType = InteractionType.Redirect,
-}) => {
+export const LoginBoundary: FC<Props> = ({children, interactionType = InteractionType.Redirect}) => {
   const {instance} = useMsal()
   const accounts = instance.getAllAccounts()
   const activeAccount = instance.getActiveAccount()
   if (!activeAccount && accounts.length > 0) {
     instance.setActiveAccount(accounts[0])
   }
-  return (
-    <MsalAuthenticationTemplate interactionType={interactionType}>
-      {children}
-    </MsalAuthenticationTemplate>
-  )
+  return <MsalAuthenticationTemplate interactionType={interactionType}>{children}</MsalAuthenticationTemplate>
 }

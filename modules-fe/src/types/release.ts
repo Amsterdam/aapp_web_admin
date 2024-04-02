@@ -1,9 +1,4 @@
-import {
-  ModuleWithStatusInRelease,
-  ModuleVersion,
-  ModuleInRelease,
-  ModuleVersionWithStatus,
-} from 'types/module'
+import {ModuleWithStatusInRelease, ModuleVersion, ModuleInRelease, ModuleVersionWithStatus} from 'types/module'
 
 export type ReleaseBase = {
   deprecated: string | null

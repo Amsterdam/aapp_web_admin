@@ -1,10 +1,5 @@
 import {baseApi} from 'services/baseApi'
-import {
-  Module,
-  ModuleVersion,
-  ModuleVersionWithStatusInReleases,
-  ModuleWithVersions,
-} from 'types/module'
+import {Module, ModuleVersion, ModuleVersionWithStatusInReleases, ModuleWithVersions} from 'types/module'
 
 type ModuleQueryArg = {
   slug: string
@@ -34,10 +29,7 @@ export const modulesApi = baseApi.injectEndpoints({
       transformResponse: (response: {result: ModuleVersion}) => response.result,
       invalidatesTags: ['Module'],
     }),
-    deleteModuleVersion: builder.mutation<
-      ModuleVersion,
-      Pick<ModuleVersion, 'moduleSlug' | 'version'>
-    >({
+    deleteModuleVersion: builder.mutation<ModuleVersion, Pick<ModuleVersion, 'moduleSlug' | 'version'>>({
       query: ({moduleSlug, version}) => ({
         url: `/api/v1/module/${moduleSlug}/version/${version}`,
         method: 'DELETE',
@@ -52,10 +44,7 @@ export const modulesApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['Module'],
     }),
-    editModuleVersion: builder.mutation<
-      ModuleVersion,
-      Partial<ModuleVersion> & {pathVersion: string}
-    >({
+    editModuleVersion: builder.mutation<ModuleVersion, Partial<ModuleVersion> & {pathVersion: string}>({
       query: ({moduleSlug, pathVersion, ...rest}) => ({
         url: `/api/v1/module/${moduleSlug}/version/${pathVersion}`,
         method: 'PATCH',
@@ -81,10 +70,7 @@ export const modulesApi = baseApi.injectEndpoints({
       query: ({slug}) => `/api/v1/module/${slug}`,
       providesTags: ['Module'],
     }),
-    getModuleVersion: builder.query<
-      ModuleVersionWithStatusInReleases,
-      ModuleVersionQueryArg
-    >({
+    getModuleVersion: builder.query<ModuleVersionWithStatusInReleases, ModuleVersionQueryArg>({
       query: ({slug, version}) => `/api/v1/module/${slug}/version/${version}`,
       providesTags: ['Module'],
     }),
@@ -93,8 +79,7 @@ export const modulesApi = baseApi.injectEndpoints({
       providesTags: ['Module'],
     }),
     getModulesAvailableForRelease: builder.query<ModuleVersion[], string>({
-      query: releaseVersion =>
-        `/api/v1/modules/available-for-release/${releaseVersion}`,
+      query: releaseVersion => `/api/v1/modules/available-for-release/${releaseVersion}`,
       providesTags: ['Module'],
     }),
   }),

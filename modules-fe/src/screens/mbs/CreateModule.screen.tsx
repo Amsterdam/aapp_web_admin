@@ -11,13 +11,9 @@ import VersionField from 'components/form-fields/VersionField'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import ErrorScreen from 'screens/Error.screen'
 import LoadingScreen from 'screens/Loading.screen'
-import {
-  useCreateModuleMutation,
-  useCreateModuleVersionMutation,
-  useGetModuleQuery,
-} from 'services/modules'
+import ErrorScreen from 'screens/mbs/Error.screen'
+import {useCreateModuleMutation, useCreateModuleVersionMutation, useGetModuleQuery} from 'services/modules'
 import {ModuleVersion} from 'types/module'
 
 type Params = {
@@ -44,14 +40,11 @@ const CreateModuleScreen = () => {
         }
       : skipToken,
   )
-  const latestVersion =
-    !isNewModule && module?.versions ? module.versions[0] : defaultModule
+  const latestVersion = !isNewModule && module?.versions ? module.versions[0] : defaultModule
 
   const form = useForm<ModuleVersion>()
-  const [createModule, {isLoading: isMutateModuleLoading}] =
-    useCreateModuleMutation()
-  const [createModuleVersion, {isLoading: isMutateModuleVersionLoading}] =
-    useCreateModuleVersionMutation()
+  const [createModule, {isLoading: isMutateModuleLoading}] = useCreateModuleMutation()
+  const [createModuleVersion, {isLoading: isMutateModuleVersionLoading}] = useCreateModuleVersionMutation()
   const {handleSubmit, setValue} = form
 
   const createModuleVersionAndNavigate = useCallback(
@@ -89,18 +82,12 @@ const CreateModuleScreen = () => {
     }
   }, [latestVersion.moduleSlug, setValue])
 
-  if (
-    isGetModuleLoading ||
-    isMutateModuleLoading ||
-    isMutateModuleVersionLoading
-  ) {
+  if (isGetModuleLoading || isMutateModuleLoading || isMutateModuleVersionLoading) {
     return <LoadingScreen />
   }
 
   if (!latestVersion) {
-    return (
-      <ErrorScreen message={`Geen versies gevonden van module ‘${slug}’.`} />
-    )
+    return <ErrorScreen message={`Geen versies gevonden van module ‘${slug}’.`} />
   }
 
   const versionFieldValue = form.watch('version') ?? ''
@@ -112,17 +99,11 @@ const CreateModuleScreen = () => {
       <Column gutter="lg">
         <ScreenTitle
           subtitle={!titleFieldValue ? undefined : addModuleText}
-          title={
-            !titleFieldValue
-              ? addModuleText
-              : `${titleFieldValue || 'Naam module'} ${versionFieldValue}`
-          }
+          title={!titleFieldValue ? addModuleText : `${titleFieldValue || 'Naam module'} ${versionFieldValue}`}
         />
         <FormProvider {...form}>
           <Column gutter="lg">
-            {!!isNewModule && (
-              <ModuleSlugField defaultValue={latestVersion.moduleSlug} />
-            )}
+            {!!isNewModule && <ModuleSlugField defaultValue={latestVersion.moduleSlug} />}
             <ModuleTitleField defaultValue={latestVersion.title} />
             <ModuleDescriptionField defaultValue={latestVersion.description} />
             <ModuleIconField defaultValue={latestVersion.icon} />

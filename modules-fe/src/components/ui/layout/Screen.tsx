@@ -19,7 +19,9 @@ const Screen = ({children, noLogin = false}: Props) => {
         <div className="Container">
           <Column gutter="xl">
             <header>
-              <Row align="between" valign="start">
+              <Row
+                align="between"
+                valign="start">
                 <Logo />
                 <LogoutButton />
               </Row>

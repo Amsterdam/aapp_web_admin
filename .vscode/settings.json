@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.yml": "azure-pipelines"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "typescript.preferences.importModuleSpecifier": "non-relative"
+    },
+    "eslint.workingDirectories": ["./modules-fe"]
+}

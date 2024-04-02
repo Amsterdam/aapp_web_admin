@@ -30,8 +30,7 @@ export const environmentRedirectUri: Record<Environment, string> = {
   [Environment.production]: 'https://app.amsterdam.nl/mbs',
 }
 
-export const getEnvironment = (hostname: string): Environment =>
-  hostnameEnvironment[hostname] ?? Environment.production
+export const getEnvironment = (hostname: string): Environment => hostnameEnvironment[hostname] ?? Environment.production
 
 // eslint-disable-next-line no-restricted-globals
 export const environment = getEnvironment(location.hostname)

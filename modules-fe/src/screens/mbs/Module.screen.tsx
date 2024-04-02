@@ -10,8 +10,8 @@ import Screen from 'components/ui/layout/Screen'
 import List from 'components/ui/text/List'
 import ListItem from 'components/ui/text/ListItem'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import ErrorScreen from 'screens/Error.screen'
 import LoadingScreen from 'screens/Loading.screen'
+import ErrorScreen from 'screens/mbs/Error.screen'
 import {useEditModuleMutation, useGetModuleQuery} from 'services/modules'
 import {ModuleStatus} from 'types/module'
 
@@ -31,8 +31,7 @@ const ModuleScreen = () => {
       : skipToken,
   )
   const latestVersion = module?.versions[0]
-  const [editModule, {isLoading: isEditingModule, error: editModuleError}] =
-    useEditModuleMutation()
+  const [editModule, {isLoading: isEditingModule, error: editModuleError}] = useEditModuleMutation()
 
   const handleModuleStatusChange = () => {
     if (!module) {
@@ -48,10 +47,7 @@ const ModuleScreen = () => {
     ) {
       editModule({
         slug: module?.slug,
-        status:
-          module?.status === ModuleStatus.active
-            ? ModuleStatus.inactive
-            : ModuleStatus.active,
+        status: module?.status === ModuleStatus.active ? ModuleStatus.inactive : ModuleStatus.active,
       })
     }
   }
@@ -61,15 +57,16 @@ const ModuleScreen = () => {
   }
 
   if (!module?.versions.length) {
-    return (
-      <ErrorScreen message={`Geen versies gevonden van module ‘${slug}’.`} />
-    )
+    return <ErrorScreen message={`Geen versies gevonden van module ‘${slug}’.`} />
   }
 
   return (
     <Screen>
       <Column gutter="lg">
-        <ScreenTitle subtitle="Module" title={latestVersion?.title} />
+        <ScreenTitle
+          subtitle="Module"
+          title={latestVersion?.title}
+        />
         <Button
           label="Moduleversie toevoegen"
           onClick={() => {
@@ -81,7 +78,11 @@ const ModuleScreen = () => {
             <ListItem key={version}>
               <BlockLink to={`/mbs/module/${slug}/${version}`}>
                 <Box>
-                  <Module icon={icon} title={title} version={version} />
+                  <Module
+                    icon={icon}
+                    title={title}
+                    version={version}
+                  />
                 </Box>
               </BlockLink>
             </ListItem>
@@ -89,9 +90,7 @@ const ModuleScreen = () => {
         </List>
         <LoadingButton
           error={editModuleError}
-          label={
-            module?.status === ModuleStatus.active ? 'Uitzetten' : 'Aanzetten'
-          }
+          label={module?.status === ModuleStatus.active ? 'Uitzetten' : 'Aanzetten'}
           loading={isEditingModule}
           onClick={handleModuleStatusChange}
           variant="secondary"

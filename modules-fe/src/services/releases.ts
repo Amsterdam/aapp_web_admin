@@ -26,10 +26,7 @@ export const modulesApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['Module', 'Release'],
     }),
-    createRelease: builder.mutation<
-      ReleaseWithModuleVersions,
-      ReleaseBaseWithModulesWithStatusInRelease
-    >({
+    createRelease: builder.mutation<ReleaseWithModuleVersions, ReleaseBaseWithModulesWithStatusInRelease>({
       query: ({published, unpublished, ...release}) => ({
         url: '/api/v1/release',
         method: 'POST',
@@ -45,10 +42,7 @@ export const modulesApi = baseApi.injectEndpoints({
       query: () => '/api/v1/release/latest',
       providesTags: ['Release'],
     }),
-    getRelease: builder.query<
-      ReleaseWithModuleVersionsWithStatus,
-      ReleaseQueryArg
-    >({
+    getRelease: builder.query<ReleaseWithModuleVersionsWithStatus, ReleaseQueryArg>({
       query: ({version}) => `/api/v1/release/${version}`,
       providesTags: ['Release'],
     }),

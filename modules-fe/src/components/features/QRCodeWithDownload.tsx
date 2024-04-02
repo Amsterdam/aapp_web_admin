@@ -10,9 +10,7 @@ type Props = {
 }
 
 const svgToDataURL = (svgData: string) => {
-  const encodedSvg = encodeURIComponent(svgData)
-    .replace(/'/g, '%27')
-    .replace(/"/g, '%22')
+  const encodedSvg = encodeURIComponent(svgData).replace(/'/g, '%27').replace(/"/g, '%22')
 
   return `data:image/svg+xml,${encodedSvg}`
 }
@@ -44,10 +42,19 @@ const QRCodeWithDownload = ({value}: Props) => {
   }, [])
   return (
     <Column gutter="md">
-      <QRCode value={value} ref={qrCodeRef} />
+      <QRCode
+        value={value}
+        ref={qrCodeRef}
+      />
       <Row gutter="md">
-        <Button label="Download PNG" onClick={onPngPress} />
-        <Button label="Download SVG" onClick={onSvgPress} />
+        <Button
+          label="Download PNG"
+          onClick={onPngPress}
+        />
+        <Button
+          label="Download SVG"
+          onClick={onSvgPress}
+        />
       </Row>
     </Column>
   )

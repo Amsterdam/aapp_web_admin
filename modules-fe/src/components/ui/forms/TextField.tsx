@@ -17,15 +17,7 @@ type Props = {
 } & UseControllerProps &
   HTMLProps<HTMLInputElement>
 
-const TextField = ({
-  defaultValue,
-  label,
-  name,
-  maxLength,
-  rules,
-  type,
-  width,
-}: Props) => {
+const TextField = ({defaultValue, label, name, maxLength, rules, type, width}: Props) => {
   const id = uniqueId('TextField-')
 
   return (
@@ -34,7 +26,10 @@ const TextField = ({
       name={name}
       render={({field: {onChange, value}, fieldState: {error}}) => (
         <Column gutter="sm">
-          <label className="TextFieldLabel" data-width={width} htmlFor={id}>
+          <label
+            className="TextFieldLabel"
+            data-width={width}
+            htmlFor={id}>
             <Column gutter="sm">
               <Phrase color="muted">{label}</Phrase>
               <Input
@@ -48,7 +43,10 @@ const TextField = ({
               />
             </Column>
           </label>
-          <CharactersLeftDisplay maxLength={maxLength} value={value} />
+          <CharactersLeftDisplay
+            maxLength={maxLength}
+            value={value}
+          />
           {!!error && <Phrase color="error">{error.message}</Phrase>}
         </Column>
       )}

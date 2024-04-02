@@ -11,8 +11,7 @@ const ModuleSlugField = ({defaultValue}: Props) => (
     name="moduleSlug"
     rules={{
       required: 'Geef de module een slug.',
-      validate: (value: string) =>
-        value.match(/ /) ? 'Slug mag geen spaties bevatten' : true,
+      validate: (value: string) => (value.match(/ /) ? 'Slug mag geen spaties bevatten' : true),
     }}
     width="half"
   />

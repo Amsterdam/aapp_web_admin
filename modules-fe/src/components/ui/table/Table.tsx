@@ -79,12 +79,7 @@ const Table = ({fuck}: Props) => {
           <TanstackTable.Row key={headerGroup.id}>
             {headerGroup.headers.map(header => (
               <TanstackTable.HeaderCell key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
+                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
               </TanstackTable.HeaderCell>
             ))}
           </TanstackTable.Row>

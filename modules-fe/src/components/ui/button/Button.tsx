@@ -16,15 +16,7 @@ export type ButtonProps = {
   variant?: keyof typeof ButtonVariant
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = ({
-  disabled,
-  flex,
-  icon,
-  label,
-  type = 'button',
-  variant = 'primary',
-  ...buttonProps
-}: ButtonProps) => (
+const Button = ({disabled, flex, icon, label, type = 'button', variant = 'primary', ...buttonProps}: ButtonProps) => (
   <button
     className="Button"
     data-flex={flex}
@@ -33,9 +25,14 @@ const Button = ({
     // eslint-disable-next-line react/button-has-type
     type={type}
     {...buttonProps}>
-    <Row gutter="sm" valign="center">
+    <Row
+      gutter="sm"
+      valign="center">
       {icon}
-      <span className="ButtonLabel" data-ellipsize data-font="body">
+      <span
+        className="ButtonLabel"
+        data-ellipsize
+        data-font="body">
         {label}
       </span>
     </Row>

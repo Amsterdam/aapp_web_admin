@@ -8,13 +8,7 @@ type RadioGroupProps = {
   options: string[]
 } & UseControllerProps
 
-const RadioFieldSet = ({
-  defaultValue,
-  label,
-  name,
-  options,
-  rules,
-}: RadioGroupProps) => {
+const RadioFieldSet = ({defaultValue, label, name, options, rules}: RadioGroupProps) => {
   const {errors} = useFormState({name})
   const error = errors[name]
 

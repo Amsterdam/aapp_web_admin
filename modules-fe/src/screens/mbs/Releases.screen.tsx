@@ -21,10 +21,7 @@ const ReleasesScreen = () => {
 
   const [addHotfix, setAddHotfix] = useState(false)
 
-  const releaseVersions = useMemo(
-    () => releases?.map(({version}) => version),
-    [releases],
-  )
+  const releaseVersions = useMemo(() => releases?.map(({version}) => version), [releases])
 
   if (isLoading) {
     return <LoadingScreen />
@@ -41,9 +38,7 @@ const ReleasesScreen = () => {
         />
         {(releases?.length ?? 0) > 0 && (
           <Button
-            label={
-              addHotfix ? 'Hotfix toevoegen annuleren' : 'Hotfix toevoegen'
-            }
+            label={addHotfix ? 'Hotfix toevoegen annuleren' : 'Hotfix toevoegen'}
             onClick={() => {
               setAddHotfix(value => !value)
             }}
@@ -56,12 +51,7 @@ const ReleasesScreen = () => {
               const hotfixVersion = getHotfixVersion(version, releaseVersions)
               return (
                 <ListItem key={version}>
-                  <BlockLink
-                    to={
-                      addHotfix
-                        ? `/mbs/release/hotfix/${hotfixVersion}`
-                        : `/mbs/release/${version}`
-                    }>
+                  <BlockLink to={addHotfix ? `/mbs/release/hotfix/${hotfixVersion}` : `/mbs/release/${version}`}>
                     <Box>
                       <Row align="between">
                         <Phrase>
@@ -70,9 +60,7 @@ const ReleasesScreen = () => {
                         </Phrase>
 
                         {!!isSupported && (
-                          <Phrase emphasis="italic">
-                            {isDeprecated ? 'Deprecated' : 'Supported'}
-                          </Phrase>
+                          <Phrase emphasis="italic">{isDeprecated ? 'Deprecated' : 'Supported'}</Phrase>
                         )}
                       </Row>
                     </Box>

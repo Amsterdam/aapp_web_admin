@@ -52,9 +52,7 @@ const DownloadQRCodeScreen = () => {
                 </Column>
               </>
             ) : (
-              <Phrase color="error">
-                Vul eerst een bron en een campagne in
-              </Phrase>
+              <Phrase color="error">Vul eerst een bron en een campagne in</Phrase>
             )}
           </Column>
         </FormProvider>

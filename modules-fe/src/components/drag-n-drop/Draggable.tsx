@@ -1,9 +1,5 @@
 import {ReactNode} from 'react'
-import {
-  Draggable as DraggableDnD,
-  DraggingStyle,
-  NotDraggingStyle,
-} from 'react-beautiful-dnd'
+import {Draggable as DraggableDnD, DraggingStyle, NotDraggingStyle} from 'react-beautiful-dnd'
 import './Draggable.css'
 
 const getItemStyle = (draggableStyle?: DraggingStyle | NotDraggingStyle) => ({
