@@ -1,6 +1,6 @@
 // import {ReactNode, useMemo} from 'react'
 import './Table.css'
-import {Table as TanstackTable} from '@amsterdam/design-system-react'
+import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
 import {
   useReactTable,
   getCoreRowModel,
@@ -14,8 +14,6 @@ import '@amsterdam/design-system-assets/font/index.css'
 import '@amsterdam/design-system-css/dist/index.css'
 import {useState} from 'react'
 import Button from '../button/Button'
-
-type Props = {fuck?: string}
 
 type ContentThing = {
   title: string
@@ -55,7 +53,7 @@ const columns = [
   }),
 ]
 
-const Table = ({fuck}: Props) => {
+const Table = () => {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
@@ -73,31 +71,31 @@ const Table = ({fuck}: Props) => {
   })
 
   return (
-    <TanstackTable>
-      <TanstackTable.Header>
+    <DesignSystemTable>
+      <DesignSystemTable.Header>
         {table.getHeaderGroups().map(headerGroup => (
-          <TanstackTable.Row key={headerGroup.id}>
+          <DesignSystemTable.Row key={headerGroup.id}>
             {headerGroup.headers.map(header => (
-              <TanstackTable.HeaderCell key={header.id}>
+              <DesignSystemTable.HeaderCell key={header.id}>
                 {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-              </TanstackTable.HeaderCell>
+              </DesignSystemTable.HeaderCell>
             ))}
-          </TanstackTable.Row>
+          </DesignSystemTable.Row>
         ))}
-      </TanstackTable.Header>
-      <TanstackTable.Body>
+      </DesignSystemTable.Header>
+      <DesignSystemTable.Body>
         {table.getRowModel().rows.map(row => (
-          <TanstackTable.Row key={row.id}>
+          <DesignSystemTable.Row key={row.id}>
             {row.getVisibleCells().map(cell => (
-              <TanstackTable.Cell key={cell.id}>
+              <DesignSystemTable.Cell key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </TanstackTable.Cell>
+              </DesignSystemTable.Cell>
             ))}
-          </TanstackTable.Row>
+          </DesignSystemTable.Row>
         ))}
-      </TanstackTable.Body>
-      <TanstackTable.Footer>
-        <TanstackTable.Row>
+      </DesignSystemTable.Body>
+      <DesignSystemTable.Footer>
+        <DesignSystemTable.Row>
           <Button
             label="Prev"
             onClick={() => table.previousPage()}
@@ -108,9 +106,9 @@ const Table = ({fuck}: Props) => {
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           />
-        </TanstackTable.Row>
-      </TanstackTable.Footer>
-    </TanstackTable>
+        </DesignSystemTable.Row>
+      </DesignSystemTable.Footer>
+    </DesignSystemTable>
   )
 }
 
