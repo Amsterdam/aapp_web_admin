@@ -3,6 +3,7 @@ import Button from 'components/ui/button/Button'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 import Screen from 'components/ui/layout/Screen'
+import Table from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 
@@ -33,6 +34,10 @@ const HomeScreen = () => {
             label="Download link QR code maker"
             onClick={() => navigate('/mbs/download-qr-code')}
           />
+        </Row>
+        <Phrase>Andere</Phrase>
+        <Row gutter="md">
+          <Table />
         </Row>
       </Column>
     </Screen>
