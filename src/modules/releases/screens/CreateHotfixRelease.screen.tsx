@@ -1,4 +1,5 @@
 import {useParams} from 'react-router-dom'
+import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
 import CreateRelease from '../components/CreateRelease'
 
 type Params = {
@@ -7,7 +8,11 @@ type Params = {
 
 const CreateHotfixReleaseScreen = () => {
   const {version: releaseVersion} = useParams<Params>()
-  return <CreateRelease hotfixVersion={releaseVersion} />
+  return (
+    <AuthProtectedScreen>
+      <CreateRelease hotfixVersion={releaseVersion} />
+    </AuthProtectedScreen>
+  )
 }
 
 export default CreateHotfixReleaseScreen

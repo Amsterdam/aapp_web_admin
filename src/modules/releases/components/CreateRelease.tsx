@@ -4,7 +4,6 @@ import {FormProvider, useForm} from 'react-hook-form'
 import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {useGetModulesQuery} from 'modules/releases/services/modules'
 import {
@@ -103,25 +102,23 @@ const CreateRelease = ({hotfixVersion}: Props) => {
   }
 
   return (
-    <Screen>
-      <Column gutter="lg">
-        <ScreenTitle
-          subtitle="Nieuwe release"
-          title={`Amsterdam App ${releaseVersion ?? ''}`}
+    <Column gutter="lg">
+      <ScreenTitle
+        subtitle="Nieuwe release"
+        title={`Amsterdam App ${releaseVersion ?? ''}`}
+      />
+      <FormProvider {...form}>
+        <ReleaseForm
+          canEditVersion={!hotfixVersion}
+          onSubmit={handleCreateRelease}
+          release={
+            previousRelease ??
+            releaseIfNoPreviousRelease ??
+            ({} as ReleaseWithModuleVersions)
+          }
         />
-        <FormProvider {...form}>
-          <ReleaseForm
-            canEditVersion={!hotfixVersion}
-            onSubmit={handleCreateRelease}
-            release={
-              previousRelease ??
-              releaseIfNoPreviousRelease ??
-              ({} as ReleaseWithModuleVersions)
-            }
-          />
-        </FormProvider>
-      </Column>
-    </Screen>
+      </FormProvider>
+    </Column>
   )
 }
 

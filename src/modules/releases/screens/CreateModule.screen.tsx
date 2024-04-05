@@ -2,9 +2,9 @@ import {skipToken} from '@reduxjs/toolkit/query'
 import {useCallback, useEffect, useState} from 'react'
 import {FormProvider, SubmitHandler, useForm} from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
+import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
 import ErrorScreen from 'components/ui/screens/Error.screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
@@ -108,7 +108,7 @@ const CreateModuleScreen = () => {
   const addModuleText = `Nieuwe ${isNewModule ? 'module' : 'moduleversie'}`
 
   return (
-    <Screen>
+    <AuthProtectedScreen>
       <Column gutter="lg">
         <ScreenTitle
           subtitle={!titleFieldValue ? undefined : addModuleText}
@@ -135,7 +135,7 @@ const CreateModuleScreen = () => {
           </Column>
         </FormProvider>
       </Column>
-    </Screen>
+    </AuthProtectedScreen>
   )
 }
 

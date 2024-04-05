@@ -1,7 +1,7 @@
 import {FormProvider, useForm} from 'react-hook-form'
+import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import QRCodeWithDownload from 'modules/download-qr/components/QRCodeWithDownload'
@@ -20,7 +20,7 @@ const DownloadQRCodeScreen = () => {
     source,
   )}&utm_campaign=${encodeURIComponent(campaign)}`
   return (
-    <Screen>
+    <AuthProtectedScreen>
       <Column gutter="lg">
         <ScreenTitle
           subtitle="Amsterdam App"
@@ -59,7 +59,7 @@ const DownloadQRCodeScreen = () => {
           </Column>
         </FormProvider>
       </Column>
-    </Screen>
+    </AuthProtectedScreen>
   )
 }
 

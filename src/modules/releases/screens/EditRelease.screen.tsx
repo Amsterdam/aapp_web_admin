@@ -4,8 +4,8 @@ import {useEffect, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useSelector} from 'react-redux'
 import {useNavigate, useParams} from 'react-router-dom'
+import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
 import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {
   useEditReleaseVersionMutation,
@@ -130,7 +130,7 @@ const EditReleaseScreen = () => {
   }
 
   return (
-    <Screen>
+    <AuthProtectedScreen>
       <Column gutter="lg">
         <ScreenTitle
           subtitle="Release"
@@ -144,7 +144,7 @@ const EditReleaseScreen = () => {
           />
         </FormProvider>
       </Column>
-    </Screen>
+    </AuthProtectedScreen>
   )
 }
 
