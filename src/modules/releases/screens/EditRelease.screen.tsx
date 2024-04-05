@@ -14,9 +14,9 @@ import {
 import {selectReleaseModules} from 'modules/releases/slices/release.slice'
 import {ModuleVersionWithStatusInReleases} from 'modules/releases/types/module'
 import {ReleaseBase} from 'modules/releases/types/release'
+import ErrorScreen from '../../../components/ui/screens/Error.screen'
+import LoadingScreen from '../../../components/ui/screens/Loading.screen'
 import ReleaseForm from '../components/ReleaseForm'
-import ErrorScreen from './Error.screen'
-import LoadingScreen from './Loading.screen'
 
 type Params = {
   version: ReleaseBase['version']

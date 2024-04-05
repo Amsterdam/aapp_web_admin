@@ -6,9 +6,9 @@ import LoadingButton from 'components/ui/button/LoadingButton'
 import {CheckboxValue} from 'components/ui/forms/CheckboxField'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
+import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import ModuleStatusField from 'modules/releases/components/form-fields/ModuleStatusField'
-import LoadingScreen from 'modules/releases/screens/Loading.screen'
 import {
   useEditModuleVersionStatusMutation,
   useGetModuleVersionQuery,

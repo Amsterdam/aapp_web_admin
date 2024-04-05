@@ -7,11 +7,11 @@ import Module from 'components/ui/containers/Module'
 import Box from 'components/ui/layout/Box'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
+import ErrorScreen from 'components/ui/screens/Error.screen'
+import LoadingScreen from 'components/ui/screens/Loading.screen'
 import List from 'components/ui/text/List'
 import ListItem from 'components/ui/text/ListItem'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import ErrorScreen from 'modules/releases/screens/Error.screen'
-import LoadingScreen from 'modules/releases/screens/Loading.screen'
 import {
   useEditModuleMutation,
   useGetModuleQuery,

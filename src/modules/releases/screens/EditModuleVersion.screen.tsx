@@ -6,13 +6,13 @@ import Button from 'components/ui/button/Button'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
+import ErrorScreen from 'components/ui/screens/Error.screen'
+import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import ModuleDescriptionField from 'modules/releases/components/form-fields/ModuleDescriptionField'
 import ModuleIconField from 'modules/releases/components/form-fields/ModuleIconField'
 import ModuleTitleField from 'modules/releases/components/form-fields/ModuleTitleField'
 import VersionField from 'modules/releases/components/form-fields/VersionField'
-import ErrorScreen from 'modules/releases/screens/Error.screen'
-import LoadingScreen from 'modules/releases/screens/Loading.screen'
 import {
   useDeleteModuleVersionMutation,
   useEditModuleVersionMutation,
