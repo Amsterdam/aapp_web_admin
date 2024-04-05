@@ -1,13 +1,13 @@
 import {useEffect} from 'react'
 import {useFormContext} from 'react-hook-form'
 import {useDispatch} from 'react-redux'
-import DragDropModules from 'components/features/DragDropModules'
-import VersionField from 'components/form-fields/VersionField'
 import Button from 'components/ui/button/Button'
 import TextArea from 'components/ui/forms/TextArea'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
+import DragDropModules from 'modules/releases/components/DragDropModules'
+import VersionField from 'modules/releases/components/form-fields/VersionField'
 import {setModules} from 'modules/releases/slices/release.slice'
 import {
   ReleaseBase,

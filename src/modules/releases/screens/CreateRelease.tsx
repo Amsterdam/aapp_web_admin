@@ -19,7 +19,7 @@ import {
   ReleaseWithModuleVersions,
 } from 'modules/releases/types/release'
 import {getPreviousPatchVersion} from 'modules/releases/utils/getHotfixVersion'
-import ReleaseForm from '../../../components/features/ReleaseForm'
+import ReleaseForm from '../components/ReleaseForm'
 import ErrorScreen from './Error.screen'
 import LoadingScreen from './Loading.screen'
 

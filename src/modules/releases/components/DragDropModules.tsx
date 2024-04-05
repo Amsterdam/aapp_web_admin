@@ -1,10 +1,10 @@
 import {useCallback, useMemo} from 'react'
 import {DragDropContext, DropResult} from 'react-beautiful-dnd'
 import {useDispatch, useSelector} from 'react-redux'
-import DraggableModules from 'components/features/DraggableModules'
-import Loading from 'components/features/Loading'
+import Loading from 'components/ui/Loading'
 import Column from 'components/ui/layout/Column'
 import Grid from 'components/ui/layout/Grid'
+import DraggableModules from 'modules/releases/components/DraggableModules'
 import {useGetModulesAvailableForReleaseQuery} from 'modules/releases/services/modules'
 import {
   selectReleaseModules,

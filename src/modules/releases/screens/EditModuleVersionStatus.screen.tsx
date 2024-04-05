@@ -2,12 +2,12 @@ import {skipToken} from '@reduxjs/toolkit/query'
 import {useCallback, useEffect, useMemo} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
-import ModuleStatusField from 'components/form-fields/ModuleStatusField'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import {CheckboxValue} from 'components/ui/forms/CheckboxField'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import ModuleStatusField from 'modules/releases/components/form-fields/ModuleStatusField'
 import LoadingScreen from 'modules/releases/screens/Loading.screen'
 import {
   useEditModuleVersionStatusMutation,

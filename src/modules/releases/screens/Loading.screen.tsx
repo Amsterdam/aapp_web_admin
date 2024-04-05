@@ -1,4 +1,4 @@
-import Loading from 'components/features/Loading'
+import Loading from 'components/ui/Loading'
 import Screen from 'components/ui/layout/Screen'
 
 const LoadingScreen = () => (

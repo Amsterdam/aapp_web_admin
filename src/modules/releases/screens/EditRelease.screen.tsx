@@ -14,7 +14,7 @@ import {
 import {selectReleaseModules} from 'modules/releases/slices/release.slice'
 import {ModuleVersionWithStatusInReleases} from 'modules/releases/types/module'
 import {ReleaseBase} from 'modules/releases/types/release'
-import ReleaseForm from '../../../components/features/ReleaseForm'
+import ReleaseForm from '../components/ReleaseForm'
 import ErrorScreen from './Error.screen'
 import LoadingScreen from './Loading.screen'
 
