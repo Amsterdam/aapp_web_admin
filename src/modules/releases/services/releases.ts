@@ -1,4 +1,3 @@
-import {baseApi} from 'modules/releases/services/baseApi'
 import {
   ReleaseBase,
   ReleaseBaseWithModulesInRelease,
@@ -6,6 +5,7 @@ import {
   ReleaseWithModuleVersions,
   ReleaseWithModuleVersionsWithStatus,
 } from 'modules/releases/types/release'
+import {baseApi} from 'services/baseApi'
 
 type ReleaseQueryArg = {
   version: ReleaseBase['version']

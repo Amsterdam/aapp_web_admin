@@ -1,10 +1,10 @@
-import {baseApi} from 'modules/releases/services/baseApi'
 import {
   Module,
   ModuleVersion,
   ModuleVersionWithStatusInReleases,
   ModuleWithVersions,
 } from 'modules/releases/types/module'
+import {baseApi} from 'services/baseApi'
 
 type ModuleQueryArg = {
   slug: string

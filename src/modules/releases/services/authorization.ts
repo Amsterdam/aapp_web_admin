@@ -1,5 +1,8 @@
-import {AuthorizationResponse, Login} from 'modules/releases/types/authorization'
-import {baseApi} from './baseApi'
+import {
+  AuthorizationResponse,
+  Login,
+} from 'modules/releases/types/authorization'
+import {baseApi} from '../../../services/baseApi'
 
 export const authorization = baseApi.injectEndpoints({
   endpoints: builder => ({
