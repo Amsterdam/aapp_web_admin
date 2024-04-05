@@ -5,6 +5,7 @@ import {
   currentClientId,
   currentRedirectUri,
 } from 'modules/releases/utils/environment'
+import {LoginBoundary} from './LoginBoundary'
 
 const msalConfig: Configuration = {
   auth: {
@@ -28,9 +29,13 @@ type Props = {
   children: ReactNode
 }
 
-export const Init: FC<Props> = ({children}) => {
+export const AuthProvider: FC<Props> = ({children}) => {
   if (!finished) {
     throw msalInstanceLoadingPromise
   }
-  return <MsalProvider instance={msalInstance}>{children}</MsalProvider>
+  return (
+    <MsalProvider instance={msalInstance}>
+      <LoginBoundary>{children}</LoginBoundary>
+    </MsalProvider>
+  )
 }

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {msalInstance} from 'components/authentication/Init'
+import {msalInstance} from 'components/authentication/Auth.provider'
 import {currentClientId} from 'modules/releases/utils/environment'
 
 const baseQuery = fetchBaseQuery({
