@@ -1,6 +1,6 @@
 import {skipToken} from '@reduxjs/toolkit/query'
 import {useNavigate, useParams} from 'react-router-dom'
-import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
+import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import BlockLink from 'components/ui/button/BlockLink'
 import Button from 'components/ui/button/Button'
 import LoadingButton from 'components/ui/button/LoadingButton'

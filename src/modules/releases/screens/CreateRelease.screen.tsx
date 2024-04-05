@@ -1,4 +1,4 @@
-import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
+import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import CreateRelease from 'modules/releases/components/CreateRelease'
 
 const CreateReleaseScreen = () => (

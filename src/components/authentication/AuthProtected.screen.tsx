@@ -9,10 +9,12 @@ type Props = {
 /**
  * User needs to be authenticated to access this screen.
  */
-export const AuthProtectedScreen = ({children}: Props) => {
+const AuthProtectedScreen = ({children}: Props) => {
   return (
     <LoginBoundary>
       <Screen>{children}</Screen>
     </LoginBoundary>
   )
 }
+
+export default AuthProtectedScreen

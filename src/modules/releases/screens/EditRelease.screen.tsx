@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useSelector} from 'react-redux'
 import {useNavigate, useParams} from 'react-router-dom'
-import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
+import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import Column from 'components/ui/layout/Column'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {

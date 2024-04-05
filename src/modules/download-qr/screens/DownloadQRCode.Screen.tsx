@@ -1,5 +1,5 @@
 import {FormProvider, useForm} from 'react-hook-form'
-import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
+import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'

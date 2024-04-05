@@ -1,5 +1,5 @@
 import {useNavigate} from 'react-router-dom'
-import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
+import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import Button from 'components/ui/button/Button'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'

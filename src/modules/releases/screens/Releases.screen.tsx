@@ -1,6 +1,6 @@
 import {useMemo, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {AuthProtectedScreen} from 'components/authentication/AuthProtected.screen'
+import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import BlockLink from 'components/ui/button/BlockLink'
 import Button from 'components/ui/button/Button'
 import Box from 'components/ui/layout/Box'
