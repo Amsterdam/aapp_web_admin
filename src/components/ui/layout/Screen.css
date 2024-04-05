@@ -6,8 +6,13 @@
 }
 
 .Container {
-  width: var(--size-screen-width);
+  width: 100%;
   padding: var(--size-spacing-lg);
   padding-bottom: var(--size-spacing-xxl);
   background-color: var(--bg-color-cutout);
+  @media(min-width: 640px) {
+    min-width: var(--min-screen-width);
+    max-width: var(--max-screen-width);
+    width: auto;
+  }
 }
