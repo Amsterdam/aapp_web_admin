@@ -79,7 +79,7 @@ const EditModuleScreen = () => {
       })
         .unwrap()
         .then(() => {
-          navigate(`/mbs/module/${moduleSlug}`)
+          navigate(`/module/${moduleSlug}`)
         })
     }
   }
@@ -96,7 +96,7 @@ const EditModuleScreen = () => {
     const {moduleSlug, version} = moduleVersion
 
     if (!dirtyFieldKeys.length) {
-      navigate(`/mbs/module/${moduleSlug}`)
+      navigate(`/module/${moduleSlug}`)
     } else {
       dirtyFieldKeys.forEach(<K extends keyof ModuleVersion>(field: K) => {
         dirtyFieldsOnly[field] = data[field]
@@ -108,7 +108,7 @@ const EditModuleScreen = () => {
         pathVersion: version,
       }).then(response => {
         if ('data' in response) {
-          navigate(`/mbs/module/${moduleSlug}`)
+          navigate(`/module/${moduleSlug}`)
         }
       })
     }
@@ -157,7 +157,7 @@ const EditModuleScreen = () => {
               <Button
                 label="Aan- of uitzetten"
                 onClick={() =>
-                  navigate(`/mbs/module/${slugParam}/${versionParam}/status`)
+                  navigate(`/module/${slugParam}/${versionParam}/status`)
                 }
                 variant="secondary"
               />

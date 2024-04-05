@@ -6,8 +6,6 @@ type Props = {
   releases: string[]
 }
 
-export const selectAllLabel = 'Alle releases'
-
 const ModuleStatusField = ({releases}: Props) => (
   <Column gutter="sm">
     <Phrase color="muted">Zet aan of uit voor de volgende releases:</Phrase>
@@ -24,7 +22,7 @@ const ModuleStatusField = ({releases}: Props) => (
       </Column>
       <CheckboxField
         key="allSelected"
-        label={selectAllLabel}
+        label="Alle releases"
         name="allSelected"
       />
     </Column>

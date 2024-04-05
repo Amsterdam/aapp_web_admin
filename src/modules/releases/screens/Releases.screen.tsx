@@ -13,6 +13,7 @@ import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {useGetReleasesQuery} from 'modules/releases/services/releases'
 import {getHotfixVersion} from 'modules/releases/utils/getHotfixVersion'
+import {ReleasesRoute} from '../routes'
 
 const ReleasesScreen = () => {
   const navigate = useNavigate()
@@ -36,7 +37,7 @@ const ReleasesScreen = () => {
         <ScreenTitle title="Releases" />
         <Button
           label="Release toevoegen"
-          onClick={() => navigate('/mbs/release/create')}
+          onClick={() => navigate(ReleasesRoute.createRelease)}
           variant={addHotfix ? 'secondary' : 'primary'}
         />
         {(releases?.length ?? 0) > 0 && (
@@ -59,8 +60,8 @@ const ReleasesScreen = () => {
                   <BlockLink
                     to={
                       addHotfix
-                        ? `/mbs/release/hotfix/${hotfixVersion}`
-                        : `/mbs/release/${version}`
+                        ? `/release/hotfix/${hotfixVersion}`
+                        : `/release/${version}`
                     }>
                     <Box>
                       <Row align="between">

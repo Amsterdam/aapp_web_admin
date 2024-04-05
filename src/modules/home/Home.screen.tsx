@@ -5,6 +5,8 @@ import Row from 'components/ui/layout/Row'
 import Screen from 'components/ui/layout/Screen'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import {DownloadQRCodeRoute} from 'modules/download-qr/routes'
+import {ReleasesRoute} from 'modules/releases/routes'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
@@ -12,18 +14,18 @@ const HomeScreen = () => {
   return (
     <Screen>
       <Column gutter="lg">
-        <ScreenTitle subtitle="Amsterdam App" title="Modulebeheersysteem" />
+        <ScreenTitle title="Amsterdam App" />
         <Phrase>Wat wil je beheren?</Phrase>
         <Row gutter="md">
           <Button
             flex
             label="Modules"
-            onClick={() => navigate('/mbs/modules')}
+            onClick={() => navigate(ReleasesRoute.modules)}
           />
           <Button
             flex
             label="Releases"
-            onClick={() => navigate('/mbs/releases')}
+            onClick={() => navigate(ReleasesRoute.releases)}
           />
         </Row>
         <Phrase>Andere mogelijkheden</Phrase>
@@ -31,7 +33,7 @@ const HomeScreen = () => {
           <Button
             flex
             label="Download link QR code maker"
-            onClick={() => navigate('/mbs/download-qr-code')}
+            onClick={() => navigate(DownloadQRCodeRoute.downloadQRCode)}
           />
         </Row>
       </Column>

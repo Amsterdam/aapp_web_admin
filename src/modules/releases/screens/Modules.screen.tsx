@@ -12,6 +12,7 @@ import ListItem from 'components/ui/text/ListItem'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {useGetModulesQuery} from 'modules/releases/services/modules'
+import {ReleasesRoute} from '../routes'
 
 const ModulesScreen = () => {
   const navigate = useNavigate()
@@ -35,14 +36,14 @@ const ModulesScreen = () => {
         <Button
           label="Module toevoegen"
           onClick={() => {
-            navigate(`/mbs/module/create`)
+            navigate(ReleasesRoute.createModule)
           }}
         />
         {sortedModules ? (
           <List>
             {sortedModules.map(({icon, moduleSlug, title}) => (
               <ListItem key={moduleSlug}>
-                <BlockLink to={`/mbs/module/${moduleSlug}`}>
+                <BlockLink to={`/module/${moduleSlug}`}>
                   <Box>
                     <Module icon={icon} title={title} />
                   </Box>

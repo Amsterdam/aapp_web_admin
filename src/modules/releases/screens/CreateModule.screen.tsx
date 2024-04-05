@@ -59,7 +59,7 @@ const CreateModuleScreen = () => {
       setIsBeforeNavigation(true)
       createModuleVersion(data).then(response => {
         if ('data' in response) {
-          navigate(`/mbs/module/${data.moduleSlug}`)
+          navigate(`/module/${data.moduleSlug}`)
         }
       })
     },

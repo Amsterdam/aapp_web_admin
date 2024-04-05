@@ -9,45 +9,58 @@ import ModuleScreen from 'modules/releases/screens/Module.screen'
 import ModulesScreen from 'modules/releases/screens/Modules.screen'
 import ReleasesScreen from 'modules/releases/screens/Releases.screen'
 
+export enum ReleasesRoute {
+  modules = '/modules',
+  createModule = '/module/create',
+  module = '/modules:slug',
+  createModuleVersion = '/module/:slug/create',
+  editModuleVersion = '/module/:slug/:version',
+  editModuleVersionStatus = '/module/:slug/:version/status',
+  releases = '/releases',
+  createRelease = '/release/create',
+  createHotfixRelease = '/release/hotfix/:version',
+  editRelease = '/release/:version',
+}
+
 export const routes: RouteObject[] = [
   {
-    path: '/modules',
+    path: ReleasesRoute.modules,
     element: <ModulesScreen />,
   },
   {
-    path: '/module/create',
+    path: ReleasesRoute.createModule,
     element: <CreateModuleScreen />,
   },
   {
-    path: '/module/:slug',
+    path: ReleasesRoute.module,
     element: <ModuleScreen />,
   },
   {
-    path: '/module/:slug/create',
+    path: ReleasesRoute.createModuleVersion,
     element: <CreateModuleScreen />,
   },
   {
-    path: '/module/:slug/:version',
+    path: ReleasesRoute.editModuleVersion,
     element: <EditModuleVersionScreen />,
   },
   {
-    path: '/module/:slug/:version/status',
+    path: ReleasesRoute.editModuleVersionStatus,
     element: <EditModuleVersionStatusScreen />,
   },
   {
-    path: '/releases',
+    path: ReleasesRoute.releases,
     element: <ReleasesScreen />,
   },
   {
-    path: '/release/create',
+    path: ReleasesRoute.createRelease,
     element: <CreateReleaseScreen />,
   },
   {
-    path: '/release/hotfix/:version',
+    path: ReleasesRoute.createHotfixRelease,
     element: <CreateHotfixReleaseScreen />,
   },
   {
-    path: '/release/:version',
+    path: ReleasesRoute.editRelease,
     element: <EditReleaseScreen />,
   },
 ]

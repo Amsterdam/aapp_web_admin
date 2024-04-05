@@ -17,6 +17,7 @@ import {ReleaseBase} from 'modules/releases/types/release'
 import ErrorScreen from '../../../components/ui/screens/Error.screen'
 import LoadingScreen from '../../../components/ui/screens/Loading.screen'
 import ReleaseForm from '../components/ReleaseForm'
+import {ReleasesRoute} from '../routes'
 
 type Params = {
   version: ReleaseBase['version']
@@ -88,7 +89,7 @@ const EditReleaseScreen = () => {
     setIsBeforeNavigation(true)
     if (!dirtyFieldKeys.length && !isModulesModified) {
       // No changes made
-      navigate('/mbs/releases')
+      navigate(ReleasesRoute.releases)
     } else {
       // Only send the fields that have been modified
       const dirtyFieldsOnly = dirtyFieldKeys.reduce<Partial<ReleaseBase>>(
@@ -113,7 +114,7 @@ const EditReleaseScreen = () => {
 
       const result = await editRelease(preparedData)
       if ('data' in result) {
-        navigate('/mbs/releases')
+        navigate('/releases')
       }
     }
   }

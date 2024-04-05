@@ -21,6 +21,7 @@ import {
 import {getPreviousPatchVersion} from 'modules/releases/utils/getHotfixVersion'
 import ErrorScreen from '../../../components/ui/screens/Error.screen'
 import LoadingScreen from '../../../components/ui/screens/Loading.screen'
+import {ReleasesRoute} from '../routes'
 import ReleaseForm from './ReleaseForm'
 
 type Props = {
@@ -87,7 +88,7 @@ const CreateRelease = ({hotfixVersion}: Props) => {
     }
     const result = await createRelease(preparedData)
     if ('data' in result) {
-      navigate('/mbs/releases')
+      navigate(ReleasesRoute.releases)
     }
   }
 
