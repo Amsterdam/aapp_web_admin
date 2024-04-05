@@ -1,4 +1,4 @@
-import CreateRelease from './CreateRelease'
+import CreateRelease from '../components/CreateRelease'
 
 const CreateReleaseScreen = () => {
   return <CreateRelease />

@@ -19,9 +19,9 @@ import {
   ReleaseWithModuleVersions,
 } from 'modules/releases/types/release'
 import {getPreviousPatchVersion} from 'modules/releases/utils/getHotfixVersion'
-import ReleaseForm from '../components/ReleaseForm'
-import ErrorScreen from './Error.screen'
-import LoadingScreen from './Loading.screen'
+import ErrorScreen from '../screens/Error.screen'
+import LoadingScreen from '../screens/Loading.screen'
+import ReleaseForm from './ReleaseForm'
 
 type Props = {
   hotfixVersion?: string

@@ -1,5 +1,5 @@
 import {RouteObject} from 'react-router-dom'
-import DownloadQRCodeScreen from 'modules/download-qr/screens/DownloadQRCode.Screen'
+import DownloadQRCodeScreen from 'modules/download-qr/screens/DownloadQRCode.screen'
 import HomeScreen from 'modules/home/Home.screen'
 import CreateHotfixReleaseScreen from 'modules/releases/screens/CreateHotfixRelease.screen'
 import CreateModuleScreen from 'modules/releases/screens/CreateModule.screen'

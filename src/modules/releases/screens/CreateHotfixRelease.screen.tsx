@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom'
-import CreateRelease from './CreateRelease'
+import CreateRelease from '../components/CreateRelease'
 
 type Params = {
   version?: string
