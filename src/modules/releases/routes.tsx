@@ -12,7 +12,7 @@ import ReleasesScreen from 'modules/releases/screens/Releases.screen'
 export enum ReleasesRoute {
   modules = '/modules',
   createModule = '/module/create',
-  module = '/modules:slug',
+  module = '/modules/:slug',
   createModuleVersion = '/module/:slug/create',
   editModuleVersion = '/module/:slug/:version',
   editModuleVersionStatus = '/module/:slug/:version/status',
