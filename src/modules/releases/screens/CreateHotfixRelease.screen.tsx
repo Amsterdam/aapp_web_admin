@@ -1,6 +1,6 @@
 import {useParams} from 'react-router-dom'
 import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
-import CreateRelease from '../components/CreateRelease'
+import CreateRelease from 'modules/releases/components/CreateRelease'
 
 type Params = {
   version?: string

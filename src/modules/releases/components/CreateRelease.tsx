@@ -4,7 +4,11 @@ import {FormProvider, useForm} from 'react-hook-form'
 import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import Column from 'components/ui/layout/Column'
+import ErrorScreen from 'components/ui/screens/Error.screen'
+import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import ReleaseForm from 'modules/releases/components/ReleaseForm'
+import {ReleasesRoute} from 'modules/releases/routes'
 import {useGetModulesQuery} from 'modules/releases/services/modules'
 import {
   useCreateReleaseMutation,
@@ -18,10 +22,6 @@ import {
   ReleaseWithModuleVersions,
 } from 'modules/releases/types/release'
 import {getPreviousPatchVersion} from 'modules/releases/utils/getHotfixVersion'
-import ErrorScreen from '../../../components/ui/screens/Error.screen'
-import LoadingScreen from '../../../components/ui/screens/Loading.screen'
-import {ReleasesRoute} from '../routes'
-import ReleaseForm from './ReleaseForm'
 
 type Props = {
   hotfixVersion?: string

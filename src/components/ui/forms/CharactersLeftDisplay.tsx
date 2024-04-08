@@ -1,4 +1,4 @@
-import Phrase from '../text/Phrase'
+import Phrase from 'components/ui/text/Phrase'
 
 type Props = {
   maxLength: number | undefined

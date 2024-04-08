@@ -6,7 +6,11 @@ import {useSelector} from 'react-redux'
 import {useNavigate, useParams} from 'react-router-dom'
 import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import Column from 'components/ui/layout/Column'
+import ErrorScreen from 'components/ui/screens/Error.screen'
+import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import ReleaseForm from 'modules/releases/components/ReleaseForm'
+import {ReleasesRoute} from 'modules/releases/routes'
 import {
   useEditReleaseVersionMutation,
   useGetReleaseQuery,
@@ -14,10 +18,6 @@ import {
 import {selectReleaseModules} from 'modules/releases/slices/release.slice'
 import {ModuleVersionWithStatusInReleases} from 'modules/releases/types/module'
 import {ReleaseBase} from 'modules/releases/types/release'
-import ErrorScreen from '../../../components/ui/screens/Error.screen'
-import LoadingScreen from '../../../components/ui/screens/Loading.screen'
-import ReleaseForm from '../components/ReleaseForm'
-import {ReleasesRoute} from '../routes'
 
 type Params = {
   version: ReleaseBase['version']
