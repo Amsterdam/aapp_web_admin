@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/react'
 import ReactDOM from 'react-dom/client'
 import App from 'App'
-import {Environment, environment} from 'modules/releases/utils/environment'
+import {Environment, environment} from 'utils/environment'
 import './index.css'
 
 if (environment !== Environment.local) {

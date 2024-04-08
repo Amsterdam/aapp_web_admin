@@ -10,11 +10,7 @@ import {
   selectReleaseModules,
   setModules,
 } from 'modules/releases/slices/release.slice'
-import {
-  addToList,
-  removeFromList,
-  reorderList,
-} from 'modules/releases/utils/list'
+import {addToList, removeFromList, reorderList} from 'utils/list'
 
 enum DroppableId {
   includedModules = 'includedModules',

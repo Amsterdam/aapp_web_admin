@@ -1,10 +1,7 @@
 import {Configuration, PublicClientApplication} from '@azure/msal-browser'
 import {MsalProvider} from '@azure/msal-react'
 import {ReactNode, FC} from 'react'
-import {
-  currentClientId,
-  currentRedirectUri,
-} from 'modules/releases/utils/environment'
+import {currentClientId, currentRedirectUri} from 'utils/environment'
 
 const msalConfig: Configuration = {
   auth: {
