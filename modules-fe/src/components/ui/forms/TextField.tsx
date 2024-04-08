@@ -39,7 +39,6 @@ const TextField = ({
               <Phrase color="muted">{label}</Phrase>
               <Input
                 id={id}
-                name={name}
                 maxLength={maxLength}
                 onChange={onChange}
                 type={type}

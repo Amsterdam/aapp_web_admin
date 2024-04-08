@@ -3,7 +3,6 @@ import {msalInstance} from 'components/authentication/Init'
 import {currentClientId} from 'utils/environment'
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: '/modules',
   prepareHeaders: async headers => {
     const {accessToken} = await msalInstance.acquireTokenSilent({
       scopes: [`api://${currentClientId}/Modules.Edit`],

@@ -18,7 +18,7 @@ export const modulesApi = baseApi.injectEndpoints({
       Partial<ReleaseBaseWithModulesInRelease> & {pathVersion: string}
     >({
       query: ({pathVersion, ...release}) => ({
-        url: `/api/v1/release/${pathVersion}`,
+        url: `/modules/api/v1/release/${pathVersion}`,
         method: 'PATCH',
         body: {
           ...release,
@@ -31,7 +31,7 @@ export const modulesApi = baseApi.injectEndpoints({
       ReleaseBaseWithModulesWithStatusInRelease
     >({
       query: ({published, unpublished, ...release}) => ({
-        url: '/api/v1/release',
+        url: '/modules/api/v1/release',
         method: 'POST',
         body: {
           published: published || null,
@@ -42,18 +42,18 @@ export const modulesApi = baseApi.injectEndpoints({
       invalidatesTags: ['Module', 'Release'],
     }),
     getLatestRelease: builder.query<ReleaseWithModuleVersions, void>({
-      query: () => '/api/v1/release/latest',
+      query: () => '/modules/api/v1/release/latest',
       providesTags: ['Release'],
     }),
     getRelease: builder.query<
       ReleaseWithModuleVersionsWithStatus,
       ReleaseQueryArg
     >({
-      query: ({version}) => `/api/v1/release/${version}`,
+      query: ({version}) => `/modules/api/v1/release/${version}`,
       providesTags: ['Release'],
     }),
     getReleases: builder.query<ReleaseWithModuleVersions[], void>({
-      query: () => '/api/v1/releases',
+      query: () => '/modules/api/v1/releases',
       providesTags: ['Release'],
     }),
   }),

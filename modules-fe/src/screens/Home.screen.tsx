@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import {useNavigate} from 'react-router-dom'
 import Button from 'components/ui/button/Button'
-import ImageField from 'components/ui/forms/ImageField'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 import Screen from 'components/ui/layout/Screen'
@@ -36,15 +35,6 @@ const HomeScreen = () => {
             onClick={() => navigate('/mbs/download-qr-code')}
           />
         </Row>
-      </Column>
-      <Column>
-        <ImageField
-          alt="foo"
-          caption="bar"
-          src="https://www.amsterdam.nl/publish/pages/1049981/amsterdam_centraal.jpg"
-          onAdd={a => console.log(a)}
-          onDelete={() => console.log('')}
-        />
       </Column>
     </Screen>
   )

@@ -19,7 +19,7 @@ export const modulesApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     createModule: builder.mutation<Module, Module>({
       query: module => ({
-        url: `/api/v1/module`,
+        url: `/modules/api/v1/module`,
         method: 'POST',
         body: {...module},
       }),
@@ -27,7 +27,7 @@ export const modulesApi = baseApi.injectEndpoints({
     }),
     createModuleVersion: builder.mutation<ModuleVersion, ModuleVersion>({
       query: module => ({
-        url: `/api/v1/module/${module.moduleSlug}/version`,
+        url: `/modules/api/v1/module/${module.moduleSlug}/version`,
         method: 'POST',
         body: {...module},
       }),
@@ -39,14 +39,14 @@ export const modulesApi = baseApi.injectEndpoints({
       Pick<ModuleVersion, 'moduleSlug' | 'version'>
     >({
       query: ({moduleSlug, version}) => ({
-        url: `/api/v1/module/${moduleSlug}/version/${version}`,
+        url: `/modules/api/v1/module/${moduleSlug}/version/${version}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Module'],
     }),
     editModule: builder.mutation<Module, Module>({
       query: ({slug, status}) => ({
-        url: `/api/v1/module/${slug}`,
+        url: `/modules/api/v1/module/${slug}`,
         method: 'PATCH',
         body: {status},
       }),
@@ -57,7 +57,7 @@ export const modulesApi = baseApi.injectEndpoints({
       Partial<ModuleVersion> & {pathVersion: string}
     >({
       query: ({moduleSlug, pathVersion, ...rest}) => ({
-        url: `/api/v1/module/${moduleSlug}/version/${pathVersion}`,
+        url: `/modules/api/v1/module/${moduleSlug}/version/${pathVersion}`,
         method: 'PATCH',
         body: {...rest},
       }),
@@ -71,30 +71,31 @@ export const modulesApi = baseApi.injectEndpoints({
       }
     >({
       query: ({slug, version, statusInReleases}) => ({
-        url: `/api/v1/module/${slug}/version/${version}/status`,
+        url: `/modules/api/v1/module/${slug}/version/${version}/status`,
         method: 'PATCH',
         body: statusInReleases,
       }),
       invalidatesTags: ['Module', 'Release'],
     }),
     getModule: builder.query<ModuleWithVersions, ModuleQueryArg>({
-      query: ({slug}) => `/api/v1/module/${slug}`,
+      query: ({slug}) => `/modules/api/v1/module/${slug}`,
       providesTags: ['Module'],
     }),
     getModuleVersion: builder.query<
       ModuleVersionWithStatusInReleases,
       ModuleVersionQueryArg
     >({
-      query: ({slug, version}) => `/api/v1/module/${slug}/version/${version}`,
+      query: ({slug, version}) =>
+        `/modules/api/v1/module/${slug}/version/${version}`,
       providesTags: ['Module'],
     }),
     getModules: builder.query<ModuleVersion[], void>({
-      query: () => `/api/v1/modules/latest`,
+      query: () => `/modules/api/v1/modules/latest`,
       providesTags: ['Module'],
     }),
     getModulesAvailableForRelease: builder.query<ModuleVersion[], string>({
       query: releaseVersion =>
-        `/api/v1/modules/available-for-release/${releaseVersion}`,
+        `/modules/api/v1/modules/available-for-release/${releaseVersion}`,
       providesTags: ['Module'],
     }),
   }),

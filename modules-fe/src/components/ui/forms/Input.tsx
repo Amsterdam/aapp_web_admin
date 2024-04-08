@@ -2,19 +2,17 @@ import {FieldPath, FieldPathValue, FieldValues} from 'react-hook-form'
 import './Input.css'
 
 type Props = {
-  hasError: boolean
+  hasError?: boolean
   id: string
-  name: FieldPath<FieldValues>
   maxLength?: number
-  onChange: (...event: unknown[]) => void
+  onChange?: (...event: unknown[]) => void
   type?: string
   value: FieldPathValue<FieldValues, FieldPath<FieldValues>>
 }
 
 const Input = ({
-  hasError,
+  hasError = false,
   id,
-  name,
   maxLength,
   onChange,
   type,
