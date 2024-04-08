@@ -1,12 +1,12 @@
-import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import Column from 'components/ui/layout/Column'
+import Screen from 'components/ui/layout/Screen'
 import {Table} from 'components/ui/table/Table'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {projects} from 'modules/data'
 
 const ProjectsScreen = () => {
   return (
-    <AuthProtectedScreen>
+    <Screen>
       <Column gutter="lg">
         <ScreenTitle subtitle="Amsterdam App" title="Projecten" />
         <Table
@@ -14,7 +14,7 @@ const ProjectsScreen = () => {
           data={projects}
         />
       </Column>
-    </AuthProtectedScreen>
+    </Screen>
   )
 }
 

@@ -1,12 +1,12 @@
 import {skipToken} from '@reduxjs/toolkit/query'
 import {useNavigate, useParams} from 'react-router-dom'
-import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import BlockLink from 'components/ui/button/BlockLink'
 import Button from 'components/ui/button/Button'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import Module from 'components/ui/containers/Module'
 import Box from 'components/ui/layout/Box'
 import Column from 'components/ui/layout/Column'
+import Screen from 'components/ui/layout/Screen'
 import ErrorScreen from 'components/ui/screens/Error.screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import List from 'components/ui/text/List'
@@ -70,7 +70,7 @@ const ModuleScreen = () => {
   }
 
   return (
-    <AuthProtectedScreen>
+    <Screen>
       <Column gutter="lg">
         <ScreenTitle subtitle="Module" title={latestVersion?.title} />
         <Button
@@ -100,7 +100,7 @@ const ModuleScreen = () => {
           variant="secondary"
         />
       </Column>
-    </AuthProtectedScreen>
+    </Screen>
   )
 }
 

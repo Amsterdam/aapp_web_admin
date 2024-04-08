@@ -1,8 +1,8 @@
 import {useNavigate} from 'react-router-dom'
-import AuthProtectedScreen from 'components/authentication/AuthProtected.screen'
 import Button from 'components/ui/button/Button'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
+import Screen from 'components/ui/layout/Screen'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {DownloadQRCodeRoute} from 'modules/download-qr/routes'
@@ -12,7 +12,7 @@ const HomeScreen = () => {
   const navigate = useNavigate()
 
   return (
-    <AuthProtectedScreen>
+    <Screen>
       <Column gutter="lg">
         <ScreenTitle title="Amsterdam App" />
         <Phrase>Wat wil je beheren?</Phrase>
@@ -37,7 +37,7 @@ const HomeScreen = () => {
           />
         </Row>
       </Column>
-    </AuthProtectedScreen>
+    </Screen>
   )
 }
 

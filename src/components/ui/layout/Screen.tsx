@@ -1,4 +1,5 @@
 import {ReactNode} from 'react'
+import {LoginBoundary} from 'components/authentication/LoginBoundary'
 import LogoutButton from 'components/authentication/LogoutButton'
 import Column from 'components/ui/layout/Column'
 import Logo from 'components/ui/media/Logo'
@@ -10,19 +11,21 @@ type Props = {
 }
 
 const Screen = ({children}: Props) => (
-  <div className="Screen">
-    <div className="Container">
-      <Column gutter="xl">
-        <header>
-          <Row align="between" valign="start">
-            <Logo />
-            <LogoutButton />
-          </Row>
-        </header>
-        <main>{children}</main>
-      </Column>
+  <LoginBoundary>
+    <div className="Screen">
+      <div className="Container">
+        <Column gutter="xl">
+          <header>
+            <Row align="between" valign="start">
+              <Logo />
+              <LogoutButton />
+            </Row>
+          </header>
+          <main>{children}</main>
+        </Column>
+      </div>
     </div>
-  </div>
+  </LoginBoundary>
 )
 
 export default Screen
