@@ -1,11 +1,13 @@
-import {constructionWorkEditorModule} from './construction-work-editor'
-import {downloadQrModule} from './download-qr'
-import {homeModule} from './home'
-import {releasesModule} from './releases'
+import {constructionWorkEditorModule} from 'modules/construction-work-editor'
+import {downloadQrModule} from 'modules/download-qr'
+import {homeModule} from 'modules/home'
+import {releasesModule} from 'modules/releases'
 
-export const modules = [
+const modules = [
   homeModule,
   releasesModule,
   downloadQrModule,
   constructionWorkEditorModule,
-]
+] as const
+
+export default modules
