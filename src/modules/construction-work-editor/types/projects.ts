@@ -38,7 +38,7 @@ export type ProjectsQueryArgs = {
   page_size?: number
 }
 
-type ProjectsItem = ProjectBase & {
+export type ProjectsItem = ProjectBase & {
   recent_articles: ArticleStub[]
 }
 
