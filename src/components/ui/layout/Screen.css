@@ -1,0 +1,14 @@
+.Screen {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-color-screen);
+}
+
+.Container {
+  width: 100%;
+  max-width: var(--max-screen-width);
+  padding: var(--size-spacing-lg);
+  padding-bottom: var(--size-spacing-xxl);
+  background-color: var(--bg-color-cutout);
+}
