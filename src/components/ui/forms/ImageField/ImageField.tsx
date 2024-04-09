@@ -4,6 +4,8 @@ import ImageUpload from 'components/ui/forms/ImageField/ImageUpload'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 
+import './ImageField.css'
+
 type Props = {
   aspectRatio?: number
   alt?: string
@@ -23,34 +25,36 @@ const ImageField = ({
   name,
   src,
 }: Props) => (
-  <Controller
-    defaultValue={src}
-    name={name}
-    render={({field: {onChange, value}}) => (
-      <Column gutter="sm">
-        <Phrase color="muted">{label}</Phrase>
-        {value ? (
-          <ImageDisplay
-            alt={alt}
-            aspectRatio={aspectRatio}
-            onDelete={() => {
-              onChange(undefined)
-            }}
-            src={value}
-          />
-        ) : (
-          <ImageUpload
-            aspectRatio={aspectRatio}
-            loading={loading}
-            onAdd={onChange}
-            onDelete={() => {
-              onChange(undefined)
-            }}
-          />
-        )}
-      </Column>
-    )}
-  />
+  <div className="ImageField">
+    <Controller
+      defaultValue={src}
+      name={name}
+      render={({field: {onChange, value}}) => (
+        <Column gutter="sm">
+          <Phrase color="muted">{label}</Phrase>
+          {value ? (
+            <ImageDisplay
+              alt={alt}
+              aspectRatio={aspectRatio}
+              onDelete={() => {
+                onChange(undefined)
+              }}
+              src={value}
+            />
+          ) : (
+            <ImageUpload
+              aspectRatio={aspectRatio}
+              loading={loading}
+              onAdd={onChange}
+              onDelete={() => {
+                onChange(undefined)
+              }}
+            />
+          )}
+        </Column>
+      )}
+    />
+  </div>
 )
 
 export default ImageField

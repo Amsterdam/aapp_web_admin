@@ -4,8 +4,14 @@
   width: 100%;
 }
 
+.ImageUpload .uploader__btn_wrapper {
+  top: 0;
+}
+
 .ImageUpload .AddIcon,
 .ImageUpload .DeleteIcon {
   padding: var(--size-spacing-sm);
   background-color: #fff;
+  width: 16px;
+  height: 16px;
 }
