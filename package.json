@@ -2,7 +2,6 @@
   "name": "aapp-mbs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/mbs/",
   "dependencies": {
     "@amsterdam/design-system-assets": "^0.2.0",
     "@amsterdam/design-system-css": "^0.7.1",

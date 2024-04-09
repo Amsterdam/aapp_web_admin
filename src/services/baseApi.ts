@@ -15,7 +15,7 @@ const baseQuery: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, baseQueryApi, extraOptions) =>
   fetchBaseQuery({
-    baseUrl: `${window.location.origin}${args.domain}`,
+    baseUrl: args.domain,
     prepareHeaders: async headers => {
       const {accessToken} = await msalInstance.acquireTokenSilent({
         scopes: [`api://${currentClientId}/Modules.Edit`],
