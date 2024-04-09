@@ -47,12 +47,13 @@ export const applyAllowList = <T extends GenericResponse>(
  * Adds a search string to the input object based on the allow list.
  */
 export const addSearchString = <T extends GenericResponse>(
-  input: T,
+  input: T[],
   allowList?: string[],
-): WithSearchString<T> => ({
-  ...input,
-  searchString: getSearchString(applyAllowList(input, allowList)),
-})
+): WithSearchString<T>[] =>
+  input.map(item => ({
+    ...item,
+    searchString: getSearchString(applyAllowList(item, allowList)),
+  }))
 
 /**
  * Adds a search string to the input object based on the allow list.

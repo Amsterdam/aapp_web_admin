@@ -50,29 +50,31 @@ describe('applyAllowList', () => {
 
 describe('addSearchString', () => {
   it('adds searchString property to input', () => {
-    const input = {a: 1, b: 2}
-    expect(addSearchString(input)).toHaveProperty('searchString')
+    const input = [{a: 1, b: 2}]
+    expect(addSearchString(input)[0]).toHaveProperty('searchString')
   })
 
   it('adds searchString property with correct value', () => {
-    const input = {a: 1, b: 2, c: [3, 4, 5]}
+    const input = [{a: 1, b: 2, c: [3, 4, 5]}]
     const expectedsearchString = '1|2|3|4|5'
-    expect(addSearchString(input)).toEqual({
-      ...input,
-      searchString: expectedsearchString,
-    })
+    expect(addSearchString(input)).toEqual([
+      {
+        ...input[0],
+        searchString: expectedsearchString,
+      },
+    ])
   })
 
   it('filters out properties before adding searchString if allowList is provided', () => {
-    const input = {a: 1, b: 2, c: 3}
+    const input = [{a: 1, b: 2, c: 3}]
     const allowList = ['a', 'b']
     const expectedsearchString = '1|2'
-    expect(addSearchString(input, allowList)).toEqual({
-      a: 1,
-      b: 2,
-      c: 3,
-      searchString: expectedsearchString,
-    })
+    expect(addSearchString(input, allowList)).toEqual([
+      {
+        ...input[0],
+        searchString: expectedsearchString,
+      },
+    ])
   })
 })
 
