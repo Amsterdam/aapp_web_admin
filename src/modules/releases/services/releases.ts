@@ -6,7 +6,7 @@ import {
   ReleaseWithModuleVersionsWithStatus,
 } from 'modules/releases/types/release'
 import {baseApi} from 'services/baseApi'
-import {ApiDomain} from 'services/types'
+import {ApiDirectory} from 'services/types'
 
 type ReleaseQueryArg = {
   version: ReleaseBase['version']
@@ -23,7 +23,7 @@ export const modulesApi = baseApi.injectEndpoints({
         body: {
           ...release,
         },
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         method: 'PATCH',
         url: `/release/${pathVersion}`,
       }),
@@ -39,14 +39,14 @@ export const modulesApi = baseApi.injectEndpoints({
           unpublished: unpublished || null,
           ...release,
         },
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         method: 'POST',
         url: '/release',
       }),
     }),
     getLatestRelease: builder.query<ReleaseWithModuleVersions, void>({
       providesTags: ['Release'],
-      query: () => ({domain: ApiDomain.modules, url: '/release/latest'}),
+      query: () => ({directory: ApiDirectory.modules, url: '/release/latest'}),
     }),
     getRelease: builder.query<
       ReleaseWithModuleVersionsWithStatus,
@@ -54,13 +54,13 @@ export const modulesApi = baseApi.injectEndpoints({
     >({
       providesTags: ['Release'],
       query: ({version}) => ({
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/release/${version}`,
       }),
     }),
     getReleases: builder.query<ReleaseWithModuleVersions[], void>({
       providesTags: ['Release'],
-      query: () => ({domain: ApiDomain.modules, url: '/releases'}),
+      query: () => ({directory: ApiDirectory.modules, url: '/releases'}),
     }),
   }),
   overrideExisting: true,

@@ -2,6 +2,7 @@
   "name": "aapp-mbs",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/mbs/",
   "dependencies": {
     "@amsterdam/design-system-assets": "^0.2.0",
     "@amsterdam/design-system-css": "^0.7.1",
@@ -90,9 +91,9 @@
       "cobertura"
     ]
   },
-  "proxyAzureOntw": "https://ontw.app.amsterdam.nl/",
+  "proxy": "https://ontw.app.amsterdam.nl/",
   "proxyAzureTest": "https://test.app.amsterdam.nl/",
-  "proxy": "https://acc.app.amsterdam.nl/",
+  "proxyAzureAcc": "https://acc.app.amsterdam.nl/",
   "proxyAzureProd": "https://app.amsterdam.nl/",
   "volta": {
     "node": "20.11.0"

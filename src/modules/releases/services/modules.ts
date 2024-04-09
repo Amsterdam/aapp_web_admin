@@ -5,7 +5,7 @@ import {
   ModuleWithVersions,
 } from 'modules/releases/types/module'
 import {baseApi} from 'services/baseApi'
-import {ApiDomain} from 'services/types'
+import {ApiDirectory} from 'services/types'
 
 type ModuleQueryArg = {
   slug: string
@@ -23,7 +23,7 @@ export const modulesApi = baseApi.injectEndpoints({
       query: module => ({
         body: {...module},
         method: 'POST',
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/module`,
       }),
     }),
@@ -32,7 +32,7 @@ export const modulesApi = baseApi.injectEndpoints({
       query: module => ({
         body: {...module},
         method: 'POST',
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/module/${module.moduleSlug}/version`,
       }),
       transformResponse: (response: {result: ModuleVersion}) => response.result,
@@ -44,7 +44,7 @@ export const modulesApi = baseApi.injectEndpoints({
       invalidatesTags: ['Module'],
       query: ({moduleSlug, version}) => ({
         method: 'DELETE',
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/module/${moduleSlug}/version/${version}`,
       }),
     }),
@@ -54,7 +54,7 @@ export const modulesApi = baseApi.injectEndpoints({
         body: {status},
         method: 'PATCH',
         url: `/module/${slug}`,
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
       }),
     }),
     editModuleVersion: builder.mutation<
@@ -65,7 +65,7 @@ export const modulesApi = baseApi.injectEndpoints({
       query: ({moduleSlug, pathVersion, ...rest}) => ({
         body: {...rest},
         method: 'PATCH',
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/module/${moduleSlug}/version/${pathVersion}`,
       }),
     }),
@@ -80,14 +80,14 @@ export const modulesApi = baseApi.injectEndpoints({
       query: ({slug, version, statusInReleases}) => ({
         body: statusInReleases,
         method: 'PATCH',
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/module/${slug}/version/${version}/status`,
       }),
     }),
     getModule: builder.query<ModuleWithVersions, ModuleQueryArg>({
       providesTags: ['Module'],
       query: ({slug}) => ({
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/module/${slug}`,
       }),
     }),
@@ -97,21 +97,21 @@ export const modulesApi = baseApi.injectEndpoints({
     >({
       providesTags: ['Module'],
       query: ({slug, version}) => ({
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/module/${slug}/version/${version}`,
       }),
     }),
     getModules: builder.query<ModuleVersion[], void>({
       providesTags: ['Module'],
       query: () => ({
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/modules/latest`,
       }),
     }),
     getModulesAvailableForRelease: builder.query<ModuleVersion[], string>({
       providesTags: ['Module'],
       query: releaseVersion => ({
-        domain: ApiDomain.modules,
+        directory: ApiDirectory.modules,
         url: `/modules/available-for-release/${releaseVersion}`,
       }),
     }),

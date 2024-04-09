@@ -7,15 +7,15 @@ import {
 } from '@reduxjs/toolkit/query/react'
 import {msalInstance} from 'components/authentication/Auth.provider'
 import {currentClientId} from 'utils/environment'
-import {ApiDomain} from './types'
+import {ApiDirectory} from './types'
 
 const baseQuery: BaseQueryFn<
-  FetchArgs & {domain: ApiDomain},
+  FetchArgs & {directory: ApiDirectory},
   unknown,
   FetchBaseQueryError
 > = async (args, baseQueryApi, extraOptions) =>
   fetchBaseQuery({
-    baseUrl: args.domain,
+    baseUrl: args.directory,
     prepareHeaders: async headers => {
       const {accessToken} = await msalInstance.acquireTokenSilent({
         scopes: [`api://${currentClientId}/Modules.Edit`],
