@@ -1,5 +1,8 @@
 import './Table.css'
-import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
+import {
+  Table as DesignSystemTable,
+  Paragraph,
+} from '@amsterdam/design-system-react'
 
 import '@amsterdam/design-system-tokens/dist/index.css'
 import '@amsterdam/design-system-assets/font/index.css'
