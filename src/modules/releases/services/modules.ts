@@ -5,6 +5,7 @@ import {
   ModuleWithVersions,
 } from 'modules/releases/types/module'
 import {baseApi} from 'services/baseApi'
+import {ApiDomain} from 'services/types'
 
 type ModuleQueryArg = {
   slug: string
@@ -18,50 +19,55 @@ type ModuleVersionQueryArg = {
 export const modulesApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     createModule: builder.mutation<Module, Module>({
-      query: module => ({
-        url: `/api/v1/module`,
-        method: 'POST',
-        body: {...module},
-      }),
       invalidatesTags: ['Module'],
+      query: module => ({
+        body: {...module},
+        method: 'POST',
+        domain: ApiDomain.modules,
+        url: `/module`,
+      }),
     }),
     createModuleVersion: builder.mutation<ModuleVersion, ModuleVersion>({
+      invalidatesTags: ['Module'],
       query: module => ({
-        url: `/api/v1/module/${module.moduleSlug}/version`,
-        method: 'POST',
         body: {...module},
+        method: 'POST',
+        domain: ApiDomain.modules,
+        url: `/module/${module.moduleSlug}/version`,
       }),
       transformResponse: (response: {result: ModuleVersion}) => response.result,
-      invalidatesTags: ['Module'],
     }),
     deleteModuleVersion: builder.mutation<
       ModuleVersion,
       Pick<ModuleVersion, 'moduleSlug' | 'version'>
     >({
-      query: ({moduleSlug, version}) => ({
-        url: `/api/v1/module/${moduleSlug}/version/${version}`,
-        method: 'DELETE',
-      }),
       invalidatesTags: ['Module'],
+      query: ({moduleSlug, version}) => ({
+        method: 'DELETE',
+        domain: ApiDomain.modules,
+        url: `/module/${moduleSlug}/version/${version}`,
+      }),
     }),
     editModule: builder.mutation<Module, Module>({
-      query: ({slug, status}) => ({
-        url: `/api/v1/module/${slug}`,
-        method: 'PATCH',
-        body: {status},
-      }),
       invalidatesTags: ['Module'],
+      query: ({slug, status}) => ({
+        body: {status},
+        method: 'PATCH',
+        url: `/module/${slug}`,
+        domain: ApiDomain.modules,
+      }),
     }),
     editModuleVersion: builder.mutation<
       ModuleVersion,
       Partial<ModuleVersion> & {pathVersion: string}
     >({
-      query: ({moduleSlug, pathVersion, ...rest}) => ({
-        url: `/api/v1/module/${moduleSlug}/version/${pathVersion}`,
-        method: 'PATCH',
-        body: {...rest},
-      }),
       invalidatesTags: ['Module'],
+      query: ({moduleSlug, pathVersion, ...rest}) => ({
+        body: {...rest},
+        method: 'PATCH',
+        domain: ApiDomain.modules,
+        url: `/module/${moduleSlug}/version/${pathVersion}`,
+      }),
     }),
     editModuleVersionStatus: builder.mutation<
       ModuleVersion,
@@ -70,32 +76,44 @@ export const modulesApi = baseApi.injectEndpoints({
         version: string
       }
     >({
-      query: ({slug, version, statusInReleases}) => ({
-        url: `/api/v1/module/${slug}/version/${version}/status`,
-        method: 'PATCH',
-        body: statusInReleases,
-      }),
       invalidatesTags: ['Module', 'Release'],
+      query: ({slug, version, statusInReleases}) => ({
+        body: statusInReleases,
+        method: 'PATCH',
+        domain: ApiDomain.modules,
+        url: `/module/${slug}/version/${version}/status`,
+      }),
     }),
     getModule: builder.query<ModuleWithVersions, ModuleQueryArg>({
-      query: ({slug}) => `/api/v1/module/${slug}`,
       providesTags: ['Module'],
+      query: ({slug}) => ({
+        domain: ApiDomain.modules,
+        url: `/module/${slug}`,
+      }),
     }),
     getModuleVersion: builder.query<
       ModuleVersionWithStatusInReleases,
       ModuleVersionQueryArg
     >({
-      query: ({slug, version}) => `/api/v1/module/${slug}/version/${version}`,
       providesTags: ['Module'],
+      query: ({slug, version}) => ({
+        domain: ApiDomain.modules,
+        url: `/module/${slug}/version/${version}`,
+      }),
     }),
     getModules: builder.query<ModuleVersion[], void>({
-      query: () => `/api/v1/modules/latest`,
       providesTags: ['Module'],
+      query: () => ({
+        domain: ApiDomain.modules,
+        url: `/modules/latest`,
+      }),
     }),
     getModulesAvailableForRelease: builder.query<ModuleVersion[], string>({
-      query: releaseVersion =>
-        `/api/v1/modules/available-for-release/${releaseVersion}`,
       providesTags: ['Module'],
+      query: releaseVersion => ({
+        domain: ApiDomain.modules,
+        url: `/modules/available-for-release/${releaseVersion}`,
+      }),
     }),
   }),
   overrideExisting: true,

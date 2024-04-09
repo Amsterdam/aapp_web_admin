@@ -6,6 +6,7 @@ import {
   ReleaseWithModuleVersionsWithStatus,
 } from 'modules/releases/types/release'
 import {baseApi} from 'services/baseApi'
+import {ApiDomain} from 'services/types'
 
 type ReleaseQueryArg = {
   version: ReleaseBase['version']
@@ -17,44 +18,49 @@ export const modulesApi = baseApi.injectEndpoints({
       ReleaseWithModuleVersions,
       Partial<ReleaseBaseWithModulesInRelease> & {pathVersion: string}
     >({
+      invalidatesTags: ['Module', 'Release'],
       query: ({pathVersion, ...release}) => ({
-        url: `/api/v1/release/${pathVersion}`,
-        method: 'PATCH',
         body: {
           ...release,
         },
+        domain: ApiDomain.modules,
+        method: 'PATCH',
+        url: `/release/${pathVersion}`,
       }),
-      invalidatesTags: ['Module', 'Release'],
     }),
     createRelease: builder.mutation<
       ReleaseWithModuleVersions,
       ReleaseBaseWithModulesWithStatusInRelease
     >({
+      invalidatesTags: ['Module', 'Release'],
       query: ({published, unpublished, ...release}) => ({
-        url: '/api/v1/release',
-        method: 'POST',
         body: {
           published: published || null,
           unpublished: unpublished || null,
           ...release,
         },
+        domain: ApiDomain.modules,
+        method: 'POST',
+        url: '/release',
       }),
-      invalidatesTags: ['Module', 'Release'],
     }),
     getLatestRelease: builder.query<ReleaseWithModuleVersions, void>({
-      query: () => '/api/v1/release/latest',
       providesTags: ['Release'],
+      query: () => ({domain: ApiDomain.modules, url: '/release/latest'}),
     }),
     getRelease: builder.query<
       ReleaseWithModuleVersionsWithStatus,
       ReleaseQueryArg
     >({
-      query: ({version}) => `/api/v1/release/${version}`,
       providesTags: ['Release'],
+      query: ({version}) => ({
+        domain: ApiDomain.modules,
+        url: `/release/${version}`,
+      }),
     }),
     getReleases: builder.query<ReleaseWithModuleVersions[], void>({
-      query: () => '/api/v1/releases',
       providesTags: ['Release'],
+      query: () => ({domain: ApiDomain.modules, url: '/releases'}),
     }),
   }),
   overrideExisting: true,
