@@ -1,0 +1,23 @@
+.ImageDisplay {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.ImageDisplay img {
+  max-width: 100%;
+  margin-bottom: var(--size-spacing-sm);
+}
+
+.ImageDisplay .DeleteButton {
+  padding: var(--size-spacing-sm);
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
