@@ -1,3 +1,4 @@
+import Button from 'components/ui/button/Button'
 import Icon from 'components/ui/media/Icon'
 import 'react-image-upload/dist/index.css'
 
@@ -14,13 +15,13 @@ const ImageDisplay = ({alt = '', aspectRatio, onDelete, src}: Props) => (
   <figure className="ImageDisplay">
     <img alt={alt} src={src} style={{aspectRatio}} />
     {!!onDelete && (
-      <button
+      <Button
         className="DeleteButton"
+        icon={<Icon name="cross" />}
         onClick={onDelete}
         type="button"
-        aria-label="verwijder">
-        <Icon name="cross" />
-      </button>
+        aria-label="Verwijder afbeelding"
+      />
     )}
   </figure>
 )
