@@ -1,16 +1,22 @@
 import {useNavigate} from 'react-router-dom'
+import {LoginBoundary} from 'components/authentication/LoginBoundary'
 import Button from 'components/ui/button/Button'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 import Screen from 'components/ui/layout/Screen'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import {useLoginApp} from 'hooks/useLoginApp'
 import {DownloadQRCodeRoute} from 'modules/download-qr/routes'
 import {ReleasesRoute} from 'modules/releases/routes'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
 
+  const isLoginApp = useLoginApp()
+  if (isLoginApp) {
+    return <LoginBoundary>Aan het inloggen...</LoginBoundary>
+  }
   return (
     <Screen>
       <Column gutter="lg">
