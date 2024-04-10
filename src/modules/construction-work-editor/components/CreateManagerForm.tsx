@@ -13,7 +13,7 @@ import {ProjectBase} from '../types/projects'
 const CreateManagerForm = () => {
   const form = useForm<ManagerFormType>()
   const {handleSubmit} = form
-  const {data, isError, isLoading} = useProjectsQuery({page_size: 10})
+  const {data, isError, isLoading} = useProjectsQuery({page_size: 1000})
   const projects: ProjectBase[] | undefined = data?.result?.map(project => ({
     id: project.id,
     title: project.title,
@@ -27,7 +27,7 @@ const CreateManagerForm = () => {
   ]
 
   const onSubmit = useCallback((formData: ManagerFormType) => {
-    console.log(formData)
+    // console.log(formData)
   }, [])
 
   if (isLoading) {

@@ -29,7 +29,7 @@ const Indicator = ({checked}: IndicatorProps) => (
 
 type Props = {
   isGroupFormField?: boolean
-  label: string
+  label?: string
 } & UseControllerProps
 
 const CheckboxField = ({isGroupFormField, label, name}: Props) => {
@@ -53,14 +53,14 @@ const CheckboxField = ({isGroupFormField, label, name}: Props) => {
         <Row gutter="sm" valign="center">
           <input
             {...rest}
-            id={label}
+            id={label ?? name}
             hidden
             onChange={onChange}
             type="checkbox"
             value={isGroupFormField ? label : undefined}
           />
           <Indicator checked={value} />
-          <Phrase>{label}</Phrase>
+          {!!label && <Phrase>{label}</Phrase>}
         </Row>
       </label>
     </Column>

@@ -6,3 +6,5 @@ export type Module<T extends Slice<any> = never> = {
   routes: RouteObject[]
   reduxSlice?: T
 }
+
+export type RequiredId<T> = T & {id: number}
