@@ -12,6 +12,6 @@
 .ImageUpload .DeleteIcon {
   padding: var(--size-spacing-sm);
   background-color: #fff;
-  width: 16px;
-  height: 16px;
+  width: var(--size-spacing-md);
+  height: var(--size-spacing-md);
 }
