@@ -7,7 +7,10 @@ import type {
 
 export const projectsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    getProjects: builder.query<ProjectsResponse, ProjectsQueryArgs>({
+    [ProjectsEndpointName.projects]: builder.query<
+      ProjectsResponse,
+      ProjectsQueryArgs
+    >({
       providesTags: ['Projects'],
       query: params => ({
         directory: ApiDirectory.constructionWork,
@@ -19,4 +22,4 @@ export const projectsApi = baseApi.injectEndpoints({
   overrideExisting: true,
 })
 
-export const {useGetProjectsQuery} = projectsApi
+export const {useProjectsQuery} = projectsApi
