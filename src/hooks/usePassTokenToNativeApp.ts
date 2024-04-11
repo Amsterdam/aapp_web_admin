@@ -11,7 +11,7 @@ declare const window: Window &
 const request: SilentRequest = {
   scopes: [`api://${currentClientId}/Modules.Edit`],
 }
-export const useLoginApp = () => {
+export const usePassTokenToNativeApp = () => {
   const {instance} = useMsal()
   const accounts = instance.getAllAccounts()
   const activeAccount = instance.getActiveAccount()

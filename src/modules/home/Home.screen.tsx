@@ -6,14 +6,14 @@ import Row from 'components/ui/layout/Row'
 import Screen from 'components/ui/layout/Screen'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import {useLoginApp} from 'hooks/useLoginApp'
+import {usePassTokenToNativeApp} from 'hooks/usePassTokenToNativeApp'
 import {DownloadQRCodeRoute} from 'modules/download-qr/routes'
 import {ReleasesRoute} from 'modules/releases/routes'
 
 const HomeScreen = () => {
   const navigate = useNavigate()
 
-  const isLoginApp = useLoginApp()
+  const isLoginApp = usePassTokenToNativeApp()
   if (isLoginApp) {
     return <LoginBoundary>Aan het inloggen...</LoginBoundary>
   }
