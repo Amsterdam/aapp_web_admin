@@ -1,0 +1,17 @@
+.ImageUpload .uploader__container {
+  border: 1px dashed #000;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ImageUpload .uploader__btn_wrapper {
+  top: 0;
+}
+
+.ImageUpload .AddIcon,
+.ImageUpload .DeleteIcon {
+  padding: var(--size-spacing-sm);
+  background-color: #fff;
+  width: var(--size-spacing-md);
+  height: var(--size-spacing-md);
+}

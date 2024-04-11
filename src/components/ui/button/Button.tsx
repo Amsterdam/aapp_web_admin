@@ -12,7 +12,7 @@ export type ButtonProps = {
   disabled?: boolean
   flex?: boolean
   icon?: ReactNode
-  label: string
+  label?: string
   variant?: keyof typeof ButtonVariant
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
@@ -35,9 +35,11 @@ const Button = ({
     {...buttonProps}>
     <Row gutter="sm" valign="center">
       {icon}
-      <span className="ButtonLabel" data-ellipsize data-font="body">
-        {label}
-      </span>
+      {!!label && (
+        <span className="ButtonLabel" data-ellipsize data-font="body">
+          {label}
+        </span>
+      )}
     </Row>
   </button>
 )
