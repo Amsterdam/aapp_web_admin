@@ -4,34 +4,36 @@ import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
 import '@amsterdam/design-system-tokens/dist/index.css'
 import '@amsterdam/design-system-assets/font/index.css'
 import '@amsterdam/design-system-css/dist/index.css'
-import {capitalizeString} from 'utils/capitalizeString'
+import TableCell from 'components/ui/table/TableCell'
+import type {TableProps} from 'components/ui/table/types'
 
-type Props<T> = {
-  /** An array of data objects */
-  data: T[]
-  /** An array of names of showing columns */
-  columnNames: Array<keyof T>
-}
-
-export const Table = <T,>({data, columnNames}: Props<T>) => {
+export const Table = <T extends object, K>({
+  data,
+  columns,
+  onRowClick,
+}: TableProps<T, K>) => {
   return (
     <DesignSystemTable className="Table">
       <DesignSystemTable.Header>
-        <DesignSystemTable.Row key={1}>
-          {columnNames.map(name => (
-            <DesignSystemTable.HeaderCell key={name as string}>
-              {capitalizeString(name as string)}
+        <DesignSystemTable.Row>
+          {columns.map(({title}) => (
+            <DesignSystemTable.HeaderCell key={title}>
+              {title}
             </DesignSystemTable.HeaderCell>
           ))}
         </DesignSystemTable.Row>
       </DesignSystemTable.Header>
       <DesignSystemTable.Body>
         {data.map(obj => (
-          <DesignSystemTable.Row key={(obj as string) ?? ''}>
-            {columnNames.map(key => (
-              <DesignSystemTable.Cell key={obj[key] as string}>
-                {obj[key] as string}
-              </DesignSystemTable.Cell>
+          <DesignSystemTable.Row
+            onClick={() => onRowClick?.(obj)}
+            key={JSON.stringify(obj)}>
+            {columns.map(({content}) => (
+              <TableCell
+                obj={obj}
+                content={content}
+                key={JSON.stringify(content)}
+              />
             ))}
           </DesignSystemTable.Row>
         ))}
