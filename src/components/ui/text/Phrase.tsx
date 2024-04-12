@@ -2,7 +2,7 @@ import {ReactNode} from 'react'
 import './Phrase.css'
 
 export type PhraseProps = {
-  children?: ReactNode
+  children: ReactNode
   color?: 'error' | 'inverse' | 'muted' | 'default'
   emphasis?: 'strong' | 'italic'
 }
