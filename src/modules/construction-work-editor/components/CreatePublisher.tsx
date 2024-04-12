@@ -8,7 +8,6 @@ import {useAddPublisherMutation} from 'modules/construction-work-editor/services
 import {PublisherFormType} from 'modules/construction-work-editor/types/publisher'
 
 // TODO: Fix mutate endpoint when BE is ready
-
 const CreatePublisher = () => {
   const navigate = useNavigate()
   const form = useForm<PublisherFormType>()
@@ -23,6 +22,8 @@ const CreatePublisher = () => {
     async (data: PublisherFormType) => {
       await createPublisher({email: data.email})
       if (!isMutatePublisherError) {
+        // TODO: navigate to edit page with id from useAddPublisherMutation POST response, waiting.
+        // for now a quick redirect to the edit page with a hardcoded id
         navigate('/publisher/edit/1234')
       }
     },

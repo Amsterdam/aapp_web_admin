@@ -6,6 +6,7 @@ import {
 import {baseApi} from 'services/baseApi'
 import {ApiDirectory} from 'services/types'
 
+// TODO: Doublecheck the endpoints when BE is done (Response and args are different i guess :D)
 export const publisherApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     [PublisherEndpointNames.addPublisher]: builder.mutation<

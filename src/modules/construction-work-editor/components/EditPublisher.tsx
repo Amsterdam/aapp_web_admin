@@ -15,7 +15,7 @@ type Props = {
 }
 
 const EditPublisher = ({id}: Props) => {
-  // TODO: Get the right data from endpoint Publisher once BE is done
+  // TODO: Use the params id as args in useGetPublisherQuery when the BE is done.
   //   const {data, isLoading, isError} = useGetPublisherQuery({id})
 
   const {
@@ -41,6 +41,7 @@ const EditPublisher = ({id}: Props) => {
       ],
     },
   ]
+
   if (isProjectsLoading) {
     return <Loading />
   }
