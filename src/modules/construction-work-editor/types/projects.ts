@@ -1,5 +1,9 @@
 import type {Paginated} from 'services/types'
 
+export enum ProjectsEndpointName {
+  getProjects = 'getProjects',
+}
+
 type ArticleType = 'article' | 'warning'
 
 type ArticleMetaId = {

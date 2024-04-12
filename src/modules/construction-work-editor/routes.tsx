@@ -1,12 +1,14 @@
 import {RouteObject} from 'react-router-dom'
-import CreateManagerScreen from 'modules/construction-work-editor/screens/CreateManager.screen'
+import CreatePublisherScreen from 'modules/construction-work-editor/screens/CreatePublisher.screen'
 import ProjectScreen from 'modules/construction-work-editor/screens/Project.screen'
 import ProjectsScreen from 'modules/construction-work-editor/screens/Projects.screen'
+import EditPublisherScreen from './screens/EditPublisher.screen'
 
 export enum ConstructionWorkEditorRoute {
   project = '/project/:id',
   projects = '/projecten',
-  createManager = '/manager/create',
+  createPublisher = '/publisher/create',
+  editPublisher = '/publisher/edit/:id',
 }
 
 export const routes: RouteObject[] = [
@@ -18,9 +20,12 @@ export const routes: RouteObject[] = [
     path: ConstructionWorkEditorRoute.project,
     element: <ProjectScreen />,
   },
-
   {
-    path: ConstructionWorkEditorRoute.createManager,
-    element: <CreateManagerScreen />,
+    path: ConstructionWorkEditorRoute.createPublisher,
+    element: <CreatePublisherScreen />,
+  },
+  {
+    path: ConstructionWorkEditorRoute.editPublisher,
+    element: <EditPublisherScreen />,
   },
 ]

@@ -1,13 +1,14 @@
+import {
+  type ProjectsResponse,
+  type ProjectsQueryArgs,
+  ProjectsEndpointName,
+} from 'modules/construction-work-editor/types/projects'
 import {baseApi} from 'services/baseApi'
 import {ApiDirectory} from 'services/types'
-import type {
-  ProjectsResponse,
-  ProjectsQueryArgs,
-} from 'modules/construction-work-editor/types/projects'
 
 export const projectsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    [ProjectsEndpointName.projects]: builder.query<
+    [ProjectsEndpointName.getProjects]: builder.query<
       ProjectsResponse,
       ProjectsQueryArgs
     >({
@@ -22,4 +23,4 @@ export const projectsApi = baseApi.injectEndpoints({
   overrideExisting: true,
 })
 
-export const {useProjectsQuery} = projectsApi
+export const {useGetProjectsQuery} = projectsApi

@@ -5,17 +5,27 @@ import '@amsterdam/design-system-tokens/dist/index.css'
 import '@amsterdam/design-system-assets/font/index.css'
 import '@amsterdam/design-system-css/dist/index.css'
 import TableCell from 'components/ui/table/TableCell'
-import type {TableProps} from 'components/ui/table/types'
+import CheckboxField from '../forms/CheckboxField'
+import type {TableProps, RequiredId} from 'components/ui/table/types'
 
-export const Table = <T extends object, K>({
+const getEntryType = <T,>(
+  entry: T | RequiredId<T>,
+  isSelectable: boolean,
+): entry is RequiredId<T> => {
+  return !!isSelectable
+}
+
+export const Table = <T, K>({
   data,
   columns,
   onRowClick,
+  isSelectable = false,
 }: TableProps<T, K>) => {
   return (
     <DesignSystemTable className="Table">
       <DesignSystemTable.Header>
         <DesignSystemTable.Row>
+          {!!isSelectable && <DesignSystemTable.HeaderCell />}
           {columns.map(({title}) => (
             <DesignSystemTable.HeaderCell key={title}>
               {title}
@@ -24,13 +34,18 @@ export const Table = <T extends object, K>({
         </DesignSystemTable.Row>
       </DesignSystemTable.Header>
       <DesignSystemTable.Body>
-        {data.map(obj => (
+        {data.map(entry => (
           <DesignSystemTable.Row
-            onClick={() => onRowClick?.(obj)}
-            key={JSON.stringify(obj)}>
+            onClick={() => !isSelectable && onRowClick?.(entry)}
+            key={JSON.stringify(entry)}>
+            {getEntryType(entry, isSelectable) && (
+              <DesignSystemTable.Cell key={JSON.stringify(entry)}>
+                <CheckboxField name={`${entry.id}`} />
+              </DesignSystemTable.Cell>
+            )}
             {columns.map(({content}) => (
               <TableCell
-                obj={obj}
+                obj={entry}
                 content={content}
                 key={JSON.stringify(content)}
               />

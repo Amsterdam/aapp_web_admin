@@ -1,17 +1,17 @@
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import CreateManagerForm from 'modules/construction-work-editor/components/CreateManagerForm'
+import CreatePublisher from 'modules/construction-work-editor/components/CreatePublisher'
 
-const CreateManagerScreen = () => {
+const CreatePublisherScreen = () => {
   return (
     <Screen>
       <Column gutter="lg">
         <ScreenTitle subtitle="Maak een OM/CA aan" title="Aanmaken OM/CA" />
-        <CreateManagerForm />
+        <CreatePublisher />
       </Column>
     </Screen>
   )
 }
 
-export default CreateManagerScreen
+export default CreatePublisherScreen

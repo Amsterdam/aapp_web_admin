@@ -1,9 +1,19 @@
+export type RequiredId<T> = T & {id: number}
+
 export type TableProps<T, K> = {
   /** An array of names of showing columns */
   columns: Column<T, K>[]
-  /** An array of data objects */
+  /** A function executes when click on a Row */
+  onRowClick?: (entry: T) => void
+} & (NonSelectableTableProps<T> | SelectableTableProps<T>)
+
+type SelectableTableProps<T> = {
+  data: RequiredId<T>[]
+  isSelectable: true
+}
+type NonSelectableTableProps<T> = {
   data: T[]
-  onRowClick?: (obj: T) => void
+  isSelectable?: false
 }
 
 export type ColumnContent<T, K> = {
