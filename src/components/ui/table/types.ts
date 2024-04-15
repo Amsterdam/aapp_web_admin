@@ -11,7 +11,7 @@ export type ColumnContent<T, K> = {
   renderer?: (value: K) => React.ReactNode
 }[]
 
-export type Column<T, K> = {
+export type Column<T, K = object> = {
   content: ColumnContent<T, K>
   title: string
 }
