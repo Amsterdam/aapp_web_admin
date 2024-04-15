@@ -6,10 +6,12 @@ import type {TableCellProps} from 'components/ui/table/types'
 
 const TableCell = <T, K>({content, obj}: TableCellProps<T, K>) => {
   return (
-    <DesignSystemTable.Cell key={JSON.stringify(content)}>
-      {content.map(({key, renderer}) =>
+    <DesignSystemTable.Cell key={content[0].key as string}>
+      {content.map(({key, renderer}, index) =>
         renderer ? (
-          <div key={obj[key] as string}>{renderer(obj[key] as K)}</div>
+          <div key={JSON.stringify(obj[key]) ?? index}>
+            {renderer(obj[key] as K)}
+          </div>
         ) : (
           <Paragraph key={obj[key] as string}>
             {key === 'title' ? (
