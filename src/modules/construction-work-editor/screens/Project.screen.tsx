@@ -1,5 +1,6 @@
 import {useParams} from 'react-router-dom'
-import Project from '../components/Project'
+import Screen from 'components/ui/layout/Screen'
+import Project from 'modules/construction-work-editor/components/Project'
 
 type Params = {
   id: string
@@ -8,7 +9,11 @@ type Params = {
 const ProjectScreen = () => {
   const {id} = useParams<Params>()
 
-  return <Project id={id} />
+  return (
+    <Screen>
+      <Project id={id} />
+    </Screen>
+  )
 }
 
 export default ProjectScreen
