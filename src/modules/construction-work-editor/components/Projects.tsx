@@ -1,8 +1,4 @@
 import 'components/ui/table/Table.css'
-
-import '@amsterdam/design-system-tokens/dist/index.css'
-import '@amsterdam/design-system-assets/font/index.css'
-import '@amsterdam/design-system-css/dist/index.css'
 import {useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
 import Error from 'components/ui/Error'
@@ -11,10 +7,8 @@ import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import {type Column} from 'components/ui/table/types'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services'
-import type {
-  ProjectBase,
-  ApiImage,
-} from 'modules/construction-work-editor/types/projects'
+import type {ApiImage} from 'modules/construction-work-editor/types/image'
+import type {ProjectBase} from 'modules/construction-work-editor/types/project'
 
 const Projects = () => {
   const navigate = useNavigate()
