@@ -9,6 +9,8 @@ import {msalInstance} from 'components/authentication/Auth.provider'
 import {currentClientId} from 'utils/environment'
 import {ApiDirectory} from './types'
 
+const {REACT_APP_API_KEY: API_KEY} = process.env
+
 const baseQuery: BaseQueryFn<
   FetchArgs & {directory: ApiDirectory},
   unknown,
@@ -22,6 +24,11 @@ const baseQuery: BaseQueryFn<
       })
       headers.set('Authorization', `Bearer ${accessToken}`)
 
+      // TODO: Remove this once the new endpoint is available.
+      if (API_KEY && args.directory === ApiDirectory.constructionWork) {
+        headers.set('X-API-KEY', API_KEY)
+        headers.set('deviceid', 'random-device-id')
+      }
       return headers
     },
   })(args, baseQueryApi, extraOptions as never)
@@ -29,5 +36,5 @@ const baseQuery: BaseQueryFn<
 export const baseApi = createApi({
   baseQuery,
   endpoints: () => ({}),
-  tagTypes: ['Module', 'Release'],
+  tagTypes: ['Module', 'Projects', 'Release'],
 })

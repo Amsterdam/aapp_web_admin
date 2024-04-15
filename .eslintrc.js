@@ -91,7 +91,7 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'],
       },
     ],
-    'no-console': 'error',
+    'no-console': 'warn',
   },
   settings: {
     'import/resolver': {

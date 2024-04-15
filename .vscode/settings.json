@@ -1,12 +1,12 @@
 {
-    "files.associations": {
-        "*.yml": "azure-pipelines"
-    },
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "always"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features",
-        "typescript.preferences.importModuleSpecifier": "non-relative"
-    }
+  "files.associations": {
+    "*.yml": "azure-pipelines"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "typescript.preferences.importModuleSpecifier": "non-relative"
+  }
 }
