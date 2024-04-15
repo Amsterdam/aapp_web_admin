@@ -17,9 +17,11 @@ const Image = ({
   image: {alternativeText, sources},
   variant = ImageVariant.table,
 }: Props) => {
+  const sourceUri = sources[1]?.uri ?? sources[0]?.uri
+  if (!sourceUri) return null
   return (
     <img
-      src={sources[1].uri}
+      src={sourceUri}
       alt={alternativeText ?? ''}
       height={ImageHeight[variant]}
     />
