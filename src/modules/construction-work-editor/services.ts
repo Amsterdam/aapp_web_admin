@@ -1,3 +1,7 @@
+import {
+  ArticlesItem,
+  ArticlesQueryArgs,
+} from 'modules/construction-work-editor/types/article'
 import {baseApi} from 'services/baseApi'
 import {ApiDirectory} from 'services/types'
 import type {
@@ -9,6 +13,14 @@ import type {
 
 export const projectsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
+    getArticles: builder.query<ArticlesItem[], ArticlesQueryArgs>({
+      providesTags: ['Articles'],
+      query: params => ({
+        directory: ApiDirectory.constructionWork,
+        url: '/articles',
+        params,
+      }),
+    }),
     getProjects: builder.query<ProjectsResponse, ProjectsQueryArgs>({
       providesTags: ['Projects'],
       query: params => ({
@@ -29,4 +41,5 @@ export const projectsApi = baseApi.injectEndpoints({
   overrideExisting: true,
 })
 
-export const {useGetProjectsQuery, useGetProjectQuery} = projectsApi
+export const {useGetArticlesQuery, useGetProjectsQuery, useGetProjectQuery} =
+  projectsApi

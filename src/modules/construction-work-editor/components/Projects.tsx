@@ -1,13 +1,11 @@
-import 'components/ui/table/Table.css'
 import {useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
-import Error from 'components/ui/Error'
+import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import {type Column} from 'components/ui/table/types'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services'
-import type {ApiImage} from 'modules/construction-work-editor/types/image'
 import type {ProjectBase} from 'modules/construction-work-editor/types/project'
 
 const Projects = () => {
@@ -20,7 +18,7 @@ const Projects = () => {
     image: project.image,
   }))
 
-  const columns: Column<ProjectBase, ApiImage | null>[] = [
+  const columns: Column<ProjectBase>[] = [
     {
       title: 'Titel',
       content: [{key: 'title'}, {key: 'subtitle'}],
@@ -49,7 +47,7 @@ const Projects = () => {
   }
 
   if (isError || !projects?.length) {
-    return <Error message="Projecten kunnen niet worden getoond" />
+    return <ErrorComponent message="Projecten kunnen niet worden getoond" />
   }
 
   return <Table columns={columns} data={projects} onRowClick={handleRowClick} />

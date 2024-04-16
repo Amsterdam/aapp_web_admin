@@ -1,19 +1,13 @@
-/* eslint-disable camelcase */
 import {skipToken} from '@reduxjs/toolkit/query'
-import Error from 'components/ui/Error'
+import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import BlockLink from 'components/ui/button/BlockLink'
 import Column from 'components/ui/layout/Column'
-import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import Title from 'components/ui/text/Title'
+import ArticlesTable from 'modules/construction-work-editor/components/ArticlesTable'
 import {useGetProjectQuery} from 'modules/construction-work-editor/services'
-import {
-  ArticleBase,
-  ArticleMetaId,
-} from 'modules/construction-work-editor/types/article'
 import getDateFromString from 'utils/getDateFromString'
-import type {Column as ColumnType} from 'components/ui/table/types'
 
 type Props = {
   id?: string
@@ -40,47 +34,10 @@ const Project = ({id}: Props) => {
   }
 
   if (isError || !project) {
-    return <Error message="Project kan niet worden getoond" />
+    return <ErrorComponent message="Project kan niet worden getoond" />
   }
 
-  const {
-    creation_date: creationDate,
-    recent_articles: recentArticles,
-    subtitle,
-    title,
-    url,
-  } = project
-
-  const articles = recentArticles.map(
-    ({id: articleId, meta_id, publisher, title: articleTitle}) => ({
-      id: articleId,
-      meta_id,
-      publisher,
-      title: articleTitle,
-    }),
-  )
-
-  const columns: ColumnType<Partial<ArticleBase>, ArticleMetaId>[] = [
-    {
-      title: 'Titel',
-      content: [{key: 'title'}],
-    },
-    {
-      title: 'Redacteur',
-      content: [{key: 'publisher'}],
-    },
-    {
-      title: 'Type bericht',
-      content: [
-        {
-          key: 'meta_id',
-          renderer: meta_id => (
-            <Phrase>{meta_id?.type === 'article' ? 'Nieuws' : 'App'}</Phrase>
-          ),
-        },
-      ],
-    },
-  ]
+  const {creation_date: creationDate, subtitle, title, url} = project
 
   return (
     <Column gutter="xl">
@@ -94,7 +51,7 @@ const Project = ({id}: Props) => {
           <Phrase>Bekijk op amsterdam.nl</Phrase>
         </BlockLink>
       </Column>
-      <Table columns={columns} data={articles} />
+      <ArticlesTable projectId={id} />
     </Column>
   )
 }

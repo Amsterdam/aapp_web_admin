@@ -22,7 +22,6 @@ export type ArticleBase = ArticleStub & {
   id: number
   modification_date: string
   publication_date: string
-  publisher: ArticlePublisher
   title: string
 }
 
@@ -42,4 +41,17 @@ export type ArticleWarning = ArticleBase & {
   author_email: string | null
   images: ApiImage[] | null
   project: number | null
+}
+
+export type ArticlesQueryArgs = {
+  limit?: number
+  project_ids?: string
+}
+
+export type ArticlesItem = {
+  images: ApiImage[] | null
+  meta_id: ArticleMetaId
+  publication_date: string
+  publisher: ArticlePublisher
+  title: string
 }
