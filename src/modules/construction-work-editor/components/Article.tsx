@@ -7,7 +7,7 @@ type Props = {
 
 const Article = ({id}: Props) => (
   <Column>
-    <Title>Artikel {id}</Title>
+    <Title>Bericht {id}</Title>
   </Column>
 )
 

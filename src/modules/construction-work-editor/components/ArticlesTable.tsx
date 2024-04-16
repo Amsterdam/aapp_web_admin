@@ -43,7 +43,7 @@ const ArticlesTable = ({projectId}: Props) => {
       if (!article.id) {
         return
       }
-      navigate(`/artikel/${article.id}`)
+      navigate(`/bericht/${article.id}`)
     },
     [navigate],
   )

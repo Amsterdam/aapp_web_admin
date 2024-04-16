@@ -4,7 +4,7 @@ import ProjectScreen from './screens/Project.screen'
 import ProjectsScreen from './screens/Projects.screen'
 
 export enum ConstructionWorkEditorRoute {
-  article = '/artikel/:id',
+  article = '/bericht/:id',
   project = '/project/:id',
   projects = '/projecten',
 }
