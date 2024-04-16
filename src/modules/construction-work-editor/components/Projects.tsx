@@ -5,6 +5,7 @@ import Loading from 'components/ui/Loading'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import {type Column} from 'components/ui/table/types'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/routes'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services'
 import type {ProjectBase} from 'modules/construction-work-editor/types/project'
 
@@ -37,7 +38,7 @@ const Projects = () => {
   const handleRowClick = useCallback(
     (project: ProjectBase) => {
       if (!project.id) return
-      navigate(`/project/${project.id}`)
+      navigate(`${ConstructionWorkEditorRoute.project}/${project.id}`)
     },
     [navigate],
   )

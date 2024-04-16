@@ -12,13 +12,12 @@ import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
 import {ConstructionWorkEditorRoute} from '../routes'
 import type {Column as ColumnType} from 'components/ui/table/types'
 import type {
-  ArticleBase,
   ArticlePublisher,
   ArticleType,
 } from 'modules/construction-work-editor/types/article'
 import type {ApiImage} from 'modules/construction-work-editor/types/image'
 
-type ArticlesForTable = {
+type ArticleForTable = {
   id: number
   image?: ApiImage
   publisher: ArticlePublisher
@@ -30,7 +29,7 @@ type Props = {
   projectId?: string
 }
 
-const columns: ColumnType<ArticlesForTable>[] = [
+const columns: ColumnType<ArticleForTable>[] = [
   {
     title: 'Titel',
     content: [{key: 'title'}],
@@ -67,16 +66,16 @@ const ArticlesTable = ({projectId}: Props) => {
   )
 
   const onRowClick = useCallback(
-    (article: Partial<ArticleBase>) => {
+    (article: ArticleForTable) => {
       if (!article.id) {
         return
       }
-      navigate(`/bericht/${article.id}`)
+      navigate(`${ConstructionWorkEditorRoute.article}/${article.id}`)
     },
     [navigate],
   )
 
-  const tableArticles: ArticlesForTable[] | undefined = data?.map(
+  const tableArticles: ArticleForTable[] | undefined = data?.map(
     ({images, meta_id: metaId, publisher, title: articleTitle}) => ({
       id: metaId.id,
       image: images?.[0],
@@ -105,7 +104,7 @@ const ArticlesTable = ({projectId}: Props) => {
       <Table columns={columns} data={tableArticles} onRowClick={onRowClick} />
       <Button
         label="Maak app bericht"
-        onClick={() => navigate(ConstructionWorkEditorRoute.articleNew)}
+        onClick={() => navigate(ConstructionWorkEditorRoute.article)}
       />
     </Column>
   )

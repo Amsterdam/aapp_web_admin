@@ -4,19 +4,18 @@ import ProjectScreen from './screens/Project.screen'
 import ProjectsScreen from './screens/Projects.screen'
 
 export enum ConstructionWorkEditorRoute {
-  articleNew = '/bericht/nieuw',
-  article = '/bericht/:id',
-  project = '/project/:id',
+  article = '/bericht',
+  project = '/project',
   projects = '/projecten',
 }
 
 export const routes: RouteObject[] = [
   {
-    path: ConstructionWorkEditorRoute.articleNew,
+    path: ConstructionWorkEditorRoute.article,
     element: <ArticleScreen />,
   },
   {
-    path: ConstructionWorkEditorRoute.article,
+    path: `${ConstructionWorkEditorRoute.article}/:id`,
     element: <ArticleScreen />,
   },
   {
@@ -24,7 +23,7 @@ export const routes: RouteObject[] = [
     element: <ProjectsScreen />,
   },
   {
-    path: ConstructionWorkEditorRoute.project,
+    path: `${ConstructionWorkEditorRoute.project}/:id`,
     element: <ProjectScreen />,
   },
 ]
