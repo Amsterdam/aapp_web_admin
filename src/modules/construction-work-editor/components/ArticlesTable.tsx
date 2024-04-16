@@ -3,11 +3,14 @@ import {useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
+import Button from 'components/ui/button/Button'
+import Column from 'components/ui/layout/Column'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
-import {Column} from 'components/ui/table/types'
 import Phrase from 'components/ui/text/Phrase'
-import {useGetArticlesQuery} from '../services'
+import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
+import {ConstructionWorkEditorRoute} from '../routes'
+import type {Column as ColumnType} from 'components/ui/table/types'
 import type {
   ArticleBase,
   ArticlePublisher,
@@ -58,7 +61,7 @@ const ArticlesTable = ({projectId}: Props) => {
     }),
   )
 
-  const columns: Column<ArticlesForTable>[] = [
+  const columns: ColumnType<ArticlesForTable>[] = [
     {
       title: 'Titel',
       content: [{key: 'title'}],
@@ -98,7 +101,13 @@ const ArticlesTable = ({projectId}: Props) => {
   }
 
   return (
-    <Table columns={columns} data={tableArticles} onRowClick={onRowClick} />
+    <Column>
+      <Table columns={columns} data={tableArticles} onRowClick={onRowClick} />
+      <Button
+        label="Maak app bericht"
+        onClick={() => navigate(ConstructionWorkEditorRoute.articleNew)}
+      />
+    </Column>
   )
 }
 

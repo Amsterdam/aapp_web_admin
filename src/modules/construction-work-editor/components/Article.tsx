@@ -5,10 +5,13 @@ type Props = {
   id?: string
 }
 
-const Article = ({id}: Props) => (
-  <Column>
-    <Title>Bericht {id}</Title>
-  </Column>
-)
+const Article = ({id}: Props) => {
+  const isNewArticle = !id
+  return (
+    <Column>
+      <Title>{`${isNewArticle ? 'Nieuw bericht' : `Bericht: ${id}`}`}</Title>
+    </Column>
+  )
+}
 
 export default Article
