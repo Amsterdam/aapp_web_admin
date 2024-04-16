@@ -19,7 +19,7 @@ const columns: Column<ProjectBase>[] = [
     content: [
       {
         key: 'image',
-        renderer: image => image && <Image image={image} />,
+        renderer: ({image}) => image && <Image image={image} />,
       },
     ],
   },
@@ -51,7 +51,14 @@ const Projects = () => {
     return <ErrorComponent message="Projecten kunnen niet worden getoond" />
   }
 
-  return <Table columns={columns} data={projects} onRowClick={handleRowClick} />
+  return (
+    <Table
+      columns={columns}
+      data={projects}
+      keyGetter={({id}) => id.toString()}
+      onRowClick={handleRowClick}
+    />
+  )
 }
 
 export default Projects

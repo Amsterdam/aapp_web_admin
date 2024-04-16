@@ -6,27 +6,33 @@
   margin-inline: calc(var(--size-spacing-sm) * -1);
 }
 
-.Indicator {
+.CheckboxToggle button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.CheckboxIndicator {
   --bg-color: var(--bg-color-cutout);
   --color: var(--border-color-pressable);
 }
 
-.Indicator[data-checked="true"] {
+.CheckboxIndicator[data-checked="true"] {
   --bg-color: var(--border-color-pressable);
   --color: var(--bg-color-cutout);
 }
 
-.Indicator > rect {
+.CheckboxIndicator > rect {
   fill: var(--bg-color);
   stroke: var(--color);
   stroke-width: var(--size-border-xl);
 }
 
-.Indicator > path {
+.CheckboxIndicator > path {
   fill: var(--text-color-inverse);
 }
 
-.Indicator > line {
+.CheckboxIndicator > line {
   stroke: var(--border-color-pressable);
   stroke-width: var(--size-border-lg);
 }

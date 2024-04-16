@@ -39,7 +39,7 @@ const columns: ColumnType<ArticleForTable>[] = [
     content: [
       {
         key: 'type',
-        renderer: type => (type === 'article' ? 'Nieuws' : 'App'),
+        renderer: ({type}) => (type === 'article' ? 'Nieuws' : 'App'),
       },
     ],
   },
@@ -48,7 +48,7 @@ const columns: ColumnType<ArticleForTable>[] = [
     content: [
       {
         key: 'image',
-        renderer: image => image && <Image image={image} />,
+        renderer: ({image}) => image && <Image image={image} />,
       },
     ],
   },
@@ -101,7 +101,12 @@ const ArticlesTable = ({projectId}: Props) => {
 
   return (
     <Column>
-      <Table columns={columns} data={tableArticles} onRowClick={onRowClick} />
+      <Table
+        columns={columns}
+        data={tableArticles}
+        keyGetter={({id}) => id}
+        onRowClick={onRowClick}
+      />
       <Button
         label="Maak app bericht"
         onClick={() => navigate(ConstructionWorkEditorRoute.article)}
