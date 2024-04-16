@@ -4,14 +4,14 @@ import countPropertyOccurrences from 'utils/countPropertyOccurrences'
 import type {TableCellProps} from 'components/ui/table/types'
 
 const defaultRenderer = <T extends object>(
-  obj: T,
+  rowData: T,
   key: keyof T,
   highLighted = false,
 ) => {
   const value =
-    typeof obj[key] === 'string'
-      ? (obj[key] as string)
-      : JSON.stringify(obj[key])
+    typeof rowData[key] === 'string'
+      ? (rowData[key] as string)
+      : JSON.stringify(rowData[key])
 
   return (
     <Phrase emphasis={highLighted ? 'strong' : undefined} key={value}>
@@ -20,13 +20,13 @@ const defaultRenderer = <T extends object>(
   )
 }
 
-const TableCell = <T extends object>({content, obj}: TableCellProps<T>) => {
-  const hasMultipleKeys = countPropertyOccurrences(content, 'key') > 1
+const TableCell = <T extends object>({config, rowData}: TableCellProps<T>) => {
+  const hasMultipleKeys = countPropertyOccurrences(config, 'key') > 1
 
   return (
     <DesignSystemTable.Cell>
-      {content.map(({key, renderer = defaultRenderer}, index) =>
-        renderer(obj, key, hasMultipleKeys && index === 0),
+      {config.map(({key, renderer = defaultRenderer}, index) =>
+        renderer(rowData, key, hasMultipleKeys && index === 0),
       )}
     </DesignSystemTable.Cell>
   )

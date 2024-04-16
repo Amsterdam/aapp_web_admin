@@ -11,17 +11,19 @@ import type {ProjectBase} from 'modules/construction-work-editor/types/project'
 
 const columns: Column<ProjectBase>[] = [
   {
+    config: [{key: 'title'}, {key: 'subtitle'}],
+    id: 'title',
     title: 'Titel',
-    content: [{key: 'title'}, {key: 'subtitle'}],
   },
   {
-    title: '',
-    content: [
+    config: [
       {
         key: 'image',
         renderer: ({image}) => image && <Image image={image} />,
       },
     ],
+    id: 'image',
+    title: '',
   },
 ]
 

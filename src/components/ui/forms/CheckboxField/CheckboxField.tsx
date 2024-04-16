@@ -5,20 +5,14 @@ import Row from 'components/ui/layout/Row'
 import Phrase from 'components/ui/text/Phrase'
 import {CheckboxIndicator} from './CheckboxIndicator'
 
-import './Checkbox.css'
+import './CheckboxField.css'
 
 type Props = {
-  hideLabel?: boolean
   isGroupFormField?: boolean
   label: string
 } & UseControllerProps
 
-const CheckboxField = ({
-  hideLabel = false,
-  isGroupFormField,
-  label,
-  name,
-}: Props) => {
+const CheckboxField = ({isGroupFormField, label, name}: Props) => {
   const {register, setValue, watch} = useFormContext()
   const value = isGroupFormField
     ? [...(watch(name) ?? [])].includes(label)
@@ -39,14 +33,14 @@ const CheckboxField = ({
         <Row gutter="sm" valign="center">
           <input
             {...rest}
-            id={label}
             hidden
+            id={label}
             onChange={onChange}
             type="checkbox"
             value={isGroupFormField ? label : undefined}
           />
           <CheckboxIndicator status={value} />
-          {!!hideLabel && <Phrase>{label}</Phrase>}
+          <Phrase>{label}</Phrase>
         </Row>
       </label>
     </Column>

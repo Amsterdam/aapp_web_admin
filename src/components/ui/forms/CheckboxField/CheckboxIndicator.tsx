@@ -1,4 +1,4 @@
-import './Checkbox.css'
+import './CheckboxIndicator.css'
 
 export type CheckboxIndicatorStatus = boolean | 'indeterminate'
 

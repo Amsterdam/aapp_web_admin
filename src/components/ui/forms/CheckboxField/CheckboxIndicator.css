@@ -1,17 +1,3 @@
-.CheckboxField {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--size-spacing-sm);
-  margin-inline: calc(var(--size-spacing-sm) * -1);
-}
-
-.CheckboxToggle button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
-
 .CheckboxIndicator {
   --bg-color: var(--bg-color-cutout);
   --color: var(--border-color-pressable);

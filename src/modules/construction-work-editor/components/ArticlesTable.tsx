@@ -31,26 +31,29 @@ type Props = {
 
 const columns: ColumnType<ArticleForTable>[] = [
   {
+    config: [{key: 'title'}],
+    id: 'title',
     title: 'Titel',
-    content: [{key: 'title'}],
   },
   {
-    title: 'Type bericht',
-    content: [
+    config: [
       {
         key: 'type',
         renderer: ({type}) => (type === 'article' ? 'Nieuws' : 'App'),
       },
     ],
+    id: 'type',
+    title: 'Type bericht',
   },
   {
-    title: '',
-    content: [
+    config: [
       {
         key: 'image',
         renderer: ({image}) => image && <Image image={image} />,
       },
     ],
+    id: 'image',
+    title: '',
   },
 ]
 
