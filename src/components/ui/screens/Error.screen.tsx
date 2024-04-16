@@ -1,4 +1,4 @@
-import Error from 'components/ui/Error'
+import ErrorComponent from 'components/ui/Error'
 import Screen from 'components/ui/layout/Screen'
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 
 const ErrorScreen = ({message}: Props) => (
   <Screen>
-    <Error message={message} />
+    <ErrorComponent message={message} />
   </Screen>
 )
 
