@@ -13,9 +13,11 @@ export const TableRow = <T extends object>({
   rowData,
   withCheckboxes,
 }: TableRowProps<T>) => (
-  <DesignSystemTable.Row onClick={() => onRowClick?.(rowData)}>
+  <DesignSystemTable.Row
+    className="TableRow"
+    onClick={() => onRowClick?.(rowData)}>
     {!!withCheckboxes && (
-      <DesignSystemTable.Cell className="TableRowCheckboxCell">
+      <DesignSystemTable.Cell className="CheckboxCell">
         <CheckboxToggle
           ariaLabel="Toewijzen"
           checked={isRowChecked?.(rowData)}

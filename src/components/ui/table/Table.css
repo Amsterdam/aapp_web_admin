@@ -3,11 +3,3 @@
   margin: 0;
   padding: 0
 }
-
-[data-list-marker="true"] {
-  margin-inline-start: var(--size-spacing-md);
-}
-  
-.TableRowCheckboxCell {
-  vertical-align: middle;
-}

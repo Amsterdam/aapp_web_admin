@@ -1,5 +1,5 @@
 import {AriaAttributes} from 'react'
-import {CheckboxIndicator} from './CheckboxIndicator'
+import {CheckboxIndicator} from 'components/ui/forms/CheckboxField/CheckboxIndicator'
 
 import './CheckboxToggle.css'
 
