@@ -5,11 +5,11 @@ type Props = {
   message: string
 }
 
-const Error = ({message}: Props) => (
+const ErrorComponent = ({message}: Props) => (
   <Column>
     <Phrase emphasis="strong">Fout</Phrase>
     <Phrase>{message}</Phrase>
   </Column>
 )
 
-export default Error
+export default ErrorComponent

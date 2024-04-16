@@ -1,22 +1,22 @@
-export type TableProps<T, K> = {
+export type TableProps<T> = {
   /** An array of names of showing columns */
-  columns: Column<T, K>[]
+  columns: Column<T>[]
   /** An array of data objects */
   data: T[]
   onRowClick?: (obj: T) => void
 }
 
-export type ColumnContent<T, K> = {
+export type ColumnContent<T> = {
   key: keyof T
-  renderer?: (value: K) => React.ReactNode
+  renderer?: (value: never) => React.ReactNode
 }[]
 
-export type Column<T, K> = {
-  content: ColumnContent<T, K>
+export type Column<T> = {
+  content: ColumnContent<T>
   title: string
 }
 
-export type TableCellProps<T, K> = {
-  content: ColumnContent<T, K>
+export type TableCellProps<T> = {
+  content: ColumnContent<T>
   obj: T
 }

@@ -7,11 +7,11 @@ import '@amsterdam/design-system-css/dist/index.css'
 import TableCell from 'components/ui/table/TableCell'
 import type {TableProps} from 'components/ui/table/types'
 
-export const Table = <T extends object, K>({
+export const Table = <T extends object>({
   data,
   columns,
   onRowClick,
-}: TableProps<T, K>) => {
+}: TableProps<T>) => {
   return (
     <DesignSystemTable className="Table">
       <DesignSystemTable.Header>
