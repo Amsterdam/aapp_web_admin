@@ -8,6 +8,22 @@ import {type Column} from 'components/ui/table/types'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services'
 import type {ProjectBase} from 'modules/construction-work-editor/types/project'
 
+const columns: Column<ProjectBase>[] = [
+  {
+    title: 'Titel',
+    content: [{key: 'title'}, {key: 'subtitle'}],
+  },
+  {
+    title: '',
+    content: [
+      {
+        key: 'image',
+        renderer: image => image && <Image image={image} />,
+      },
+    ],
+  },
+]
+
 const Projects = () => {
   const navigate = useNavigate()
   const {data, isError, isLoading} = useGetProjectsQuery({page_size: 1000})
@@ -17,22 +33,6 @@ const Projects = () => {
     subtitle: project.subtitle,
     image: project.image,
   }))
-
-  const columns: Column<ProjectBase>[] = [
-    {
-      title: 'Titel',
-      content: [{key: 'title'}, {key: 'subtitle'}],
-    },
-    {
-      title: '',
-      content: [
-        {
-          key: 'image',
-          renderer: image => image && <Image image={image} />,
-        },
-      ],
-    },
-  ]
 
   const handleRowClick = useCallback(
     (project: ProjectBase) => {

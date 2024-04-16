@@ -30,6 +30,31 @@ type Props = {
   projectId?: string
 }
 
+const columns: ColumnType<ArticlesForTable>[] = [
+  {
+    title: 'Titel',
+    content: [{key: 'title'}],
+  },
+  {
+    title: 'Type bericht',
+    content: [
+      {
+        key: 'type',
+        renderer: type => (type === 'article' ? 'Nieuws' : 'App'),
+      },
+    ],
+  },
+  {
+    title: '',
+    content: [
+      {
+        key: 'image',
+        renderer: image => image && <Image image={image} />,
+      },
+    ],
+  },
+]
+
 const ArticlesTable = ({projectId}: Props) => {
   const navigate = useNavigate()
 
@@ -60,31 +85,6 @@ const ArticlesTable = ({projectId}: Props) => {
       type: metaId.type,
     }),
   )
-
-  const columns: ColumnType<ArticlesForTable>[] = [
-    {
-      title: 'Titel',
-      content: [{key: 'title'}],
-    },
-    {
-      title: 'Type bericht',
-      content: [
-        {
-          key: 'type',
-          renderer: type => (type === 'article' ? 'Nieuws' : 'App'),
-        },
-      ],
-    },
-    {
-      title: '',
-      content: [
-        {
-          key: 'image',
-          renderer: image => image && <Image image={image} />,
-        },
-      ],
-    },
-  ]
 
   if (isLoading) {
     return <Loading />
