@@ -104,6 +104,7 @@ export const projectsApi = baseApi.injectEndpoints({
 
 export const {
   useAddPublisherMutation,
+  useAddProjectsForPublisherMutation,
   useGetArticlesQuery,
   useGetProjectQuery,
   useGetProjectsQuery,

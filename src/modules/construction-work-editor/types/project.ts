@@ -76,11 +76,11 @@ export type Project = ProjectBase & {
   timeline: ProjectTimeline | null
   url: string
 }
-type ProjectsItem = ProjectBase & {
+
+export type ProjectsItem = ProjectBase & {
   recent_articles: ArticleStub[]
 }
 
-// api
 export type ProjectsQueryArgs = {
   article_max_age?: number
   page?: number

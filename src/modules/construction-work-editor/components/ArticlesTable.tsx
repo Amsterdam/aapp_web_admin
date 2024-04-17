@@ -99,7 +99,7 @@ const ArticlesTable = ({projectId}: Props) => {
       <Table
         config={columns}
         data={tableArticles}
-        keyGetter={({id}) => id}
+        keyGetter={({id}, affix = '') => `${affix}${id.toString()}`}
         onRowClick={onRowClick}
       />
       <Button

@@ -2,13 +2,11 @@ import {Paragraph} from '@amsterdam/design-system-react'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import {EditPublisherTable} from 'modules/construction-work-editor/components/Publisher/EditPublisherTable'
 
 type Props = {
   email: string
 }
-
-// TODO: this will follow
-const EditPublisherTable = (_props: Props) => null
 
 const EditPublisher = ({email}: Props) => (
   <Column gutter="lg">

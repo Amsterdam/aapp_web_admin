@@ -61,7 +61,7 @@ const Projects = () => {
     <Table
       config={columns}
       data={projects}
-      keyGetter={({id}) => id.toString()}
+      keyGetter={({id}, affix = '') => `${affix}${id.toString()}`}
       onRowClick={handleRowClick}
     />
   )
