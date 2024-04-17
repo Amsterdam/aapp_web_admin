@@ -50,6 +50,11 @@ const Projects = () => {
     [data?.result],
   )
 
+  const filteredProjects = useMemo(
+    () => filterBySearchStringMatch<ProjectBase>(projects, query),
+    [projects, query],
+  )
+
   const handleRowClick = useCallback(
     (project: ProjectBase) => {
       if (!project.id) return
@@ -69,8 +74,7 @@ const Projects = () => {
   return (
     <Table
       config={columns}
-      data={filterBySearchStringMatch<ProjectBase>(projects, query)}
-      filter={query}
+      data={filteredProjects}
       filterCallback={setQuery}
       keyGetter={({id}, affix = '') => `${affix}${id.toString()}`}
       onRowClick={handleRowClick}

@@ -17,7 +17,7 @@ export const Table = <T extends object>(props: TableProps<T>) => {
     config,
     data,
     getIsRowSelected,
-    filter = '',
+    filterQuery = '',
     filterCallback,
     keyGetter = defaultKeyGetter,
     onRowToggle,
@@ -26,12 +26,12 @@ export const Table = <T extends object>(props: TableProps<T>) => {
   const selectable = !!getIsRowSelected && !!onRowToggle
 
   return (
-    <Column>
+    <Column gutter="sm">
       {!!filterCallback && (
         <TextFilter
           callback={filterCallback}
           placeholder="Zoek in deze tabel"
-          value={filter}
+          value={filterQuery}
         />
       )}
       <DesignSystemTable className="Table">
