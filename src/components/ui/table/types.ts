@@ -3,21 +3,18 @@ import {Key, ReactNode} from 'react'
 export type ColumnConfig<T extends object> = {
   key: keyof T
   renderer?: (obj: T) => ReactNode
-}[]
-
-export type Column<T extends object> = {
-  config: ColumnConfig<T>
   id: string
-  title: string
+  title?: string
 }
 
 export type TableProps<T extends object> = {
-  /** An array of names of showing columns */
-  columns: Column<T>[]
+  config: ColumnConfig<T>[]
   /** An array of data objects */
   data: T[]
+  /** Will be called per row to determine if the checkbox should be checked */
   isRowChecked?: (obj: T) => boolean
   loading?: boolean
+  /** Will be called per row and per cell (with affix) to get a unique key */
   keyGetter: (obj: T, affix?: string) => Key
   onRowClick?: (obj: T) => void
   onRowToggle?: (obj: T, checked: boolean) => void
@@ -26,10 +23,10 @@ export type TableProps<T extends object> = {
 export type TableRowProps<T extends object> = TableProps<T> & {
   key: Key
   rowData: T
-  withCheckboxes: boolean
+  withCheckbox: boolean
 }
 
 export type TableCellProps<T extends object> = {
-  config: ColumnConfig<T>
+  configItem: ColumnConfig<T>
   rowData: T
 }

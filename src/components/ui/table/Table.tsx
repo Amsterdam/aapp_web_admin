@@ -11,7 +11,7 @@ import './Table.css'
 
 export const Table = <T extends object>(props: TableProps<T>) => {
   const {
-    columns,
+    config,
     data,
     isRowChecked,
     keyGetter = defaultKeyGetter,
@@ -25,8 +25,8 @@ export const Table = <T extends object>(props: TableProps<T>) => {
       <DesignSystemTable.Header>
         <DesignSystemTable.Row>
           {!!withCheckboxes && <DesignSystemTable.HeaderCell />}
-          {columns.map(({title}) => (
-            <DesignSystemTable.HeaderCell key={title}>
+          {config.map(({id, title}) => (
+            <DesignSystemTable.HeaderCell key={id}>
               {title}
             </DesignSystemTable.HeaderCell>
           ))}
@@ -38,7 +38,7 @@ export const Table = <T extends object>(props: TableProps<T>) => {
             {...props}
             key={keyGetter(obj)}
             rowData={obj}
-            withCheckboxes={withCheckboxes}
+            withCheckbox={withCheckboxes}
           />
         ))}
       </DesignSystemTable.Body>

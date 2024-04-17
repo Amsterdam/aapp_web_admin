@@ -4,25 +4,29 @@ import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
-import {type Column} from 'components/ui/table/types'
+import Phrase from 'components/ui/text/Phrase'
+import Title from 'components/ui/text/Title'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/routes'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services'
+import type {ColumnConfig} from 'components/ui/table/types'
 import type {ProjectBase} from 'modules/construction-work-editor/types/project'
 
-const columns: Column<ProjectBase>[] = [
+const columns: ColumnConfig<ProjectBase>[] = [
   {
-    config: [{key: 'title'}, {key: 'subtitle'}],
+    key: 'title',
     id: 'title',
+    renderer: ({title, subtitle}) => (
+      <>
+        <Title level={3}>{title}</Title>
+        <Phrase>{subtitle}</Phrase>
+      </>
+    ),
     title: 'Titel',
   },
   {
-    config: [
-      {
-        key: 'image',
-        renderer: ({image}) => image && <Image image={image} />,
-      },
-    ],
+    key: 'image',
     id: 'image',
+    renderer: ({image}) => image && <Image image={image} />,
     title: '',
   },
 ]
@@ -55,7 +59,7 @@ const Projects = () => {
 
   return (
     <Table
-      columns={columns}
+      config={columns}
       data={projects}
       keyGetter={({id}) => id.toString()}
       onRowClick={handleRowClick}

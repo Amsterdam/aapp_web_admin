@@ -10,7 +10,7 @@ import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
 import {ConstructionWorkEditorRoute} from '../routes'
-import type {Column as ColumnType} from 'components/ui/table/types'
+import type {ColumnConfig} from 'components/ui/table/types'
 import type {
   ArticlePublisher,
   ArticleType,
@@ -29,30 +29,22 @@ type Props = {
   projectId?: string
 }
 
-const columns: ColumnType<ArticleForTable>[] = [
+const columns: ColumnConfig<ArticleForTable>[] = [
   {
-    config: [{key: 'title'}],
+    key: 'title',
     id: 'title',
     title: 'Titel',
   },
   {
-    config: [
-      {
-        key: 'type',
-        renderer: ({type}) => (type === 'article' ? 'Nieuws' : 'App'),
-      },
-    ],
+    key: 'type',
     id: 'type',
+    renderer: ({type}) => (type === 'article' ? 'Nieuws' : 'App'),
     title: 'Type bericht',
   },
   {
-    config: [
-      {
-        key: 'image',
-        renderer: ({image}) => image && <Image image={image} />,
-      },
-    ],
+    key: 'image',
     id: 'image',
+    renderer: ({image}) => image && <Image image={image} />,
     title: '',
   },
 ]
@@ -105,7 +97,7 @@ const ArticlesTable = ({projectId}: Props) => {
   return (
     <Column>
       <Table
-        columns={columns}
+        config={columns}
         data={tableArticles}
         keyGetter={({id}) => id}
         onRowClick={onRowClick}

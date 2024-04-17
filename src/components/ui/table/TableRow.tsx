@@ -1,22 +1,22 @@
 import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
 import CheckboxToggle from 'components/ui/forms/CheckboxField/CheckboxToggle'
-import TableCell from 'components/ui/table/TableCell'
+import {defaultRenderer} from 'components/ui/table/utils'
 import type {TableRowProps} from 'components/ui/table/types'
 
 export const TableRow = <T extends object>({
-  columns,
+  config,
   isRowChecked,
   keyGetter,
   loading,
   onRowClick,
   onRowToggle,
   rowData,
-  withCheckboxes,
+  withCheckbox,
 }: TableRowProps<T>) => (
   <DesignSystemTable.Row
     className="TableRow"
     onClick={() => onRowClick?.(rowData)}>
-    {!!withCheckboxes && (
+    {!!withCheckbox && (
       <DesignSystemTable.Cell className="CheckboxCell">
         <CheckboxToggle
           ariaLabel="Toewijzen"
@@ -29,12 +29,10 @@ export const TableRow = <T extends object>({
         />
       </DesignSystemTable.Cell>
     )}
-    {columns.map(({config, id}) => (
-      <TableCell
-        rowData={rowData}
-        config={config}
-        key={keyGetter(rowData, id)}
-      />
+    {config.map(({id, key, renderer = defaultRenderer}) => (
+      <DesignSystemTable.Cell key={keyGetter(rowData, id)}>
+        {renderer(rowData, key)}
+      </DesignSystemTable.Cell>
     ))}
   </DesignSystemTable.Row>
 )

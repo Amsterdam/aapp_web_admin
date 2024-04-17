@@ -25,8 +25,8 @@ type Params = {
 }
 
 type FormData = {
-  releases: string[]
   allSelected: CheckboxIndicatorStatus
+  releases: string[]
 }
 
 const EditModuleVersionStatusScreen = () => {
