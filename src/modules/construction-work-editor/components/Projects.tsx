@@ -1,4 +1,4 @@
-import {useCallback} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
@@ -8,6 +8,7 @@ import Phrase from 'components/ui/text/Phrase'
 import Title from 'components/ui/text/Title'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/routes'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services'
+import {addSearchString, filterBySearchStringMatch} from 'utils/searchString'
 import type {ColumnConfig} from 'components/ui/table/types'
 import type {ProjectBase} from 'modules/construction-work-editor/types/project'
 
@@ -32,14 +33,22 @@ const columns: ColumnConfig<ProjectBase>[] = [
 ]
 
 const Projects = () => {
+  const [query, setQuery] = useState<string>()
   const navigate = useNavigate()
   const {data, isError, isLoading} = useGetProjectsQuery()
-  const projects = data?.result?.map(project => ({
-    id: project.id,
-    title: project.title,
-    subtitle: project.subtitle,
-    image: project.image,
-  }))
+  const projects = useMemo(
+    () =>
+      addSearchString(
+        data?.result?.map(project => ({
+          id: project.id,
+          title: project.title,
+          subtitle: project.subtitle,
+          image: project.image,
+        })),
+        ['title', 'subtitle'],
+      ),
+    [data?.result],
+  )
 
   const handleRowClick = useCallback(
     (project: ProjectBase) => {
@@ -60,7 +69,9 @@ const Projects = () => {
   return (
     <Table
       config={columns}
-      data={projects}
+      data={filterBySearchStringMatch<ProjectBase>(projects, query)}
+      filter={query}
+      filterCallback={setQuery}
       keyGetter={({id}, affix = '') => `${affix}${id.toString()}`}
       onRowClick={handleRowClick}
     />

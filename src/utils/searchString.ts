@@ -15,10 +15,13 @@ export const getSearchString = (input: unknown): string => {
   }
 
   if (typeof input === 'object') {
-    return Object.values(input).map(getSearchString).join(SEPARATOR)
+    return Object.values(input)
+      .map(getSearchString)
+      .join(SEPARATOR)
+      .toLowerCase()
   }
 
-  return input.toString()
+  return input.toString().toLowerCase()
 }
 
 /**
@@ -28,7 +31,7 @@ export const applyAllowList = <T extends GenericResponse>(
   input: T,
   allowList?: string[],
 ) => {
-  if (!allowList) {
+  if (!allowList?.length) {
     return input
   }
 
@@ -47,8 +50,8 @@ export const applyAllowList = <T extends GenericResponse>(
  * Adds a search string to the input object based on the allow list.
  */
 export const addSearchString = <T extends GenericResponse>(
-  input: T[],
-  allowList?: string[],
+  input: T[] = [],
+  allowList: string[] = [],
 ): WithSearchString<T>[] =>
   input.map(item => ({
     ...item,
@@ -67,6 +70,8 @@ export const filterBySearchStringMatch = <T extends GenericResponse>(
   }
 
   return input.filter(({searchString}) =>
-    searchString.split(SEPARATOR).includes(query),
+    searchString
+      .split(SEPARATOR)
+      .some(item => item.includes(query.toLowerCase())),
   )
 }

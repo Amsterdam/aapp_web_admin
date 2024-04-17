@@ -65,6 +65,17 @@ describe('addSearchString', () => {
     ])
   })
 
+  it('adds searchString using lowercase only', () => {
+    const input = [{a: 'Apple', b: 'Banana'}]
+    const expectedsearchString = 'apple|banana'
+    expect(addSearchString(input)).toEqual([
+      {
+        ...input[0],
+        searchString: expectedsearchString,
+      },
+    ])
+  })
+
   it('filters out properties before adding searchString if allowList is provided', () => {
     const input = [{a: 1, b: 2, c: 3}]
     const allowList = ['a', 'b']
@@ -80,9 +91,9 @@ describe('addSearchString', () => {
 
 describe('filterBySearchStringMatch', () => {
   const testData = [
-    {id: 1, name: 'Apple', searchString: 'Apple|Fruit'},
-    {id: 2, name: 'Banana', searchString: 'Banana|Fruit'},
-    {id: 3, name: 'Carrot', searchString: 'Carrot|Vegetable'},
+    {id: 1, name: 'apple', searchString: 'apple|fruit'},
+    {id: 2, name: 'banana', searchString: 'banana|fruit'},
+    {id: 3, name: 'carrot', searchString: 'carrot|vegetable'},
   ]
 
   it('returns original array if query is empty', () => {
@@ -91,33 +102,47 @@ describe('filterBySearchStringMatch', () => {
   })
 
   it('filters data based on query match', () => {
-    const result1 = filterBySearchStringMatch(testData, 'Banana')
+    const result1 = filterBySearchStringMatch(testData, 'banana')
     expect(result1).toEqual([
-      {id: 2, name: 'Banana', searchString: 'Banana|Fruit'},
+      {id: 2, name: 'banana', searchString: 'banana|fruit'},
     ])
 
-    const result2 = filterBySearchStringMatch(testData, 'Fruit')
+    const result2 = filterBySearchStringMatch(testData, 'fruit')
     expect(result2).toEqual([
-      {id: 1, name: 'Apple', searchString: 'Apple|Fruit'},
-      {id: 2, name: 'Banana', searchString: 'Banana|Fruit'},
+      {id: 1, name: 'apple', searchString: 'apple|fruit'},
+      {id: 2, name: 'banana', searchString: 'banana|fruit'},
     ])
 
-    const result3 = filterBySearchStringMatch(testData, 'Vegetable')
+    const result3 = filterBySearchStringMatch(testData, 'vegetable')
     expect(result3).toEqual([
-      {id: 3, name: 'Carrot', searchString: 'Carrot|Vegetable'},
+      {id: 3, name: 'carrot', searchString: 'carrot|vegetable'},
     ])
 
-    const result4 = filterBySearchStringMatch(testData, 'Nonexistent')
+    const result4 = filterBySearchStringMatch(testData, 'nonexistent')
     expect(result4).toEqual([])
   })
 
   it('matches only the content between the pipes', () => {
-    const result = filterBySearchStringMatch(testData, 'na|Fru')
+    const result = filterBySearchStringMatch(testData, 'na|fru')
     expect(result).toEqual([])
   })
 
   it('returns empty array if no match is found', () => {
-    const result = filterBySearchStringMatch(testData, 'Nonexistent')
+    const result = filterBySearchStringMatch(testData, 'nonexistent')
     expect(result).toEqual([])
+  })
+
+  it('does partial matches', () => {
+    const result1 = filterBySearchStringMatch(testData, 'nan')
+    expect(result1).toEqual([
+      {id: 2, name: 'banana', searchString: 'banana|fruit'},
+    ])
+  })
+
+  it('ignores case', () => {
+    const result1 = filterBySearchStringMatch(testData, 'NaN')
+    expect(result1).toEqual([
+      {id: 2, name: 'banana', searchString: 'banana|fruit'},
+    ])
   })
 })

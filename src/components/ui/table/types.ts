@@ -11,6 +11,8 @@ export type TableProps<T extends object> = {
   config: ColumnConfig<T>[]
   /** An array of data objects */
   data: T[]
+  filter?: string
+  filterCallback?: (query: string) => void
   /** Will be called per row to determine if the checkbox should be checked */
   getIsRowSelected?: (obj: T) => boolean
   loading?: boolean
