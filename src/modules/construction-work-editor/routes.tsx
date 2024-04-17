@@ -1,8 +1,8 @@
 import {RouteObject} from 'react-router-dom'
-import ArticleScreen from './screens/Article.screen'
-import ProjectScreen from './screens/Project.screen'
-import ProjectsScreen from './screens/Projects.screen'
-import PublisherScreen from './screens/Publisher.screen'
+import ArticleScreen from 'modules/construction-work-editor/screens/Article.screen'
+import ProjectScreen from 'modules/construction-work-editor/screens/Project.screen'
+import ProjectsScreen from 'modules/construction-work-editor/screens/Projects.screen'
+import PublisherScreen from 'modules/construction-work-editor/screens/Publisher.screen'
 
 export enum ConstructionWorkEditorRoute {
   article = '/bericht',
@@ -25,7 +25,7 @@ export const routes: RouteObject[] = [
     element: <ProjectScreen />,
   },
   {
-    path: `${ConstructionWorkEditorRoute.publisher}/:id?`,
+    path: `${ConstructionWorkEditorRoute.publisher}/:email?`,
     element: <PublisherScreen />,
   },
 ]

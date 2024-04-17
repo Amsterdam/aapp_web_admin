@@ -18,15 +18,16 @@ export const CreatePublisherForm = () => {
 
   const [createPublisher, {isLoading, isError}] = useAddPublisherMutation()
 
-  const handleOnClick = useCallback(
-    ({email}: PublisherAddForm) => {
-      createPublisher({email})
-        .unwrap()
-        .then(data =>
-          navigate(`${ConstructionWorkEditorRoute.publisher}/${data.email}`),
-        )
-    },
-    [createPublisher, navigate],
+  const onSubmit = useCallback(
+    () =>
+      handleSubmit(({email}: PublisherAddForm) =>
+        createPublisher({email})
+          .unwrap()
+          .then(data =>
+            navigate(`${ConstructionWorkEditorRoute.publisher}/${data.email}`),
+          ),
+      ),
+    [createPublisher, navigate, handleSubmit],
   )
 
   if (isError) {
@@ -40,7 +41,7 @@ export const CreatePublisherForm = () => {
           <TextField label="E-mailadres" name="email" />
           <Button
             label="Opslaan en projecten kiezen"
-            onClick={handleSubmit(handleOnClick)}
+            onClick={onSubmit}
             disabled={isLoading || !value}
           />
         </Column>
