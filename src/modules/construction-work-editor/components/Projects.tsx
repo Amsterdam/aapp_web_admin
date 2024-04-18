@@ -27,7 +27,7 @@ const columns: Column<ProjectBase>[] = [
 
 const Projects = () => {
   const navigate = useNavigate()
-  const {data, isError, isLoading} = useGetProjectsQuery({page_size: 1000})
+  const {data, isError, isLoading} = useGetProjectsQuery()
   const projects = data?.result?.map(project => ({
     id: project.id,
     title: project.title,
