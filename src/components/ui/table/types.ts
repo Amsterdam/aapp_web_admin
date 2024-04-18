@@ -12,7 +12,7 @@ export type TableProps<T extends object> = {
   /** An array of data objects */
   data: T[]
   /** Will be called per row to determine if the checkbox should be checked */
-  isRowChecked?: (obj: T) => boolean
+  getIsRowSelected?: (obj: T) => boolean
   loading?: boolean
   /** Will be called per row and per cell (with affix) to get a unique key */
   keyGetter: (obj: T, affix?: string) => Key
@@ -20,10 +20,15 @@ export type TableProps<T extends object> = {
   onRowToggle?: (obj: T, checked: boolean) => void
 }
 
+export type TableHeaderProps<T extends object> = {
+  config: ColumnConfig<T>[]
+  selectable: boolean
+}
+
 export type TableRowProps<T extends object> = TableProps<T> & {
   key: Key
   rowData: T
-  withCheckbox: boolean
+  selectable: boolean
 }
 
 export type TableCellProps<T extends object> = {

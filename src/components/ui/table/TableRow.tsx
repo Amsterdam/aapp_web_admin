@@ -5,22 +5,22 @@ import type {TableRowProps} from 'components/ui/table/types'
 
 export const TableRow = <T extends object>({
   config,
-  isRowChecked,
+  getIsRowSelected,
   keyGetter,
   loading,
   onRowClick,
   onRowToggle,
   rowData,
-  withCheckbox,
+  selectable,
 }: TableRowProps<T>) => (
   <DesignSystemTable.Row
     className="TableRow"
     onClick={() => onRowClick?.(rowData)}>
-    {!!withCheckbox && (
+    {!!selectable && (
       <DesignSystemTable.Cell className="CheckboxCell">
         <CheckboxToggle
           ariaLabel="Toewijzen"
-          checked={isRowChecked?.(rowData)}
+          checked={getIsRowSelected?.(rowData)}
           loading={loading}
           onClick={(checked, e) => {
             e.stopPropagation()

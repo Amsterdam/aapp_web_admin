@@ -1,6 +1,7 @@
 import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
-import {TableRow} from 'components/ui/table//TableRow'
-import {defaultKeyGetter} from 'components/ui/table//utils'
+import {TableHeader} from 'components/ui/table/TableHeader'
+import {TableRow} from 'components/ui/table/TableRow'
+import {defaultKeyGetter} from 'components/ui/table/utils'
 import type {TableProps} from 'components/ui/table/types'
 
 import '@amsterdam/design-system-tokens/dist/index.css'
@@ -13,32 +14,23 @@ export const Table = <T extends object>(props: TableProps<T>) => {
   const {
     config,
     data,
-    isRowChecked,
+    getIsRowSelected,
     keyGetter = defaultKeyGetter,
     onRowToggle,
   } = props
 
-  const withCheckboxes = !!isRowChecked && !!onRowToggle
+  const selectable = !!getIsRowSelected && !!onRowToggle
 
   return (
     <DesignSystemTable className="Table">
-      <DesignSystemTable.Header>
-        <DesignSystemTable.Row>
-          {!!withCheckboxes && <DesignSystemTable.HeaderCell />}
-          {config.map(({id, title}) => (
-            <DesignSystemTable.HeaderCell key={id}>
-              {title}
-            </DesignSystemTable.HeaderCell>
-          ))}
-        </DesignSystemTable.Row>
-      </DesignSystemTable.Header>
+      <TableHeader config={config} selectable={selectable} />
       <DesignSystemTable.Body>
         {data.map(obj => (
           <TableRow
             {...props}
             key={keyGetter(obj)}
             rowData={obj}
-            withCheckbox={withCheckboxes}
+            selectable={selectable}
           />
         ))}
       </DesignSystemTable.Body>
