@@ -1,11 +1,5 @@
 .Table {
-    width: 100%;
-    margin: 0;
-    padding: 0
-  }
-  
-  [data-list-marker="true"] {
-    margin-inline-start: var(--size-spacing-md);
-  }
-  
-  
+  width: 100%;
+  margin: 0;
+  padding: 0
+}

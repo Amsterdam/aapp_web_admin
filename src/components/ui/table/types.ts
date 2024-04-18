@@ -1,22 +1,37 @@
-export type TableProps<T> = {
-  /** An array of names of showing columns */
-  columns: Column<T>[]
+import {Key, ReactNode} from 'react'
+
+export type ColumnConfig<T extends object> = {
+  key: keyof T
+  renderer?: (obj: T) => ReactNode
+  id: string
+  title?: string
+}
+
+export type TableProps<T extends object> = {
+  config: ColumnConfig<T>[]
   /** An array of data objects */
   data: T[]
+  /** Will be called per row to determine if the checkbox should be checked */
+  getIsRowSelected?: (obj: T) => boolean
+  loading?: boolean
+  /** Will be called per row and per cell (with affix) to get a unique key */
+  keyGetter: (obj: T, affix?: string) => Key
   onRowClick?: (obj: T) => void
+  onRowToggle?: (obj: T, checked: boolean) => void
 }
 
-export type ColumnContent<T> = {
-  key: keyof T
-  renderer?: (value: never) => React.ReactNode
-}[]
-
-export type Column<T> = {
-  content: ColumnContent<T>
-  title: string
+export type TableHeaderProps<T extends object> = {
+  config: ColumnConfig<T>[]
+  selectable: boolean
 }
 
-export type TableCellProps<T> = {
-  content: ColumnContent<T>
-  obj: T
+export type TableRowProps<T extends object> = TableProps<T> & {
+  key: Key
+  rowData: T
+  selectable: boolean
+}
+
+export type TableCellProps<T extends object> = {
+  configItem: ColumnConfig<T>
+  rowData: T
 }

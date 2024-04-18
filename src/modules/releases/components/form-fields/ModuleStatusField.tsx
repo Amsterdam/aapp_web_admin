@@ -1,4 +1,4 @@
-import CheckboxField from 'components/ui/forms/CheckboxField'
+import CheckboxField from 'components/ui/forms/CheckboxField/CheckboxField'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 

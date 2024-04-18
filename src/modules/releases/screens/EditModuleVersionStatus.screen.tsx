@@ -3,7 +3,7 @@ import {useCallback, useEffect, useMemo} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
 import LoadingButton from 'components/ui/button/LoadingButton'
-import {CheckboxValue} from 'components/ui/forms/CheckboxField'
+import {CheckboxIndicatorStatus} from 'components/ui/forms/CheckboxField/CheckboxIndicator'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
@@ -25,8 +25,8 @@ type Params = {
 }
 
 type FormData = {
+  allSelected: CheckboxIndicatorStatus
   releases: string[]
-  allSelected: CheckboxValue
 }
 
 const EditModuleVersionStatusScreen = () => {

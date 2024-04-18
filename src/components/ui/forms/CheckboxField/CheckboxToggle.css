@@ -1,0 +1,14 @@
+.CheckboxToggle {
+  display: flex;
+}
+
+.CheckboxToggle button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  height: var(--size-spacing-lg);
+}
+
+.CheckboxToggleLoading {
+  opacity: .5
+}

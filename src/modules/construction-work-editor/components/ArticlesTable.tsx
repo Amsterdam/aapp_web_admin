@@ -10,7 +10,7 @@ import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
 import {ConstructionWorkEditorRoute} from '../routes'
-import type {Column as ColumnType} from 'components/ui/table/types'
+import type {ColumnConfig} from 'components/ui/table/types'
 import type {
   ArticlePublisher,
   ArticleType,
@@ -29,28 +29,23 @@ type Props = {
   projectId?: string
 }
 
-const columns: ColumnType<ArticleForTable>[] = [
+const columns: ColumnConfig<ArticleForTable>[] = [
   {
+    key: 'title',
+    id: 'title',
     title: 'Titel',
-    content: [{key: 'title'}],
   },
   {
+    key: 'type',
+    id: 'type',
+    renderer: ({type}) => (type === 'article' ? 'Nieuws' : 'App'),
     title: 'Type bericht',
-    content: [
-      {
-        key: 'type',
-        renderer: type => (type === 'article' ? 'Nieuws' : 'App'),
-      },
-    ],
   },
   {
+    key: 'image',
+    id: 'image',
+    renderer: ({image}) => image && <Image image={image} />,
     title: '',
-    content: [
-      {
-        key: 'image',
-        renderer: image => image && <Image image={image} />,
-      },
-    ],
   },
 ]
 
@@ -101,7 +96,12 @@ const ArticlesTable = ({projectId}: Props) => {
 
   return (
     <Column>
-      <Table columns={columns} data={tableArticles} onRowClick={onRowClick} />
+      <Table
+        config={columns}
+        data={tableArticles}
+        keyGetter={({id}) => id}
+        onRowClick={onRowClick}
+      />
       <Button
         label="Maak app bericht"
         onClick={() => navigate(ConstructionWorkEditorRoute.article)}
