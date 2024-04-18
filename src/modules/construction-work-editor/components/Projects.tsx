@@ -13,7 +13,9 @@ const Projects = () => {
 
   const handleRowClick = useCallback(
     (project: ProjectsItem) => {
-      if (!project.id) return
+      if (!project.id) {
+        return
+      }
       navigate(`${ConstructionWorkEditorRoute.project}/${project.id}`)
     },
     [navigate],

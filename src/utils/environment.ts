@@ -1,3 +1,5 @@
+import {BASE_ROUTE} from 'constants/routes'
+
 export enum Environment {
   local = 'local',
   development = 'development',
@@ -23,11 +25,11 @@ export const environmentClientId: Record<Environment, string> = {
 }
 
 export const environmentRedirectUri: Record<Environment, string> = {
-  [Environment.local]: 'http://localhost:3000/mbs',
-  [Environment.development]: 'https://ontw.app.amsterdam.nl/mbs',
-  [Environment.test]: 'https://test.app.amsterdam.nl/mbs',
-  [Environment.acceptance]: 'https://acc.app.amsterdam.nl/mbs',
-  [Environment.production]: 'https://app.amsterdam.nl/mbs',
+  [Environment.local]: `http://localhost:3000${BASE_ROUTE}`,
+  [Environment.development]: `https://ontw.app.amsterdam.nl${BASE_ROUTE}`,
+  [Environment.test]: `https://test.app.amsterdam.nl${BASE_ROUTE}`,
+  [Environment.acceptance]: `https://acc.app.amsterdam.nl${BASE_ROUTE}`,
+  [Environment.production]: `https://app.amsterdam.nl${BASE_ROUTE}`,
 }
 
 export const getEnvironment = (hostname: string): Environment =>

@@ -14,7 +14,7 @@ export const LoginBoundary: FC<Props> = ({
   const {instance} = useMsal()
   const accounts = instance.getAllAccounts()
   const activeAccount = instance.getActiveAccount()
-  if (!activeAccount && accounts.length > 0) {
+  if (!activeAccount && accounts.length) {
     instance.setActiveAccount(accounts[0])
   }
   return (
