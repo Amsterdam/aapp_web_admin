@@ -53,6 +53,7 @@ export const EditPublisherTable = ({email}: Props) => {
     addProjectsForPublisher,
     {isLoading: isAddProjectsForPublisherLoading},
   ] = useAddProjectsForPublisherMutation()
+
   const [
     removeProjectsForPublisher,
     {isLoading: isRemoveProjectsForPublisherLoading},
@@ -70,7 +71,7 @@ export const EditPublisherTable = ({email}: Props) => {
     <Table
       config={columns}
       data={projects.result}
-      isRowChecked={({id}) => !!publisher?.projects.includes(id)}
+      getIsRowSelected={({id}) => !!publisher?.projects.includes(id)}
       loading={
         isAddProjectsForPublisherLoading || isRemoveProjectsForPublisherLoading
       }
