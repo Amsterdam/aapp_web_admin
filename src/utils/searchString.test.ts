@@ -54,6 +54,15 @@ describe('addSearchString', () => {
     expect(addSearchString(input)[0]).toHaveProperty('searchString')
   })
 
+  it('adds searchString with all properties if allowList is omitted', () => {
+    const input = [{a: 1, b: '2', c: ['3'], d: {e: '4'}}]
+    const expectedsearchString = '1|2|3|4'
+    expect(addSearchString(input)[0]).toEqual({
+      ...input[0],
+      searchString: expectedsearchString,
+    })
+  })
+
   it('adds searchString property with correct value', () => {
     const input = [{a: 1, b: 2, c: [3, 4, 5]}]
     const expectedsearchString = '1|2|3|4|5'
