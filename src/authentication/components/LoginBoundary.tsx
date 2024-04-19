@@ -2,7 +2,6 @@ import {InteractionType} from '@azure/msal-browser'
 import {useMsal, MsalAuthenticationTemplate} from '@azure/msal-react'
 import {ReactNode, FC} from 'react'
 import ErrorScreen from 'components/ui/screens/Error.screen'
-import LoadingScreen from 'components/ui/screens/Loading.screen'
 
 type Props = {
   children: ReactNode
@@ -24,8 +23,7 @@ export const LoginBoundary: FC<Props> = ({
   return (
     <MsalAuthenticationTemplate
       errorComponent={AuthenticationError}
-      interactionType={interactionType}
-      loadingComponent={LoadingScreen}>
+      interactionType={interactionType}>
       {children}
     </MsalAuthenticationTemplate>
   )

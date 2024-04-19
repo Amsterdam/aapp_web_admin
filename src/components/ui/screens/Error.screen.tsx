@@ -6,7 +6,7 @@ type Props = {
 }
 
 const ErrorScreen = ({message}: Props) => (
-  <Screen>
+  <Screen withLogin={false}>
     <ErrorComponent message={message} />
   </Screen>
 )
