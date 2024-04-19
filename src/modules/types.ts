@@ -2,6 +2,12 @@ import {Slice} from '@reduxjs/toolkit'
 import {RouteObject} from 'react-router-dom'
 import {AzureGroup} from 'authentication/types'
 
+export enum ModuleType {
+  contentManagement = 'contentManagement',
+  home = 'home',
+  other = 'other',
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Module<T extends Slice<any> = never> = {
   allowedAzureGroups?: AzureGroup[]
@@ -9,6 +15,12 @@ export type Module<T extends Slice<any> = never> = {
   routes: RouteObject[]
   reduxSlice?: T
   slug: ModuleSlug
+  /**
+   * Type of module
+   * - contentManagement: module is used for content management
+   * - other: module is used for other purposes
+   * */
+  type: ModuleType
 }
 
 export enum ModuleSlug {

@@ -1,7 +1,7 @@
 import {AzureGroup} from 'authentication/types'
 import CWEHome from 'modules/construction-work-editor/components/CWEHome'
 import {routes} from 'modules/construction-work-editor/routes'
-import {ModuleSlug, type Module} from 'modules/types'
+import {ModuleSlug, ModuleType, type Module} from 'modules/types'
 
 export const constructionWorkEditorModule: Module = {
   allowedAzureGroups: [
@@ -12,4 +12,5 @@ export const constructionWorkEditorModule: Module = {
   HomeComponent: CWEHome,
   routes,
   slug: ModuleSlug.constructionWorkEditor,
+  type: ModuleType.contentManagement,
 }

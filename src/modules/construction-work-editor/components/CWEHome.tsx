@@ -9,7 +9,7 @@ const CWEHome = () => {
     <Row gutter="md">
       <Button
         flex
-        label="Werkzaamheden"
+        label="Projecten"
         onClick={() => navigate(ConstructionWorkEditorRoute.projects)}
       />
       <Button
