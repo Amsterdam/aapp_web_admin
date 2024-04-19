@@ -1,6 +1,6 @@
 import {RouteObject} from 'react-router-dom'
 import ErrorScreen from 'components/ui/screens/Error.screen'
-import HomeScreen from 'modules/home/Home.screen'
+import HomeScreen from 'modules/home/screens/Home.screen'
 
 export enum HomeRoute {
   home = '/',

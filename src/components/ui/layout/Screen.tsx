@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
-import {LoginBoundary} from 'components/authentication/LoginBoundary'
-import LogoutButton from 'components/authentication/LogoutButton'
+import {LoginBoundary} from 'authentication/components/LoginBoundary'
+import LogoutButton from 'authentication/components/LogoutButton'
 import Column from 'components/ui/layout/Column'
 import Logo from 'components/ui/media/Logo'
 import './Screen.css'

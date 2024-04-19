@@ -1,11 +1,15 @@
 import {InteractionType} from '@azure/msal-browser'
 import {useMsal, MsalAuthenticationTemplate} from '@azure/msal-react'
 import {ReactNode, FC} from 'react'
+import ErrorScreen from 'components/ui/screens/Error.screen'
+import LoadingScreen from 'components/ui/screens/Loading.screen'
 
 type Props = {
   children: ReactNode
   interactionType?: InteractionType
 }
+
+const AuthenticationError = () => <ErrorScreen message="Inloggen is mislukt" />
 
 export const LoginBoundary: FC<Props> = ({
   children,
@@ -18,7 +22,10 @@ export const LoginBoundary: FC<Props> = ({
     instance.setActiveAccount(accounts[0])
   }
   return (
-    <MsalAuthenticationTemplate interactionType={interactionType}>
+    <MsalAuthenticationTemplate
+      errorComponent={AuthenticationError}
+      interactionType={interactionType}
+      loadingComponent={LoadingScreen}>
       {children}
     </MsalAuthenticationTemplate>
   )

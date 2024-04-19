@@ -6,8 +6,8 @@ import {releasesModule} from 'modules/releases'
 const modules = [
   homeModule,
   releasesModule,
-  downloadQrModule,
   constructionWorkEditorModule,
+  downloadQrModule,
 ] as const
 
 export default modules

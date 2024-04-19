@@ -1,7 +1,7 @@
 import {Suspense} from 'react'
 import {Provider as StoreProvider} from 'react-redux'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import {AuthProvider} from 'components/authentication/Auth.provider'
+import {AuthProvider} from 'authentication/components/Auth.provider'
 import {BASE_ROUTE} from 'constants/routes'
 import {routes} from 'routes'
 import {store} from 'store/store'

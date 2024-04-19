@@ -64,12 +64,12 @@ const ArticlesTable = ({projectId}: Props) => {
 
   if (isError) {
     return (
-      <ErrorComponent message="Artikelen konden niet worden opgehaald. Probeer het later opnieuw" />
+      <ErrorComponent message="Berichten konden niet worden opgehaald. Probeer het later opnieuw" />
     )
   }
 
   if (!data?.length) {
-    return <Phrase>Er zijn geen artikelen voor dit project</Phrase>
+    return <Phrase>Er zijn geen berichten voor dit project</Phrase>
   }
 
   return (

@@ -1,0 +1,19 @@
+import NativeAppLogin from 'authentication/components/NativeAppLogin'
+import Column from 'components/ui/layout/Column'
+import Screen from 'components/ui/layout/Screen'
+import ScreenTitle from 'components/ui/text/ScreenTitle'
+import PersonalizedHome from 'modules/home/components/PersonalizedHome'
+
+const HomeScreen = () => (
+  <>
+    <NativeAppLogin />
+    <Screen>
+      <Column gutter="lg">
+        <ScreenTitle title="Amsterdam App" />
+        <PersonalizedHome />
+      </Column>
+    </Screen>
+  </>
+)
+
+export default HomeScreen

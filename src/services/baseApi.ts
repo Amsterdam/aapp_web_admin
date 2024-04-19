@@ -5,7 +5,7 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
-import {msalInstance} from 'components/authentication/Auth.provider'
+import {msalInstance} from 'authentication/components/Auth.provider'
 import {currentClientId} from 'utils/environment'
 import {ApiDirectory} from './types'
 
