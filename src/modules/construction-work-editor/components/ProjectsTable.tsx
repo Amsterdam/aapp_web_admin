@@ -57,7 +57,7 @@ const ProjectsTable = ({projects, ...tableProps}: Props) => {
       config={columns}
       data={filteredProjects}
       filterCallback={setQuery}
-      keyGetter={({id}, affix = '') => `${affix}${id.toString()}`}
+      keyGetter={({id}) => id.toString()}
     />
   )
 }

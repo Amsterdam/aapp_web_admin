@@ -30,7 +30,7 @@ export const TableRow = <T extends object>({
       </DesignSystemTable.Cell>
     )}
     {config.map(({id, key, renderer = defaultRenderer}) => (
-      <DesignSystemTable.Cell key={keyGetter(rowData, id)}>
+      <DesignSystemTable.Cell key={`${keyGetter(rowData)}-${id}`}>
         {renderer(rowData, key)}
       </DesignSystemTable.Cell>
     ))}

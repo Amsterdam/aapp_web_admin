@@ -133,7 +133,7 @@ export const TableFeatures = () => {
       filterCallback={setQuery}
       filterQuery={query}
       getIsRowSelected={({id}) => selectedIds.includes(id)}
-      keyGetter={({id}, affix = '') => `${affix}${id.toString()}`}
+      keyGetter={({id}) => id.toString()}
       onRowClick={(...args) => {
         console.log('onRowClick', ...args)
       }}
