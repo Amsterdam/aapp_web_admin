@@ -11,40 +11,28 @@ import Phrase from 'components/ui/text/Phrase'
 import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
 import {ConstructionWorkEditorRoute} from '../routes'
 import type {ColumnConfig} from 'components/ui/table/types'
-import type {
-  ArticlePublisher,
-  ArticleType,
-} from 'modules/construction-work-editor/types/article'
-import type {ApiImage} from 'modules/construction-work-editor/types/image'
-
-type ArticleForTable = {
-  id: number
-  image?: ApiImage
-  publisher: ArticlePublisher
-  title: string
-  type: ArticleType
-}
+import type {ArticlesItem} from 'modules/construction-work-editor/types/article'
 
 type Props = {
   projectId?: string
 }
 
-const columns: ColumnConfig<ArticleForTable>[] = [
+const columns: ColumnConfig<ArticlesItem>[] = [
   {
     key: 'title',
     id: 'title',
     title: 'Titel',
   },
   {
-    key: 'type',
+    key: 'meta_id',
     id: 'type',
-    renderer: ({type}) => (type === 'article' ? 'Nieuws' : 'App'),
+    renderer: ({meta_id: {type}}) => (type === 'article' ? 'Nieuws' : 'App'),
     title: 'Type bericht',
   },
   {
-    key: 'image',
+    key: 'images',
     id: 'image',
-    renderer: ({image}) => image && <Image image={image} />,
+    renderer: ({images}) => images?.[0] && <Image image={images[0]} />,
     title: '',
   },
 ]
@@ -61,23 +49,13 @@ const ArticlesTable = ({projectId}: Props) => {
   )
 
   const onRowClick = useCallback(
-    (article: ArticleForTable) => {
-      if (!article.id) {
+    ({meta_id: {id, type}}: ArticlesItem) => {
+      if (type !== 'warning') {
         return
       }
-      navigate(`${ConstructionWorkEditorRoute.article}/${article.id}`)
+      navigate(`${ConstructionWorkEditorRoute.article}/${id}`)
     },
     [navigate],
-  )
-
-  const tableArticles: ArticleForTable[] | undefined = data?.map(
-    ({images, meta_id: metaId, publisher, title: articleTitle}) => ({
-      id: metaId.id,
-      image: images?.[0],
-      publisher, // TODO add to table once API is ready
-      title: articleTitle,
-      type: metaId.type,
-    }),
   )
 
   if (isLoading) {
@@ -90,7 +68,7 @@ const ArticlesTable = ({projectId}: Props) => {
     )
   }
 
-  if (!tableArticles?.length) {
+  if (!data?.length) {
     return <Phrase>Er zijn geen artikelen voor dit project</Phrase>
   }
 
@@ -98,8 +76,8 @@ const ArticlesTable = ({projectId}: Props) => {
     <Column>
       <Table
         config={columns}
-        data={tableArticles}
-        keyGetter={({id}) => id.toString()}
+        data={data}
+        keyGetter={({meta_id: {id, type}}) => `${type}${id}`}
         onRowClick={onRowClick}
       />
       <Button
