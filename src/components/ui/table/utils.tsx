@@ -10,7 +10,13 @@ export const defaultKeyGetter = <T extends object>(obj: T, prefix?: Key) =>
 /**
  * Will be used to render the table cell data if no renderer is defined in the column configuration
  */
-export const defaultRenderer = <T extends object>(rowData: T, key: keyof T) => {
+export const defaultRenderer = <T extends object>(
+  rowData: T,
+  key?: keyof T,
+) => {
+  if (key === undefined) {
+    return null
+  }
   const value =
     typeof rowData[key] === 'string'
       ? (rowData[key] as string)

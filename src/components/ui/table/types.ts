@@ -1,8 +1,8 @@
 import {Key, ReactNode} from 'react'
 
 export type ColumnConfig<T extends object> = {
-  key: keyof T
-  renderer?: (obj: T) => ReactNode
+  key?: keyof T
+  renderer?: (obj: T, key?: keyof T) => ReactNode
   id: string
   title?: string
 }
