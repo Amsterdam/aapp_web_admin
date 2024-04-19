@@ -73,6 +73,7 @@ module.exports = {
         },
       },
     ],
+    'newline-before-return': 'error',
     'import/prefer-default-export': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],

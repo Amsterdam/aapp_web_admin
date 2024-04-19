@@ -9,6 +9,7 @@ const NativeAppLogin = () => {
   if (isLoginApp) {
     return <LoginBoundary>Aan het inloggen...</LoginBoundary>
   }
+
   return null
 }
 
