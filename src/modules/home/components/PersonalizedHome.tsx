@@ -1,12 +1,12 @@
+import useAuthorizedModules from 'authentication/hooks/useAuthorizedModules'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
-import useGetHomeComponents from 'modules/home/hooks.ts/useGetHomeComponents'
 import slugToTitle from 'utils/slugToTitle'
 
 const PersonalizedHome = () => {
-  const homeComponents = useGetHomeComponents()
+  const authorizedModules = useAuthorizedModules()
 
-  if (!homeComponents.length) {
+  if (!authorizedModules.length) {
     return null
   }
 
@@ -14,12 +14,12 @@ const PersonalizedHome = () => {
     <Column gutter="md">
       <Phrase>Wat wil je beheren?</Phrase>
       <Column gutter="lg">
-        {homeComponents.map(
-          ({Component, slug}) =>
-            Component && (
+        {authorizedModules.map(
+          ({HomeComponent, slug}) =>
+            HomeComponent && (
               <Column gutter="sm" key={slug}>
                 <Phrase emphasis="strong">{slugToTitle[slug]}</Phrase>
-                <Component />
+                <HomeComponent />
               </Column>
             ),
         )}
