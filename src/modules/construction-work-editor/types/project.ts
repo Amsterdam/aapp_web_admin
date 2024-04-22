@@ -88,6 +88,7 @@ export type ProjectsQueryArgs = {
 }
 
 export type ProjectsResponse = Paginated<ProjectsItem>
+
 export type ProjectQueryArgs = {
   article_max_age?: number
   id: string

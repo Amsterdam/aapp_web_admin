@@ -1,8 +1,8 @@
-export type WithSearchString<T extends Record<string, unknown>> = T & {
+type GenericResponse = Record<string, unknown>
+
+export type WithSearchString<T extends GenericResponse> = T & {
   searchString: string
 }
-
-type GenericResponse = Record<string, unknown>
 
 const SEPARATOR = '|'
 
@@ -15,10 +15,13 @@ export const getSearchString = (input: unknown): string => {
   }
 
   if (typeof input === 'object') {
-    return Object.values(input).map(getSearchString).join(SEPARATOR)
+    return Object.values(input)
+      .map(getSearchString)
+      .join(SEPARATOR)
+      .toLowerCase()
   }
 
-  return input.toString()
+  return input.toString().toLowerCase()
 }
 
 /**
@@ -26,9 +29,9 @@ export const getSearchString = (input: unknown): string => {
  */
 export const applyAllowList = <T extends GenericResponse>(
   input: T,
-  allowList?: string[],
+  allowList?: (keyof T)[],
 ) => {
-  if (!allowList) {
+  if (!allowList?.length) {
     return input
   }
 
@@ -47,8 +50,8 @@ export const applyAllowList = <T extends GenericResponse>(
  * Adds a search string to the input object based on the allow list.
  */
 export const addSearchString = <T extends GenericResponse>(
-  input: T[],
-  allowList?: string[],
+  input: T[] = [],
+  allowList: (keyof T)[] = [],
 ): WithSearchString<T>[] =>
   input.map(item => ({
     ...item,
@@ -67,6 +70,8 @@ export const filterBySearchStringMatch = <T extends GenericResponse>(
   }
 
   return input.filter(({searchString}) =>
-    searchString.split(SEPARATOR).includes(query),
+    searchString
+      .split(SEPARATOR)
+      .some(item => item.includes(query.toLowerCase())),
   )
 }

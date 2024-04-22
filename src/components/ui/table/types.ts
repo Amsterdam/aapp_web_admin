@@ -11,11 +11,13 @@ export type TableProps<T extends object> = {
   config: ColumnConfig<T>[]
   /** An array of data objects */
   data: T[]
+  filterCallback?: (query: string) => void
+  filterQuery?: string
   /** Will be called per row to determine if the checkbox should be checked */
   getIsRowSelected?: (obj: T) => boolean
   loading?: boolean
-  /** Will be called per row and per cell (with affix) to get a unique key */
-  keyGetter: (obj: T, affix?: string) => Key
+  /** Will be called per row and per cell to get a unique key */
+  keyGetter: (obj: T) => Key
   onRowClick?: (obj: T) => void
   onRowToggle?: (obj: T, checked: boolean) => void
 }
