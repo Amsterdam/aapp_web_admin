@@ -1,8 +1,8 @@
-export type WithSearchString<T extends Record<string, unknown>> = T & {
+type GenericResponse = Record<string, unknown>
+
+export type WithSearchString<T extends GenericResponse> = T & {
   searchString: string
 }
-
-type GenericResponse = Record<string, unknown>
 
 const SEPARATOR = '|'
 
@@ -29,7 +29,7 @@ export const getSearchString = (input: unknown): string => {
  */
 export const applyAllowList = <T extends GenericResponse>(
   input: T,
-  allowList?: string[],
+  allowList?: (keyof T)[],
 ) => {
   if (!allowList?.length) {
     return input
@@ -51,7 +51,7 @@ export const applyAllowList = <T extends GenericResponse>(
  */
 export const addSearchString = <T extends GenericResponse>(
   input: T[] = [],
-  allowList: string[] = [],
+  allowList: (keyof T)[] = [],
 ): WithSearchString<T>[] =>
   input.map(item => ({
     ...item,

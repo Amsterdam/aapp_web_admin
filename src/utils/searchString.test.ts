@@ -43,7 +43,7 @@ describe('applyAllowList', () => {
 
   it('filters out properties not specified in allowList', () => {
     const input = {a: 1, b: 2, c: 3}
-    const allowList = ['a']
+    const allowList = ['a'] as (keyof typeof input)[]
     expect(applyAllowList(input, allowList)).toEqual({a: 1})
   })
 })
@@ -87,7 +87,7 @@ describe('addSearchString', () => {
 
   it('filters out properties before adding searchString if allowList is provided', () => {
     const input = [{a: 1, b: 2, c: 3}]
-    const allowList = ['a', 'b']
+    const allowList = ['a', 'b'] as (keyof (typeof input)[0])[]
     const expectedsearchString = '1|2'
     expect(addSearchString(input, allowList)).toEqual([
       {

@@ -11,6 +11,7 @@ export const TextFilter = ({callback, ...rest}: Props) => (
     maxLength={100}
     {...rest}
     className="Input"
+    data-font="body"
     onChange={e => {
       callback(e.currentTarget.value)
     }}
