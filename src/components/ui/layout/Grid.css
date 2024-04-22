@@ -3,6 +3,6 @@
 }
 
 [data-fluid-columns="2"] {
-  grid-template-columns: repeat(auto-fill, calc(50% - var(--size-spacing-md) / 2));
+  grid-template-columns: repeat(2, calc(50% - var(--size-spacing-md) / 2));
   gap: var(--size-spacing-md);
 }
