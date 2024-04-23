@@ -1,4 +1,5 @@
 import {RouteObject} from 'react-router-dom'
+import {AzureGroup} from 'authentication/types'
 import constructionWorkEditorModule from 'modules/construction-work-editor'
 import ArticleScreen from 'modules/construction-work-editor/screens/Article.screen'
 import ProjectScreen from 'modules/construction-work-editor/screens/Project.screen'
@@ -8,6 +9,7 @@ import PublishersScreen from 'modules/construction-work-editor/screens/Publisher
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 const loader = () => constructionWorkEditorModule.allowedAzureGroups
+const loaderEditor = () => [AzureGroup.editor]
 
 export const routes: RouteObject[] = [
   {
@@ -16,7 +18,7 @@ export const routes: RouteObject[] = [
     element: <ArticleScreen />,
   },
   {
-    loader,
+    loader: loaderEditor,
     path: `${ConstructionWorkEditorRoute.publishers}`,
     element: <PublishersScreen />,
   },
@@ -31,7 +33,7 @@ export const routes: RouteObject[] = [
     element: <ProjectScreen />,
   },
   {
-    loader,
+    loader: loaderEditor,
     path: `${ConstructionWorkEditorRoute.publisher}/:email?`,
     element: <PublisherScreen />,
   },
