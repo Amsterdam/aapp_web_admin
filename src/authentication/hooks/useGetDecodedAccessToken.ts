@@ -28,6 +28,7 @@ const useGetDecodedAccessToken = () => {
       setDecodedToken(decoded)
     }
   }, [accessToken])
+
   return decodedToken
 }
 export default useGetDecodedAccessToken

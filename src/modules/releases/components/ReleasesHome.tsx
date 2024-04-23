@@ -5,6 +5,7 @@ import {ReleasesRoute} from '../routes'
 
 const ReleasesHome = () => {
   const navigate = useNavigate()
+
   return (
     <Row gutter="md">
       <Button

@@ -29,6 +29,7 @@ const baseQuery: BaseQueryFn<
         headers.set('X-API-KEY', API_KEY)
         headers.set('deviceid', 'random-device-id')
       }
+
       return headers
     },
   })(args, baseQueryApi, extraOptions as never)

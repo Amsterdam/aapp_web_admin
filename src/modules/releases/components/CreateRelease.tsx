@@ -59,6 +59,7 @@ const CreateRelease = ({hotfixVersion}: Props) => {
     if (!previousModules) {
       return null
     }
+
     return {
       created: '',
       modified: '',

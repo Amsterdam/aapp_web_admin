@@ -5,6 +5,7 @@ import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/rout
 
 const CWEHome = () => {
   const navigate = useNavigate()
+
   return (
     <Row gutter="md">
       <Button
@@ -15,7 +16,7 @@ const CWEHome = () => {
       <Button
         flex
         label="Redacteuren"
-        onClick={() => navigate(ConstructionWorkEditorRoute.editors)}
+        onClick={() => navigate(ConstructionWorkEditorRoute.publishers)}
       />
     </Row>
   )

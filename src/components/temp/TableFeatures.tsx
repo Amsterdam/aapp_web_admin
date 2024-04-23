@@ -140,6 +140,7 @@ export const TableFeatures = () => {
       onRowToggle={({id}) => {
         if (selectedIds.includes(id)) {
           setSelectedIds(ids => ids.filter(item => item !== id))
+
           return
         }
         setSelectedIds(ids => [...ids, id])

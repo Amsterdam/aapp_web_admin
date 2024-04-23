@@ -7,6 +7,7 @@ type Props = {
 
 const Article = ({id}: Props) => {
   const isNewArticle = !id
+
   return (
     <Column>
       <Title>{`${isNewArticle ? 'Nieuw bericht' : `Bericht: ${id}`}`}</Title>

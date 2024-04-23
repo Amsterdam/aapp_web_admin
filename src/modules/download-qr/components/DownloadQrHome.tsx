@@ -5,6 +5,7 @@ import {DownloadQRCodeRoute} from '../routes'
 
 const DownloadQrHome = () => {
   const navigate = useNavigate()
+
   return (
     <Row gutter="md">
       <Button

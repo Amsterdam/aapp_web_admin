@@ -17,6 +17,7 @@ const useAuthorizedModules = () => {
       ),
     [authorizedGroups],
   )
+
   return getAuthorizedModules()
 }
 

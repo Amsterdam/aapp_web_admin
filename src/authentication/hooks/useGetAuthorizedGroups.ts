@@ -20,10 +20,12 @@ const useGetAuthorizedGroups = () => {
         if (group === azureGroups[AzureGroup.publisher][environment]) {
           return [...acc, AzureGroup.publisher]
         }
+
         return acc
       }, [] as AzureGroup[]),
     [groups],
   )
+
   return getAuthorizedGroups()
 }
 

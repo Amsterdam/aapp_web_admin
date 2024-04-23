@@ -6,10 +6,12 @@ export const getHotfixVersion = (
   existingVersions: string[] = [],
 ): string => {
   const versions = [...existingVersions].sort((a, b) => compareVersions(a, b))
+
   return versions.reduce((suggestedVersion, checkVersion) => {
     if (suggestedVersion === checkVersion) {
       return getNextPatchVersion(suggestedVersion)
     }
+
     return suggestedVersion
   }, version)
 }
@@ -26,5 +28,6 @@ export const getPreviousPatchVersion = (version: string): string => {
   if (patch > 0) {
     return `${major}.${minor}.${patch - 1}`
   }
+
   return version
 }
