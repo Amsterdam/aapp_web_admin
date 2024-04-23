@@ -10,7 +10,7 @@ export enum ModuleType {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Module<T extends Slice<any> = never> = {
-  allowedAzureGroups?: AzureGroup[]
+  allowedAzureGroups: AzureGroup[]
   HomeComponent?: () => JSX.Element
   routes: RouteObject[]
   reduxSlice?: T

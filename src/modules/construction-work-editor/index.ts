@@ -3,14 +3,12 @@ import CWEHome from 'modules/construction-work-editor/components/CWEHome'
 import {routes} from 'modules/construction-work-editor/routes'
 import {ModuleSlug, ModuleType, type Module} from 'modules/types'
 
-export const constructionWorkEditorModule: Module = {
-  allowedAzureGroups: [
-    AzureGroup.admin,
-    AzureGroup.editor,
-    AzureGroup.publisher,
-  ],
+const constructionWorkEditorModule: Module = {
+  allowedAzureGroups: [AzureGroup.editor, AzureGroup.publisher],
   HomeComponent: CWEHome,
   routes,
   slug: ModuleSlug.constructionWorkEditor,
   type: ModuleType.contentManagement,
 }
+
+export default constructionWorkEditorModule
