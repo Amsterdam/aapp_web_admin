@@ -1,4 +1,5 @@
 import {RouteObject} from 'react-router-dom'
+import {releasesModule} from 'modules/releases'
 import CreateHotfixReleaseScreen from 'modules/releases/screens/CreateHotfixRelease.screen'
 import CreateModuleScreen from 'modules/releases/screens/CreateModule.screen'
 import CreateReleaseScreen from 'modules/releases/screens/CreateRelease.screen'
@@ -8,20 +9,7 @@ import EditReleaseScreen from 'modules/releases/screens/EditRelease.screen'
 import ModuleScreen from 'modules/releases/screens/Module.screen'
 import ModulesScreen from 'modules/releases/screens/Modules.screen'
 import ReleasesScreen from 'modules/releases/screens/Releases.screen'
-import {releasesModule} from '.'
-
-export enum ReleasesRoute {
-  modules = '/modules',
-  createModule = '/module/create',
-  module = '/module/:slug',
-  createModuleVersion = '/module/:slug/create',
-  editModuleVersion = '/module/:slug/:version',
-  editModuleVersionStatus = '/module/:slug/:version/status',
-  releases = '/releases',
-  createRelease = '/release/create',
-  createHotfixRelease = '/release/hotfix/:version',
-  editRelease = '/release/:version',
-}
+import {ReleasesRoute} from 'modules/releases/types/routes'
 
 const loader = () => releasesModule.allowedAzureGroups
 

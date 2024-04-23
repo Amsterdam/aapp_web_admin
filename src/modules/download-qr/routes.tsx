@@ -1,10 +1,7 @@
 import {RouteObject} from 'react-router-dom'
+import {downloadQrModule} from 'modules/download-qr'
 import DownloadQRCodeScreen from 'modules/download-qr/screens/DownloadQRCode.screen'
-import {downloadQrModule} from '.'
-
-export enum DownloadQRCodeRoute {
-  downloadQRCode = '/download-qr-code',
-}
+import {DownloadQRCodeRoute} from 'modules/download-qr/types'
 
 const loader = () => downloadQrModule.allowedAzureGroups
 

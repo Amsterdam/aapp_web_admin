@@ -11,8 +11,8 @@ import List from 'components/ui/text/List'
 import ListItem from 'components/ui/text/ListItem'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import {ReleasesRoute} from 'modules/releases/routes'
 import {useGetReleasesQuery} from 'modules/releases/services/releases'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 import {getHotfixVersion} from 'modules/releases/utils/getHotfixVersion'
 
 const ReleasesScreen = () => {

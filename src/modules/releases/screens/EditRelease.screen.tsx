@@ -10,7 +10,6 @@ import ErrorScreen from 'components/ui/screens/Error.screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import ReleaseForm from 'modules/releases/components/ReleaseForm'
-import {ReleasesRoute} from 'modules/releases/routes'
 import {
   useEditReleaseVersionMutation,
   useGetReleaseQuery,
@@ -18,6 +17,7 @@ import {
 import {selectReleaseModules} from 'modules/releases/slices/release.slice'
 import {ModuleVersionWithStatusInReleases} from 'modules/releases/types/module'
 import {ReleaseBase} from 'modules/releases/types/release'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 
 type Params = {
   version: ReleaseBase['version']

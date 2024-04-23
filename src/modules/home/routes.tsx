@@ -1,11 +1,9 @@
 import {RouteObject} from 'react-router-dom'
 import ErrorScreen from 'components/ui/screens/Error.screen'
+import {homeModule} from 'modules/home'
 import HomeScreen from 'modules/home/screens/Home.screen'
-import {homeModule} from '.'
+import {HomeRoute} from 'modules/home/types'
 
-export enum HomeRoute {
-  home = '/',
-}
 const loader = () => homeModule.allowedAzureGroups
 
 export const routes: RouteObject[] = [

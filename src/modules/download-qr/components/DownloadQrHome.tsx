@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom'
 import Button from 'components/ui/button/Button'
 import Row from 'components/ui/layout/Row'
-import {DownloadQRCodeRoute} from '../routes'
+import {DownloadQRCodeRoute} from 'modules/download-qr/types'
 
 const DownloadQrHome = () => {
   const navigate = useNavigate()

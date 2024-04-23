@@ -4,15 +4,8 @@ import ArticleScreen from 'modules/construction-work-editor/screens/Article.scre
 import ProjectScreen from 'modules/construction-work-editor/screens/Project.screen'
 import ProjectsScreen from 'modules/construction-work-editor/screens/Projects.screen'
 import PublisherScreen from 'modules/construction-work-editor/screens/Publisher.screen'
-import PublishersScreen from './screens/Publishers.screen'
-
-export enum ConstructionWorkEditorRoute {
-  article = '/bericht',
-  project = '/project',
-  projects = '/projecten',
-  publisher = '/redacteur',
-  publishers = '/redacteuren',
-}
+import PublishersScreen from 'modules/construction-work-editor/screens/Publishers.screen'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 const loader = () => constructionWorkEditorModule.allowedAzureGroups
 

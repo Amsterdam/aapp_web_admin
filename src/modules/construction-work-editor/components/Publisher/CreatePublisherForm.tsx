@@ -6,9 +6,9 @@ import Button from 'components/ui/button/Button'
 import Loader from 'components/ui/containers/Loader'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/routes'
 import {useAddPublisherMutation} from 'modules/construction-work-editor/services'
 import {PublisherAddForm} from 'modules/construction-work-editor/types/publisher'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 export const CreatePublisherForm = () => {
   const navigate = useNavigate()

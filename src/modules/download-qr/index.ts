@@ -1,10 +1,10 @@
-import {AzureGroup} from 'authentication/types'
 import DownloadQrHome from 'modules/download-qr/components/DownloadQrHome'
+import {allowedAzureGroups} from 'modules/download-qr/constants'
 import {routes} from 'modules/download-qr/routes'
 import {ModuleSlug, ModuleType, type Module} from 'modules/types'
 
 export const downloadQrModule: Module = {
-  allowedAzureGroups: [AzureGroup.admin],
+  allowedAzureGroups,
   HomeComponent: DownloadQrHome,
   routes,
   slug: ModuleSlug.downloadQr,

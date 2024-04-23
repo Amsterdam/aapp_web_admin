@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom'
 import Button from 'components/ui/button/Button'
 import Row from 'components/ui/layout/Row'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/routes'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 const CWEHome = () => {
   const navigate = useNavigate()
