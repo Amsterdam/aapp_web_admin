@@ -1,1 +1,1 @@
-export const BASE_ROUTE = '/mbs'
+export const BASE_ROUTE = '/beheer'
