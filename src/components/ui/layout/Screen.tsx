@@ -2,11 +2,11 @@ import {ReactNode, useEffect, useState} from 'react'
 import {useLoaderData} from 'react-router-dom'
 import LogoutButton from 'authentication/components/LogoutButton'
 import useGetAuthorizedGroups from 'authentication/hooks/useGetAuthorizedGroups'
+import ErrorComponent from 'components/ui//Error'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 import Logo from 'components/ui/media/Logo'
 import 'components/ui/layout/Screen.css'
-import ErrorScreen from 'components/ui/screens/Error.screen'
 import type {AzureGroup} from 'authentication/types'
 
 type Props = {
@@ -17,6 +17,10 @@ type Props = {
 
 const errorMessageNotAuthorized =
   'Je hebt geen rechten om deze pagina te bekijken.'
+
+const ErrorUnauthorized = () => {
+  return <ErrorComponent message={errorMessageNotAuthorized} withHomeButton />
+}
 
 const Screen = ({children, withLogin = true}: Props) => {
   const [isAuthorized, setIsAuthorized] = useState<boolean | undefined>(
@@ -40,10 +44,6 @@ const Screen = ({children, withLogin = true}: Props) => {
     return null
   }
 
-  if (!isAuthorized) {
-    return <ErrorScreen message={errorMessageNotAuthorized} withHomeButton />
-  }
-
   return (
     <div className="Screen">
       <div className="Container">
@@ -54,7 +54,7 @@ const Screen = ({children, withLogin = true}: Props) => {
               <LogoutButton />
             </Row>
           </header>
-          <main>{children}</main>
+          <main>{isAuthorized ? children : <ErrorUnauthorized />}</main>
         </Column>
       </div>
     </div>

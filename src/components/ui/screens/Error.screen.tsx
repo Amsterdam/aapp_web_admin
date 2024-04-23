@@ -9,7 +9,7 @@ type Props = {
   withHomeButton?: boolean
 }
 
-const ErrorScreen = ({message, withHomeButton = false}: Props) => {
+const ErrorScreen = ({message, withHomeButton}: Props) => {
   const navigate = useNavigate()
 
   return (
