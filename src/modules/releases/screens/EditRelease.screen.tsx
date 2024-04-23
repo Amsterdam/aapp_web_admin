@@ -34,6 +34,7 @@ const replaceEmptyDates = <T,>(
       return null
     }
   }
+
   return value
 }
 

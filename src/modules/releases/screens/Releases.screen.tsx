@@ -55,6 +55,7 @@ const ReleasesScreen = () => {
           <List>
             {releases.map(({version, isDeprecated, isSupported, published}) => {
               const hotfixVersion = getHotfixVersion(version, releaseVersions)
+
               return (
                 <ListItem key={version}>
                   <BlockLink

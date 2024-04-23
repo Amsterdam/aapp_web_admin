@@ -17,6 +17,7 @@ const DownloadQRCodeScreen = () => {
   const source = encodeURIComponent(watch('source'))
   const campaign = encodeURIComponent(watch('campaign'))
   const url = `https://app.amsterdam.nl/download?utm_source=${source}&utm_campaign=${campaign}`
+
   return (
     <Screen>
       <Column gutter="lg">
