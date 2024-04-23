@@ -3,6 +3,7 @@ import {useCallback, useEffect, useState} from 'react'
 import {FormProvider, SubmitHandler, useForm} from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
 import LoadingButton from 'components/ui/button/LoadingButton'
+import ImageField from 'components/ui/forms/ImageField/ImageField'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ErrorScreen from 'components/ui/screens/Error.screen'
@@ -120,6 +121,7 @@ const CreateModuleScreen = () => {
         />
         <FormProvider {...form}>
           <Column gutter="lg">
+            <ImageField alt="hi!" label="afb" name="foo" />
             {!!isNewModule && (
               <ModuleSlugField defaultValue={latestVersion.moduleSlug} />
             )}

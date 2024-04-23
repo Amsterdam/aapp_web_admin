@@ -1,5 +1,6 @@
 import {useNavigate} from 'react-router-dom'
 import {LoginBoundary} from 'components/authentication/LoginBoundary'
+import {TableFeatures} from 'components/temp/TableFeatures'
 import Button from 'components/ui/button/Button'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
@@ -43,6 +44,7 @@ const HomeScreen = () => {
           />
         </Row>
       </Column>
+      <TableFeatures />
     </Screen>
   )
 }
