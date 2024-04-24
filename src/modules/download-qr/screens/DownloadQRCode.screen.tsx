@@ -48,7 +48,12 @@ const DownloadQRCodeScreen = () => {
                 </Column>
                 <Column gutter="sm">
                   <Phrase color="muted">QR code:</Phrase>
-                  <QRCodeWithDownload value={url} />
+                  <QRCodeWithDownload
+                    value={url}
+                    fileName={`qr-code-${encodeURIComponent(
+                      source,
+                    )}-${encodeURIComponent(campaign)}`}
+                  />
                 </Column>
               </>
             ) : (
