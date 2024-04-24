@@ -53,7 +53,7 @@ const ReleasesScreen = () => {
         )}
         {releases?.length ? (
           <List>
-            {releases.map(({version, isDeprecated, isSupported}) => {
+            {releases.map(({version, isDeprecated, isSupported, published}) => {
               const hotfixVersion = getHotfixVersion(version, releaseVersions)
               return (
                 <ListItem key={version}>
@@ -73,6 +73,7 @@ const ReleasesScreen = () => {
                         {!!isSupported && (
                           <Phrase emphasis="italic">
                             {isDeprecated ? 'Deprecated' : 'Supported'}
+                            {!published && ', pre-release'}
                           </Phrase>
                         )}
                       </Row>
