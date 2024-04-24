@@ -12,6 +12,7 @@ enum FieldWidth {
 }
 
 type Props = {
+  description?: string
   label: string
   width?: keyof typeof FieldWidth
 } & UseControllerProps &
@@ -19,6 +20,7 @@ type Props = {
 
 const TextField = ({
   defaultValue,
+  description,
   label,
   name,
   maxLength,
@@ -37,6 +39,11 @@ const TextField = ({
           <label className="TextFieldLabel" data-width={width} htmlFor={id}>
             <Column gutter="sm">
               <Phrase color="muted">{label}</Phrase>
+              {!!description && (
+                <Phrase color="muted" emphasis="italic">
+                  {description}
+                </Phrase>
+              )}
               <Input
                 id={id}
                 name={name}

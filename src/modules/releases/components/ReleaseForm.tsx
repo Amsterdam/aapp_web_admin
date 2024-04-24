@@ -50,18 +50,24 @@ const ReleaseForm = ({
       )}
       <DragDropModules releaseVersion={release.version} />
       <TextField
+        // eslint-disable-next-line max-len
+        description="De publicatiedatum bepaalt vanaf wanneer de release niet meer als pre-release te zien is en de release in aanmerking komt voor voor gebruik als latest version in update meldingen."
         label="Gepubliceerd"
         name="published"
         type="date"
         width="half"
       />
       <TextField
+        // eslint-disable-next-line max-len
+        description="De deprecateddatum bepaalt vanaf wanneer gebruikers van deze release een update suggestie melding krijgen."
         label="Deprecated"
         name="deprecated"
         type="date"
         width="half"
       />
       <TextField
+        // eslint-disable-next-line max-len
+        description="De ongepubliceerd datum bepaalt vanaf wanneer gebruikers van deze release een geforceerde update melding krijgen en de app voor deze gebruikers onbruikbaar is."
         label="Ongepubliceerd (en niet meer supported)"
         name="unpublished"
         type="date"
