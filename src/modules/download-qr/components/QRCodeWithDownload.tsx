@@ -7,6 +7,10 @@ import Row from 'components/ui/layout/Row'
 
 type Props = {
   value: string
+  /**
+   * download file name without extension
+   */
+  fileName: string
 }
 
 const svgToDataURL = (svgData: string) => {
@@ -17,7 +21,7 @@ const svgToDataURL = (svgData: string) => {
   return `data:image/svg+xml,${encodedSvg}`
 }
 
-const QRCodeWithDownload = ({value}: Props) => {
+const QRCodeWithDownload = ({value, fileName}: Props) => {
   const qrCodeRef = useRef<SVGSVGElement & QRCode & HTMLElement>(null)
   const onPngPress = useCallback(() => {
     if (qrCodeRef.current) {
@@ -25,7 +29,7 @@ const QRCodeWithDownload = ({value}: Props) => {
         .then(dataUrl => {
           const link = document.createElement('a')
           link.href = dataUrl
-          link.download = `qr-code.png`
+          link.download = `${fileName}.png`
           link.click()
         })
         .catch(error => {
@@ -33,15 +37,15 @@ const QRCodeWithDownload = ({value}: Props) => {
           console.error('Error generating QR code:', error)
         })
     }
-  }, [])
+  }, [fileName])
   const onSvgPress = useCallback(() => {
     if (qrCodeRef.current) {
       const link = document.createElement('a')
       link.href = svgToDataURL(qrCodeRef.current.outerHTML)
-      link.download = `qr-code.svg`
+      link.download = `${fileName}.svg`
       link.click()
     }
-  }, [])
+  }, [fileName])
   return (
     <Column gutter="md">
       <QRCode value={value} ref={qrCodeRef} />

@@ -14,11 +14,9 @@ type DownloadQRCodeForm = {
 const DownloadQRCodeScreen = () => {
   const form = useForm<DownloadQRCodeForm>()
   const {watch} = form
-  const source = watch('source')
-  const campaign = watch('campaign')
-  const url = `https://app.amsterdam.nl/download?utm_source=${encodeURIComponent(
-    source,
-  )}&utm_campaign=${encodeURIComponent(campaign)}`
+  const source = encodeURIComponent(watch('source'))
+  const campaign = encodeURIComponent(watch('campaign'))
+  const url = `https://app.amsterdam.nl/download?utm_source=${source}&utm_campaign=${campaign}`
   return (
     <Screen>
       <Column gutter="lg">
@@ -48,7 +46,10 @@ const DownloadQRCodeScreen = () => {
                 </Column>
                 <Column gutter="sm">
                   <Phrase color="muted">QR code:</Phrase>
-                  <QRCodeWithDownload value={url} />
+                  <QRCodeWithDownload
+                    value={url}
+                    fileName={`qr-code-${source}-${campaign}`}
+                  />
                 </Column>
               </>
             ) : (
