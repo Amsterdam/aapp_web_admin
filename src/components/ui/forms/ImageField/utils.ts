@@ -10,25 +10,26 @@ export const createImage = (url: string): Promise<HTMLImageElement> =>
 
 /**
  * Get the cropped image by creating a canvas element containing the cropped iamge and the exporting the canvase to a blob
+ * Source: https://codesandbox.io/p/sandbox/react-easy-crop-demo-with-cropped-output-q8q1mnr01w
  */
-export const getCroppedImg = async (
+export const getCroppedImage = async (
   src: string,
   {height, width, x, y}: Area,
+  outputWidth: number,
+  aspectRatio: number,
 ) => {
   const image = await createImage(src)
   const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')
+  const canvasContext = canvas.getContext('2d')
 
-  if (!ctx) {
+  if (!canvasContext) {
     throw new Error('No ctx')
   }
 
-  // set canvas size to match the bounding box
   canvas.width = image.width
   canvas.height = image.height
 
-  // draw image
-  ctx.drawImage(image, 0, 0)
+  canvasContext.drawImage(image, 0, 0)
 
   const croppedCanvas = document.createElement('canvas')
 
@@ -38,17 +39,13 @@ export const getCroppedImg = async (
     throw new Error('No croppedCtx')
   }
 
-  // Set the size of the cropped canvas
-  croppedCanvas.width = 940
-  croppedCanvas.height = 415
+  const w = outputWidth
+  const h = outputWidth / aspectRatio
+  croppedCanvas.width = w
+  croppedCanvas.height = h
 
-  // Draw the cropped image onto the new canvas
-  croppedCtx.drawImage(canvas, x, y, width, height, 0, 0, 940, 415)
+  croppedCtx.drawImage(canvas, x, y, width, height, 0, 0, w, h)
 
-  // As Base64 string
-  // return croppedCanvas.toDataURL('image/jpeg');
-
-  // As a blob
   return new Promise<string>(resolve => {
     croppedCanvas.toBlob(file => {
       if (!file) {

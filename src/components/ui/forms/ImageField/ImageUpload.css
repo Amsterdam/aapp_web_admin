@@ -8,8 +8,8 @@
   top: 0;
 }
 
-.ImageUpload .AddIcon,
-.ImageUpload .DeleteIcon {
+.ImageUpload .ImageUploadAddIcon,
+.ImageUpload .ImageUploadDeleteIcon {
   padding: var(--size-spacing-sm);
   background-color: #fff;
   width: var(--size-spacing-md);

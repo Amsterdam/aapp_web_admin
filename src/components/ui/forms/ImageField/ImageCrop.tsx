@@ -1,49 +1,61 @@
 import {useCallback, useState} from 'react'
 import Cropper, {type Area} from 'react-easy-crop'
+import ErrorComponent from 'components/ui/Error'
 import Button from 'components/ui/button/Button'
-import Loader from 'components/ui/containers/Loader'
-import {getCroppedImg} from 'components/ui/forms/ImageField/utils'
+import {getCroppedImage} from 'components/ui/forms/ImageField/utils'
+import {Slider} from 'components/ui/forms/Slider'
+import Column from 'components/ui/layout/Column'
+import Row from 'components/ui/layout/Row'
 
 import './ImageCrop.css'
-import Column from 'components/ui/layout/Column'
 
 type Props = {
   aspectRatio: number
+  onCancel?: () => void
   onComplete: (image: string) => void
-  url: string
-  width: number
+  outputWidth: number
+  src?: string
 }
 
-export const ImageCrop = ({aspectRatio, onComplete, url, width}: Props) => {
+export const ImageCrop = ({
+  aspectRatio,
+  onCancel,
+  onComplete,
+  outputWidth,
+  src,
+}: Props) => {
   const [crop, setCrop] = useState({x: 0, y: 0})
   const [zoom, setZoom] = useState(1)
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>()
 
   const onClick = useCallback(() => {
-    if (!croppedAreaPixels) return
-    // eslint-disable-next-line no-console
-    console.log(croppedAreaPixels)
-    setLoading(true)
-    getCroppedImg(url, croppedAreaPixels)
-      .then(onComplete)
-      // eslint-disable-next-line no-console
-      .catch(console.error)
-      .finally(() => {
-        setLoading(true)
-      })
-  }, [croppedAreaPixels, onComplete, url])
+    if (!croppedAreaPixels || !src) {
+      return
+    }
 
-  // eslint-disable-next-line no-console
-  console.log(url)
+    getCroppedImage(src, croppedAreaPixels, outputWidth, aspectRatio)
+      .then(onComplete)
+      .catch(e => {
+        // eslint-disable-next-line no-console
+        console.error(e)
+        setError(true)
+      })
+  }, [aspectRatio, croppedAreaPixels, onComplete, outputWidth, src])
+
+  if (error || !src) {
+    return (
+      <ErrorComponent message="Sorry, er is iets misgegaan bij het uploaden." />
+    )
+  }
 
   return (
-    <Column gutter="sm">
-      <Loader loading={loading}>
-        <div className="ImageCrop">
+    <div className="ImageCrop">
+      <Column gutter="sm">
+        <div className="ImageCropImage" style={{aspectRatio}}>
           <Cropper
-            cropSize={{width, height: width / aspectRatio}}
-            image={url}
+            cropSize={{width: outputWidth, height: outputWidth / aspectRatio}}
+            image={src}
             crop={crop}
             zoom={zoom}
             onCropChange={setCrop}
@@ -51,12 +63,35 @@ export const ImageCrop = ({aspectRatio, onComplete, url, width}: Props) => {
               setCroppedAreaPixels(areaPixels)
             }}
             onZoomChange={setZoom}
+            showGrid={false}
           />
         </div>
-      </Loader>
-      <Button onClick={() => onClick()} disabled={!croppedAreaPixels}>
-        Show Result
-      </Button>
-    </Column>
+        <Row valign="center" gutter="md">
+          <Slider
+            min={1}
+            max={3}
+            onChange={value => {
+              if (typeof value === 'number') {
+                setZoom(value)
+              }
+            }}
+            step={0.1}
+            value={zoom}
+          />
+          <Button
+            onClick={() => onClick()}
+            disabled={!croppedAreaPixels}
+            label="Bevestig"
+          />
+          {!!onCancel && (
+            <Button
+              onClick={() => onCancel()}
+              label="Annuleer"
+              variant="secondary"
+            />
+          )}
+        </Row>
+      </Column>
+    </div>
   )
 }
