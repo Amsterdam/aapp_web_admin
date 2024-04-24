@@ -7,8 +7,6 @@ import ImageUpload from 'components/ui/forms/ImageField/ImageUpload'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 
-import './ImageField.css'
-
 type Props = {
   aspectRatio?: number
   label: string
@@ -37,7 +35,7 @@ const ImageField = ({
   const [uncroppedImage, setUncroppedImage] = useState<string>()
 
   return (
-    <div className="ImageField">
+    <div className="ImageField" style={{width: `${outputWidth}px`}}>
       <Controller
         defaultValue={src}
         name={name}
