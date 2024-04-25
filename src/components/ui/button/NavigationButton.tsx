@@ -6,12 +6,10 @@ type Props = Omit<ButtonProps, 'onClick'> & {
   route: string
 }
 
-const NavigationButton = ({label, route, ...buttonProps}: Props) => {
+const NavigationButton = ({route, ...buttonProps}: Props) => {
   const navigate = useNavigate()
 
-  return (
-    <Button label={label} onClick={() => navigate(route)} {...buttonProps} />
-  )
+  return <Button onClick={() => navigate(route)} {...buttonProps} />
 }
 
 export default NavigationButton
