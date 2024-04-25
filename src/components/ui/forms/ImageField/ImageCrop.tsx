@@ -17,6 +17,10 @@ type Props = {
   src?: string
 }
 
+const ZOOM_SLIDER_MIN = 1
+const ZOOM_SLIDER_MAX = 3
+const ZOOM_SLIDER_STEP = 0.1
+
 export const ImageCrop = ({
   aspectRatio,
   onCancel,
@@ -68,14 +72,14 @@ export const ImageCrop = ({
         </div>
         <Row valign="center" gutter="md">
           <Slider
-            min={1}
-            max={3}
+            min={ZOOM_SLIDER_MIN}
+            max={ZOOM_SLIDER_MAX}
             onChange={value => {
               if (typeof value === 'number') {
                 setZoom(value)
               }
             }}
-            step={0.1}
+            step={ZOOM_SLIDER_STEP}
             value={zoom}
           />
           <Button

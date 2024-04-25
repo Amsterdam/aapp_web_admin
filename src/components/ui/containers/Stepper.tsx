@@ -19,5 +19,5 @@ export const Stepper = ({children, currentId}: StepperProps) =>
 
     return Children.toArray(children).find(
       child => (child as ReactElement<StepProps>).props.id === currentId,
-    )
+    ) as JSX.Element
   }, [children, currentId])
