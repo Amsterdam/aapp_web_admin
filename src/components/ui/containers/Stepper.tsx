@@ -16,11 +16,7 @@ export const Stepper = ({children, currentId}: StepperProps) => {
     return null
   }
 
-  return (
-    <>
-      {Children.toArray(children).find(
-        child => (child as ReactElement<StepProps>).props.id === currentId,
-      )}
-    </>
+  return Children.toArray(children).find(
+    child => (child as ReactElement<StepProps>).props.id === currentId,
   )
 }
