@@ -1,4 +1,4 @@
-import {useCallback} from 'react'
+import {useMemo} from 'react'
 import useGetAuthorizedGroups from 'authentication/hooks/useGetAuthorizedGroups'
 import modules from 'modules'
 
@@ -8,7 +8,7 @@ import modules from 'modules'
 const useAuthorizedModules = () => {
   const authorizedGroups = useGetAuthorizedGroups()
 
-  const getAuthorizedModules = useCallback(
+  return useMemo(
     () =>
       modules.filter(module =>
         module.allowedAzureGroups?.some(group =>
@@ -17,8 +17,6 @@ const useAuthorizedModules = () => {
       ),
     [authorizedGroups],
   )
-
-  return getAuthorizedModules()
 }
 
 export default useAuthorizedModules
