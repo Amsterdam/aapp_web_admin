@@ -3,7 +3,7 @@ import Button from 'components/ui/button/Button'
 import Row from 'components/ui/layout/Row'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
-const CWEHome = () => {
+const ConstructionWorkEditorHome = () => {
   const navigate = useNavigate()
 
   return (
@@ -22,4 +22,4 @@ const CWEHome = () => {
   )
 }
 
-export default CWEHome
+export default ConstructionWorkEditorHome

@@ -8,5 +8,6 @@ export const downloadQrModule: Module = {
   HomeComponent: DownloadQrHome,
   routes,
   slug: ModuleSlug.downloadQr,
+  title: 'QR code maker',
   type: ModuleType.other,
 }

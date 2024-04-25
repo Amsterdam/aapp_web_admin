@@ -16,6 +16,7 @@ export type Module<T extends Slice<any> = never> = {
   routes: RouteObject[]
   reduxSlice?: T
   slug: ModuleSlug
+  title: string
   /**
    * Type of module
    * - contentManagement: module is used for content management

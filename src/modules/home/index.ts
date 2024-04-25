@@ -6,5 +6,6 @@ export const homeModule: Module = {
   allowedAzureGroups,
   routes,
   slug: ModuleSlug.home,
+  title: 'Home',
   type: ModuleType.home,
 }

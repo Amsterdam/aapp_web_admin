@@ -1,18 +1,16 @@
-import {ReactNode, useEffect, useState} from 'react'
-import {useLoaderData} from 'react-router-dom'
+import {ReactNode} from 'react'
 import LogoutButton from 'authentication/components/LogoutButton'
-import useGetAuthorizedGroups from 'authentication/hooks/useGetAuthorizedGroups'
+import useIsAuthorized from 'authentication/hooks/useIsAuthorized'
 import ErrorComponent from 'components/ui//Error'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 import Logo from 'components/ui/media/Logo'
 import 'components/ui/layout/Screen.css'
-import type {AzureGroup} from 'authentication/types'
 
 type Props = {
   children: ReactNode
   /** No authentication is required when set to false. */
-  withLogin?: boolean
+  requireLogin?: boolean
 }
 
 const errorMessageNotAuthorized =
@@ -22,25 +20,10 @@ const ErrorUnauthorized = () => {
   return <ErrorComponent message={errorMessageNotAuthorized} withHomeButton />
 }
 
-const Screen = ({children, withLogin = true}: Props) => {
-  const [isAuthorized, setIsAuthorized] = useState<boolean | undefined>(
-    undefined,
-  )
-  const azureGroups = useLoaderData() as AzureGroup[]
-  const authorizedGroups = useGetAuthorizedGroups()
+const Screen = ({children, requireLogin = true}: Props) => {
+  const isAuthorized = useIsAuthorized(requireLogin)
 
-  useEffect(() => {
-    if (!withLogin) {
-      setIsAuthorized(true)
-
-      return
-    }
-    setIsAuthorized(
-      azureGroups?.some(group => authorizedGroups.includes(group)),
-    )
-  }, [azureGroups, authorizedGroups, withLogin])
-
-  if (isAuthorized === undefined) {
+  if (!isAuthorized) {
     return null
   }
 
