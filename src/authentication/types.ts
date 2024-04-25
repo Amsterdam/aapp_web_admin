@@ -2,8 +2,8 @@ import {JwtPayload} from 'jwt-decode'
 
 export enum AzureGroup {
   admin = 'admin',
-  editor = 'editor', // omgevingsmanager / communicatieadviseur
-  publisher = 'publisher', // redacteur
+  editor = 'editor', // redacteur
+  publisher = 'publisher', // omgevingsmanager / communicatieadviseur
 }
 
 export type DecodedJWTToken = {
