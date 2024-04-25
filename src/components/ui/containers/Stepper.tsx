@@ -1,4 +1,4 @@
-import {Children, ReactElement, ReactNode} from 'react'
+import {Children, ReactElement, ReactNode, useMemo} from 'react'
 
 // eslint-disable-next-line react/no-unused-prop-types
 type StepProps = {children: ReactNode; id: string | number}
@@ -11,12 +11,13 @@ type StepperProps = {
   currentId: string | number
 }
 
-export const Stepper = ({children, currentId}: StepperProps) => {
-  if (!children) {
-    return null
-  }
+export const Stepper = ({children, currentId}: StepperProps) =>
+  useMemo(() => {
+    if (!children) {
+      return null
+    }
 
-  return Children.toArray(children).find(
-    child => (child as ReactElement<StepProps>).props.id === currentId,
-  )
-}
+    return Children.toArray(children).find(
+      child => (child as ReactElement<StepProps>).props.id === currentId,
+    )
+  }, [children, currentId])
