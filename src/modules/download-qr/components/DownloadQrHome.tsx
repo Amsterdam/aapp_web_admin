@@ -1,20 +1,15 @@
-import {useNavigate} from 'react-router-dom'
-import Button from 'components/ui/button/Button'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Row from 'components/ui/layout/Row'
 import {DownloadQRCodeRoute} from 'modules/download-qr/types'
 
-const DownloadQrHome = () => {
-  const navigate = useNavigate()
-
-  return (
-    <Row gutter="md">
-      <Button
-        flex
-        label="Download link QR code maker"
-        onClick={() => navigate(DownloadQRCodeRoute.downloadQRCode)}
-      />
-    </Row>
-  )
-}
+const DownloadQrHome = () => (
+  <Row gutter="md">
+    <NavigationButton
+      flex
+      label="Download link QR code maker"
+      route={DownloadQRCodeRoute.downloadQRCode}
+    />
+  </Row>
+)
 
 export default DownloadQrHome

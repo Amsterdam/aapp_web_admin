@@ -1,25 +1,20 @@
-import {useNavigate} from 'react-router-dom'
-import Button from 'components/ui/button/Button'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Row from 'components/ui/layout/Row'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
-const ConstructionWorkEditorHome = () => {
-  const navigate = useNavigate()
-
-  return (
-    <Row gutter="md">
-      <Button
-        flex
-        label="Projecten"
-        onClick={() => navigate(ConstructionWorkEditorRoute.projects)}
-      />
-      <Button
-        flex
-        label="Redacteuren"
-        onClick={() => navigate(ConstructionWorkEditorRoute.publishers)}
-      />
-    </Row>
-  )
-}
+const ConstructionWorkEditorHome = () => (
+  <Row gutter="md">
+    <NavigationButton
+      flex
+      label="Projecten"
+      route={ConstructionWorkEditorRoute.projects}
+    />
+    <NavigationButton
+      flex
+      label="Redacteuren"
+      route={ConstructionWorkEditorRoute.publishers}
+    />
+  </Row>
+)
 
 export default ConstructionWorkEditorHome

@@ -1,8 +1,8 @@
 import {skipToken} from '@reduxjs/toolkit/query'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import BlockLink from 'components/ui/button/BlockLink'
-import Button from 'components/ui/button/Button'
 import LoadingButton from 'components/ui/button/LoadingButton'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Module from 'components/ui/containers/Module'
 import Box from 'components/ui/layout/Box'
 import Column from 'components/ui/layout/Column'
@@ -23,8 +23,6 @@ type Params = {
 }
 
 const ModuleScreen = () => {
-  const navigate = useNavigate()
-
   const {slug} = useParams<Params>()
   const {data: module, isLoading} = useGetModuleQuery(
     slug
@@ -73,11 +71,9 @@ const ModuleScreen = () => {
     <Screen>
       <Column gutter="lg">
         <ScreenTitle subtitle="Module" title={latestVersion?.title} />
-        <Button
+        <NavigationButton
           label="Moduleversie toevoegen"
-          onClick={() => {
-            navigate(`/module/${slug}/create`)
-          }}
+          route={`/module/${slug}/create`}
         />
         <List>
           {module.versions.map(({icon, title, version}) => (

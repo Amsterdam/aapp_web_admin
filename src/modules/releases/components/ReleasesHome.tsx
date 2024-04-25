@@ -1,25 +1,12 @@
-import {useNavigate} from 'react-router-dom'
-import Button from 'components/ui/button/Button'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Row from 'components/ui/layout/Row'
 import {ReleasesRoute} from 'modules/releases/types/routes'
 
-const ReleasesHome = () => {
-  const navigate = useNavigate()
-
-  return (
-    <Row gutter="md">
-      <Button
-        flex
-        label="Modules"
-        onClick={() => navigate(ReleasesRoute.modules)}
-      />
-      <Button
-        flex
-        label="Releases"
-        onClick={() => navigate(ReleasesRoute.releases)}
-      />
-    </Row>
-  )
-}
+const ReleasesHome = () => (
+  <Row gutter="md">
+    <NavigationButton flex label="Modules" route={ReleasesRoute.modules} />
+    <NavigationButton flex label="Releases" route={ReleasesRoute.releases} />
+  </Row>
+)
 
 export default ReleasesHome

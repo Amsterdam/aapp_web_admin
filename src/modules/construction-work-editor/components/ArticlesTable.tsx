@@ -3,7 +3,7 @@ import {useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
-import Button from 'components/ui/button/Button'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
@@ -39,7 +39,6 @@ const columns: ColumnConfig<ArticlesItem>[] = [
 
 const ArticlesTable = ({projectId}: Props) => {
   const navigate = useNavigate()
-
   const {data, isError, isLoading} = useGetArticlesQuery(
     projectId !== undefined
       ? {
@@ -80,9 +79,9 @@ const ArticlesTable = ({projectId}: Props) => {
         keyGetter={({meta_id: {id, type}}) => `${type}${id}`}
         onRowClick={onRowClick}
       />
-      <Button
+      <NavigationButton
         label="Maak app bericht"
-        onClick={() => navigate(ConstructionWorkEditorRoute.article)}
+        route={ConstructionWorkEditorRoute.article}
       />
     </Column>
   )
