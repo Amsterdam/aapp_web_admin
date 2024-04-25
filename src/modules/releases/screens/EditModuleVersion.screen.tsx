@@ -2,8 +2,8 @@ import {skipToken} from '@reduxjs/toolkit/query'
 import {useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useNavigate, useParams} from 'react-router-dom'
-import Button from 'components/ui/button/Button'
 import LoadingButton from 'components/ui/button/LoadingButton'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ErrorScreen from 'components/ui/screens/Error.screen'
@@ -154,11 +154,9 @@ const EditModuleScreen = () => {
               onClick={handleSubmit(onSubmit)}
             />
             {isInRelease ? (
-              <Button
+              <NavigationButton
                 label="Aan- of uitzetten"
-                onClick={() =>
-                  navigate(`/module/${slugParam}/${versionParam}/status`)
-                }
+                route={`/module/${slugParam}/${versionParam}/status`}
                 variant="secondary"
               />
             ) : (

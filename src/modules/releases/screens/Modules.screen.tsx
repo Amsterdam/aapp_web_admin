@@ -1,7 +1,6 @@
 import {useMemo} from 'react'
-import {useNavigate} from 'react-router-dom'
 import BlockLink from 'components/ui/button/BlockLink'
-import Button from 'components/ui/button/Button'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Module from 'components/ui/containers/Module'
 import Box from 'components/ui/layout/Box'
 import Column from 'components/ui/layout/Column'
@@ -11,11 +10,10 @@ import List from 'components/ui/text/List'
 import ListItem from 'components/ui/text/ListItem'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import {ReleasesRoute} from 'modules/releases/routes'
 import {useGetModulesQuery} from 'modules/releases/services/modules'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 
 const ModulesScreen = () => {
-  const navigate = useNavigate()
   const {data: modules, isLoading} = useGetModulesQuery()
 
   const sortedModules = useMemo(
@@ -33,11 +31,9 @@ const ModulesScreen = () => {
     <Screen>
       <Column gutter="lg">
         <ScreenTitle title="Modules" />
-        <Button
+        <NavigationButton
           label="Module toevoegen"
-          onClick={() => {
-            navigate(ReleasesRoute.createModule)
-          }}
+          route={ReleasesRoute.createModule}
         />
         {sortedModules ? (
           <List>

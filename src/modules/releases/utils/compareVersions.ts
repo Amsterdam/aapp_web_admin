@@ -13,5 +13,6 @@ export const compareVersions = (a: string, b: string): -1 | 0 | 1 => {
   if (partA < partB) {
     return -1
   }
+
   return 0
 }

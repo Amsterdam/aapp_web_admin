@@ -8,7 +8,6 @@ import ErrorScreen from 'components/ui/screens/Error.screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import ReleaseForm from 'modules/releases/components/ReleaseForm'
-import {ReleasesRoute} from 'modules/releases/routes'
 import {useGetModulesQuery} from 'modules/releases/services/modules'
 import {
   useCreateReleaseMutation,
@@ -21,6 +20,7 @@ import {
   ReleaseBase,
   ReleaseWithModuleVersions,
 } from 'modules/releases/types/release'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 import {getPreviousPatchVersion} from 'modules/releases/utils/getHotfixVersion'
 
 type Props = {
@@ -59,6 +59,7 @@ const CreateRelease = ({hotfixVersion}: Props) => {
     if (!previousModules) {
       return null
     }
+
     return {
       created: '',
       modified: '',

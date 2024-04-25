@@ -1,7 +1,7 @@
 import {useMemo, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
 import BlockLink from 'components/ui/button/BlockLink'
 import Button from 'components/ui/button/Button'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Box from 'components/ui/layout/Box'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
@@ -11,13 +11,11 @@ import List from 'components/ui/text/List'
 import ListItem from 'components/ui/text/ListItem'
 import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import {ReleasesRoute} from 'modules/releases/routes'
 import {useGetReleasesQuery} from 'modules/releases/services/releases'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 import {getHotfixVersion} from 'modules/releases/utils/getHotfixVersion'
 
 const ReleasesScreen = () => {
-  const navigate = useNavigate()
-
   const {data: releases, isLoading} = useGetReleasesQuery()
 
   const [addHotfix, setAddHotfix] = useState(false)
@@ -35,9 +33,9 @@ const ReleasesScreen = () => {
     <Screen>
       <Column gutter="lg">
         <ScreenTitle title="Releases" />
-        <Button
+        <NavigationButton
           label="Release toevoegen"
-          onClick={() => navigate(ReleasesRoute.createRelease)}
+          route={ReleasesRoute.createRelease}
           variant={addHotfix ? 'secondary' : 'primary'}
         />
         {(releases?.length ?? 0) > 0 && (
@@ -55,6 +53,7 @@ const ReleasesScreen = () => {
           <List>
             {releases.map(({version, isDeprecated, isSupported, published}) => {
               const hotfixVersion = getHotfixVersion(version, releaseVersions)
+
               return (
                 <ListItem key={version}>
                   <BlockLink

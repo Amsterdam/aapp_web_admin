@@ -2,8 +2,8 @@ import {useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/routes'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import ProjectsTable from './ProjectsTable'
 import type {ProjectsItem} from 'modules/construction-work-editor/types/project'
 
@@ -13,7 +13,9 @@ const Projects = () => {
 
   const handleRowClick = useCallback(
     (project: ProjectsItem) => {
-      if (!project.id) return
+      if (!project.id) {
+        return
+      }
       navigate(`${ConstructionWorkEditorRoute.project}/${project.id}`)
     },
     [navigate],

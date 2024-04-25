@@ -13,6 +13,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react/jsx-runtime',
   ],
+  ignorePatterns: ['node_modules/', 'build/', 'dist/'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -73,6 +74,7 @@ module.exports = {
         },
       },
     ],
+    'newline-before-return': 'error',
     'import/prefer-default-export': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],

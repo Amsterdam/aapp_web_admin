@@ -3,7 +3,7 @@ import {useMsal, MsalAuthenticationTemplate} from '@azure/msal-react'
 import {ReactNode, FC} from 'react'
 
 type Props = {
-  children: ReactNode
+  children?: ReactNode
   interactionType?: InteractionType
 }
 
@@ -14,9 +14,10 @@ export const LoginBoundary: FC<Props> = ({
   const {instance} = useMsal()
   const accounts = instance.getAllAccounts()
   const activeAccount = instance.getActiveAccount()
-  if (!activeAccount && accounts.length > 0) {
+  if (!activeAccount && accounts.length) {
     instance.setActiveAccount(accounts[0])
   }
+
   return (
     <MsalAuthenticationTemplate interactionType={interactionType}>
       {children}

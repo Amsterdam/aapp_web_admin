@@ -53,6 +53,7 @@ export const EditPublisherTable = ({email}: Props) => {
       onRowToggle={({id}, checked) => {
         if (checked) {
           addProjectsForPublisher({email, projectIds: [id]})
+
           return
         }
         removeProjectsForPublisher({email, projectIds: [id]})

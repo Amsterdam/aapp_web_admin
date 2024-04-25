@@ -5,7 +5,7 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
-import {msalInstance} from 'components/authentication/Auth.provider'
+import {msalInstance} from 'authentication/components/Auth.provider'
 import {currentClientId} from 'utils/environment'
 import {ApiDirectory} from './types'
 
@@ -29,6 +29,7 @@ const baseQuery: BaseQueryFn<
         headers.set('X-API-KEY', API_KEY)
         headers.set('deviceid', 'random-device-id')
       }
+
       return headers
     },
   })(args, baseQueryApi, extraOptions as never)

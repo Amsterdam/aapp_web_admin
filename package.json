@@ -2,7 +2,7 @@
   "name": "aapp-mbs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/mbs/",
+  "homepage": "/beheer/",
   "dependencies": {
     "@amsterdam/design-system-assets": "^0.2.0",
     "@amsterdam/design-system-css": "^0.7.1",
@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.1.0",
     "@sentry/react": "^7.99.0",
     "html-to-image": "^1.11.11",
+    "jwt-decode": "^4.0.0",
     "lodash.capitalize": "^4.2.1",
     "lodash.isequal": "^4.5.0",
     "lodash.uniqueid": "^4.0.1",

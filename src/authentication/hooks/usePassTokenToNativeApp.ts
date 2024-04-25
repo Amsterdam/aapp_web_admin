@@ -34,5 +34,6 @@ export const usePassTokenToNativeApp = () => {
         })
     }
   }, [instance, activeAccount])
+
   return !!window.ReactNativeWebView
 }

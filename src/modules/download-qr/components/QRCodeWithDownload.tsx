@@ -46,6 +46,7 @@ const QRCodeWithDownload = ({value, fileName}: Props) => {
       link.click()
     }
   }, [fileName])
+
   return (
     <Column gutter="md">
       <QRCode value={value} ref={qrCodeRef} />

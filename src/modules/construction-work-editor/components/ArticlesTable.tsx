@@ -3,13 +3,13 @@ import {useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
-import Button from 'components/ui/button/Button'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
-import {ConstructionWorkEditorRoute} from '../routes'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import type {ColumnConfig} from 'components/ui/table/types'
 import type {ArticlesItem} from 'modules/construction-work-editor/types/article'
 
@@ -39,7 +39,6 @@ const columns: ColumnConfig<ArticlesItem>[] = [
 
 const ArticlesTable = ({projectId}: Props) => {
   const navigate = useNavigate()
-
   const {data, isError, isLoading} = useGetArticlesQuery(
     projectId !== undefined
       ? {
@@ -64,12 +63,12 @@ const ArticlesTable = ({projectId}: Props) => {
 
   if (isError) {
     return (
-      <ErrorComponent message="Artikelen konden niet worden opgehaald. Probeer het later opnieuw" />
+      <ErrorComponent message="Berichten konden niet worden opgehaald. Probeer het later opnieuw" />
     )
   }
 
   if (!data?.length) {
-    return <Phrase>Er zijn geen artikelen voor dit project</Phrase>
+    return <Phrase>Er zijn geen berichten voor dit project</Phrase>
   }
 
   return (
@@ -80,9 +79,9 @@ const ArticlesTable = ({projectId}: Props) => {
         keyGetter={({meta_id: {id, type}}) => `${type}${id}`}
         onRowClick={onRowClick}
       />
-      <Button
+      <NavigationButton
         label="Maak app bericht"
-        onClick={() => navigate(ConstructionWorkEditorRoute.article)}
+        route={ConstructionWorkEditorRoute.article}
       />
     </Column>
   )

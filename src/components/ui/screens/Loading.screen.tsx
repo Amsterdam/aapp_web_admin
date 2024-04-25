@@ -2,7 +2,7 @@ import Loading from 'components/ui/Loading'
 import Screen from 'components/ui/layout/Screen'
 
 const LoadingScreen = () => (
-  <Screen>
+  <Screen requireLogin={false}>
     <Loading />
   </Screen>
 )

@@ -29,5 +29,6 @@ export const AuthProvider: FC<Props> = ({children}) => {
   if (!finished) {
     throw msalInstanceLoadingPromise
   }
+
   return <MsalProvider instance={msalInstance}>{children}</MsalProvider>
 }

@@ -1,6 +1,15 @@
+import ConstructionWorkEditorHome from 'modules/construction-work-editor/components/ConstructionWorkEditorHome'
+import {allowedAzureGroups} from 'modules/construction-work-editor/constants'
 import {routes} from 'modules/construction-work-editor/routes'
-import {type Module} from 'modules/types'
+import {ModuleSlug, ModuleType, type Module} from 'modules/types'
 
-export const constructionWorkEditorModule: Module = {
+const constructionWorkEditorModule: Module = {
+  allowedAzureGroups,
+  HomeComponent: ConstructionWorkEditorHome,
   routes,
+  slug: ModuleSlug.constructionWorkEditor,
+  title: 'Werkzaamheden',
+  type: ModuleType.contentManagement,
 }
+
+export default constructionWorkEditorModule

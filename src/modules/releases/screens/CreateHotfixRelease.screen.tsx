@@ -8,6 +8,7 @@ type Params = {
 
 const CreateHotfixReleaseScreen = () => {
   const {version: releaseVersion} = useParams<Params>()
+
   return (
     <Screen>
       <CreateRelease hotfixVersion={releaseVersion} />
