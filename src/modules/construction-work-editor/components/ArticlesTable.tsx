@@ -9,10 +9,7 @@ import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
-import {
-  ArticleType,
-  type ArticlesItem,
-} from 'modules/construction-work-editor/types/article'
+import {type ArticlesItem} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import type {ColumnConfig} from 'components/ui/table/types'
 
@@ -51,10 +48,7 @@ const ArticlesTable = ({projectId}: Props) => {
   )
 
   const onRowClick = useCallback(
-    ({meta_id: {id, type}}: ArticlesItem) => {
-      if (type !== ArticleType.warning) {
-        return
-      }
+    ({meta_id: {id}}: ArticlesItem) => {
       navigate(`${ConstructionWorkEditorRoute.article}/${id}`)
     },
     [navigate],
