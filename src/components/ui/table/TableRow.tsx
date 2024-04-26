@@ -2,6 +2,8 @@ import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
 import CheckboxToggle from 'components/ui/forms/CheckboxField/CheckboxToggle'
 import {defaultRenderer} from 'components/ui/table/utils'
 import type {TableRowProps} from 'components/ui/table/types'
+import 'components/ui/button/BlockLink.css'
+import 'components/ui/table/TableRow.css'
 
 export const TableRow = <T extends object>({
   config,
@@ -14,7 +16,7 @@ export const TableRow = <T extends object>({
   selectable,
 }: TableRowProps<T>) => (
   <DesignSystemTable.Row
-    className="TableRow"
+    className={`${onRowClick ? 'BlockLink' : ''} TableRow`}
     onClick={() => onRowClick?.(rowData)}>
     {!!selectable && (
       <DesignSystemTable.Cell className="CheckboxCell">
