@@ -1,7 +1,7 @@
+import {Link} from '@amsterdam/design-system-react'
 import {skipToken} from '@reduxjs/toolkit/query'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
-import BlockLink from 'components/ui/button/BlockLink'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 import Title from 'components/ui/text/Title'
@@ -47,9 +47,9 @@ const Project = ({id}: Props) => {
         <Phrase color="muted">
           Aangemaakt: {getDateFromString(creationDate)}
         </Phrase>
-        <BlockLink to={url}>
-          <Phrase>Bekijk op amsterdam.nl</Phrase>
-        </BlockLink>
+        <Link href={url} rel="noopener" target="_blank">
+          Bekijk op amsterdam.nl
+        </Link>
       </Column>
       <ArticlesTable projectId={id} />
     </Column>
