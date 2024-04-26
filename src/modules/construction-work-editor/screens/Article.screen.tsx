@@ -1,17 +1,18 @@
 import {useParams} from 'react-router-dom'
 import Screen from 'components/ui/layout/Screen'
-import Article from 'modules/construction-work-editor/components/Article'
+import Article from 'modules/construction-work-editor/components/Article/Article'
 
-type Params = {
-  id: string
+export type ArticleScreenParams = {
+  id?: string
+  projectId?: string
 }
 
 const ArticleScreen = () => {
-  const {id} = useParams<Params>()
+  const {id, projectId} = useParams<ArticleScreenParams>()
 
   return (
     <Screen>
-      <Article id={id} />
+      <Article id={id} projectId={projectId} />
     </Screen>
   )
 }

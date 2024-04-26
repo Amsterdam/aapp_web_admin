@@ -8,7 +8,7 @@ import Column from 'components/ui/layout/Column'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
-import {useGetArticlesQuery} from 'modules/construction-work-editor/services'
+import {useGetArticlesQuery} from 'modules/construction-work-editor/services/articles'
 import {type ArticlesItem} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import type {ColumnConfig} from 'components/ui/table/types'
@@ -78,7 +78,7 @@ const ArticlesTable = ({projectId}: Props) => {
       />
       <NavigationButton
         label="Maak app bericht"
-        route={ConstructionWorkEditorRoute.article}
+        route={`${ConstructionWorkEditorRoute.project}/${projectId}/${ConstructionWorkEditorRoute.article}`}
       />
     </Column>
   )

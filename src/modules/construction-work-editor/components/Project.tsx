@@ -5,8 +5,8 @@ import Loading from 'components/ui/Loading'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 import Title from 'components/ui/text/Title'
-import ArticlesTable from 'modules/construction-work-editor/components/ArticlesTable'
-import {useGetProjectQuery} from 'modules/construction-work-editor/services'
+import ArticlesTable from 'modules/construction-work-editor/components/Article/ArticlesTable'
+import {useGetProjectQuery} from 'modules/construction-work-editor/services/projects'
 import getDateFromString from 'utils/getDateFromString'
 
 type Props = {

@@ -5,7 +5,7 @@ import {
   useGetProjectsQuery,
   useGetPublisherQuery,
   useRemoveProjectsForPublisherMutation,
-} from 'modules/construction-work-editor/services'
+} from 'modules/construction-work-editor/services/projects'
 import ProjectsTable from '../ProjectsTable'
 
 type Props = {
