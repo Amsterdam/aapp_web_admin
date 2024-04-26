@@ -1,9 +1,20 @@
 export enum ConstructionWorkEndpointName {
+  // publisher
+  getPublisher = 'getPublisher',
   addPublisher = 'addPublisher',
   addProjectsForPublisher = 'addProjectsForPublisher',
   removeProjectsForPublisher = 'removeProjectsForPublisher',
-  getArticles = 'getArticles',
+
+  // project
   getProject = 'getProject',
   getProjects = 'getProjects',
-  getPublisher = 'getPublisher',
+
+  // project warning
+  getProjectWarning = 'getProjectWarning',
+  addProjectWarning = 'addProjectWarning',
+  editProjectWarning = 'editProjectWarning',
+  removeProjectWarning = 'removeProjectWarning',
+
+  // article
+  getArticles = 'getArticles',
 }

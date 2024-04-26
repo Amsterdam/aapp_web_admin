@@ -43,12 +43,13 @@ export type ArticleNews = ArticleBase & {
 export type ArticleWarning = ArticleBase & {
   author_email: string | null
   images: ApiImage[] | null
+  is_already_pushed: boolean
   project: number | null
 }
 
 export type ArticlesQueryArgs = {
   limit?: number
-  project_ids?: string
+  project_ids?: string // comma separated project ids
 }
 
 export type ArticlesItem = {
@@ -57,4 +58,38 @@ export type ArticlesItem = {
   publication_date: string
   publisher: ArticlePublisher
   title: string
+}
+
+type ImageQueryArgs = {
+  image: {
+    data: string
+    description: string
+    main: boolean
+  }
+}
+
+type ProjectWarningQueryArgs = {
+  body: string
+  title: string
+  send_push_notification: boolean
+}
+
+export type AddProjectWarningQueryArgs = {
+  project_id: string
+} & ProjectWarningQueryArgs &
+  ImageQueryArgs
+
+export type EditProjectWarningQueryArgs = {
+  id: string
+} & ProjectWarningQueryArgs &
+  ImageQueryArgs
+
+export type AddProjectWarningResponse = {
+  id: number
+  title: string
+  body: string
+  publication_date: string
+  modification_date: string
+  author_email: string
+  project: number
 }

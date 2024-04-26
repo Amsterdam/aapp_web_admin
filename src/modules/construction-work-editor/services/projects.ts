@@ -1,9 +1,5 @@
 import {ConstructionWorkEndpointName} from 'modules/construction-work-editor/types/api'
 import {
-  ArticlesItem,
-  ArticlesQueryArgs,
-} from 'modules/construction-work-editor/types/article'
-import {
   Publisher,
   PublisherProjectsQueryArgs,
   PublisherQueryArgs,
@@ -41,17 +37,6 @@ export const projectsApi = baseApi.injectEndpoints({
         method: 'POST',
         directory: ApiDirectory.constructionWork,
         url: `/projects/manager`,
-      }),
-    }),
-    [ConstructionWorkEndpointName.getArticles]: builder.query<
-      ArticlesItem[],
-      ArticlesQueryArgs
-    >({
-      providesTags: ['Articles'],
-      query: params => ({
-        directory: ApiDirectory.constructionWork,
-        url: '/articles',
-        params,
       }),
     }),
     [ConstructionWorkEndpointName.getProjects]: builder.query<
@@ -105,7 +90,6 @@ export const projectsApi = baseApi.injectEndpoints({
 export const {
   useAddPublisherMutation,
   useAddProjectsForPublisherMutation,
-  useGetArticlesQuery,
   useGetProjectQuery,
   useGetProjectsQuery,
   useGetPublisherQuery,
