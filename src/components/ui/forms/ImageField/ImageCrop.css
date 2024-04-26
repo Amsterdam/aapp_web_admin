@@ -1,0 +1,8 @@
+.ImageCrop .ImageCropImage {
+  border: 1px dashed #000;
+  position: relative;
+}
+
+.ImageCrop .Slider {
+  flex: 1;
+}

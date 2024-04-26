@@ -3,14 +3,16 @@
   margin: 0;
   overflow: hidden;
   position: relative;
+  border: 1px dashed #000;
 }
 
 .ImageDisplay img {
   max-width: 100%;
   margin: 0 auto;
+  display: block;
 }
 
-.ImageDisplay .DeleteButton {
+.ImageDisplay .ImageDisplayDeleteButton {
   padding: var(--size-spacing-sm);
   background-color: #fff;
   position: absolute;

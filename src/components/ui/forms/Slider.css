@@ -1,0 +1,17 @@
+.Slider .rc-slider-rail {
+  background-color: var(--baseColor-neutral-grey3);
+}
+
+.Slider .rc-slider-track {
+  background-color: var(--baseColor-primary-blue);
+}
+
+.Slider .rc-slider-handle {
+  border-color: var(--baseColor-primary-blue);
+  opacity: 1;
+}
+
+.Slider .rc-slider-handle.rc-slider-handle-dragging {
+  border-color: inherit;
+  box-shadow: none;
+}

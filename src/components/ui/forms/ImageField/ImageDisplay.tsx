@@ -16,7 +16,7 @@ const ImageDisplay = ({alt = '', aspectRatio, onDelete, src}: Props) => (
     <img alt={alt} src={src} style={{aspectRatio}} />
     {!!onDelete && (
       <Button
-        className="DeleteButton"
+        className="ImageDisplayDeleteButton"
         icon={<Icon name="cross" />}
         onClick={onDelete}
         type="button"
