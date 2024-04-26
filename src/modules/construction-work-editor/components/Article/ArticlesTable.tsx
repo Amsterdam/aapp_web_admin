@@ -49,9 +49,11 @@ const ArticlesTable = ({projectId}: Props) => {
 
   const onRowClick = useCallback(
     ({meta_id: {id}}: ArticlesItem) => {
-      navigate(`${ConstructionWorkEditorRoute.article}/${id}`)
+      navigate(
+        `${ConstructionWorkEditorRoute.project}/${projectId}${ConstructionWorkEditorRoute.article}/${id}`,
+      )
     },
-    [navigate],
+    [navigate, projectId],
   )
 
   if (isLoading) {
