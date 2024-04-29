@@ -80,7 +80,7 @@ const ArticlesTable = ({projectId}: Props) => {
       />
       <NavigationButton
         label="Maak app bericht"
-        route={`${ConstructionWorkEditorRoute.project}/${projectId}/${ConstructionWorkEditorRoute.article}`}
+        route={`${ConstructionWorkEditorRoute.project}/${projectId}${ConstructionWorkEditorRoute.article}`}
       />
     </Column>
   )
