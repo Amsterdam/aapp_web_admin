@@ -14,7 +14,7 @@ const loaderEditor = () => [AzureGroup.editor]
 export const routes: RouteObject[] = [
   {
     loader,
-    path: `${ConstructionWorkEditorRoute.article}/:id?`,
+    path: `${ConstructionWorkEditorRoute.project}/:projectId${ConstructionWorkEditorRoute.article}/:id?`,
     element: <ArticleScreen />,
   },
   {

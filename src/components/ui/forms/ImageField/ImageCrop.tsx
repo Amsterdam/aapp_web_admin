@@ -1,13 +1,14 @@
 import {useCallback, useState} from 'react'
 import Cropper, {type Area} from 'react-easy-crop'
-import ErrorComponent from 'components/ui/Error'
 import Button from 'components/ui/button/Button'
+import ScrollIntoView from 'components/ui/containers/ScrollIntoView'
 import {getCroppedImage} from 'components/ui/forms/ImageField/utils'
 import {Slider} from 'components/ui/forms/Slider'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 
-import './ImageCrop.css'
+import 'components/ui/forms/ImageField/ImageCrop.css'
+import Phrase from 'components/ui/text/Phrase'
 
 type Props = {
   aspectRatio: number
@@ -47,12 +48,6 @@ export const ImageCrop = ({
       })
   }, [aspectRatio, croppedAreaPixels, onComplete, outputWidth, src])
 
-  if (error || !src) {
-    return (
-      <ErrorComponent message="Sorry, er is iets misgegaan bij het uploaden." />
-    )
-  }
-
   return (
     <div className="ImageCrop">
       <Column gutter="sm">
@@ -90,11 +85,18 @@ export const ImageCrop = ({
           {!!onCancel && (
             <Button
               onClick={() => onCancel()}
-              label="Annuleer"
+              label="Verwijder"
               variant="secondary"
             />
           )}
         </Row>
+        {!!error && (
+          <ScrollIntoView>
+            <Phrase color="error">
+              Afbeelding toevoegen is mislukt. Probeer een andere afbeelding.
+            </Phrase>
+          </ScrollIntoView>
+        )}
       </Column>
     </div>
   )

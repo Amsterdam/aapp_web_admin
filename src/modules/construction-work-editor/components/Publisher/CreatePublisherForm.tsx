@@ -6,7 +6,7 @@ import Button from 'components/ui/button/Button'
 import Loader from 'components/ui/containers/Loader'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
-import {useAddPublisherMutation} from 'modules/construction-work-editor/services'
+import {useAddPublisherMutation} from 'modules/construction-work-editor/services/projects'
 import {PublisherAddForm} from 'modules/construction-work-editor/types/publisher'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
