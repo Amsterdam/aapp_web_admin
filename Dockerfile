@@ -18,5 +18,5 @@ RUN apk add --no-cache --virtual .build-deps build-base linux-headers \
     && apk add curl
 
 # Copy sources to container
-COPY --from=app /code/build /app/mbs/
+COPY --from=app /code/build /app/beheer/
 COPY ./nginx.conf /etc/nginx/nginx.conf
