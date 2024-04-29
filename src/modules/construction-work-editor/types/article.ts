@@ -49,7 +49,10 @@ export type ArticleWarning = ArticleBase & {
 
 export type ArticlesQueryArgs = {
   limit?: number
-  project_ids?: string // comma separated project ids
+  /**
+   * comma separated project ids
+   */
+  project_ids?: string
 }
 
 export type ArticlesItem = {
