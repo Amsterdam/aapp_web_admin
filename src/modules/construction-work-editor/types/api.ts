@@ -13,7 +13,7 @@ export enum ConstructionWorkEndpointName {
   getProjectWarning = 'getProjectWarning',
   addProjectWarning = 'addProjectWarning',
   editProjectWarning = 'editProjectWarning',
-  removeProjectWarning = 'removeProjectWarning',
+  deleteProjectWarning = 'removeProjectWarning',
 
   // article
   getArticles = 'getArticles',

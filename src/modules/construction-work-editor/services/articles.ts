@@ -55,7 +55,7 @@ export const articlesApi = baseApi.injectEndpoints({
         url: `/project/warning`,
       }),
     }),
-    [ConstructionWorkEndpointName.removeProjectWarning]: builder.mutation<
+    [ConstructionWorkEndpointName.deleteProjectWarning]: builder.mutation<
       string,
       {id: string}
     >({
