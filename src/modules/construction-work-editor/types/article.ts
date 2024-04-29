@@ -1,6 +1,9 @@
 import {ApiImage} from 'modules/construction-work-editor/types/image'
 
-export type ArticleType = 'article' | 'warning'
+export enum ArticleType {
+  article = 'article',
+  warning = 'warning',
+}
 
 export type ArticleMetaId = {
   id: number

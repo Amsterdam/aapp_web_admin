@@ -1,3 +1,11 @@
+.TableRow {
+  display: table-row;
+}
+
+.TableRow:hover {
+  text-decoration: none;
+}
+
 .TableRow .CheckboxCell {
   vertical-align: middle;
 }
