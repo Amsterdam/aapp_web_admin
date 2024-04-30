@@ -20,6 +20,8 @@ import {
   useGetModuleVersionQuery,
 } from 'modules/releases/services/modules'
 import {ModuleVersion} from 'modules/releases/types/module'
+import {ReleasesRoute} from 'modules/releases/types/routes'
+import getUrl from 'utils/getUrl'
 
 type Params = {
   slug: string
@@ -29,7 +31,7 @@ type Params = {
 const EditModuleScreen = () => {
   const navigate = useNavigate()
 
-  const {slug: slugParam, version: versionParam} = useParams<Params>()
+  const {slug: slugParam, version: versionParam} = useParams() as Params
   const [isBeforeNavigation, setIsBeforeNavigation] = useState(false)
   const {data: moduleVersion, isLoading} = useGetModuleVersionQuery(
     slugParam && versionParam && !isBeforeNavigation
@@ -79,7 +81,7 @@ const EditModuleScreen = () => {
       })
         .unwrap()
         .then(() => {
-          navigate(`/module/${moduleSlug}`)
+          navigate(getUrl(ReleasesRoute.module, {slug: moduleSlug}))
         })
     }
   }
@@ -96,7 +98,7 @@ const EditModuleScreen = () => {
     const {moduleSlug, version} = moduleVersion
 
     if (!dirtyFieldKeys.length) {
-      navigate(`/module/${moduleSlug}`)
+      navigate(getUrl(ReleasesRoute.module, {slug: moduleSlug}))
     } else {
       dirtyFieldKeys.forEach(<K extends keyof ModuleVersion>(field: K) => {
         dirtyFieldsOnly[field] = data[field]
@@ -108,7 +110,7 @@ const EditModuleScreen = () => {
         pathVersion: version,
       }).then(response => {
         if ('data' in response) {
-          navigate(`/module/${moduleSlug}`)
+          navigate(getUrl(ReleasesRoute.module, {slug: moduleSlug}))
         }
       })
     }
@@ -156,7 +158,10 @@ const EditModuleScreen = () => {
             {isInRelease ? (
               <NavigationButton
                 label="Aan- of uitzetten"
-                route={`/module/${slugParam}/${versionParam}/status`}
+                route={getUrl(ReleasesRoute.editModuleVersionStatus, {
+                  slug: slugParam,
+                  version: versionParam,
+                })}
                 variant="secondary"
               />
             ) : (

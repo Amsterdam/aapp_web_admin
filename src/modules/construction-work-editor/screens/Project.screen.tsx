@@ -3,15 +3,15 @@ import Screen from 'components/ui/layout/Screen'
 import Project from 'modules/construction-work-editor/components/Project'
 
 type Params = {
-  id: string
+  projectId: string
 }
 
 const ProjectScreen = () => {
-  const {id} = useParams<Params>()
+  const {projectId} = useParams<Params>()
 
   return (
     <Screen>
-      <Project id={id} />
+      <Project id={projectId} />
     </Screen>
   )
 }

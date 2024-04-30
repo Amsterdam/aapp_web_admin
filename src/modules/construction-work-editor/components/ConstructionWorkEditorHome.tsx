@@ -11,7 +11,7 @@ const ConstructionWorkEditorHome = () => (
     />
     <NavigationButton
       flex
-      label="Rechten"
+      label="Publishers"
       route={ConstructionWorkEditorRoute.publishers}
     />
   </Row>

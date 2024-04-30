@@ -14,6 +14,7 @@ import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {useGetReleasesQuery} from 'modules/releases/services/releases'
 import {ReleasesRoute} from 'modules/releases/types/routes'
 import {getHotfixVersion} from 'modules/releases/utils/getHotfixVersion'
+import getUrl from 'utils/getUrl'
 
 const ReleasesScreen = () => {
   const {data: releases, isLoading} = useGetReleasesQuery()
@@ -59,8 +60,10 @@ const ReleasesScreen = () => {
                   <BlockLink
                     to={
                       addHotfix
-                        ? `/release/hotfix/${hotfixVersion}`
-                        : `/release/${version}`
+                        ? getUrl(ReleasesRoute.createHotfixRelease, {
+                            version: hotfixVersion,
+                          })
+                        : getUrl(ReleasesRoute.editRelease, {version})
                     }>
                     <Box>
                       <Row align="between">

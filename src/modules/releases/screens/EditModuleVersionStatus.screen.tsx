@@ -14,10 +14,12 @@ import {
   useGetModuleVersionQuery,
 } from 'modules/releases/services/modules'
 import {ModuleStatusInRelease} from 'modules/releases/types/module'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 import {
   getActiveReleases,
   getCombinedStatusInReleases,
 } from 'modules/releases/utils/getCombinedStatusInReleases'
+import getUrl from 'utils/getUrl'
 
 type Params = {
   slug: string
@@ -122,7 +124,7 @@ const EditModuleVersionStatusScreen = () => {
     editModuleVersionStatus({slug, version, statusInReleases}).then(
       response => {
         if ('data' in response) {
-          navigate(`/module/${slug}/${version}`)
+          navigate(getUrl(ReleasesRoute.editModuleVersion, {slug, version}))
         }
       },
     )

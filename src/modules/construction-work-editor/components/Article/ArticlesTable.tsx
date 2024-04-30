@@ -11,6 +11,7 @@ import Phrase from 'components/ui/text/Phrase'
 import {useGetArticlesQuery} from 'modules/construction-work-editor/services/articles'
 import {type ArticlesItem} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import getUrl from 'utils/getUrl'
 import type {ColumnConfig} from 'components/ui/table/types'
 
 type Props = {
@@ -49,8 +50,14 @@ const ArticlesTable = ({projectId}: Props) => {
 
   const onRowClick = useCallback(
     ({meta_id: {id}}: ArticlesItem) => {
+      if (!projectId) {
+        return
+      }
       navigate(
-        `${ConstructionWorkEditorRoute.project}/${projectId}${ConstructionWorkEditorRoute.article}/${id}`,
+        getUrl(ConstructionWorkEditorRoute.article, {
+          projectId,
+          id: id.toString(),
+        }),
       )
     },
     [navigate, projectId],

@@ -4,6 +4,7 @@ import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import getUrl from 'utils/getUrl'
 import ProjectsTable from './ProjectsTable'
 import type {ProjectsItem} from 'modules/construction-work-editor/types/project'
 
@@ -16,7 +17,11 @@ const Projects = () => {
       if (!project.id) {
         return
       }
-      navigate(`${ConstructionWorkEditorRoute.project}/${project.id}`)
+      navigate(
+        getUrl(ConstructionWorkEditorRoute.project, {
+          projectId: project.id.toString(),
+        }),
+      )
     },
     [navigate],
   )

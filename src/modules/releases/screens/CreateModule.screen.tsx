@@ -19,6 +19,8 @@ import {
   useGetModuleQuery,
 } from 'modules/releases/services/modules'
 import {ModuleVersion} from 'modules/releases/types/module'
+import {ReleasesRoute} from 'modules/releases/types/routes'
+import getUrl from 'utils/getUrl'
 
 type Params = {
   slug?: string
@@ -59,7 +61,7 @@ const CreateModuleScreen = () => {
       setIsBeforeNavigation(true)
       createModuleVersion(data).then(response => {
         if ('data' in response) {
-          navigate(`/module/${data.moduleSlug}`)
+          navigate(getUrl(ReleasesRoute.module, {slug: data.moduleSlug}))
         }
       })
     },

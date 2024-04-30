@@ -9,6 +9,7 @@ import Column from 'components/ui/layout/Column'
 import {useAddPublisherMutation} from 'modules/construction-work-editor/services/projects'
 import {PublisherAddForm} from 'modules/construction-work-editor/types/publisher'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import getUrl from 'utils/getUrl'
 
 export const CreatePublisherForm = () => {
   const navigate = useNavigate()
@@ -24,7 +25,11 @@ export const CreatePublisherForm = () => {
         createPublisher({email})
           .unwrap()
           .then(data =>
-            navigate(`${ConstructionWorkEditorRoute.publisher}/${data.email}`),
+            navigate(
+              getUrl(ConstructionWorkEditorRoute.publisher, {
+                email: data.email,
+              }),
+            ),
           ),
       ),
     [createPublisher, navigate, handleSubmit],

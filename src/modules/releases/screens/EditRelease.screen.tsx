@@ -115,7 +115,7 @@ const EditReleaseScreen = () => {
 
       const result = await editRelease(preparedData)
       if ('data' in result) {
-        navigate('/releases')
+        navigate(ReleasesRoute.releases)
       }
     }
   }

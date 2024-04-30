@@ -1,7 +1,7 @@
 export enum ConstructionWorkEditorRoute {
-  article = '/bericht',
-  project = '/project',
-  projects = '/projecten',
-  publisher = '/omgevingsmanager',
-  publishers = '/omgevingsmanagers',
+  article = '/werkzaamheden/:projectId/berichten/:id?',
+  project = '/werkzaamheden/:projectId',
+  projects = '/werkzaamheden',
+  publisher = '/werkzaamheden/publisher/:email?',
+  publishers = '/werkzaamheden/publishers',
 }

@@ -2,6 +2,7 @@ import {useNavigate} from 'react-router-dom'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import {useRemoveProjectWarningMutation} from 'modules/construction-work-editor/services/articles'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import getUrl from 'utils/getUrl'
 
 type Props = {
   id: string
@@ -37,7 +38,7 @@ const RemoveProjectWarning = ({
       })
         .unwrap()
         .then(() => {
-          navigate(`${ConstructionWorkEditorRoute.project}/${projectId}`)
+          navigate(getUrl(ConstructionWorkEditorRoute.project, {projectId}))
         })
     }
   }
