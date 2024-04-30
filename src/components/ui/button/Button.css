@@ -68,5 +68,5 @@
 }
 
 .Button[data-flex="true"] {
-  flex: auto;
+  flex: 1;
 }
