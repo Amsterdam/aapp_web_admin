@@ -6,12 +6,12 @@ const ConstructionWorkEditorHome = () => (
   <Row gutter="md">
     <NavigationButton
       flex
-      label="Projecten"
+      label="Werkzaamheden"
       route={ConstructionWorkEditorRoute.projects}
     />
     <NavigationButton
       flex
-      label="Redacteuren"
+      label="Rechten"
       route={ConstructionWorkEditorRoute.publishers}
     />
   </Row>
