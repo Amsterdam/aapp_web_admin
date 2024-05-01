@@ -2,24 +2,28 @@ type GetTypeOfParam<Param extends string> = Param extends `${infer Name}?`
   ? Partial<Record<Name, string>>
   : Record<Param, string>
 
+/**
+ * ExtractParam<'releases/:hotfixVersion?/create', Record<string, string>> = {hotfixVersion: string} & Record<string, string>
+ */
 type ExtractParam<Path, NextPart> = Path extends `:${infer Param}`
   ? GetTypeOfParam<Param> & NextPart
   : NextPart
 
+/**
+ * ExtractParams<'releases/:hotfixVersion?/create'> = {hotfixVersion: string}
+ */
 type ExtractParams<Path> = Path extends `${infer Segment}/${infer Rest}`
   ? ExtractParam<Segment, ExtractParams<Rest>>
   : ExtractParam<Path, Record<string, string>>
 
+/**
+ * getUrl<'releases/:hotfixVersion?/create', {hotfixVersion: '0.15.0'}> = 'releases/0.15.0/create'
+ */
 const getUrl = <T extends string>(url: T, params: ExtractParams<T>) =>
   url.replace(/:([^/?]+)\??/g, match => {
     const paramName = match.replace(/[:?]/g, '')
 
     return params[paramName] ?? ''
   })
-
-const url = '/users/:userId/profile/:section?'
-const params = {userId: '123', section: 'settings'}
-
-getUrl(url, params)
 
 export default getUrl
