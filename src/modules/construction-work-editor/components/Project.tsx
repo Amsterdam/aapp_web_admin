@@ -10,7 +10,7 @@ import {useGetProjectQuery} from 'modules/construction-work-editor/services/proj
 import getDateFromString from 'utils/getDateFromString'
 
 type Props = {
-  id?: string
+  id: string
 }
 
 const ARTICLE_MAX_AGE_IN_DAYS = 10000

@@ -1,7 +1,7 @@
 import {skipToken} from '@reduxjs/toolkit/query'
 import {useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
@@ -9,6 +9,7 @@ import Screen from 'components/ui/layout/Screen'
 import ErrorScreen from 'components/ui/screens/Error.screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import useNavigate from 'hooks/useNavigate'
 import ModuleDescriptionField from 'modules/releases/components/form-fields/ModuleDescriptionField'
 import ModuleIconField from 'modules/releases/components/form-fields/ModuleIconField'
 import ModuleTitleField from 'modules/releases/components/form-fields/ModuleTitleField'
@@ -21,7 +22,6 @@ import {
 } from 'modules/releases/services/modules'
 import {ModuleVersion} from 'modules/releases/types/module'
 import {ReleasesRoute} from 'modules/releases/types/routes'
-import getUrl from 'utils/getUrl'
 
 type Params = {
   slug: string
@@ -81,7 +81,7 @@ const EditModuleScreen = () => {
       })
         .unwrap()
         .then(() => {
-          navigate(getUrl(ReleasesRoute.module, {slug: moduleSlug}))
+          navigate(ReleasesRoute.module, {slug: moduleSlug})
         })
     }
   }
@@ -98,7 +98,7 @@ const EditModuleScreen = () => {
     const {moduleSlug, version} = moduleVersion
 
     if (!dirtyFieldKeys.length) {
-      navigate(getUrl(ReleasesRoute.module, {slug: moduleSlug}))
+      navigate(ReleasesRoute.module, {slug: moduleSlug})
     } else {
       dirtyFieldKeys.forEach(<K extends keyof ModuleVersion>(field: K) => {
         dirtyFieldsOnly[field] = data[field]
@@ -110,7 +110,7 @@ const EditModuleScreen = () => {
         pathVersion: version,
       }).then(response => {
         if ('data' in response) {
-          navigate(getUrl(ReleasesRoute.module, {slug: moduleSlug}))
+          navigate(ReleasesRoute.module, {slug: moduleSlug})
         }
       })
     }
@@ -158,10 +158,11 @@ const EditModuleScreen = () => {
             {isInRelease ? (
               <NavigationButton
                 label="Aan- of uitzetten"
-                route={getUrl(ReleasesRoute.editModuleVersionStatus, {
+                params={{
                   slug: slugParam,
                   version: versionParam,
-                })}
+                }}
+                url={ReleasesRoute.editModuleVersionStatus}
                 variant="secondary"
               />
             ) : (

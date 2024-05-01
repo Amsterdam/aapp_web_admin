@@ -94,6 +94,18 @@ module.exports = {
       },
     ],
     'no-console': 'warn',
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'react-router-dom',
+            importNames: ['useNavigate'],
+            message: 'Import useNavigate from /hooks/useNavigate',
+          },
+        ],
+      },
+    ],
   },
   settings: {
     'import/resolver': {
@@ -111,6 +123,13 @@ module.exports = {
               {
                 group: ['../*'],
                 message: "Barrelfile imports should stats with './' or '@/'",
+              },
+            ],
+            paths: [
+              {
+                name: 'react-router-dom',
+                importNames: ['useNavigate'],
+                message: 'Import useNavigate from /hooks/useNavigate',
               },
             ],
           },

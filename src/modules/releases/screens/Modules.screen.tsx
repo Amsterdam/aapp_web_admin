@@ -34,7 +34,7 @@ const ModulesScreen = () => {
         <ScreenTitle title="Modules" />
         <NavigationButton
           label="Module toevoegen"
-          route={ReleasesRoute.createModule}
+          url={ReleasesRoute.createModule}
         />
         {sortedModules ? (
           <List>

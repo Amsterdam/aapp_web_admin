@@ -75,7 +75,8 @@ const ModuleScreen = () => {
         <ScreenTitle subtitle="Module" title={latestVersion?.title} />
         <NavigationButton
           label="Moduleversie toevoegen"
-          route={getUrl(ReleasesRoute.createModuleVersion, {slug})}
+          params={{slug}}
+          url={ReleasesRoute.createModuleVersion}
         />
         <List>
           {module.versions.map(({icon, title, version}) => (

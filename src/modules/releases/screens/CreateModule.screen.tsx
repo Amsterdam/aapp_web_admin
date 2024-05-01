@@ -1,13 +1,14 @@
 import {skipToken} from '@reduxjs/toolkit/query'
 import {useCallback, useEffect, useState} from 'react'
 import {FormProvider, SubmitHandler, useForm} from 'react-hook-form'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ErrorScreen from 'components/ui/screens/Error.screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import useNavigate from 'hooks/useNavigate'
 import ModuleDescriptionField from 'modules/releases/components/form-fields/ModuleDescriptionField'
 import ModuleIconField from 'modules/releases/components/form-fields/ModuleIconField'
 import ModuleSlugField from 'modules/releases/components/form-fields/ModuleSlugField'
@@ -20,7 +21,6 @@ import {
 } from 'modules/releases/services/modules'
 import {ModuleVersion} from 'modules/releases/types/module'
 import {ReleasesRoute} from 'modules/releases/types/routes'
-import getUrl from 'utils/getUrl'
 
 type Params = {
   slug?: string
@@ -61,7 +61,7 @@ const CreateModuleScreen = () => {
       setIsBeforeNavigation(true)
       createModuleVersion(data).then(response => {
         if ('data' in response) {
-          navigate(getUrl(ReleasesRoute.module, {slug: data.moduleSlug}))
+          navigate(ReleasesRoute.module, {slug: data.moduleSlug})
         }
       })
     },

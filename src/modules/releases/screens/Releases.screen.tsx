@@ -36,7 +36,7 @@ const ReleasesScreen = () => {
         <ScreenTitle title="Releases" />
         <NavigationButton
           label="Release toevoegen"
-          route={ReleasesRoute.createRelease}
+          url={ReleasesRoute.createRelease}
           variant={addHotfix ? 'secondary' : 'primary'}
         />
         {(releases?.length ?? 0) > 0 && (

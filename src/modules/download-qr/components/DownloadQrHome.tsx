@@ -7,7 +7,7 @@ const DownloadQrHome = () => (
     <NavigationButton
       flex
       label="Download link QR code maker"
-      route={DownloadQRCodeRoute.downloadQRCode}
+      url={DownloadQRCodeRoute.downloadQRCode}
     />
   </Row>
 )

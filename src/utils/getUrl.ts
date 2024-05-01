@@ -12,18 +12,18 @@ type ExtractParam<Path, NextPart> = Path extends `:${infer Param}`
 /**
  * ExtractParams<'releases/:hotfixVersion?/create'> = {hotfixVersion: string}
  */
-type ExtractParams<Path> = Path extends `${infer Segment}/${infer Rest}`
+export type ExtractParams<Path> = Path extends `${infer Segment}/${infer Rest}`
   ? ExtractParam<Segment, ExtractParams<Rest>>
   : ExtractParam<Path, Record<string, string | number>>
 
 /**
  * getUrl<'releases/:hotfixVersion?/create', {hotfixVersion: '0.15.0'}> = 'releases/0.15.0/create'
  */
-const getUrl = <T extends string>(url: T, params: ExtractParams<T>) =>
+const getUrl = <T extends string>(url: T, params?: ExtractParams<T>) =>
   url.replace(/:([^/?]+)\??/g, match => {
     const paramName = match.replace(/[:?]/g, '')
 
-    return params[paramName]?.toString() ?? ''
+    return params?.[paramName]?.toString() ?? ''
   })
 
 export default getUrl

@@ -7,7 +7,7 @@ type Params = {
 }
 
 const ProjectScreen = () => {
-  const {projectId} = useParams<Params>()
+  const {projectId} = useParams() as Params
 
   return (
     <Screen>
