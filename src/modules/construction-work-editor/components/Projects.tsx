@@ -19,7 +19,7 @@ const Projects = () => {
       }
       navigate(
         getUrl(ConstructionWorkEditorRoute.project, {
-          projectId: project.id.toString(),
+          projectId: project.id,
         }),
       )
     },
