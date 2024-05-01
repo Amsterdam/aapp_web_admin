@@ -3,9 +3,9 @@ import {useMemo} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
+import ErrorComponent from 'components/ui/Error'
+import Loading from 'components/ui/Loading'
 import Column from 'components/ui/layout/Column'
-import ErrorScreen from 'components/ui/screens/Error.screen'
-import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import ReleaseForm from 'modules/releases/components/ReleaseForm'
 import {useGetModulesQuery} from 'modules/releases/services/modules'
@@ -93,12 +93,12 @@ const CreateRelease = ({hotfixVersion}: Props) => {
   }
 
   if (isLoadingPreviousRelease || isLoadingPreviousModules) {
-    return <LoadingScreen />
+    return <Loading />
   }
 
   if (!previousRelease && !releaseIfNoPreviousRelease) {
     return (
-      <ErrorScreen message="Er zijn geen modules die aan een release toegevoegd kunnen worden." />
+      <ErrorComponent message="Er zijn geen modules die aan een release toegevoegd kunnen worden." />
     )
   }
 
