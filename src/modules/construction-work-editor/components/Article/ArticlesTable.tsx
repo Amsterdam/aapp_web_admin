@@ -56,7 +56,7 @@ const ArticlesTable = ({projectId}: Props) => {
       navigate(
         getUrl(ConstructionWorkEditorRoute.article, {
           projectId,
-          id: id.toString(),
+          id,
         }),
       )
     },

@@ -27,7 +27,7 @@ describe('getUrl', () => {
 
   it('should handle parameters with non-string values correctly', () => {
     const url = '/articles/:articleId?'
-    const params = {articleId: '123'} // Note: non-string value
+    const params = {articleId: 123} // Note: non-string value
     expect(getUrl(url, params)).toBe('/articles/123')
   })
 
