@@ -1,19 +1,21 @@
 import {skipToken} from '@reduxjs/toolkit/query'
 import {useCallback, useEffect, useMemo} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import {CheckboxIndicatorStatus} from 'components/ui/forms/CheckboxField/CheckboxIndicator'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import useNavigate from 'hooks/useNavigate'
 import ModuleStatusField from 'modules/releases/components/form-fields/ModuleStatusField'
 import {
   useEditModuleVersionStatusMutation,
   useGetModuleVersionQuery,
 } from 'modules/releases/services/modules'
 import {ModuleStatusInRelease} from 'modules/releases/types/module'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 import {
   getActiveReleases,
   getCombinedStatusInReleases,
@@ -122,7 +124,7 @@ const EditModuleVersionStatusScreen = () => {
     editModuleVersionStatus({slug, version, statusInReleases}).then(
       response => {
         if ('data' in response) {
-          navigate(`/module/${slug}/${version}`)
+          navigate(ReleasesRoute.editModuleVersion, {slug, version})
         }
       },
     )

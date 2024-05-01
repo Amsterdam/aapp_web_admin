@@ -13,7 +13,7 @@ const ErrorComponent = ({message, withHomeButton}: Props) => (
     <Phrase emphasis="strong">Fout</Phrase>
     <Phrase>{message}</Phrase>
     {withHomeButton === true && (
-      <NavigationButton label="Ga naar home" route={HomeRoute.home} />
+      <NavigationButton label="Ga naar home" url={HomeRoute.home} />
     )}
   </Column>
 )

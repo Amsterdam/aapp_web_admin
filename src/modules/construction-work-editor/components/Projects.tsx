@@ -1,7 +1,7 @@
 import {useCallback} from 'react'
-import {useNavigate} from 'react-router-dom'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
+import useNavigate from 'hooks/useNavigate'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import ProjectsTable from './ProjectsTable'
@@ -16,7 +16,9 @@ const Projects = () => {
       if (!project.id) {
         return
       }
-      navigate(`${ConstructionWorkEditorRoute.project}/${project.id}`)
+      navigate(ConstructionWorkEditorRoute.project, {
+        projectId: project.id,
+      })
     },
     [navigate],
   )

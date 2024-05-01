@@ -1,7 +1,7 @@
 import {skipToken} from '@reduxjs/toolkit/query'
 import {useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
@@ -9,6 +9,7 @@ import Screen from 'components/ui/layout/Screen'
 import ErrorScreen from 'components/ui/screens/Error.screen'
 import LoadingScreen from 'components/ui/screens/Loading.screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
+import useNavigate from 'hooks/useNavigate'
 import ModuleDescriptionField from 'modules/releases/components/form-fields/ModuleDescriptionField'
 import ModuleIconField from 'modules/releases/components/form-fields/ModuleIconField'
 import ModuleTitleField from 'modules/releases/components/form-fields/ModuleTitleField'
@@ -20,6 +21,7 @@ import {
   useGetModuleVersionQuery,
 } from 'modules/releases/services/modules'
 import {ModuleVersion} from 'modules/releases/types/module'
+import {ReleasesRoute} from 'modules/releases/types/routes'
 
 type Params = {
   slug: string
@@ -29,7 +31,7 @@ type Params = {
 const EditModuleScreen = () => {
   const navigate = useNavigate()
 
-  const {slug: slugParam, version: versionParam} = useParams<Params>()
+  const {slug: slugParam, version: versionParam} = useParams() as Params
   const [isBeforeNavigation, setIsBeforeNavigation] = useState(false)
   const {data: moduleVersion, isLoading} = useGetModuleVersionQuery(
     slugParam && versionParam && !isBeforeNavigation
@@ -79,7 +81,7 @@ const EditModuleScreen = () => {
       })
         .unwrap()
         .then(() => {
-          navigate(`/module/${moduleSlug}`)
+          navigate(ReleasesRoute.module, {slug: moduleSlug})
         })
     }
   }
@@ -96,7 +98,7 @@ const EditModuleScreen = () => {
     const {moduleSlug, version} = moduleVersion
 
     if (!dirtyFieldKeys.length) {
-      navigate(`/module/${moduleSlug}`)
+      navigate(ReleasesRoute.module, {slug: moduleSlug})
     } else {
       dirtyFieldKeys.forEach(<K extends keyof ModuleVersion>(field: K) => {
         dirtyFieldsOnly[field] = data[field]
@@ -108,7 +110,7 @@ const EditModuleScreen = () => {
         pathVersion: version,
       }).then(response => {
         if ('data' in response) {
-          navigate(`/module/${moduleSlug}`)
+          navigate(ReleasesRoute.module, {slug: moduleSlug})
         }
       })
     }
@@ -156,7 +158,11 @@ const EditModuleScreen = () => {
             {isInRelease ? (
               <NavigationButton
                 label="Aan- of uitzetten"
-                route={`/module/${slugParam}/${versionParam}/status`}
+                params={{
+                  slug: slugParam,
+                  version: versionParam,
+                }}
+                url={ReleasesRoute.editModuleVersionStatus}
                 variant="secondary"
               />
             ) : (

@@ -12,6 +12,7 @@ import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {useGetModulesQuery} from 'modules/releases/services/modules'
 import {ReleasesRoute} from 'modules/releases/types/routes'
+import getUrl from 'utils/getUrl'
 
 const ModulesScreen = () => {
   const {data: modules, isLoading} = useGetModulesQuery()
@@ -33,13 +34,14 @@ const ModulesScreen = () => {
         <ScreenTitle title="Modules" />
         <NavigationButton
           label="Module toevoegen"
-          route={ReleasesRoute.createModule}
+          url={ReleasesRoute.createModule}
         />
         {sortedModules ? (
           <List>
             {sortedModules.map(({icon, moduleSlug, title}) => (
               <ListItem key={moduleSlug}>
-                <BlockLink to={`/module/${moduleSlug}`}>
+                <BlockLink
+                  to={getUrl(ReleasesRoute.module, {slug: moduleSlug})}>
                   <Box>
                     <Module icon={icon} title={title} />
                   </Box>

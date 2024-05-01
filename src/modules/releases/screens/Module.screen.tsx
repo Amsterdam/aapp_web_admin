@@ -17,13 +17,15 @@ import {
   useGetModuleQuery,
 } from 'modules/releases/services/modules'
 import {ModuleStatus} from 'modules/releases/types/module'
+import {ReleasesRoute} from 'modules/releases/types/routes'
+import getUrl from 'utils/getUrl'
 
 type Params = {
   slug: string
 }
 
 const ModuleScreen = () => {
-  const {slug} = useParams<Params>()
+  const {slug} = useParams() as Params
   const {data: module, isLoading} = useGetModuleQuery(
     slug
       ? {
@@ -73,12 +75,14 @@ const ModuleScreen = () => {
         <ScreenTitle subtitle="Module" title={latestVersion?.title} />
         <NavigationButton
           label="Moduleversie toevoegen"
-          route={`/module/${slug}/create`}
+          params={{slug}}
+          url={ReleasesRoute.createModuleVersion}
         />
         <List>
           {module.versions.map(({icon, title, version}) => (
             <ListItem key={version}>
-              <BlockLink to={`/module/${slug}/${version}`}>
+              <BlockLink
+                to={getUrl(ReleasesRoute.editModuleVersion, {slug, version})}>
                 <Box>
                   <Module icon={icon} title={title} version={version} />
                 </Box>

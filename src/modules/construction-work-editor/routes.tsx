@@ -14,12 +14,12 @@ const loaderEditor = () => [AzureGroup.editor]
 export const routes: RouteObject[] = [
   {
     loader,
-    path: `${ConstructionWorkEditorRoute.project}/:projectId${ConstructionWorkEditorRoute.article}/:id?`,
+    path: ConstructionWorkEditorRoute.article,
     element: <ArticleScreen />,
   },
   {
     loader: loaderEditor,
-    path: `${ConstructionWorkEditorRoute.publishers}`,
+    path: ConstructionWorkEditorRoute.publishers,
     element: <PublishersScreen />,
   },
   {
@@ -29,12 +29,12 @@ export const routes: RouteObject[] = [
   },
   {
     loader,
-    path: `${ConstructionWorkEditorRoute.project}/:id`,
+    path: ConstructionWorkEditorRoute.project,
     element: <ProjectScreen />,
   },
   {
     loader: loaderEditor,
-    path: `${ConstructionWorkEditorRoute.publisher}/:email?`,
+    path: ConstructionWorkEditorRoute.publisher,
     element: <PublisherScreen />,
   },
 ]

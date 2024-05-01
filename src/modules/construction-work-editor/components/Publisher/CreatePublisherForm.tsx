@@ -1,11 +1,11 @@
 import {useCallback} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
-import {useNavigate} from 'react-router-dom'
 import ErrorComponent from 'components/ui/Error'
 import Button from 'components/ui/button/Button'
 import Loader from 'components/ui/containers/Loader'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
+import useNavigate from 'hooks/useNavigate'
 import {useAddPublisherMutation} from 'modules/construction-work-editor/services/projects'
 import {PublisherAddForm} from 'modules/construction-work-editor/types/publisher'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
@@ -24,7 +24,9 @@ export const CreatePublisherForm = () => {
         createPublisher({email})
           .unwrap()
           .then(data =>
-            navigate(`${ConstructionWorkEditorRoute.publisher}/${data.email}`),
+            navigate(ConstructionWorkEditorRoute.publisher, {
+              email: data.email,
+            }),
           ),
       ),
     [createPublisher, navigate, handleSubmit],
