@@ -1,21 +1,22 @@
-import {skipToken} from '@reduxjs/toolkit/query'
 import {useCallback} from 'react'
-import ErrorComponent from 'components/ui/Error'
-import Loading from 'components/ui/Loading'
 import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
 import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import useNavigate from 'hooks/useNavigate'
-import {useGetArticlesQuery} from 'modules/construction-work-editor/services/articles'
-import {type ArticlesItem} from 'modules/construction-work-editor/types/article'
+import {ArticleWarning} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import type {ColumnConfig} from 'components/ui/table/types'
 
 type Props = {
   projectId: string
+  warnings?: ArticleWarning[]
 }
+type ArticlesItem = Pick<
+  ArticleWarning,
+  'image' | 'meta_id' | 'title' | 'project' | 'publisher' | 'publication_date'
+>
 
 const columns: ColumnConfig<ArticlesItem>[] = [
   {
@@ -30,23 +31,21 @@ const columns: ColumnConfig<ArticlesItem>[] = [
     title: 'Type bericht',
   },
   {
-    key: 'images',
+    key: 'publisher',
+    id: 'publisher',
+    renderer: ({publisher}) => <Phrase>{publisher.name}</Phrase>,
+    title: 'Geschreven door',
+  },
+  {
+    key: 'image',
     id: 'image',
-    renderer: ({images}) => images?.[0] && <Image image={images[0]} />,
+    renderer: ({image}) => image && <Image image={image} />,
     title: '',
   },
 ]
 
-const ArticlesTable = ({projectId}: Props) => {
+const ArticlesTable = ({projectId, warnings}: Props) => {
   const navigate = useNavigate()
-  const {data, isError, isLoading} = useGetArticlesQuery(
-    projectId !== undefined
-      ? {
-          project_ids: projectId?.toString(),
-        }
-      : skipToken,
-  )
-
   const onRowClick = useCallback(
     ({meta_id: {id}}: ArticlesItem) => {
       navigate(ConstructionWorkEditorRoute.article, {
@@ -57,25 +56,15 @@ const ArticlesTable = ({projectId}: Props) => {
     [navigate, projectId],
   )
 
-  if (isLoading) {
-    return <Loading />
-  }
-
-  if (isError) {
-    return (
-      <ErrorComponent message="Berichten konden niet worden opgehaald. Probeer het later opnieuw" />
-    )
-  }
-
-  if (!data?.length) {
-    return <Phrase>Er zijn geen berichten voor dit project</Phrase>
+  if (!warnings?.length) {
+    return <Phrase>Er zijn geen app berichten voor dit project.</Phrase>
   }
 
   return (
     <Column>
       <Table
         config={columns}
-        data={data}
+        data={warnings}
         keyGetter={({meta_id: {id, type}}) => `${type}${id}`}
         onRowClick={onRowClick}
       />

@@ -3,6 +3,7 @@ import {
   ArticleStub,
   ArticleWarning,
 } from 'modules/construction-work-editor/types/article'
+import {PublisherBase} from 'modules/construction-work-editor/types/publisher'
 import type {ApiImage} from 'modules/construction-work-editor/types/image'
 import type {Paginated} from 'services/types'
 
@@ -58,23 +59,17 @@ export type ProjectBase = {
 
 export type Project = ProjectBase & {
   active: boolean
+  articles: ArticleNews[]
   contacts: ProjectContact[] | null
-  coordinates: {
-    lat: number
-    lon: number
-  } | null
   creation_date: string
   expiration_date: string | null
-  followers: number
   foreign_id: number
   images: ApiImage[] | null
-  last_seen: string | null
   modification_date: string
   publication_date: string
-  recent_articles: (ArticleNews | ArticleWarning)[]
-  sections: ProjectSections | null
-  timeline: ProjectTimeline | null
+  publishers: PublisherBase[]
   url: string
+  warnings: ArticleWarning[]
 }
 
 export type ProjectsItem = ProjectBase & {

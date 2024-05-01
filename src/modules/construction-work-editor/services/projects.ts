@@ -5,7 +5,6 @@ import type {
   ProjectsResponse,
   ProjectsQueryArgs,
   Project,
-  ProjectQueryArgs,
 } from 'modules/construction-work-editor/types/project'
 
 const DEFAULT_PROJECTS_PAGE_SIZE = 10000
@@ -25,13 +24,12 @@ export const projectsApi = baseApi.injectEndpoints({
     }),
     [ConstructionWorkEndpointName.getProject]: builder.query<
       Project,
-      ProjectQueryArgs
+      {id: string}
     >({
       providesTags: ['Projects'],
-      query: params => ({
+      query: ({id}) => ({
         directory: ApiDirectory.constructionWork,
-        params,
-        url: '/project/details',
+        url: `/manage/project/${id}`,
       }),
     }),
   }),

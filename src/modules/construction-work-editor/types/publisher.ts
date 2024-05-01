@@ -4,7 +4,6 @@ export type PublisherBase = {
 }
 
 export type Publisher = {
-  id: number
   projects: number[]
 } & PublisherBase
 
