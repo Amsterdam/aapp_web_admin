@@ -2,24 +2,20 @@ import {ConstructionWorkEndpointName} from 'modules/construction-work-editor/typ
 import {baseApi} from 'services/baseApi'
 import {ApiDirectory} from 'services/types'
 import type {
-  ProjectsResponse,
-  ProjectsQueryArgs,
   Project,
+  ProjectsItem,
 } from 'modules/construction-work-editor/types/project'
-
-const DEFAULT_PROJECTS_PAGE_SIZE = 10000
 
 export const projectsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     [ConstructionWorkEndpointName.getProjects]: builder.query<
-      ProjectsResponse,
-      ProjectsQueryArgs | void
+      ProjectsItem[],
+      void
     >({
       providesTags: ['Projects'],
-      query: params => ({
+      query: () => ({
         directory: ApiDirectory.constructionWork,
-        params: {page_size: DEFAULT_PROJECTS_PAGE_SIZE, ...params},
-        url: '/projects',
+        url: 'manage/projects',
       }),
     }),
     [ConstructionWorkEndpointName.getProject]: builder.query<
