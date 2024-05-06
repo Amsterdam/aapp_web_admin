@@ -1,11 +1,14 @@
+import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
+import ScreenTitle from 'components/ui/text/ScreenTitle'
+import Publishers from 'modules/construction-work-editor/components/Publisher/Publishers'
 
 const PublishersScreen = () => (
   <Screen>
-    <h1>Omgevingsmanagers</h1>
-    <div>
-      <h2>Construction Work Publisher</h2>
-    </div>
+    <Column gutter="lg">
+      <ScreenTitle subtitle="Amsterdam App" title="Publishers" />
+      <Publishers />
+    </Column>
   </Screen>
 )
 

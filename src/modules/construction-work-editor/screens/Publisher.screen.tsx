@@ -4,11 +4,11 @@ import CreatePublisher from 'modules/construction-work-editor/components/Publish
 import EditPublisher from 'modules/construction-work-editor/components/Publisher/EditPublisher'
 
 type Params = {
-  email: string
+  email?: string
 }
 
 const PublisherScreen = () => {
-  const {email} = useParams<Params>()
+  const {email} = useParams() as Params
 
   return (
     <Screen>

@@ -1,9 +1,4 @@
 import {ConstructionWorkEndpointName} from 'modules/construction-work-editor/types/api'
-import {
-  Publisher,
-  PublisherProjectsQueryArgs,
-  PublisherQueryArgs,
-} from 'modules/construction-work-editor/types/publisher'
 import {baseApi} from 'services/baseApi'
 import {ApiDirectory} from 'services/types'
 import type {
@@ -17,28 +12,6 @@ const DEFAULT_PROJECTS_PAGE_SIZE = 10000
 
 export const projectsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    [ConstructionWorkEndpointName.addPublisher]: builder.mutation<
-      Publisher,
-      PublisherQueryArgs
-    >({
-      query: body => ({
-        body,
-        method: 'POST',
-        directory: ApiDirectory.constructionWork,
-        url: `/projects/manager`,
-      }),
-    }),
-    [ConstructionWorkEndpointName.addProjectsForPublisher]: builder.mutation<
-      Publisher,
-      PublisherProjectsQueryArgs
-    >({
-      query: body => ({
-        body,
-        method: 'POST',
-        directory: ApiDirectory.constructionWork,
-        url: `/projects/manager`,
-      }),
-    }),
     [ConstructionWorkEndpointName.getProjects]: builder.query<
       ProjectsResponse,
       ProjectsQueryArgs | void
@@ -61,37 +34,8 @@ export const projectsApi = baseApi.injectEndpoints({
         url: '/project/details',
       }),
     }),
-    [ConstructionWorkEndpointName.getPublisher]: builder.query<
-      Publisher,
-      PublisherQueryArgs
-    >({
-      query: params => ({
-        directory: ApiDirectory.constructionWork,
-        params,
-        url: '/projects/manager',
-      }),
-    }),
-
-    [ConstructionWorkEndpointName.removeProjectsForPublisher]: builder.mutation<
-      Publisher,
-      PublisherProjectsQueryArgs
-    >({
-      query: body => ({
-        body,
-        method: 'DELETE',
-        directory: ApiDirectory.constructionWork,
-        url: `/projects/manager`,
-      }),
-    }),
   }),
   overrideExisting: true,
 })
 
-export const {
-  useAddPublisherMutation,
-  useAddProjectsForPublisherMutation,
-  useGetProjectQuery,
-  useGetProjectsQuery,
-  useGetPublisherQuery,
-  useRemoveProjectsForPublisherMutation,
-} = projectsApi
+export const {useGetProjectQuery, useGetProjectsQuery} = projectsApi
