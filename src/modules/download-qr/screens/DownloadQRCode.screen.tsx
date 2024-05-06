@@ -21,10 +21,7 @@ const DownloadQRCodeScreen = () => {
   return (
     <Screen>
       <Column gutter="lg">
-        <ScreenTitle
-          subtitle="Amsterdam App"
-          title="Download link QR code maker"
-        />
+        <ScreenTitle title="Download link QR code maker" />
         <FormProvider {...form}>
           <Column gutter="lg">
             <TextField

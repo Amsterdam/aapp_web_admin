@@ -6,7 +6,7 @@ import Publishers from 'modules/construction-work-editor/components/Publisher/Pu
 const PublishersScreen = () => (
   <Screen>
     <Column gutter="lg">
-      <ScreenTitle subtitle="Amsterdam App" title="Publishers" />
+      <ScreenTitle title="Publishers" />
       <Publishers />
     </Column>
   </Screen>
