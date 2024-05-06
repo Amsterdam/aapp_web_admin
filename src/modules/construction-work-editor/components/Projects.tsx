@@ -27,8 +27,14 @@ const Projects = () => {
     return <Loading />
   }
 
-  if (isError || !data?.result?.length) {
-    return <ErrorComponent message="Projecten kunnen niet worden getoond" />
+  if (isError || !data) {
+    return (
+      <ErrorComponent message="Werkzaamheden kunnen niet worden getoond." />
+    )
+  }
+
+  if (!data?.result?.length) {
+    return <ErrorComponent message="Er zijn geen werkzaamheden gevonden." />
   }
 
   return <ProjectsTable projects={data.result} onRowClick={handleRowClick} />

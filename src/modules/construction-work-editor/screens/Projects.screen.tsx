@@ -6,7 +6,7 @@ import Projects from 'modules/construction-work-editor/components/Projects'
 const ProjectsScreen = () => (
   <Screen>
     <Column gutter="lg">
-      <ScreenTitle subtitle="Amsterdam App" title="Projecten" />
+      <ScreenTitle title="Projecten" />
       <Projects />
     </Column>
   </Screen>

@@ -1,11 +1,11 @@
 import Error from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
+import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
 import {
-  useAddProjectsForPublisherMutation,
-  useGetProjectsQuery,
   useGetPublisherQuery,
+  useAddProjectsForPublisherMutation,
   useRemoveProjectsForPublisherMutation,
-} from 'modules/construction-work-editor/services/projects'
+} from 'modules/construction-work-editor/services/publishers'
 import ProjectsTable from '../ProjectsTable'
 
 type Props = {

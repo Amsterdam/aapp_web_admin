@@ -6,7 +6,7 @@ import Loader from 'components/ui/containers/Loader'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
 import useNavigate from 'hooks/useNavigate'
-import {useAddPublisherMutation} from 'modules/construction-work-editor/services/projects'
+import {useAddPublisherMutation} from 'modules/construction-work-editor/services/publishers'
 import {PublisherAddForm} from 'modules/construction-work-editor/types/publisher'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
@@ -19,17 +19,15 @@ export const CreatePublisherForm = () => {
   const [createPublisher, {isLoading, isError}] = useAddPublisherMutation()
 
   const onSubmit = useCallback(
-    () =>
-      handleSubmit(({email}: PublisherAddForm) =>
-        createPublisher({email})
-          .unwrap()
-          .then(data =>
-            navigate(ConstructionWorkEditorRoute.publisher, {
-              email: data.email,
-            }),
-          ),
-      ),
-    [createPublisher, navigate, handleSubmit],
+    ({email}: PublisherAddForm) =>
+      createPublisher({email})
+        .unwrap()
+        .then(data =>
+          navigate(ConstructionWorkEditorRoute.publisher, {
+            email: data.email,
+          }),
+        ),
+    [createPublisher, navigate],
   )
 
   if (isError) {
@@ -43,7 +41,7 @@ export const CreatePublisherForm = () => {
           <TextField label="E-mailadres" name="email" />
           <Button
             label="Opslaan en projecten kiezen"
-            onClick={onSubmit}
+            onClick={handleSubmit(onSubmit)}
             disabled={isLoading || !value}
           />
         </Column>
