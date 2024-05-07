@@ -25,7 +25,7 @@ export const projectsApi = baseApi.injectEndpoints({
       providesTags: ['Projects'],
       query: ({id}) => ({
         directory: ApiDirectory.constructionWork,
-        url: `/manage/project/${id}`,
+        url: `/manage/projects/${id}`,
       }),
     }),
   }),

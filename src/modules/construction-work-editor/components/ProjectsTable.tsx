@@ -3,6 +3,7 @@ import Image from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import Title from 'components/ui/text/Title'
+import getDateFromString from 'utils/getDateFromString'
 import {
   WithSearchString,
   addSearchString,
@@ -29,6 +30,23 @@ const columns: ColumnConfig<WithSearchString<ProjectsItem>>[] = [
       </>
     ),
     title: 'Titel',
+  },
+  {
+    key: 'creation_date',
+    id: 'creation_date',
+    renderer: ({creation_date: creationDate}) =>
+      getDateFromString(creationDate),
+    title: 'Aangemaakt',
+  },
+  {
+    key: 'article_count',
+    id: 'article_count',
+    title: 'Aantal nieuwsberichten',
+  },
+  {
+    key: 'warning_count',
+    id: 'warning_count',
+    title: 'Aantal app berichten',
   },
   {
     key: 'image',

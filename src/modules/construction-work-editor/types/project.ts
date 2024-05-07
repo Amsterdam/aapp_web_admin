@@ -67,7 +67,7 @@ export type Project = ProjectBase & {
   expiration_date: string | null
   followers: number
   foreign_id: number
-  images: ApiImage[] | null
+  image: ApiImage | null
   last_seen: string | null
   meter: number
   modification_date: string
