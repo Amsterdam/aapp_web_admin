@@ -41,14 +41,6 @@ export type ArticleWarning = ArticleBase & {
   project: number | null
 }
 
-export type ArticlesQueryArgs = {
-  limit?: number
-  /**
-   * comma separated project ids
-   */
-  project_ids?: string
-}
-
 type ImageQueryArgs = {
   image: {
     data: string
