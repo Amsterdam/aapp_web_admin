@@ -48,7 +48,7 @@ const Project = ({id}: Props) => {
       <Column>
         <Title level={2}>{title}</Title>
         <Title level={3}>{subtitle}</Title>
-        {!!publishers && (
+        {!!publishers.length && (
           <Phrase>
             Publishers: {publishers.map(({name}) => name).join(', ')}
           </Phrase>
