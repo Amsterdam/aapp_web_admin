@@ -60,10 +60,10 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           }}
         />
         <ImageField
-          description={article?.images?.[0]?.alternativeText}
+          description={article?.image?.alternativeText}
           label="Voeg een afbeelding toe"
           name="image"
-          src={article?.images?.[0]?.sources?.[0]?.uri}
+          src={article?.image?.sources?.[0]?.uri}
         />
         {!article?.is_already_pushed && (
           <CheckboxField
