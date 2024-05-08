@@ -18,13 +18,7 @@ const Project = ({id}: Props) => {
     data: project,
     isError,
     isLoading,
-  } = useGetProjectQuery(
-    id
-      ? {
-          id,
-        }
-      : skipToken,
-  )
+  } = useGetProjectQuery(id || skipToken)
 
   if (isLoading) {
     return <Loading />

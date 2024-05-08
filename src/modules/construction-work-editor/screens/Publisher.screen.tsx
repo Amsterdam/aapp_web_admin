@@ -4,17 +4,13 @@ import CreatePublisher from 'modules/construction-work-editor/components/Publish
 import EditPublisher from 'modules/construction-work-editor/components/Publisher/EditPublisher'
 
 type Params = {
-  email?: string
+  id?: string
 }
 
 const PublisherScreen = () => {
-  const {email} = useParams() as Params
+  const {id} = useParams() as Params
 
-  return (
-    <Screen>
-      {email ? <EditPublisher email={email} /> : <CreatePublisher />}
-    </Screen>
-  )
+  return <Screen>{id ? <EditPublisher id={id} /> : <CreatePublisher />}</Screen>
 }
 
 export default PublisherScreen
