@@ -1,4 +1,4 @@
-import Error from 'components/ui/Error'
+import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
 import {
@@ -6,24 +6,26 @@ import {
   useAddProjectsForPublisherMutation,
   useRemoveProjectsForPublisherMutation,
 } from 'modules/construction-work-editor/services/publishers'
+import {Publisher} from 'modules/construction-work-editor/types/publisher'
 import ProjectsTable from '../ProjectsTable'
 
 type Props = {
-  email: string
+  id: Publisher['id']
 }
 
-export const EditPublisherTable = ({email}: Props) => {
+export const EditPublisherTable = ({id}: Props) => {
   const {
     data: projects,
-    isLoading: isGetProjectsLoading,
-    isError: isGetProjectsError,
+    isLoading: isProjectsLoading,
+    isError: isProjectsError,
   } = useGetProjectsQuery()
 
   const {
     data: publisher,
+    isFetching: isGetPublisherFetching,
     isLoading: isGetPublisherLoading,
     isError: isGetPublisherError,
-  } = useGetPublisherQuery({email})
+  } = useGetPublisherQuery(id)
 
   const [
     addProjectsForPublisher,
@@ -35,28 +37,32 @@ export const EditPublisherTable = ({email}: Props) => {
     {isLoading: isRemoveProjectsForPublisherLoading},
   ] = useRemoveProjectsForPublisherMutation()
 
-  if (isGetProjectsLoading || isGetPublisherLoading) {
+  if (isProjectsLoading || isGetPublisherLoading) {
     return <Loading />
   }
 
-  if (isGetProjectsError || isGetPublisherError || !projects?.length) {
-    return <Error message="De projecten kunnen niet worden getoond" />
+  if (isProjectsError || isGetPublisherError || !projects?.length) {
+    return <ErrorComponent message="De projecten kunnen niet worden getoond" />
   }
 
   return (
     <ProjectsTable
       projects={projects}
-      getIsRowSelected={({id}) => !!publisher?.projects.includes(id)}
-      loading={
-        isAddProjectsForPublisherLoading || isRemoveProjectsForPublisherLoading
+      getIsRowSelected={({id: projectId}) =>
+        !!publisher?.projects?.includes(projectId)
       }
-      onRowToggle={({id}, checked) => {
+      loading={
+        isAddProjectsForPublisherLoading ||
+        isRemoveProjectsForPublisherLoading ||
+        isGetPublisherFetching
+      }
+      onRowToggle={({id: projectId}, checked) => {
         if (checked) {
-          addProjectsForPublisher({email, projectIds: [id]})
+          addProjectsForPublisher({id, projectId})
 
           return
         }
-        removeProjectsForPublisher({email, projectIds: [id]})
+        removeProjectsForPublisher({id, projectId})
       }}
     />
   )
