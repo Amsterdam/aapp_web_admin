@@ -7,24 +7,23 @@ import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
 import useNavigate from 'hooks/useNavigate'
 import {useAddPublisherMutation} from 'modules/construction-work-editor/services/publishers'
-import {PublisherAddForm} from 'modules/construction-work-editor/types/publisher'
+import {AddPublisherQueryArgs} from 'modules/construction-work-editor/types/publisher'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 export const CreatePublisherForm = () => {
   const navigate = useNavigate()
-  const form = useForm<PublisherAddForm>()
-  const {handleSubmit, watch} = form
-  const value = watch('email')
+  const form = useForm<AddPublisherQueryArgs>()
+  const {handleSubmit} = form
 
   const [createPublisher, {isLoading, isError}] = useAddPublisherMutation()
 
   const onSubmit = useCallback(
-    ({email}: PublisherAddForm) =>
-      createPublisher({email})
+    ({email, name}: AddPublisherQueryArgs) =>
+      createPublisher({email, name})
         .unwrap()
         .then(data =>
           navigate(ConstructionWorkEditorRoute.publisher, {
-            email: data.email,
+            id: data.id,
           }),
         ),
     [createPublisher, navigate],
@@ -38,11 +37,26 @@ export const CreatePublisherForm = () => {
     <Loader loading={isLoading}>
       <FormProvider {...form}>
         <Column gutter="md">
-          <TextField label="E-mailadres" name="email" />
+          <TextField
+            label="Naam"
+            name="name"
+            rules={{
+              required: 'Naam is verplicht.',
+            }}
+            width="half"
+          />
+          <TextField
+            label="E-mailadres"
+            name="email"
+            rules={{
+              required: 'E-mailadres is verplicht.',
+            }}
+            width="half"
+          />
           <Button
             label="Opslaan en projecten kiezen"
             onClick={handleSubmit(onSubmit)}
-            disabled={isLoading || !value}
+            disabled={isLoading}
           />
         </Column>
       </FormProvider>
