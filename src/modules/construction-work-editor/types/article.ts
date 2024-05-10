@@ -19,7 +19,7 @@ export type ArticleStub = {
 export type ArticleBase = ArticleStub & {
   id: number
   body: string | null
-  image: ApiImage | null
+  images: ApiImage[] | null
   publication_date: string
   title: string
 }
@@ -42,7 +42,7 @@ export type ArticleWarning = ArticleBase & {
 }
 
 type ImageQueryArgs = {
-  image: {
+  image?: {
     data: string
     description: string
     main: boolean
@@ -56,12 +56,12 @@ type ProjectWarningQueryArgs = {
 }
 
 export type AddProjectWarningQueryArgs = {
-  project_id: string
+  projectId: string
 } & ProjectWarningQueryArgs &
   ImageQueryArgs
 
 export type EditProjectWarningQueryArgs = {
-  id: string
+  id: number
 } & ProjectWarningQueryArgs &
   ImageQueryArgs
 

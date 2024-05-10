@@ -23,7 +23,7 @@ export type FormData = {
 
 type Props = {
   article?: ArticleWarning
-  id?: string
+  id?: number
   projectId?: string
 }
 
@@ -35,6 +35,7 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     error: submitError,
     isLoading: submitIsLoading,
   } = useSubmitArticle(id, projectId)
+  const image = article?.images?.find(({main}) => main)
 
   return (
     <Column gutter="md">
@@ -60,10 +61,10 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           }}
         />
         <ImageField
-          description={article?.image?.alternativeText}
+          description={image?.alternativeText}
           label="Voeg een afbeelding toe"
           name="image"
-          src={article?.image?.sources?.[0]?.uri}
+          src={image?.sources?.[0]?.uri}
         />
         {!article?.is_already_pushed && (
           <CheckboxField

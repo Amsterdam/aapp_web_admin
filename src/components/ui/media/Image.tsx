@@ -4,7 +4,7 @@ enum ImageVariant {
   table = 'table',
 }
 
-const ImageHeight = {
+export const ImageHeight = {
   [ImageVariant.table]: 100,
 }
 

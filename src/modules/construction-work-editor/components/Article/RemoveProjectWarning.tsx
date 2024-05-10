@@ -4,7 +4,7 @@ import {useRemoveProjectWarningMutation} from 'modules/construction-work-editor/
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 type Props = {
-  id: string
+  id: number
   projectId: string
   setIsBeforeNavigation: (value: boolean) => void
 }
@@ -32,9 +32,7 @@ const RemoveProjectWarning = ({
       window.confirm(`Weet je zeker dat je dit bericht wil verwijderen?`)
     ) {
       setIsBeforeNavigation(true)
-      removeProjectWarning({
-        id,
-      })
+      removeProjectWarning(id)
         .unwrap()
         .then(() => {
           navigate(ConstructionWorkEditorRoute.project, {projectId})

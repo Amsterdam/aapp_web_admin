@@ -8,5 +8,6 @@ export type ApiImage = {
   alternativeText: string | null
   aspectRatio: number
   id: string
+  main: boolean
   sources?: ApiImageSource[]
 }

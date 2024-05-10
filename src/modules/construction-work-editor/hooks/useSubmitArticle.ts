@@ -4,10 +4,11 @@ import {
   useAddProjectWarningMutation,
   useEditProjectWarningMutation,
 } from 'modules/construction-work-editor/services/articles'
+import getBase64ImageData from 'utils/getBase64ImageData'
 
 type RequestBodyBase = {
   body: string
-  image: {
+  image?: {
     data: string
     description: string
     main: boolean
@@ -16,7 +17,7 @@ type RequestBodyBase = {
   title: string
 }
 
-const useSubmitArticle = (id?: string, projectId?: string) => {
+const useSubmitArticle = (id?: number, projectId?: string) => {
   const [isBeforeNavigation, setIsBeforeNavigation] = useState<boolean>(false)
   const [
     addProjectWarning,
@@ -38,7 +39,7 @@ const useSubmitArticle = (id?: string, projectId?: string) => {
       }
       const addProjectWarningRequestBody = {
         ...requestBody,
-        project_id: projectId,
+        projectId,
       }
       setIsBeforeNavigation(true)
       addProjectWarning(addProjectWarningRequestBody)
@@ -64,22 +65,28 @@ const useSubmitArticle = (id?: string, projectId?: string) => {
   )
 
   const onSubmit = useCallback(
-    ({
+    async ({
       body,
       image,
       imageDescription,
       sendPushNotification,
       title,
     }: FormData) => {
-      const requestBody = {
+      const requestBody: RequestBodyBase = {
         body,
-        image: {
-          data: image,
-          description: imageDescription,
-          main: true,
-        },
         send_push_notification: sendPushNotification,
         title,
+      }
+      if (image) {
+        const base64ImageData = await getBase64ImageData(image)
+
+        if (base64ImageData && typeof base64ImageData === 'string') {
+          requestBody.image = {
+            data: base64ImageData,
+            description: imageDescription,
+            main: true,
+          }
+        }
       }
       if (isNewArticle) {
         addWarning(requestBody)

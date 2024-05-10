@@ -84,15 +84,17 @@ const ImageField = ({
               </Step>
             </Stepper>
             {!!error && <Phrase color="error">{error.message}</Phrase>}
-            <TextField
-              defaultValue={description ?? ''}
-              label="Beschrijving afbeelding"
-              maxLength={MAX_LENGTH_DESCRIPTION}
-              name="imageDescription"
-              rules={{
-                required: 'Geef de afbeelding een beschrijving.',
-              }}
-            />
+            {step === 'display' && (
+              <TextField
+                defaultValue={description ?? ''}
+                label="Beschrijving afbeelding"
+                maxLength={MAX_LENGTH_DESCRIPTION}
+                name="imageDescription"
+                rules={{
+                  required: 'Geef de afbeelding een beschrijving.',
+                }}
+              />
+            )}
           </Column>
         )}
         rules={{
