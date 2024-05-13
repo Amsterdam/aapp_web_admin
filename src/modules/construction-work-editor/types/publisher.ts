@@ -4,18 +4,16 @@ export type PublisherBase = {
 }
 
 export type Publisher = {
-  projects: number[]
+  id: number
+  projects?: number[]
 } & PublisherBase
 
-export type PublisherAddForm = {
+export type AddPublisherQueryArgs = {
   email: PublisherBase['email']
-}
-
-export type PublisherQueryArgs = {
-  email: PublisherBase['email']
+  name: PublisherBase['name']
 }
 
 export type PublisherProjectsQueryArgs = {
-  email: PublisherBase['email']
-  projectIds: Publisher['projects']
+  id: Publisher['id']
+  projectId: number
 }

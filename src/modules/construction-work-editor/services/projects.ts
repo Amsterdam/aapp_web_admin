@@ -18,12 +18,9 @@ export const projectsApi = baseApi.injectEndpoints({
         url: '/manage/projects',
       }),
     }),
-    [ConstructionWorkEndpointName.getProject]: builder.query<
-      Project,
-      {id: string}
-    >({
-      providesTags: ['Projects'],
-      query: ({id}) => ({
+    [ConstructionWorkEndpointName.getProject]: builder.query<Project, string>({
+      providesTags: (_r, _e, id) => [{type: 'Projects', id}],
+      query: id => ({
         directory: ApiDirectory.constructionWork,
         url: `/manage/projects/${id}`,
       }),
