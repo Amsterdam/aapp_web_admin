@@ -5,10 +5,10 @@ import {CreatePublisherForm} from 'modules/construction-work-editor/components/P
 
 const CreatePublisher = () => (
   <Column gutter="lg">
-    <ScreenTitle title="Nieuwe publisher" />
+    <ScreenTitle title="Publisher toevoegen" />
     <Paragraph>
-      Vul het e-mailadres in van de collega die je wilt aanmaken. In de volgende
-      stap kun je projecten kiezen.
+      Vul het e-mailadres in van de collega die je wilt toevoegen. In de
+      volgende stap kun je projecten kiezen.
     </Paragraph>
     <CreatePublisherForm />
   </Column>
