@@ -1,22 +1,38 @@
 import {useCallback} from 'react'
 import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
-import Image from 'components/ui/media/Image'
+import Image, {ImageHeight} from 'components/ui/media/Image'
 import {Table} from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import useNavigate from 'hooks/useNavigate'
+import ProjectWarningFallbackImage from 'modules/construction-work-editor/assets/project-warning-fallback.svg'
 import {ArticleWarning} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import type {ColumnConfig} from 'components/ui/table/types'
 
-type Props = {
-  projectId: string
-  warnings?: ArticleWarning[]
-}
 type ArticlesItem = Pick<
   ArticleWarning,
-  'image' | 'meta_id' | 'title' | 'project' | 'publisher' | 'publication_date'
+  'images' | 'meta_id' | 'title' | 'project' | 'publisher' | 'publication_date'
 >
+
+type TableImageProps = {
+  images: ArticleWarning['images']
+}
+
+const TableImage = ({images}: TableImageProps) => {
+  const image = images?.find(({main}) => main)
+  if (image) {
+    return <Image image={image} />
+  }
+
+  return (
+    <img
+      alt="App bericht afbeelding"
+      height={ImageHeight.table}
+      src={ProjectWarningFallbackImage}
+    />
+  )
+}
 
 const columns: ColumnConfig<ArticlesItem>[] = [
   {
@@ -37,12 +53,17 @@ const columns: ColumnConfig<ArticlesItem>[] = [
     title: 'Geschreven door',
   },
   {
-    key: 'image',
+    key: 'images',
     id: 'image',
-    renderer: ({image}) => image && <Image image={image} />,
+    renderer: ({images}) => <TableImage images={images} />,
     title: '',
   },
 ]
+
+type Props = {
+  projectId: string
+  warnings?: ArticleWarning[]
+}
 
 const ArticlesTable = ({projectId, warnings}: Props) => {
   const navigate = useNavigate()
@@ -56,20 +77,20 @@ const ArticlesTable = ({projectId, warnings}: Props) => {
     [navigate, projectId],
   )
 
-  if (!warnings?.length) {
-    return <Phrase>Er zijn geen app berichten voor dit project.</Phrase>
-  }
-
   return (
-    <Column>
-      <Table
-        config={columns}
-        data={warnings}
-        keyGetter={({meta_id: {id, type}}) => `${type}${id}`}
-        onRowClick={onRowClick}
-      />
+    <Column gutter="md">
+      {!warnings?.length ? (
+        <Phrase>Er zijn geen app berichten voor dit project.</Phrase>
+      ) : (
+        <Table
+          config={columns}
+          data={warnings}
+          keyGetter={({meta_id: {id, type}}) => `${type}${id}`}
+          onRowClick={onRowClick}
+        />
+      )}
       <NavigationButton
-        label="Maak app bericht"
+        label="Schrijf app bericht"
         url={ConstructionWorkEditorRoute.article}
         params={{projectId}}
       />
