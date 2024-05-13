@@ -39,13 +39,13 @@ export const EditPublisherTable = ({email}: Props) => {
     return <Loading />
   }
 
-  if (isGetProjectsError || isGetPublisherError || !projects?.result.length) {
+  if (isGetProjectsError || isGetPublisherError || !projects?.length) {
     return <Error message="De projecten kunnen niet worden getoond" />
   }
 
   return (
     <ProjectsTable
-      projects={projects.result}
+      projects={projects}
       getIsRowSelected={({id}) => !!publisher?.projects.includes(id)}
       loading={
         isAddProjectsForPublisherLoading || isRemoveProjectsForPublisherLoading

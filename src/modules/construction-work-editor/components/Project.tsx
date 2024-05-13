@@ -13,8 +13,6 @@ type Props = {
   id: string
 }
 
-const ARTICLE_MAX_AGE_IN_DAYS = 10000
-
 const Project = ({id}: Props) => {
   const {
     data: project,
@@ -23,7 +21,6 @@ const Project = ({id}: Props) => {
   } = useGetProjectQuery(
     id
       ? {
-          article_max_age: ARTICLE_MAX_AGE_IN_DAYS,
           id,
         }
       : skipToken,
@@ -37,13 +34,25 @@ const Project = ({id}: Props) => {
     return <ErrorComponent message="Project kan niet worden getoond" />
   }
 
-  const {creation_date: creationDate, subtitle, title, url} = project
+  const {
+    creation_date: creationDate,
+    subtitle,
+    title,
+    publishers,
+    url,
+    warnings,
+  } = project
 
   return (
     <Column gutter="xl">
       <Column>
         <Title level={2}>{title}</Title>
         <Title level={3}>{subtitle}</Title>
+        {!!publishers.length && (
+          <Phrase>
+            Publishers: {publishers.map(({name}) => name).join(', ')}
+          </Phrase>
+        )}
         <Phrase color="muted">
           Aangemaakt: {getDateFromString(creationDate)}
         </Phrase>
@@ -51,7 +60,7 @@ const Project = ({id}: Props) => {
           <Phrase>Bekijk op amsterdam.nl</Phrase>
         </BlockLink>
       </Column>
-      <ArticlesTable projectId={id} />
+      <ArticlesTable projectId={id} warnings={warnings} />
     </Column>
   )
 }

@@ -1,10 +1,9 @@
 import {
   ArticleNews,
-  ArticleStub,
   ArticleWarning,
 } from 'modules/construction-work-editor/types/article'
+import {PublisherBase} from 'modules/construction-work-editor/types/publisher'
 import type {ApiImage} from 'modules/construction-work-editor/types/image'
-import type {Paginated} from 'services/types'
 
 export type ProjectContact = {
   address: string | null // @TODO: not in API definition (100764)
@@ -58,36 +57,38 @@ export type ProjectBase = {
 
 export type Project = ProjectBase & {
   active: boolean
+  articles: ArticleNews[]
   contacts: ProjectContact[] | null
+  creation_date: string
   coordinates: {
     lat: number
     lon: number
   } | null
-  creation_date: string
   expiration_date: string | null
   followers: number
   foreign_id: number
-  images: ApiImage[] | null
+  image: ApiImage | null
   last_seen: string | null
+  meter: number
   modification_date: string
   publication_date: string
+  publishers: PublisherBase[]
   recent_articles: (ArticleNews | ArticleWarning)[]
   sections: ProjectSections | null
+  strides: number
   timeline: ProjectTimeline | null
   url: string
+  warnings: ArticleWarning[]
 }
 
-export type ProjectsItem = ProjectBase & {
-  recent_articles: ArticleStub[]
+export type ProjectsItem = Pick<
+  Project,
+  'creation_date' | 'id' | 'image' | 'subtitle' | 'title'
+> & {
+  article_count: number
+  publishers: PublisherBase['email']
+  warning_count: number
 }
-
-export type ProjectsQueryArgs = {
-  article_max_age?: number
-  page?: number
-  page_size?: number
-}
-
-export type ProjectsResponse = Paginated<ProjectsItem>
 
 export type ProjectQueryArgs = {
   article_max_age?: number

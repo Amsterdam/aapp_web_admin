@@ -9,7 +9,7 @@ import type {ProjectsItem} from 'modules/construction-work-editor/types/project'
 
 const Projects = () => {
   const navigate = useNavigate()
-  const {data, isError, isLoading} = useGetProjectsQuery()
+  const {data: projects, isError, isLoading} = useGetProjectsQuery()
 
   const handleRowClick = useCallback(
     (project: ProjectsItem) => {
@@ -27,17 +27,17 @@ const Projects = () => {
     return <Loading />
   }
 
-  if (isError || !data) {
+  if (isError || !projects) {
     return (
       <ErrorComponent message="Werkzaamheden kunnen niet worden getoond." />
     )
   }
 
-  if (!data?.result?.length) {
+  if (!projects.length) {
     return <ErrorComponent message="Er zijn geen werkzaamheden gevonden." />
   }
 
-  return <ProjectsTable projects={data.result} onRowClick={handleRowClick} />
+  return <ProjectsTable projects={projects} onRowClick={handleRowClick} />
 }
 
 export default Projects

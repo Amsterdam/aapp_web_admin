@@ -2,8 +2,6 @@ import {ConstructionWorkEndpointName} from 'modules/construction-work-editor/typ
 import {
   AddProjectWarningQueryArgs,
   ArticleWarning,
-  ArticlesItem,
-  ArticlesQueryArgs,
   AddProjectWarningResponse,
   EditProjectWarningQueryArgs,
 } from 'modules/construction-work-editor/types/article'
@@ -12,17 +10,6 @@ import {ApiDirectory} from 'services/types'
 
 export const articlesApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    [ConstructionWorkEndpointName.getArticles]: builder.query<
-      ArticlesItem[],
-      ArticlesQueryArgs
-    >({
-      providesTags: ['Articles'],
-      query: params => ({
-        directory: ApiDirectory.constructionWork,
-        url: '/articles',
-        params,
-      }),
-    }),
     [ConstructionWorkEndpointName.getProjectWarning]: builder.query<
       ArticleWarning,
       {id: string}
@@ -71,7 +58,6 @@ export const articlesApi = baseApi.injectEndpoints({
 })
 
 export const {
-  useGetArticlesQuery,
   useGetProjectWarningQuery,
   useAddProjectWarningMutation,
   useEditProjectWarningMutation,

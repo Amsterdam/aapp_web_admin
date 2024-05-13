@@ -1,4 +1,5 @@
 import {ApiImage} from 'modules/construction-work-editor/types/image'
+import {PublisherBase} from 'modules/construction-work-editor/types/publisher'
 
 export enum ArticleType {
   article = 'article',
@@ -15,15 +16,10 @@ export type ArticleStub = {
   modification_date: string
 }
 
-export type ArticlePublisher = {
-  email: string
-  name: string
-}
-
 export type ArticleBase = ArticleStub & {
-  body: string | null
   id: number
-  modification_date: string
+  body: string | null
+  image: ApiImage | null
   publication_date: string
   title: string
 }
@@ -33,7 +29,6 @@ export type ArticleNews = ArticleBase & {
   creation_date: string
   expiration_date: string | null
   foreign_id: number
-  image: ApiImage | null
   intro: string | null
   last_seen: string | null
   projects: number[]
@@ -41,26 +36,9 @@ export type ArticleNews = ArticleBase & {
 }
 
 export type ArticleWarning = ArticleBase & {
-  author_email: string | null
-  images: ApiImage[] | null
   is_already_pushed: boolean
+  publisher: PublisherBase
   project: number | null
-}
-
-export type ArticlesQueryArgs = {
-  limit?: number
-  /**
-   * comma separated project ids
-   */
-  project_ids?: string
-}
-
-export type ArticlesItem = {
-  images: ApiImage[] | null
-  meta_id: ArticleMetaId
-  publication_date: string
-  publisher: ArticlePublisher
-  title: string
 }
 
 type ImageQueryArgs = {
@@ -87,12 +65,13 @@ export type EditProjectWarningQueryArgs = {
 } & ProjectWarningQueryArgs &
   ImageQueryArgs
 
-export type AddProjectWarningResponse = {
-  id: number
-  title: string
-  body: string
-  publication_date: string
-  modification_date: string
-  author_email: string
-  project: number
-}
+export type AddProjectWarningResponse = Pick<
+  ArticleWarning,
+  | 'id'
+  | 'body'
+  | 'title'
+  | 'project'
+  | 'publisher'
+  | 'publication_date'
+  | 'modification_date'
+>
