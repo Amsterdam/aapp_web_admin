@@ -13,7 +13,7 @@ HELM_ARGS = oci://${REGISTRY}/amsterdam/helm-generic-application --version 1.12.
 	--set image.tag=${VERSION}
 
 REGISTRY ?= localhost:5000
-REPOSITORY ?= Amsterdam-App/aapp-admin
+REPOSITORY ?= Amsterdam-App/aapp_web_admin
 VERSION ?= latest
 
 build:
