@@ -13,7 +13,7 @@ HELM_ARGS = oci://${REGISTRY}/amsterdam/helm-generic-application --version 1.12.
 	--set image.tag=${VERSION}
 
 REGISTRY ?= localhost:5000
-REPOSITORY ?= Amsterdam-App/aapp-mbs
+REPOSITORY ?= Amsterdam-App/aapp-admin
 VERSION ?= latest
 
 build:
@@ -26,10 +26,10 @@ push:
 	$(dc) push
 
 manifests:
-	@helm template mbs $(HELM_ARGS) $(ARGS)
+	@helm template admin $(HELM_ARGS) $(ARGS)
 
 deploy: manifests
-	helm upgrade --install mbs $(HELM_ARGS) $(ARGS)
+	helm upgrade --install admin $(HELM_ARGS) $(ARGS)
 
 clean:
 	$(dc) down -v --remove-orphans	

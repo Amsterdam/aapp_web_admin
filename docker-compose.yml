@@ -47,7 +47,7 @@ services:
     build:
       context: .
       target: deploy
-    image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-aapp/images/mbs}:${VERSION:-latest}
+    image: ${REGISTRY:-localhost:5000}/${REPOSITORY:-aapp/images/admin}:${VERSION:-latest}
     environment:
       <<: *base-app-env
       # DEBUG: "false"
