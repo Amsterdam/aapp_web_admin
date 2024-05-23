@@ -7,6 +7,7 @@ import Phrase from 'components/ui/text/Phrase'
 import Title from 'components/ui/text/Title'
 import ArticlesTable from 'modules/construction-work-editor/components/Article/ArticlesTable'
 import {useGetProjectQuery} from 'modules/construction-work-editor/services/projects'
+import dateToNumber from 'utils/dateToNumber'
 import getDateFromString from 'utils/getDateFromString'
 
 type Props = {
@@ -37,6 +38,12 @@ const Project = ({id}: Props) => {
     warnings,
   } = project
 
+  // TODO: Remove once generic sorting mechanism is implemented
+  const warningsSortedByModificationDate = [...warnings].sort(
+    (a, b) =>
+      dateToNumber(b.modification_date) - dateToNumber(a.modification_date),
+  )
+
   return (
     <Column gutter="xl">
       <Column>
@@ -54,7 +61,10 @@ const Project = ({id}: Props) => {
           <Phrase>Bekijk op amsterdam.nl</Phrase>
         </BlockLink>
       </Column>
-      <ArticlesTable projectId={id} warnings={warnings} />
+      <ArticlesTable
+        projectId={id}
+        warnings={warningsSortedByModificationDate}
+      />
     </Column>
   )
 }

@@ -8,11 +8,18 @@ import useNavigate from 'hooks/useNavigate'
 import ProjectWarningFallbackImage from 'modules/construction-work-editor/assets/project-warning-fallback.svg'
 import {ArticleWarning} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import getDateFromString from 'utils/getDateFromString'
 import type {ColumnConfig} from 'components/ui/table/types'
 
 type ArticlesItem = Pick<
   ArticleWarning,
-  'images' | 'meta_id' | 'title' | 'project' | 'publisher' | 'publication_date'
+  | 'images'
+  | 'meta_id'
+  | 'modification_date'
+  | 'title'
+  | 'project'
+  | 'publisher'
+  | 'publication_date'
 >
 
 type TableImageProps = {
@@ -51,6 +58,13 @@ const columns: ColumnConfig<ArticlesItem>[] = [
     id: 'publisher',
     renderer: ({publisher}) => <Phrase>{publisher.name}</Phrase>,
     title: 'Geschreven door',
+  },
+  {
+    key: 'modification_date',
+    id: 'modification_date',
+    renderer: ({modification_date: modificationDate}) =>
+      getDateFromString(modificationDate),
+    title: 'Bewerkt op',
   },
   {
     key: 'images',
