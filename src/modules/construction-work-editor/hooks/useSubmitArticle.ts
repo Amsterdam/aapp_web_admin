@@ -1,9 +1,11 @@
 import {useCallback, useState} from 'react'
+import useNavigate from 'hooks/useNavigate'
 import {FormData} from 'modules/construction-work-editor/components/Article/ArticleForm'
 import {
   useAddProjectWarningMutation,
   useEditProjectWarningMutation,
 } from 'modules/construction-work-editor/services/articles'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import getBase64ImageData from 'utils/getBase64ImageData'
 
 type RequestBodyBase = {
@@ -19,6 +21,7 @@ type RequestBodyBase = {
 
 const useSubmitArticle = (id?: number, projectId?: string) => {
   const [isBeforeNavigation, setIsBeforeNavigation] = useState<boolean>(false)
+  const navigate = useNavigate()
   const [
     addProjectWarning,
     {isLoading: isAddProjectLoading, error: addProjectError},
@@ -43,8 +46,12 @@ const useSubmitArticle = (id?: number, projectId?: string) => {
       }
       setIsBeforeNavigation(true)
       addProjectWarning(addProjectWarningRequestBody)
+        .unwrap()
+        .then(() => {
+          navigate(ConstructionWorkEditorRoute.project, {projectId})
+        })
     },
-    [addProjectWarning, projectId],
+    [addProjectWarning, navigate, projectId],
   )
   const editWarning = useCallback(
     (requestBody: RequestBodyBase) => {
@@ -59,9 +66,13 @@ const useSubmitArticle = (id?: number, projectId?: string) => {
         id,
       }
       setIsBeforeNavigation(true)
-      editProjectWarning(editProjectWarningRequestBody)
+      editProjectWarning(editProjectWarningRequestBody).then(() => {
+        if (projectId) {
+          navigate(ConstructionWorkEditorRoute.project, {projectId})
+        }
+      })
     },
-    [editProjectWarning, id],
+    [editProjectWarning, id, navigate, projectId],
   )
 
   const onSubmit = useCallback(

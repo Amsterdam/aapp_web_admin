@@ -18,6 +18,7 @@ export const articlesApi = baseApi.injectEndpoints({
         directory: ApiDirectory.constructionWork,
         url: `/manage/warnings/${id}`,
       }),
+      providesTags: ['Articles'],
     }),
     [ConstructionWorkEndpointName.addProjectWarning]: builder.mutation<
       AddProjectWarningResponse,
@@ -29,6 +30,7 @@ export const articlesApi = baseApi.injectEndpoints({
         directory: ApiDirectory.constructionWork,
         url: `/manage/projects/${projectId}/warnings`,
       }),
+      invalidatesTags: ['Articles'],
     }),
     [ConstructionWorkEndpointName.editProjectWarning]: builder.mutation<
       AddProjectWarningResponse,
@@ -40,6 +42,7 @@ export const articlesApi = baseApi.injectEndpoints({
         directory: ApiDirectory.constructionWork,
         url: `/manage/warnings/${id}`,
       }),
+      invalidatesTags: ['Articles'],
     }),
     [ConstructionWorkEndpointName.deleteProjectWarning]: builder.mutation<
       string,
@@ -50,6 +53,7 @@ export const articlesApi = baseApi.injectEndpoints({
         directory: ApiDirectory.constructionWork,
         url: `/manage/warnings/${id}`,
       }),
+      invalidatesTags: ['Articles'],
     }),
   }),
   overrideExisting: true,
