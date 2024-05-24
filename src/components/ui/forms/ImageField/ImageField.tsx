@@ -19,8 +19,8 @@ type Props = {
 
 type ImageFieldStep = 'upload' | 'crop' | 'display'
 
-const DEFAULT_ASPECT_RATIO = 940 / 415
-const DEFAULT_OUTPUT_WIDTH = 940
+const DEFAULT_ASPECT_RATIO = 960 / 540
+const DEFAULT_OUTPUT_WIDTH = 960
 const MAX_LENGTH_DESCRIPTION = 54
 
 /**
@@ -34,7 +34,7 @@ const ImageField = ({
   outputWidth = DEFAULT_OUTPUT_WIDTH,
   src,
 }: Props) => {
-  const [step, setStep] = useState<ImageFieldStep>(src ? 'crop' : 'upload')
+  const [step, setStep] = useState<ImageFieldStep>(src ? 'display' : 'upload')
 
   const [uncroppedImage, setUncroppedImage] = useState<string | undefined>(src)
 
