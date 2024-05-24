@@ -5,11 +5,12 @@ export const createImage = (url: string): Promise<HTMLImageElement> =>
     const image = new Image()
     image.addEventListener('load', () => resolve(image))
     image.addEventListener('error', error => reject(error))
+    image.setAttribute('crossOrigin', 'anonymous')
     image.src = url
   })
 
 /**
- * Get the cropped image by creating a canvas element containing the cropped iamge and the exporting the canvase to a blob
+ * Get the cropped image by creating a canvas element containing the cropped iamge and the exporting the canvas to a blob
  * Source: https://codesandbox.io/p/sandbox/react-easy-crop-demo-with-cropped-output-q8q1mnr01w
  */
 export const getCroppedImage = async (

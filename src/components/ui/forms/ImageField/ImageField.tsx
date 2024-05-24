@@ -36,7 +36,7 @@ const ImageField = ({
 }: Props) => {
   const [step, setStep] = useState<ImageFieldStep>(src ? 'display' : 'upload')
 
-  const [uncroppedImage, setUncroppedImage] = useState<string | undefined>(src)
+  const [uncroppedImage, setUncroppedImage] = useState<string | undefined>()
 
   return (
     <div className="ImageField" style={{width: `${outputWidth}px`}}>
