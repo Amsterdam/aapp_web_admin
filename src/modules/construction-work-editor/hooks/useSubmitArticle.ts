@@ -1,9 +1,11 @@
 import {useCallback, useState} from 'react'
+import useNavigate from 'hooks/useNavigate'
 import {FormData} from 'modules/construction-work-editor/components/Article/ArticleForm'
 import {
   useAddProjectWarningMutation,
   useEditProjectWarningMutation,
 } from 'modules/construction-work-editor/services/articles'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import getBase64ImageData from 'utils/getBase64ImageData'
 
 type RequestBodyBase = {
@@ -17,8 +19,15 @@ type RequestBodyBase = {
   title: string
 }
 
-const useSubmitArticle = (id?: number, projectId?: string) => {
+type Params = {
+  dirtyFields: Partial<Readonly<Record<keyof FormData, boolean | undefined>>>
+  id?: number
+  projectId?: string
+}
+
+const useSubmitArticle = ({dirtyFields, id, projectId}: Params) => {
   const [isBeforeNavigation, setIsBeforeNavigation] = useState<boolean>(false)
+  const navigate = useNavigate()
   const [
     addProjectWarning,
     {isLoading: isAddProjectLoading, error: addProjectError},
@@ -43,25 +52,36 @@ const useSubmitArticle = (id?: number, projectId?: string) => {
       }
       setIsBeforeNavigation(true)
       addProjectWarning(addProjectWarningRequestBody)
+        .unwrap()
+        .then(() => {
+          navigate(ConstructionWorkEditorRoute.project, {projectId})
+        })
     },
-    [addProjectWarning, projectId],
+    [addProjectWarning, navigate, projectId],
   )
   const editWarning = useCallback(
     (requestBody: RequestBodyBase) => {
       if (!id) {
         // eslint-disable-next-line no-console
-        console.error('Warning ID is required for to edit a warning')
+        console.error('Warning ID is required to edit a warning')
 
         return
       }
+
       const editProjectWarningRequestBody = {
         ...requestBody,
         id,
       }
       setIsBeforeNavigation(true)
       editProjectWarning(editProjectWarningRequestBody)
+        .unwrap()
+        .then(() => {
+          if (projectId) {
+            navigate(ConstructionWorkEditorRoute.project, {projectId})
+          }
+        })
     },
-    [editProjectWarning, id],
+    [editProjectWarning, id, navigate, projectId],
   )
 
   const onSubmit = useCallback(
@@ -77,7 +97,7 @@ const useSubmitArticle = (id?: number, projectId?: string) => {
         send_push_notification: sendPushNotification,
         title,
       }
-      if (image) {
+      if (image && dirtyFields.image) {
         const base64ImageData = await getBase64ImageData(image)
 
         if (base64ImageData && typeof base64ImageData === 'string') {
@@ -94,7 +114,7 @@ const useSubmitArticle = (id?: number, projectId?: string) => {
         editWarning(requestBody)
       }
     },
-    [addWarning, editWarning, isNewArticle],
+    [addWarning, dirtyFields.image, editWarning, isNewArticle],
   )
 
   return {

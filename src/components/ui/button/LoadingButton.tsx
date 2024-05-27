@@ -19,7 +19,7 @@ const LoadingButton = ({error, loading, ...buttonProps}: Props) => (
     />
     {!!error && (
       <Phrase color="error">{`${'status' in error && error?.status} ${
-        'data' in error && (error?.data as {message: string})?.message
+        'data' in error && error?.data
       }`}</Phrase>
     )}
   </Column>
