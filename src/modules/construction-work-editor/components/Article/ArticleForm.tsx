@@ -31,8 +31,10 @@ type Props = {
 
 const ArticleForm = ({article, id, projectId}: Props) => {
   const form = useForm<FormData>()
-  const {formState, handleSubmit} = form
-  const {dirtyFields} = formState
+  const {
+    formState: {dirtyFields},
+    handleSubmit,
+  } = form
   const {
     onSubmit,
     error: submitError,
