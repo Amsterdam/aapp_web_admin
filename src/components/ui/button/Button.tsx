@@ -35,11 +35,7 @@ const Button = ({
     {...buttonProps}>
     <Row gutter="sm" valign="center">
       {icon}
-      {!!label && (
-        <span className="ButtonLabel" data-ellipsize data-font="body">
-          {label}
-        </span>
-      )}
+      {!!label && <span data-font="body">{label}</span>}
     </Row>
   </button>
 )
