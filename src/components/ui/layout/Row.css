@@ -1,5 +1,6 @@
 .Row {
   display: flex;
+  flex-flow: wrap;
 }
 
 [data-align="around"] {justify-content: space-around;}

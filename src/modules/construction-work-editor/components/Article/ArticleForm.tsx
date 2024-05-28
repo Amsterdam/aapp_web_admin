@@ -71,7 +71,7 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           name="image"
           src={image?.sources?.[2]?.uri}
         />
-        {!article?.is_already_pushed && (
+        {!article?.is_pushed && (
           <CheckboxField
             label="Verstuur ook een pushbericht"
             name="sendPushNotification"

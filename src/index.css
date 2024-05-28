@@ -122,12 +122,6 @@ body {
   margin: 0;
 }
 
-[data-ellipsize] {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 [data-font] {
   font-family: 'Amsterdam Sans', serif;
 }

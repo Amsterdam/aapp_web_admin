@@ -10,5 +10,6 @@
   max-width: var(--max-screen-width);
   padding: var(--size-spacing-lg);
   padding-bottom: var(--size-spacing-xxl);
+  box-sizing: border-box;
   background-color: var(--bg-color-cutout);
 }
