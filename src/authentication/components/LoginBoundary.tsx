@@ -1,25 +1,25 @@
 import {InteractionType} from '@azure/msal-browser'
-import {useMsal, MsalAuthenticationTemplate} from '@azure/msal-react'
+import {MsalAuthenticationTemplate} from '@azure/msal-react'
 import {ReactNode, FC} from 'react'
+import {currentClientId} from 'utils/environment'
 
 type Props = {
   children?: ReactNode
   interactionType?: InteractionType
 }
 
+const authRequest = {
+  scopes: [`api://${currentClientId}/Modules.Edit`],
+}
+
 export const LoginBoundary: FC<Props> = ({
   children,
   interactionType = InteractionType.Redirect,
 }) => {
-  const {instance} = useMsal()
-  const accounts = instance.getAllAccounts()
-  const activeAccount = instance.getActiveAccount()
-  if (!activeAccount && accounts.length) {
-    instance.setActiveAccount(accounts[0])
-  }
-
   return (
-    <MsalAuthenticationTemplate interactionType={interactionType}>
+    <MsalAuthenticationTemplate
+      authenticationRequest={authRequest}
+      interactionType={interactionType}>
       {children}
     </MsalAuthenticationTemplate>
   )
