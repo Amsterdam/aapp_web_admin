@@ -13,13 +13,9 @@ const request: SilentRequest = {
 }
 export const usePassTokenToNativeApp = () => {
   const {instance} = useMsal()
-  const accounts = instance.getAllAccounts()
-  const activeAccount = instance.getActiveAccount()
-  if (!activeAccount && accounts.length > 0) {
-    instance.setActiveAccount(accounts[0])
-  }
+
   useEffect(() => {
-    if (activeAccount && window.ReactNativeWebView) {
+    if (window.ReactNativeWebView) {
       instance
         .acquireTokenSilent(request)
         .then(({accessToken}): void => {
@@ -33,7 +29,7 @@ export const usePassTokenToNativeApp = () => {
           instance.acquireTokenRedirect(request)
         })
     }
-  }, [instance, activeAccount])
+  }, [instance])
 
   return !!window.ReactNativeWebView
 }
