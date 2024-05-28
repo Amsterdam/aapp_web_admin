@@ -14,21 +14,12 @@ const msalConfig: Configuration = {
 }
 
 export const msalInstance = new PublicClientApplication(msalConfig)
-
-let finished = false
-const msalInstanceLoadingPromise = msalInstance.initialize().then(() => {
-  finished = true
-  // eslint-disable-next-line no-console
-}, console.error)
+await msalInstance.initialize()
 
 type Props = {
   children: ReactNode
 }
 
 export const AuthProvider: FC<Props> = ({children}) => {
-  if (!finished) {
-    throw msalInstanceLoadingPromise
-  }
-
   return <MsalProvider instance={msalInstance}>{children}</MsalProvider>
 }
