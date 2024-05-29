@@ -8,7 +8,11 @@ import PersonalizedHome from 'modules/home/components/PersonalizedHome'
 const HomeScreen = () => {
   const isLoginApp = usePassTokenToNativeApp()
   if (isLoginApp) {
-    return <Phrase>Aan het inloggen...</Phrase>
+    return (
+      <div className="Container">
+        <Phrase>Aan het inloggen...</Phrase>
+      </div>
+    )
   }
 
   return (

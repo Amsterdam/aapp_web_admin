@@ -1,23 +1,23 @@
-import {SilentRequest} from '@azure/msal-browser'
-import {useMsal} from '@azure/msal-react'
+import {useAccount, useMsal} from '@azure/msal-react'
 import {useEffect} from 'react'
-import {currentClientId} from 'utils/environment'
+import {loginRequest} from 'authentication/authConfig'
 
 declare const window: Window &
   typeof globalThis & {
     ReactNativeWebView?: {postMessage: (data: unknown) => void}
   }
 
-const request: SilentRequest = {
-  scopes: [`api://${currentClientId}/Modules.Edit`],
-}
 export const usePassTokenToNativeApp = () => {
-  const {instance} = useMsal()
+  const {accounts, instance} = useMsal()
+  const account = useAccount(accounts[0] || {})
 
   useEffect(() => {
-    if (window.ReactNativeWebView) {
+    if (account && window.ReactNativeWebView) {
       instance
-        .acquireTokenSilent(request)
+        .acquireTokenSilent({
+          ...loginRequest,
+          account,
+        })
         .then(({accessToken}): void => {
           if (window.ReactNativeWebView) {
             window.ReactNativeWebView.postMessage?.(
@@ -25,11 +25,11 @@ export const usePassTokenToNativeApp = () => {
             )
           }
         })
-        .catch(e => {
-          instance.acquireTokenRedirect(request)
+        .catch(_e => {
+          instance.acquireTokenRedirect({...loginRequest, account})
         })
     }
-  }, [instance])
+  }, [account, instance])
 
   return !!window.ReactNativeWebView
 }

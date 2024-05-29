@@ -1,7 +1,8 @@
+import {PublicClientApplication} from '@azure/msal-browser'
+import {MsalProvider} from '@azure/msal-react'
 import {Suspense} from 'react'
 import {Provider as StoreProvider} from 'react-redux'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import {AuthProvider} from 'authentication/components/Auth.provider'
 import {ProtectedRoutes} from 'authentication/components/ProtectedRoutes'
 import {BASE_ROUTE} from 'constants/routes'
 import {routes} from 'routes'
@@ -12,13 +13,17 @@ const router = createBrowserRouter(
   {basename: BASE_ROUTE},
 )
 
-const App = () => (
+type Props = {
+  pca: PublicClientApplication
+}
+
+const App = ({pca}: Props) => (
   <Suspense fallback={<p>Laden...</p>}>
-    <AuthProvider>
+    <MsalProvider instance={pca}>
       <StoreProvider store={store}>
         <RouterProvider router={router} />
       </StoreProvider>
-    </AuthProvider>
+    </MsalProvider>
   </Suspense>
 )
 

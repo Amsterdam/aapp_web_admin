@@ -5,8 +5,8 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
-import {msalInstance} from 'authentication/components/Auth.provider'
-import {currentClientId} from 'utils/environment'
+import {loginRequest} from 'authentication/authConfig'
+import {msalInstance} from 'index'
 import {ApiDirectory} from './types'
 
 const {REACT_APP_API_KEY: API_KEY} = process.env
@@ -19,8 +19,11 @@ const baseQuery: BaseQueryFn<
   fetchBaseQuery({
     baseUrl: args.directory,
     prepareHeaders: async headers => {
+      const activeAccount = msalInstance.getActiveAccount() // This will only return a non-null value if you have logic somewhere else that calls the setActiveAccount API
+      const accounts = msalInstance.getAllAccounts()
       const {accessToken} = await msalInstance.acquireTokenSilent({
-        scopes: [`api://${currentClientId}/Modules.Edit`],
+        ...loginRequest,
+        account: activeAccount || accounts[0],
       })
       headers.set('Authorization', `Bearer ${accessToken}`)
 
