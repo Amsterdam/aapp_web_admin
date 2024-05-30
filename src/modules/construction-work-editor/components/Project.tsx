@@ -1,4 +1,5 @@
 import {skipToken} from '@reduxjs/toolkit/query'
+import {useMemo} from 'react'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import BlockLink from 'components/ui/button/BlockLink'
@@ -21,6 +22,19 @@ const Project = ({id}: Props) => {
     isLoading,
   } = useGetProjectQuery(id || skipToken)
 
+  // TODO: Remove once generic sorting mechanism is implemented
+  const warningsSortedByModificationDate = useMemo(
+    () =>
+      project
+        ? [...project.warnings].sort(
+            (a, b) =>
+              dateToNumber(b.modification_date) -
+              dateToNumber(a.modification_date),
+          )
+        : [],
+    [project],
+  )
+
   if (isLoading) {
     return <Loading />
   }
@@ -35,14 +49,7 @@ const Project = ({id}: Props) => {
     title,
     publishers,
     url,
-    warnings,
   } = project
-
-  // TODO: Remove once generic sorting mechanism is implemented
-  const warningsSortedByModificationDate = [...warnings].sort(
-    (a, b) =>
-      dateToNumber(b.modification_date) - dateToNumber(a.modification_date),
-  )
 
   return (
     <Column gutter="xl">
