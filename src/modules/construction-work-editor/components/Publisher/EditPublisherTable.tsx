@@ -27,6 +27,7 @@ export const EditPublisherTable = ({id}: Props) => {
     isLoading: isGetPublisherLoading,
     isError: isGetPublisherError,
   } = useGetPublisherQuery(id)
+  const publisherProjects = publisher?.projects
 
   const [
     addProjectsForPublisher,
@@ -41,16 +42,13 @@ export const EditPublisherTable = ({id}: Props) => {
   // TODO: Remove once generic sorting mechanism is implemented
   const projectsSortedByAuthorization = useMemo(
     () =>
-      projects && publisher?.projects
+      projects && publisherProjects
         ? [...projects].sort(
             (a, b) =>
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              publisher.projects!.indexOf(b.id) -
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              publisher.projects!.indexOf(a.id),
+              publisherProjects.indexOf(b.id) - publisherProjects.indexOf(a.id),
           )
         : [],
-    [projects, publisher?.projects],
+    [projects, publisherProjects],
   )
 
   if (isProjectsLoading || isGetPublisherLoading) {
