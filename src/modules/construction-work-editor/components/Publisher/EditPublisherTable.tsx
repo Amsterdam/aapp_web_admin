@@ -1,3 +1,4 @@
+import {useMemo} from 'react'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
@@ -37,6 +38,21 @@ export const EditPublisherTable = ({id}: Props) => {
     {isLoading: isRemoveProjectsForPublisherLoading},
   ] = useRemoveProjectsForPublisherMutation()
 
+  // TODO: Remove once generic sorting mechanism is implemented
+  const projectsSortedByAuthorization = useMemo(
+    () =>
+      projects && publisher?.projects
+        ? [...projects].sort(
+            (a, b) =>
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              publisher.projects!.indexOf(b.id) -
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              publisher.projects!.indexOf(a.id),
+          )
+        : [],
+    [projects, publisher?.projects],
+  )
+
   if (isProjectsLoading || isGetPublisherLoading) {
     return <Loading />
   }
@@ -47,7 +63,7 @@ export const EditPublisherTable = ({id}: Props) => {
 
   return (
     <ProjectsTable
-      projects={projects}
+      projects={projectsSortedByAuthorization}
       getIsRowSelected={({id: projectId}) =>
         !!publisher?.projects?.includes(projectId)
       }
