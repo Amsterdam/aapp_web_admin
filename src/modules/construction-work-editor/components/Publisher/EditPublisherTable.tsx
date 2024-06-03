@@ -1,4 +1,4 @@
-import {useMemo} from 'react'
+import {useEffect, useState} from 'react'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
@@ -7,6 +7,7 @@ import {
   useAddProjectsForPublisherMutation,
   useRemoveProjectsForPublisherMutation,
 } from 'modules/construction-work-editor/services/publishers'
+import {ProjectsItem} from 'modules/construction-work-editor/types/project'
 import {Publisher} from 'modules/construction-work-editor/types/publisher'
 import ProjectsTable from '../ProjectsTable'
 
@@ -29,6 +30,10 @@ export const EditPublisherTable = ({id}: Props) => {
   } = useGetPublisherQuery(id)
   const publisherProjects = publisher?.projects
 
+  const [projectsSortedByPublished, setProjectsSortedByPublished] = useState<
+    ProjectsItem[]
+  >([])
+
   const [
     addProjectsForPublisher,
     {isLoading: isAddProjectsForPublisherLoading},
@@ -40,16 +45,26 @@ export const EditPublisherTable = ({id}: Props) => {
   ] = useRemoveProjectsForPublisherMutation()
 
   // TODO: Remove once generic sorting mechanism is implemented
-  const projectsSortedByAuthorization = useMemo(
-    () =>
-      projects && publisherProjects
-        ? [...projects].sort(
-            (a, b) =>
-              publisherProjects.indexOf(b.id) - publisherProjects.indexOf(a.id),
-          )
-        : [],
-    [projects, publisherProjects],
-  )
+  useEffect(() => {
+    if (projects && publisherProjects && !projectsSortedByPublished.length) {
+      setProjectsSortedByPublished(
+        [...projects].sort((a, b) => {
+          if (
+            publisherProjects.includes(b.id) ===
+            publisherProjects.includes(a.id)
+          ) {
+            return 0
+          }
+          if (publisherProjects.includes(b.id)) {
+            return 1
+          }
+
+          return -1
+        }),
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projects, projectsSortedByPublished])
 
   if (isProjectsLoading || isGetPublisherLoading) {
     return <Loading />
@@ -61,7 +76,7 @@ export const EditPublisherTable = ({id}: Props) => {
 
   return (
     <ProjectsTable
-      projects={projectsSortedByAuthorization}
+      projects={projectsSortedByPublished}
       getIsRowSelected={({id: projectId}) =>
         !!publisher?.projects?.includes(projectId)
       }
