@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
 import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
@@ -6,6 +7,7 @@ import {
   useAddProjectsForPublisherMutation,
   useRemoveProjectsForPublisherMutation,
 } from 'modules/construction-work-editor/services/publishers'
+import {ProjectsItem} from 'modules/construction-work-editor/types/project'
 import {Publisher} from 'modules/construction-work-editor/types/publisher'
 import ProjectsTable from '../ProjectsTable'
 
@@ -26,6 +28,11 @@ export const EditPublisherTable = ({id}: Props) => {
     isLoading: isGetPublisherLoading,
     isError: isGetPublisherError,
   } = useGetPublisherQuery(id)
+  const publisherProjects = publisher?.projects
+
+  const [projectsSortedByPublished, setProjectsSortedByPublished] = useState<
+    ProjectsItem[]
+  >([])
 
   const [
     addProjectsForPublisher,
@@ -37,6 +44,27 @@ export const EditPublisherTable = ({id}: Props) => {
     {isLoading: isRemoveProjectsForPublisherLoading},
   ] = useRemoveProjectsForPublisherMutation()
 
+  // TODO: Remove once generic sorting mechanism is implemented
+  useEffect(() => {
+    if (projects && publisherProjects && !projectsSortedByPublished.length) {
+      setProjectsSortedByPublished(
+        [...projects].sort((a, b) => {
+          if (
+            publisherProjects.includes(b.id) ===
+            publisherProjects.includes(a.id)
+          ) {
+            return 0
+          }
+          if (publisherProjects.includes(b.id)) {
+            return 1
+          }
+
+          return -1
+        }),
+      )
+    }
+  }, [projects, projectsSortedByPublished, publisherProjects])
+
   if (isProjectsLoading || isGetPublisherLoading) {
     return <Loading />
   }
@@ -47,7 +75,7 @@ export const EditPublisherTable = ({id}: Props) => {
 
   return (
     <ProjectsTable
-      projects={projects}
+      projects={projectsSortedByPublished}
       getIsRowSelected={({id: projectId}) =>
         !!publisher?.projects?.includes(projectId)
       }

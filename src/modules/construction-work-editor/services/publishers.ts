@@ -27,7 +27,7 @@ export const publishersApi = baseApi.injectEndpoints({
     >({
       invalidatesTags: (_result, _error, args) => [
         {type: 'Projects', id: args.projectId},
-        {type: 'Publishers', id: args.id},
+        'Publishers',
       ],
       query: ({id, projectId}) => ({
         body: {project_id: projectId},
@@ -62,7 +62,7 @@ export const publishersApi = baseApi.injectEndpoints({
     >({
       invalidatesTags: (_result, _error, args) => [
         {type: 'Projects', id: args.projectId},
-        {type: 'Publishers', id: args.id},
+        'Publishers',
       ],
       query: ({id, projectId}) => ({
         method: 'DELETE',
