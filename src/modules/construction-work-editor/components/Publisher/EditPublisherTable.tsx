@@ -63,8 +63,7 @@ export const EditPublisherTable = ({id}: Props) => {
         }),
       )
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [projects, projectsSortedByPublished])
+  }, [projects, projectsSortedByPublished, publisherProjects])
 
   if (isProjectsLoading || isGetPublisherLoading) {
     return <Loading />
