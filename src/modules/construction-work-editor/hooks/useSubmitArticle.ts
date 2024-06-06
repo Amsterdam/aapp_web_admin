@@ -94,7 +94,7 @@ const useSubmitArticle = ({dirtyFields, id, projectId}: Params) => {
     }: FormData) => {
       const requestBody: RequestBodyBase = {
         body,
-        send_push_notification: sendPushNotification,
+        send_push_notification: sendPushNotification ?? false,
         title,
       }
       if (image && dirtyFields.image) {
