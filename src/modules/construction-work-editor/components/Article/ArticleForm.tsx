@@ -69,7 +69,11 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           description={image?.alternativeText}
           label="Voeg een afbeelding toe"
           name="image"
-          src={image?.sources?.[2]?.uri}
+          src={
+            image?.sources?.[2]?.uri ??
+            image?.sources?.[1]?.uri ??
+            image?.sources?.[0]?.uri
+          }
         />
         {!article?.is_pushed && (
           <CheckboxField
