@@ -9,6 +9,7 @@ import Column from 'components/ui/layout/Column'
 import useSubmitArticle from 'modules/construction-work-editor/hooks/useSubmitArticle'
 import {ArticleWarning} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import {unescapeHtml} from 'utils/escapeHtml'
 
 const MAX_LENGTH = {
   TITLE: 100,
@@ -28,6 +29,10 @@ type Props = {
   id?: number
   projectId: string
 }
+
+// Decode HTML and replace <br /> tags with newlines
+const decodeBody = (input?: string | null) =>
+  input && unescapeHtml(input).replace(/<br\s*\/?>/gi, '\n')
 
 const ArticleForm = ({article, id, projectId}: Props) => {
   const form = useForm<FormData>()
@@ -56,7 +61,7 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           width="half"
         />
         <TextArea
-          defaultValue={article?.body ?? ''}
+          defaultValue={decodeBody(article?.body) ?? ''}
           label="Inhoud"
           maxLength={MAX_LENGTH.BODY}
           name="body"

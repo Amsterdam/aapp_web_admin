@@ -6,6 +6,7 @@ import {
   useEditProjectWarningMutation,
 } from 'modules/construction-work-editor/services/articles'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import {escapeHtml} from 'utils/escapeHtml'
 import getBase64ImageData from 'utils/getBase64ImageData'
 
 type RequestBodyBase = {
@@ -24,6 +25,9 @@ type Params = {
   id?: number
   projectId?: string
 }
+
+// Escape HTML and replace newlines with <br /> tags
+const encodeBody = (input: string) => escapeHtml(input).replace(/\n/g, '<br />')
 
 const useSubmitArticle = ({dirtyFields, id, projectId}: Params) => {
   const [isBeforeNavigation, setIsBeforeNavigation] = useState<boolean>(false)
@@ -93,7 +97,7 @@ const useSubmitArticle = ({dirtyFields, id, projectId}: Params) => {
       title,
     }: FormData) => {
       const requestBody: RequestBodyBase = {
-        body,
+        body: encodeBody(body),
         send_push_notification: sendPushNotification ?? false,
         title,
       }
