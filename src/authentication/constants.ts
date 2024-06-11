@@ -17,7 +17,7 @@ export const azureGroups = {
     [Environment.development]: 'b02f476b-6f1d-4f9e-86e6-5a935310050b',
     [Environment.test]: '4ca0fd55-62b7-4d2b-a1da-1999045eb1c9',
     [Environment.acceptance]: '3a7d61fa-e932-4e0f-baa5-b7d9dcd6edd9',
-    [Environment.production]: '4ca0fd55-62b7-4d2b-a1da-1999045eb1c9',
+    [Environment.production]: 'c363b4c8-cbab-497b-b761-473332cc0a63',
   },
   [AzureGroup.publisher]: {
     [Environment.local]: '0e7307de-7da8-4124-8e33-f8a0e7901d37',
