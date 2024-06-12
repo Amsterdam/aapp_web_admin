@@ -19,6 +19,9 @@ VERSION ?= latest
 build:
 	$(dc) build
 
+dev:
+	$(run) --service-ports dev
+	
 test:
 	echo "No tests to run."
 
