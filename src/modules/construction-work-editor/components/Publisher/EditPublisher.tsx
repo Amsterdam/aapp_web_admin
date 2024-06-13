@@ -1,35 +1,54 @@
 /* eslint-disable no-nested-ternary */
-import {Paragraph} from '@amsterdam/design-system-react'
+import {skipToken} from '@reduxjs/toolkit/query'
+import {useState} from 'react'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
+import NavigationButton from 'components/ui/button/NavigationButton'
 import Column from 'components/ui/layout/Column'
-import Phrase from 'components/ui/text/Phrase'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
-import {EditPublisherTable} from 'modules/construction-work-editor/components/Publisher/EditPublisherTable'
+import {PublisherForm} from 'modules/construction-work-editor/components/Publisher/PublisherForm'
+import RemovePublisher from 'modules/construction-work-editor/components/Publisher/RemovePublisher'
 import {useGetPublisherQuery} from 'modules/construction-work-editor/services/publishers'
+import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 type Props = {
   id: string
 }
 
 const EditPublisher = ({id}: Props) => {
-  const {data: publisher, isError, isLoading} = useGetPublisherQuery(Number(id))
+  const [isBeforeNavigation, setIsBeforeNavigation] = useState(false)
+  const {
+    data: publisher,
+    isError,
+    isLoading,
+  } = useGetPublisherQuery(!isBeforeNavigation ? Number(id) : skipToken)
 
   return (
     <Column gutter="lg">
-      <ScreenTitle title="Projecten kiezen" />
       {isLoading ? (
         <Loading />
       ) : isError || !publisher ? (
-        <ErrorComponent message="De projecten kunnen niet worden getoond" />
+        <ErrorComponent message="De gegevens kunnen niet worden geladen. Probeer het later." />
       ) : (
         <>
-          <Paragraph>
-            Kies de projecten die door{' '}
-            <Phrase emphasis="strong">{publisher.email}</Phrase> beheerd mogen
-            worden.
-          </Paragraph>
-          <EditPublisherTable id={publisher.id} />
+          <ScreenTitle title="Publisher aanpassen" />
+          <PublisherForm
+            email={publisher.email}
+            id={publisher.id}
+            name={publisher.name}
+          />
+          <NavigationButton
+            label="Annuleren"
+            url={ConstructionWorkEditorRoute.publishers}
+            variant="secondary"
+          />
+          {!!id && (
+            <RemovePublisher
+              id={publisher.id}
+              name={publisher.name}
+              setIsBeforeNavigation={setIsBeforeNavigation}
+            />
+          )}
         </>
       )}
     </Column>

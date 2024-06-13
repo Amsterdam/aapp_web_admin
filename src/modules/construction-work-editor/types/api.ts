@@ -4,7 +4,9 @@ export enum ConstructionWorkEndpointName {
   getPublishers = 'getPublishers',
   addPublisher = 'addPublisher',
   addProjectsForPublisher = 'addProjectsForPublisher',
+  editPublisher = 'editPublisher',
   removeProjectsForPublisher = 'removeProjectsForPublisher',
+  removePublisher = 'removePublisher',
 
   // project
   getProject = 'getProject',

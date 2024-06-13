@@ -3,5 +3,6 @@ export enum ConstructionWorkEditorRoute {
   project = '/werkzaamheden/:projectId',
   projects = '/werkzaamheden',
   publisher = '/werkzaamheden/publisher/:id?',
+  publisherProjects = '/werkzaamheden/publisher/:id?/projects',
   publishers = '/werkzaamheden/publishers',
 }

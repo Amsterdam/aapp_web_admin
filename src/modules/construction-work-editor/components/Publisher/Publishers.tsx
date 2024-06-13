@@ -1,4 +1,4 @@
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import NavigationButton from 'components/ui/button/NavigationButton'
 import useNavigate from 'hooks/useNavigate'
 import {useGetPublishersQuery} from 'modules/construction-work-editor/services/publishers'
@@ -9,6 +9,15 @@ import type {Publisher} from 'modules/construction-work-editor/types/publisher'
 const Publishers = () => {
   const navigate = useNavigate()
   const {data: publishers, isError, isLoading} = useGetPublishersQuery()
+
+  // TODO: Remove once generic sorting mechanism is implemented
+  const publishersSortedByName = useMemo(() => {
+    if (!publishers) {
+      return []
+    }
+
+    return [...publishers].sort((a, b) => a.name.localeCompare(b.name))
+  }, [publishers])
 
   const onRowClick = useCallback(
     ({id}: Publisher) => {
@@ -25,7 +34,7 @@ const Publishers = () => {
         isError={isError}
         isLoading={isLoading}
         onRowClick={onRowClick}
-        publishers={publishers}
+        publishers={publishersSortedByName}
       />
       <NavigationButton
         label="Maak publisher aan"

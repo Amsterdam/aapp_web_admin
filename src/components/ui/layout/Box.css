@@ -1,0 +1,6 @@
+.Box[data-flex-container="true"] {
+  display: flex;
+}
+.Box[data-flex="true"] {
+  flex: 1;
+}
