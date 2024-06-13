@@ -28,7 +28,7 @@ const EditPublisher = ({id}: Props) => {
       {isLoading ? (
         <Loading />
       ) : isError || !publisher ? (
-        <ErrorComponent message="De gegevens kunnen niet worden geladen. Probeer het later." />
+        <ErrorComponent message="De gegevens kunnen niet worden geladen." />
       ) : (
         <>
           <ScreenTitle title="Publisher aanpassen" />
