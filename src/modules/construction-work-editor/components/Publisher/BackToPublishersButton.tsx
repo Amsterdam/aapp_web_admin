@@ -4,6 +4,8 @@ import Box from 'components/ui/layout/Box'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 import 'modules/construction-work-editor/components/Publisher/BackToPublishersButton.css'
 
+const START_SCROLL_POSITION = 100
+
 const BackToPublishersButton = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
   const handleScroll = () => {
@@ -20,7 +22,9 @@ const BackToPublishersButton = () => {
   }, [])
 
   return (
-    <div className="StickToBottom" data-hidden={scrollPosition < 100}>
+    <div
+      className="StickToBottom"
+      data-hidden={scrollPosition < START_SCROLL_POSITION}>
       <Box flex flexContainer>
         <NavigationButton
           data-flex
