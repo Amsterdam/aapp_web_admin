@@ -48,20 +48,20 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
   const handleEditPublisher = useCallback(
     ({email, id: idParam, name}: EditPublisherQueryArgs) => {
       if (isDirty) {
-        editPublisher({email, id: idParam, name})
-          .unwrap()
-          .then(() => navigateToPublisherProjects(idParam))
-      } else {
-        navigateToPublisherProjects(idParam)
+        return editPublisher({email, id: idParam, name}).unwrap()
       }
+
+      return Promise.resolve()
     },
-    [editPublisher, isDirty, navigateToPublisherProjects],
+    [editPublisher, isDirty],
   )
 
   const onSubmit = useCallback(
     ({email, name}: AddPublisherQueryArgs) => {
       if (id) {
-        handleEditPublisher({email, id, name})
+        handleEditPublisher({email, id, name}).then(() =>
+          navigateToPublisherProjects(id),
+        )
       } else {
         createPublisher({email, name})
           .unwrap()
