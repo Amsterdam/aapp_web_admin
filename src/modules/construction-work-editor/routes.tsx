@@ -5,6 +5,7 @@ import ArticleScreen from 'modules/construction-work-editor/screens/Article.scre
 import ProjectScreen from 'modules/construction-work-editor/screens/Project.screen'
 import ProjectsScreen from 'modules/construction-work-editor/screens/Projects.screen'
 import PublisherScreen from 'modules/construction-work-editor/screens/Publisher.screen'
+import PublisherProjectsScreen from 'modules/construction-work-editor/screens/PublisherProjects.screen'
 import PublishersScreen from 'modules/construction-work-editor/screens/Publishers.screen'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
@@ -36,5 +37,10 @@ export const routes: RouteObject[] = [
     loader: loaderEditor,
     path: ConstructionWorkEditorRoute.publisher,
     element: <PublisherScreen />,
+  },
+  {
+    loader: loaderEditor,
+    path: ConstructionWorkEditorRoute.publisherProjects,
+    element: <PublisherProjectsScreen />,
   },
 ]

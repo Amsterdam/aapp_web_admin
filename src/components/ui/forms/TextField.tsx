@@ -5,7 +5,7 @@ import Input from 'components/ui/forms/Input'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
 import './TextField.css'
-import {CharactersLeftDisplay} from './CharactersLeftDisplay'
+import CharactersLeftDisplay from './CharactersLeftDisplay'
 
 enum FieldWidth {
   half = 'half',

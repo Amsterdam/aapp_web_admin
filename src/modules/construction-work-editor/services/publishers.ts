@@ -3,6 +3,7 @@ import {
   Publisher,
   AddPublisherQueryArgs,
   PublisherProjectsQueryArgs,
+  EditPublisherQueryArgs,
 } from 'modules/construction-work-editor/types/publisher'
 import {baseApi} from 'services/baseApi'
 import {ApiDirectory} from 'services/types'
@@ -70,13 +71,38 @@ export const publishersApi = baseApi.injectEndpoints({
         url: `/manage/publishers/${id}/projects/${projectId}`,
       }),
     }),
+    [ConstructionWorkEndpointName.editPublisher]: builder.mutation<
+      Publisher,
+      EditPublisherQueryArgs
+    >({
+      query: ({id, ...body}) => ({
+        body,
+        method: 'PATCH',
+        directory: ApiDirectory.constructionWork,
+        url: `/manage/publishers/${id}`,
+      }),
+      invalidatesTags: ['Publishers'],
+    }),
+    [ConstructionWorkEndpointName.removePublisher]: builder.mutation<
+      string,
+      number
+    >({
+      query: id => ({
+        method: 'DELETE',
+        directory: ApiDirectory.constructionWork,
+        url: `/manage/publishers/${id}`,
+      }),
+      invalidatesTags: ['Publishers'],
+    }),
   }),
 })
 
 export const {
   useAddPublisherMutation,
   useAddProjectsForPublisherMutation,
+  useEditPublisherMutation,
   useGetPublisherQuery,
   useGetPublishersQuery,
   useRemoveProjectsForPublisherMutation,
+  useRemovePublisherMutation,
 } = publishersApi

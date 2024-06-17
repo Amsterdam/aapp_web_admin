@@ -1,4 +1,6 @@
 .TextFieldLabel[data-width="half"] {
-  width: 50%;
+  @media(min-width: 768px) {
+    width: 50%;
+  }
 }
 

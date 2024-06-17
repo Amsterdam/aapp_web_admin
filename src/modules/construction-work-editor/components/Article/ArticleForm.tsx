@@ -1,3 +1,4 @@
+import {useCallback} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import LoadingButton from 'components/ui/button/LoadingButton'
 import NavigationButton from 'components/ui/button/NavigationButton'
@@ -6,6 +7,7 @@ import ImageField from 'components/ui/forms/ImageField/ImageField'
 import TextArea from 'components/ui/forms/TextArea'
 import TextField from 'components/ui/forms/TextField'
 import Column from 'components/ui/layout/Column'
+import useNavigate from 'hooks/useNavigate'
 import useSubmitArticle from 'modules/construction-work-editor/hooks/useSubmitArticle'
 import {ArticleWarning} from 'modules/construction-work-editor/types/article'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
@@ -36,6 +38,7 @@ const decodeBody = (input?: string | null) =>
 
 const ArticleForm = ({article, id, projectId}: Props) => {
   const form = useForm<FormData>()
+  const navigate = useNavigate()
   const {
     formState: {dirtyFields},
     handleSubmit,
@@ -46,6 +49,14 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     isLoading: submitIsLoading,
   } = useSubmitArticle({dirtyFields, id, projectId})
   const image = article?.images?.find(({main}) => main)
+
+  const onClickSubmit = useCallback(() => {
+    if (Object.keys(dirtyFields).length) {
+      handleSubmit(onSubmit)()
+    } else {
+      navigate(ConstructionWorkEditorRoute.project, {projectId})
+    }
+  }, [dirtyFields, handleSubmit, navigate, onSubmit, projectId])
 
   return (
     <Column gutter="md">
@@ -87,14 +98,12 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           />
         )}
       </FormProvider>
-      {!!Object.keys(dirtyFields).length && (
-        <LoadingButton
-          error={submitError}
-          label="Opslaan"
-          loading={submitIsLoading}
-          onClick={handleSubmit(onSubmit)}
-        />
-      )}
+      <LoadingButton
+        error={submitError}
+        label="Opslaan"
+        loading={submitIsLoading}
+        onClick={onClickSubmit}
+      />
       <NavigationButton
         label={Object.keys(dirtyFields).length ? 'Annuleren' : 'Ga terug'}
         params={{projectId}}

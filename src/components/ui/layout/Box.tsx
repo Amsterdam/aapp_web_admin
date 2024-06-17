@@ -1,9 +1,18 @@
 import {ReactNode} from 'react'
 import {SpacingToken} from 'components/ui/layout/types'
 import './inset.css'
+import './Box.css'
 
 type Props = {
   children: ReactNode
+  /**
+   * Whether the box should be a flex item.
+   */
+  flex?: boolean
+  /**
+   * Whether the box should be a flex container.
+   */
+  flexContainer?: boolean
   /**
    * The amount of inner whitespace.
    */
@@ -24,6 +33,8 @@ type Props = {
 
 const Box = ({
   children,
+  flex,
+  flexContainer,
   inset = 'md',
   insetHorizontal,
   insetVertical,
@@ -31,6 +42,8 @@ const Box = ({
 }: Props) => (
   <div
     className="Box"
+    data-flex={flex}
+    data-flex-container={flexContainer}
     data-inset={inset}
     data-inset-horizontal={insetHorizontal}
     data-inset-vertical={insetVertical}

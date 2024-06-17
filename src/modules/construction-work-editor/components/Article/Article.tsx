@@ -14,7 +14,7 @@ type Props = {
 
 const Article = ({id, projectId}: Props) => {
   const isNewArticle = !id
-  const [isBeforeNavigation, setIsBeforeNavigation] = useState(false) // prevents fetching the article again after submitting
+  const [isBeforeNavigation, setIsBeforeNavigation] = useState(false)
   const {data: article, isLoading: isLoadingProjectWarning} =
     useGetProjectWarningQuery(id && !isBeforeNavigation ? id : skipToken)
 

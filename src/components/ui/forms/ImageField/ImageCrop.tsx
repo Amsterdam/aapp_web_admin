@@ -3,7 +3,7 @@ import Cropper, {type Area} from 'react-easy-crop'
 import Button from 'components/ui/button/Button'
 import ScrollIntoView from 'components/ui/containers/ScrollIntoView'
 import {getCroppedImage} from 'components/ui/forms/ImageField/utils'
-import {Slider} from 'components/ui/forms/Slider'
+import Slider from 'components/ui/forms/Slider'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 
@@ -22,7 +22,7 @@ const ZOOM_SLIDER_MIN = 1
 const ZOOM_SLIDER_MAX = 3
 const ZOOM_SLIDER_STEP = 0.1
 
-export const ImageCrop = ({
+const ImageCrop = ({
   aspectRatio,
   onCancel,
   onComplete,
@@ -101,3 +101,5 @@ export const ImageCrop = ({
     </div>
   )
 }
+
+export default ImageCrop

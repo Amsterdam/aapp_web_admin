@@ -1,6 +1,6 @@
 import {InteractionType} from '@azure/msal-browser'
 import {useMsal} from '@azure/msal-react'
-import {LoginBoundary} from 'authentication/components/LoginBoundary'
+import LoginBoundary from 'authentication/components/LoginBoundary'
 import Button from 'components/ui/button/Button'
 import Icon from 'components/ui/media/Icon'
 

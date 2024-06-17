@@ -1,7 +1,7 @@
 import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
 import type {TableHeaderProps} from 'components/ui/table/types'
 
-export const TableHeader = <T extends object>({
+const TableHeader = <T extends object>({
   config,
   selectable,
 }: TableHeaderProps<T>) => (
@@ -16,3 +16,5 @@ export const TableHeader = <T extends object>({
     </DesignSystemTable.Row>
   </DesignSystemTable.Header>
 )
+
+export default TableHeader

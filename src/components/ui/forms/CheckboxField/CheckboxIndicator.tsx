@@ -6,7 +6,7 @@ type Props = {
   status: CheckboxIndicatorStatus
 }
 
-export const CheckboxIndicator = ({status}: Props) => (
+const CheckboxIndicator = ({status}: Props) => (
   <svg
     className="CheckboxIndicator"
     data-checked={status}
@@ -21,3 +21,5 @@ export const CheckboxIndicator = ({status}: Props) => (
     )}
   </svg>
 )
+
+export default CheckboxIndicator

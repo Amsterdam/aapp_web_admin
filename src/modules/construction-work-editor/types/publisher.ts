@@ -8,10 +8,9 @@ export type Publisher = {
   projects?: number[]
 } & PublisherBase
 
-export type AddPublisherQueryArgs = {
-  email: PublisherBase['email']
-  name: PublisherBase['name']
-}
+export type AddPublisherQueryArgs = PublisherBase
+
+export type EditPublisherQueryArgs = Pick<Publisher, 'id'> & PublisherBase
 
 export type PublisherProjectsQueryArgs = {
   id: Publisher['id']
