@@ -38,7 +38,7 @@ const Publishers = () => {
       />
       <NavigationButton
         label="Maak publisher aan"
-        url={ConstructionWorkEditorRoute.publisher}
+        url={ConstructionWorkEditorRoute.publisherNew}
       />
     </>
   )

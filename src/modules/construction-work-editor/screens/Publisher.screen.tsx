@@ -10,7 +10,11 @@ type Params = {
 const PublisherScreen = () => {
   const {id} = useParams() as Params
 
-  return <Screen>{id ? <EditPublisher id={id} /> : <CreatePublisher />}</Screen>
+  return (
+    <Screen>
+      {id === 'nieuw' ? <CreatePublisher /> : id && <EditPublisher id={id} />}
+    </Screen>
+  )
 }
 
 export default PublisherScreen

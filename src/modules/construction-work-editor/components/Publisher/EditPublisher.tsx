@@ -38,6 +38,12 @@ const EditPublisher = ({id}: Props) => {
             name={publisher.name}
           />
           <NavigationButton
+            label="Projecten kiezen"
+            url={ConstructionWorkEditorRoute.publisherProjects}
+            params={{id: publisher.id}}
+            variant="secondary"
+          />
+          <NavigationButton
             label="Annuleren"
             url={ConstructionWorkEditorRoute.publishers}
             variant="secondary"

@@ -48,7 +48,7 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
   const handleEditPublisher = useCallback(
     ({email, id: idParam, name}: EditPublisherQueryArgs) => {
       if (isDirty) {
-        return editPublisher({email, id: idParam, name}).unwrap()
+        return editPublisher({email, id: idParam, name})
       }
 
       return Promise.resolve()
@@ -59,9 +59,7 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
   const onSubmit = useCallback(
     ({email, name}: AddPublisherQueryArgs) => {
       if (id) {
-        handleEditPublisher({email, id, name}).then(() =>
-          navigateToPublisherProjects(id),
-        )
+        handleEditPublisher({email, id, name})
       } else {
         createPublisher({email, name})
           .unwrap()
@@ -96,7 +94,7 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
             width="half"
           />
           <Button
-            label={isDirty ? 'Opslaan en projecten kiezen' : 'Projecten kiezen'}
+            label={id ? 'Opslaan' : 'Opslaan en projecten kiezen'}
             onClick={handleSubmit(onSubmit)}
             disabled={isLoading}
           />
