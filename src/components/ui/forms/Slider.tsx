@@ -5,10 +5,12 @@ import 'rc-slider/assets/index.css'
 import './Slider.css'
 
 // eslint-disable-next-line react/display-name
-export const Slider = forwardRef<SliderRef, SliderProps<number | number[]>>(
+const Slider = forwardRef<SliderRef, SliderProps<number | number[]>>(
   (props, ref) => (
     <div className="Slider">
       <RcSlider {...props} ref={ref} />
     </div>
   ),
 )
+
+export default Slider

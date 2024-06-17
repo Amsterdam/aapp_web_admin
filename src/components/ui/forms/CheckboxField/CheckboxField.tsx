@@ -1,6 +1,6 @@
 import React from 'react'
 import {UseControllerProps, useFormContext} from 'react-hook-form'
-import {CheckboxIndicator} from 'components/ui/forms/CheckboxField/CheckboxIndicator'
+import CheckboxIndicator from 'components/ui/forms/CheckboxField/CheckboxIndicator'
 import Column from 'components/ui/layout/Column'
 import Row from 'components/ui/layout/Row'
 import Phrase from 'components/ui/text/Phrase'

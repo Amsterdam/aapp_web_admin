@@ -19,11 +19,7 @@ import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/type
 
 type Props = Partial<Publisher>
 
-export const PublisherForm = ({
-  email: propsEmail,
-  id,
-  name: propsName,
-}: Props) => {
+const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
   const navigate = useNavigate()
   const form = useForm<AddPublisherQueryArgs>({
     defaultValues: {name: propsName ?? '', email: propsEmail ?? ''},
@@ -109,3 +105,5 @@ export const PublisherForm = ({
     </Loader>
   )
 }
+
+export default PublisherForm

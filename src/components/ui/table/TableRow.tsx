@@ -5,7 +5,7 @@ import type {TableRowProps} from 'components/ui/table/types'
 import 'components/ui/button/BlockLink.css'
 import 'components/ui/table/TableRow.css'
 
-export const TableRow = <T extends object>({
+const TableRow = <T extends object>({
   config,
   getIsRowSelected,
   keyGetter,
@@ -38,3 +38,5 @@ export const TableRow = <T extends object>({
     ))}
   </DesignSystemTable.Row>
 )
+
+export default TableRow

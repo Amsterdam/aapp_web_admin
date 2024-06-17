@@ -15,7 +15,7 @@ type Props = {
   id: Publisher['id']
 }
 
-export const EditPublisherTable = ({id}: Props) => {
+const EditPublisherTable = ({id}: Props) => {
   const {
     data: projects,
     isLoading: isProjectsLoading,
@@ -95,3 +95,5 @@ export const EditPublisherTable = ({id}: Props) => {
     />
   )
 }
+
+export default EditPublisherTable

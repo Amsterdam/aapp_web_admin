@@ -6,7 +6,7 @@ type Props = {
   callback: (query: string) => void
 } & Omit<HTMLProps<HTMLInputElement>, 'className' | 'onChange' | 'type'>
 
-export const TextFilter = ({callback, ...rest}: Props) => (
+const TextFilter = ({callback, ...rest}: Props) => (
   <input
     maxLength={100}
     {...rest}
@@ -18,3 +18,5 @@ export const TextFilter = ({callback, ...rest}: Props) => (
     type="text"
   />
 )
+
+export default TextFilter

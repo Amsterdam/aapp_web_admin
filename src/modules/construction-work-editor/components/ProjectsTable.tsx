@@ -1,6 +1,6 @@
 import {useMemo, useState} from 'react'
 import Image from 'components/ui/media/Image'
-import {Table} from 'components/ui/table/Table'
+import Table from 'components/ui/table/Table'
 import Phrase from 'components/ui/text/Phrase'
 import Title from 'components/ui/text/Title'
 import getDateFromString from 'utils/getDateFromString'

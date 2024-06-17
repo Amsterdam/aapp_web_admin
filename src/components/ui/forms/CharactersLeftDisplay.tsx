@@ -5,7 +5,7 @@ type Props = {
   value: string | undefined
 }
 
-export const CharactersLeftDisplay = ({maxLength, value}: Props) => {
+const CharactersLeftDisplay = ({maxLength, value}: Props) => {
   if (!maxLength || typeof value !== 'string') {
     return null
   }
@@ -16,3 +16,5 @@ export const CharactersLeftDisplay = ({maxLength, value}: Props) => {
     </Phrase>
   )
 }
+
+export default CharactersLeftDisplay

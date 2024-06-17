@@ -12,7 +12,7 @@ const authRequest = {
   scopes: [`api://${currentClientId}/Modules.Edit`],
 }
 
-export const LoginBoundary: FC<Props> = ({
+const LoginBoundary: FC<Props> = ({
   children,
   interactionType = InteractionType.Redirect,
 }) => {
@@ -24,3 +24,5 @@ export const LoginBoundary: FC<Props> = ({
     </MsalAuthenticationTemplate>
   )
 }
+
+export default LoginBoundary

@@ -11,7 +11,7 @@ type StepperProps = {
   currentId: string | number
 }
 
-export const Stepper = ({children, currentId}: StepperProps) =>
+const Stepper = ({children, currentId}: StepperProps) =>
   useMemo(() => {
     if (!children) {
       return null
@@ -21,3 +21,5 @@ export const Stepper = ({children, currentId}: StepperProps) =>
       child => (child as ReactElement<StepProps>).props.id === currentId,
     ) as JSX.Element
   }, [children, currentId])
+
+export default Stepper

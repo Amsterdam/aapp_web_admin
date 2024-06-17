@@ -1,7 +1,7 @@
 import {useState, useMemo} from 'react'
 import ErrorComponent from 'components/ui/Error'
 import Loading from 'components/ui/Loading'
-import {Table} from 'components/ui/table/Table'
+import Table from 'components/ui/table/Table'
 import {ColumnConfig} from 'components/ui/table/types'
 import {Publisher} from 'modules/construction-work-editor/types/publisher'
 import {
