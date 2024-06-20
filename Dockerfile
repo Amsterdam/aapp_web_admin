@@ -14,7 +14,6 @@ FROM nginx:alpine as deploy
 WORKDIR /app
 
 RUN apk add --no-cache --virtual .build-deps build-base linux-headers \
-    && apk add --no-cache postgresql15-client \
     && apk add curl
 
 # Copy sources to container
