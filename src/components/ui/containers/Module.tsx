@@ -8,7 +8,7 @@ type Props = Pick<ModuleVersion, 'icon' | 'title'> &
   Pick<PhraseProps, 'color'>
 
 const Module = ({color, icon, title, version}: Props) => (
-  <Row gutter="sm" valign="center">
+  <Row gutter="md" valign="center">
     <Icon color={color} name={icon} />
     <div>
       <Phrase color={color} emphasis="strong">
