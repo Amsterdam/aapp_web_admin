@@ -48,7 +48,7 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     error: submitError,
     isLoading: submitIsLoading,
   } = useSubmitArticle({dirtyFields, id, projectId})
-  const image = article?.images?.find(({main}) => main)
+  const image = article?.images?.[0]
 
   const onClickSubmit = useCallback(() => {
     if (Object.keys(dirtyFields).length) {

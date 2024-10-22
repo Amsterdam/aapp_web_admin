@@ -14,6 +14,7 @@ type RequestBodyBase = {
   image?: {
     data: string
     description: string
+    // TODO: property main should be removed after migration to monorepo for the backend
     main: boolean
   }
   send_push_notification: boolean
@@ -108,6 +109,7 @@ const useSubmitArticle = ({dirtyFields, id, projectId}: Params) => {
           requestBody.image = {
             data: base64ImageData,
             description: imageDescription,
+            // TODO: property main should be removed after migration to monorepo for the backend
             main: true,
           }
         }

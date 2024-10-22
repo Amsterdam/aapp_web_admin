@@ -45,6 +45,7 @@ type ImageQueryArgs = {
   image?: {
     data: string
     description: string
+    // TODO: property main should be removed after migration to monorepo for the backend
     main: boolean
   }
 }
