@@ -27,7 +27,7 @@ type TableImageProps = {
 }
 
 const TableImage = ({images}: TableImageProps) => {
-  const image = images?.find(({main}) => main)
+  const image = images?.[0]
   if (image) {
     return <Image image={image} />
   }
