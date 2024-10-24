@@ -38,7 +38,16 @@ const decodeBody = (input?: string | null) =>
   input && unescapeHtml(input).replace(/<br\s*\/?>/gi, '\n')
 
 const ArticleForm = ({article, id, projectId}: Props) => {
-  const form = useForm<ArticleFormData>()
+  const form = useForm<ArticleFormData>({
+    defaultValues: {
+      body: decodeBody(article?.body) ?? undefined,
+      image: article?.images?.[0]?.sources?.[2].uri ?? undefined,
+      imageFileName: article?.images?.[0]?.id.toString() ?? undefined,
+      imageDescription: article?.images?.[0]?.alternativeText ?? undefined,
+      sendPushNotification: article?.is_pushed,
+      title: article?.title ?? undefined,
+    },
+  })
   const navigate = useNavigate()
   const {
     formState: {dirtyFields},
@@ -68,7 +77,6 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     <Column gutter="md">
       <FormProvider {...form}>
         <TextField
-          defaultValue={article?.title ?? ''}
           label="Titel"
           maxLength={MAX_LENGTH.TITLE}
           name="title"
@@ -78,7 +86,6 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           width="half"
         />
         <TextArea
-          defaultValue={decodeBody(article?.body) ?? ''}
           label="Inhoud"
           maxLength={MAX_LENGTH.BODY}
           name="body"

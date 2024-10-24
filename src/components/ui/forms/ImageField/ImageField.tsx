@@ -6,7 +6,6 @@ import ImageDisplay from 'components/ui/forms/ImageField/ImageDisplay'
 import ImageUpload from 'components/ui/forms/ImageField/ImageUpload'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
-import {ArticleFormData} from 'modules/construction-work-editor/components/Article/ArticleForm'
 import TextField from '../TextField'
 
 type Props = {
@@ -41,8 +40,8 @@ const ImageField = ({
 
   const {
     field: {onChange: onFileNameChange},
-  } = useController<ArticleFormData, 'imageFileName'>({
-    name: 'imageFileName',
+  } = useController({
+    name: `${name}FileName`,
   })
 
   return (
@@ -97,7 +96,7 @@ const ImageField = ({
                 defaultValue={description ?? ''}
                 label="Beschrijving afbeelding"
                 maxLength={MAX_LENGTH_DESCRIPTION}
-                name="imageDescription"
+                name={`${name}Description`}
                 rules={{
                   required: 'Geef de afbeelding een beschrijving.',
                 }}

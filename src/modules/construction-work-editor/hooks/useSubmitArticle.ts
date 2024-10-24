@@ -112,20 +112,24 @@ const useSubmitArticle = ({dirtyFields, id, projectId, imageId}: Params) => {
         title,
       }
       let newImageId = imageId
-      if (image && dirtyFields.image) {
-        const blobImageData = await getImageBlob(image)
-        const formData = new FormData()
+      if (image) {
+        if (dirtyFields.image) {
+          const blobImageData = await getImageBlob(image)
+          const formData = new FormData()
 
-        formData.append('image', blobImageData, imageFileName ?? 'test.jpg')
-        const description = imageDescription ?? 'Vervangende afbeelding'
+          formData.append('image', blobImageData, imageFileName ?? 'test.jpg')
+          const description = imageDescription ?? 'Vervangende afbeelding'
 
-        formData.append('description', description)
-        // eslint-disable-next-line camelcase
-        const {warning_image_id} = await addProjectWarningImage(
-          formData,
-        ).unwrap()
-        // eslint-disable-next-line camelcase
-        newImageId = warning_image_id
+          formData.append('description', description)
+          // eslint-disable-next-line camelcase
+          const {warning_image_id} = await addProjectWarningImage(
+            formData,
+          ).unwrap()
+          // eslint-disable-next-line camelcase
+          newImageId = warning_image_id
+        }
+      } else {
+        newImageId = undefined
       }
       if (newImageId) {
         requestBody.warning_image = {
@@ -133,8 +137,6 @@ const useSubmitArticle = ({dirtyFields, id, projectId, imageId}: Params) => {
           id: newImageId,
           description: imageDescription,
         }
-      } else {
-        requestBody.warning_image = null
       }
       if (isNewArticle) {
         addWarning(requestBody)

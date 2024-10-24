@@ -16,11 +16,7 @@ const ImageUpload = ({aspectRatio, onAdd, onDelete}: Props) => (
       onFileAdded={({dataUrl, file}) => onAdd(dataUrl, file)}
       onFileRemoved={onDelete}
       style={{width: '100%', aspectRatio, background: 'transparent'}}
-      deleteIcon={
-        <div className="ImageUploadDeleteIcon">
-          <Icon name="cross" />
-        </div>
-      }
+      deleteIcon={<div />}
       uploadIcon={
         <div className="ImageUploadAddIcon">
           <Icon name="plus" />
