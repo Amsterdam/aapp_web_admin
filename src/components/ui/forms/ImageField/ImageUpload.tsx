@@ -6,14 +6,14 @@ import './ImageUpload.css'
 
 type Props = {
   aspectRatio: number
-  onAdd: (image: string) => void
+  onAdd: (image: string, file: File) => void
   onDelete?: () => void
 }
 
 const ImageUpload = ({aspectRatio, onAdd, onDelete}: Props) => (
   <div className="ImageUpload">
     <ImageUploader
-      onFileAdded={({dataUrl}) => onAdd(dataUrl)}
+      onFileAdded={({dataUrl, file}) => onAdd(dataUrl, file)}
       onFileRemoved={onDelete}
       style={{width: '100%', aspectRatio, background: 'transparent'}}
       deleteIcon={

@@ -43,10 +43,8 @@ export type ArticleWarning = ArticleBase & {
 
 type ImageQueryArgs = {
   image?: {
-    data: string
+    id: number
     description: string
-    // TODO: property main should be removed after migration to monorepo for the backend
-    main: boolean
   }
 }
 
@@ -54,6 +52,12 @@ type ProjectWarningQueryArgs = {
   body: string
   title: string
   send_push_notification: boolean
+}
+
+export type AddProjectWarningImageQueryArgs = FormData
+
+export type AddProjectWarningImageResponse = {
+  warning_image_id: number
 }
 
 export type AddProjectWarningQueryArgs = {

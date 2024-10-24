@@ -18,9 +18,10 @@ const MAX_LENGTH = {
   BODY: 500,
 }
 
-export type FormData = {
+export type ArticleFormData = {
   body: string
   image: string
+  imageFileName: string
   imageDescription: string
   sendPushNotification: boolean
   title: string
@@ -37,7 +38,7 @@ const decodeBody = (input?: string | null) =>
   input && unescapeHtml(input).replace(/<br\s*\/?>/gi, '\n')
 
 const ArticleForm = ({article, id, projectId}: Props) => {
-  const form = useForm<FormData>()
+  const form = useForm<ArticleFormData>()
   const navigate = useNavigate()
   const {
     formState: {dirtyFields},
@@ -47,7 +48,12 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     onSubmit,
     error: submitError,
     isLoading: submitIsLoading,
-  } = useSubmitArticle({dirtyFields, id, projectId})
+  } = useSubmitArticle({
+    dirtyFields,
+    id,
+    projectId,
+    imageId: article?.images?.[0]?.id,
+  })
   const image = article?.images?.[0]
 
   const onClickSubmit = useCallback(() => {

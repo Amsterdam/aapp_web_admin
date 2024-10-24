@@ -1,11 +1,12 @@
 import {useState} from 'react'
-import {Controller} from 'react-hook-form'
+import {Controller, useController} from 'react-hook-form'
 import Stepper, {Step} from 'components/ui/containers/Stepper'
 import ImageCrop from 'components/ui/forms/ImageField/ImageCrop'
 import ImageDisplay from 'components/ui/forms/ImageField/ImageDisplay'
 import ImageUpload from 'components/ui/forms/ImageField/ImageUpload'
 import Column from 'components/ui/layout/Column'
 import Phrase from 'components/ui/text/Phrase'
+import {ArticleFormData} from 'modules/construction-work-editor/components/Article/ArticleForm'
 import TextField from '../TextField'
 
 type Props = {
@@ -38,6 +39,12 @@ const ImageField = ({
 
   const [uncroppedImage, setUncroppedImage] = useState<string | undefined>()
 
+  const {
+    field: {onChange: onFileNameChange},
+  } = useController<ArticleFormData, 'imageFileName'>({
+    name: 'imageFileName',
+  })
+
   return (
     <div className="ImageField" style={{width: `${outputWidth}px`}}>
       <Controller
@@ -50,9 +57,10 @@ const ImageField = ({
               <Step id="upload">
                 <ImageUpload
                   aspectRatio={aspectRatio}
-                  onAdd={image => {
+                  onAdd={(image, file) => {
                     setUncroppedImage(image)
                     setStep('crop')
+                    onFileNameChange(file.name)
                   }}
                 />
               </Step>

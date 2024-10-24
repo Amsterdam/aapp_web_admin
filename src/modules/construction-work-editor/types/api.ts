@@ -14,6 +14,7 @@ export enum ConstructionWorkEndpointName {
 
   // project warning
   getProjectWarning = 'getProjectWarning',
+  addProjectWarningImage = 'addProjectWarningImage',
   addProjectWarning = 'addProjectWarning',
   editProjectWarning = 'editProjectWarning',
   deleteProjectWarning = 'removeProjectWarning',
