@@ -7,6 +7,6 @@ type ApiImageSource = {
 export type ApiImage = {
   alternativeText: string | null
   aspectRatio: number
-  id: string
+  id: number
   sources?: ApiImageSource[]
 }

@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {Controller} from 'react-hook-form'
+import {Controller, useController} from 'react-hook-form'
 import Stepper, {Step} from 'components/ui/containers/Stepper'
 import ImageCrop from 'components/ui/forms/ImageField/ImageCrop'
 import ImageDisplay from 'components/ui/forms/ImageField/ImageDisplay'
@@ -38,6 +38,12 @@ const ImageField = ({
 
   const [uncroppedImage, setUncroppedImage] = useState<string | undefined>()
 
+  const {
+    field: {onChange: onFileNameChange},
+  } = useController({
+    name: `${name}FileName`,
+  })
+
   return (
     <div className="ImageField" style={{width: `${outputWidth}px`}}>
       <Controller
@@ -50,9 +56,10 @@ const ImageField = ({
               <Step id="upload">
                 <ImageUpload
                   aspectRatio={aspectRatio}
-                  onAdd={image => {
+                  onAdd={(image, file) => {
                     setUncroppedImage(image)
                     setStep('crop')
+                    onFileNameChange(file.name)
                   }}
                 />
               </Step>
@@ -89,7 +96,7 @@ const ImageField = ({
                 defaultValue={description ?? ''}
                 label="Beschrijving afbeelding"
                 maxLength={MAX_LENGTH_DESCRIPTION}
-                name="imageDescription"
+                name={`${name}Description`}
                 rules={{
                   required: 'Geef de afbeelding een beschrijving.',
                 }}

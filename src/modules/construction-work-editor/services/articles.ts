@@ -4,6 +4,8 @@ import {
   ArticleWarning,
   AddProjectWarningResponse,
   EditProjectWarningQueryArgs,
+  AddProjectWarningImageQueryArgs,
+  AddProjectWarningImageResponse,
 } from 'modules/construction-work-editor/types/article'
 import {baseApi} from 'services/baseApi'
 import {ApiDirectory} from 'services/types'
@@ -19,6 +21,20 @@ export const articlesApi = baseApi.injectEndpoints({
         url: `/manage/warnings/${id}`,
       }),
       providesTags: ['Articles'],
+    }),
+    [ConstructionWorkEndpointName.addProjectWarningImage]: builder.mutation<
+      AddProjectWarningImageResponse,
+      AddProjectWarningImageQueryArgs
+    >({
+      query: formData => ({
+        body: formData,
+        method: 'POST',
+        directory: ApiDirectory.constructionWork,
+        url: `/warning-image`,
+        headers: {
+          Accept: 'application/json',
+        },
+      }),
     }),
     [ConstructionWorkEndpointName.addProjectWarning]: builder.mutation<
       AddProjectWarningResponse,
@@ -61,6 +77,7 @@ export const articlesApi = baseApi.injectEndpoints({
 
 export const {
   useGetProjectWarningQuery,
+  useAddProjectWarningImageMutation,
   useAddProjectWarningMutation,
   useEditProjectWarningMutation,
   useRemoveProjectWarningMutation,

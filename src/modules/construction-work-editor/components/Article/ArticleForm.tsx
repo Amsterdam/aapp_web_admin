@@ -18,9 +18,10 @@ const MAX_LENGTH = {
   BODY: 500,
 }
 
-export type FormData = {
+export type ArticleFormData = {
   body: string
   image: string
+  imageFileName: string
   imageDescription: string
   sendPushNotification: boolean
   title: string
@@ -37,7 +38,16 @@ const decodeBody = (input?: string | null) =>
   input && unescapeHtml(input).replace(/<br\s*\/?>/gi, '\n')
 
 const ArticleForm = ({article, id, projectId}: Props) => {
-  const form = useForm<FormData>()
+  const form = useForm<ArticleFormData>({
+    defaultValues: {
+      body: decodeBody(article?.body) ?? undefined,
+      image: article?.images?.[0]?.sources?.[2].uri ?? undefined,
+      imageFileName: article?.images?.[0]?.id.toString() ?? undefined,
+      imageDescription: article?.images?.[0]?.alternativeText ?? undefined,
+      sendPushNotification: article?.is_pushed,
+      title: article?.title ?? undefined,
+    },
+  })
   const navigate = useNavigate()
   const {
     formState: {dirtyFields},
@@ -47,7 +57,12 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     onSubmit,
     error: submitError,
     isLoading: submitIsLoading,
-  } = useSubmitArticle({dirtyFields, id, projectId})
+  } = useSubmitArticle({
+    dirtyFields,
+    id,
+    projectId,
+    imageId: article?.images?.[0]?.id,
+  })
   const image = article?.images?.[0]
 
   const onClickSubmit = useCallback(() => {
@@ -62,7 +77,6 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     <Column gutter="md">
       <FormProvider {...form}>
         <TextField
-          defaultValue={article?.title ?? ''}
           label="Titel"
           maxLength={MAX_LENGTH.TITLE}
           name="title"
@@ -72,7 +86,6 @@ const ArticleForm = ({article, id, projectId}: Props) => {
           width="half"
         />
         <TextArea
-          defaultValue={decodeBody(article?.body) ?? ''}
           label="Inhoud"
           maxLength={MAX_LENGTH.BODY}
           name="body"
