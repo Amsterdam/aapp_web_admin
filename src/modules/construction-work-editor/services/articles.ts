@@ -32,7 +32,6 @@ export const articlesApi = baseApi.injectEndpoints({
         directory: ApiDirectory.constructionWork,
         url: `/warning-image`,
         headers: {
-          // 'Content-Type': 'multipart/form-data',
           Accept: 'application/json',
         },
       }),
