@@ -38,10 +38,15 @@ const decodeBody = (input?: string | null) =>
   input && unescapeHtml(input).replace(/<br\s*\/?>/gi, '\n')
 
 const ArticleForm = ({article, id, projectId}: Props) => {
+  const image = article?.images?.[0]
   const form = useForm<ArticleFormData>({
     defaultValues: {
       body: decodeBody(article?.body) ?? undefined,
-      image: article?.images?.[0]?.sources?.[2].uri ?? undefined,
+      image:
+        image?.sources?.[2]?.uri ??
+        image?.sources?.[1]?.uri ??
+        image?.sources?.[0]?.uri ??
+        undefined,
       imageFileName: article?.images?.[0]?.id.toString() ?? undefined,
       imageDescription: article?.images?.[0]?.alternativeText ?? undefined,
       sendPushNotification: article?.is_pushed,
@@ -63,7 +68,6 @@ const ArticleForm = ({article, id, projectId}: Props) => {
     projectId,
     imageId: article?.images?.[0]?.id,
   })
-  const image = article?.images?.[0]
 
   const onClickSubmit = useCallback(() => {
     if (Object.keys(dirtyFields).length) {
