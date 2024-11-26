@@ -49,7 +49,7 @@ const ArticleForm = ({article, id, projectId}: Props) => {
         undefined,
       imageFileName: article?.images?.[0]?.id.toString() ?? undefined,
       imageDescription: article?.images?.[0]?.alternativeText ?? undefined,
-      sendPushNotification: article?.is_pushed,
+      sendPushNotification: article?.notification_sent,
       title: article?.title ?? undefined,
     },
   })
@@ -108,7 +108,7 @@ const ArticleForm = ({article, id, projectId}: Props) => {
             image?.sources?.[0]?.uri
           }
         />
-        {!article?.is_pushed && (
+        {!article?.notification_sent && (
           <CheckboxField
             label="Verstuur ook een pushbericht"
             name="sendPushNotification"

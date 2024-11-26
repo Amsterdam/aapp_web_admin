@@ -36,7 +36,7 @@ export type ArticleNews = ArticleBase & {
 }
 
 export type ArticleWarning = ArticleBase & {
-  is_pushed: boolean
+  notification_sent: boolean
   publisher: PublisherBase
   project: number | null
 }
