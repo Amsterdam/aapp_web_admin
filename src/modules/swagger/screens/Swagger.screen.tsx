@@ -1,3 +1,4 @@
+import {Select} from '@amsterdam/design-system-react'
 import {useParams} from 'react-router-dom'
 import SwaggerUI from 'swagger-ui-react'
 import Column from 'components/ui/layout/Column'
@@ -22,16 +23,19 @@ const SwaggerScreen = () => {
     <Screen>
       <Column gutter="lg">
         <ScreenTitle title="Swagger" />
-        <select
+        <Select
           onChange={({target: {value}}) => {
             navigate(SwaggerRoute.swagger, {slug: value})
           }}>
           {openAPIUrls.map(({url, name, slug}) => (
-            <option value={slug} key={url} selected={slug === activeSlug}>
+            <Select.Option
+              value={slug}
+              key={url}
+              selected={slug === activeSlug}>
               {name}
-            </option>
+            </Select.Option>
           ))}
-        </select>
+        </Select>
         <SwaggerUI url={active?.url} />
       </Column>
     </Screen>
