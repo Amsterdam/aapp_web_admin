@@ -5,7 +5,7 @@ import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import 'swagger-ui-react/swagger-ui.css'
 import useNavigate from 'hooks/useNavigate'
-import {openAPIUrls} from '../constants'
+import {defaultSlug, openAPIUrls} from '../constants'
 import {SwaggerRoute} from '../types'
 
 type Params = {
@@ -13,7 +13,7 @@ type Params = {
 }
 
 const SwaggerScreen = () => {
-  const {slug: activeSlug = openAPIUrls[0].slug} = useParams() as Params
+  const {slug: activeSlug = defaultSlug} = useParams() as Params
 
   const active = openAPIUrls.find(({slug}) => slug === activeSlug)
   const navigate = useNavigate()

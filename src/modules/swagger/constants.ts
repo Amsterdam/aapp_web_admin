@@ -8,7 +8,19 @@ type OpenAPIUrl = {
   slug: string
 }
 
+export const defaultSlug = 'modules'
+
 export const openAPIUrls: OpenAPIUrl[] = [
+  {
+    url: '/bridge/api/v1/openapi/',
+    name: 'Bridge',
+    slug: 'bridge',
+  },
+  {
+    url: '/city-pass/api/v1/openapi/',
+    name: 'City Pass',
+    slug: 'city-pass',
+  },
   {
     url: '/construction-work/api/v1/openapi/',
     name: 'Construction Work',
@@ -23,11 +35,6 @@ export const openAPIUrls: OpenAPIUrl[] = [
     url: '/modules/api/v1/openapi/',
     name: 'Modules',
     slug: 'modules',
-  },
-  {
-    url: '/city-pass/api/v1/openapi/',
-    name: 'City Pass',
-    slug: 'city-pass',
   },
   {
     url: '/notification/api/v1/openapi/',
