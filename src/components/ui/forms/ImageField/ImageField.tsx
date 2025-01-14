@@ -56,7 +56,7 @@ const ImageField = ({
               <Step id="upload">
                 <ImageUpload
                   aspectRatio={aspectRatio}
-                  onAdd={(image, file) => {
+                  onAdd={(image: string, file: File) => {
                     setUncroppedImage(image)
                     setStep('crop')
                     onFileNameChange(file.name)

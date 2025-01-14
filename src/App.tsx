@@ -8,6 +8,10 @@ import {BASE_ROUTE} from 'constants/routes'
 import {routes} from 'routes'
 import {store} from 'store/store'
 
+import '@amsterdam/design-system-assets/font/index.css'
+import '@amsterdam/design-system-css/dist/index.css'
+import '@amsterdam/design-system-tokens/dist/index.css'
+
 const router = createBrowserRouter(
   [{element: <ProtectedRoutes />, children: routes}],
   {basename: BASE_ROUTE},

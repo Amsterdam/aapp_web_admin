@@ -2,7 +2,7 @@ jobs:
   - job: 'Tests'
     timeoutInMinutes: 15
     pool:
-      vmImage: 'macos-13'
+      vmImage: 'macos-15'
     steps:
       - template: ./install-node.yml
       - script: npm ci
@@ -27,10 +27,9 @@ jobs:
           testRunTitle: 'Jest Unit Tests - $(Build.SourceBranch)'
           failTaskOnFailedTests: true
         condition: succeededOrFailed()
-      - task: PublishCodeCoverageResults@1
+      - task: PublishCodeCoverageResults@2
         displayName: 'Publish code coverage from Jest tests'
         inputs:
-          codeCoverageTool: Cobertura
           summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
           failIfCoverageEmpty: true
         condition: succeededOrFailed()
