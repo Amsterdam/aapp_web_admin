@@ -32,6 +32,11 @@ export const openAPIUrls: OpenAPIUrl[] = [
     slug: 'contact',
   },
   {
+    url: '/image/api/v1/openapi/',
+    name: 'Image',
+    slug: 'image',
+  },
+  {
     url: '/modules/api/v1/openapi/',
     name: 'Modules',
     slug: 'modules',
