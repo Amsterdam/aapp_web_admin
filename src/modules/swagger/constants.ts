@@ -46,4 +46,9 @@ export const openAPIUrls: OpenAPIUrl[] = [
     name: 'Notification',
     slug: 'notification',
   },
+  {
+    url: '/waste/api/v1/openapi/',
+    name: 'Waste',
+    slug: 'waste',
+  },
 ]
