@@ -30,4 +30,5 @@ export enum ModuleSlug {
   downloadQr = 'download-qr',
   home = 'home',
   releases = 'releases',
+  contact = 'contact',
 }
