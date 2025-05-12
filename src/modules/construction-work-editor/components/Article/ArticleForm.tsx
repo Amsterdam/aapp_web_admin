@@ -15,7 +15,7 @@ import {unescapeHtml} from 'utils/escapeHtml'
 
 const MAX_LENGTH = {
   TITLE: 100,
-  BODY: 500,
+  BODY: 1000,
 }
 
 export type ArticleFormData = {
