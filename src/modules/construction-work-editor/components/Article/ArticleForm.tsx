@@ -47,7 +47,7 @@ const ArticleForm = ({article, id, projectId}: Props) => {
         image?.sources?.[1]?.uri ??
         image?.sources?.[0]?.uri ??
         undefined,
-      imageFileName: article?.images?.[0]?.id.toString() ?? undefined,
+      imageFileName: article?.images?.[0]?.id?.toString() ?? undefined,
       imageDescription: article?.images?.[0]?.alternativeText ?? undefined,
       sendPushNotification: article?.notification_sent,
       title: article?.title ?? undefined,
