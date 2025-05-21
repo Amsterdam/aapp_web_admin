@@ -1,6 +1,6 @@
 import ContactAdminHomeButton from 'modules/contact/components/ContactAdminHomeButton'
+import {allowedAzureGroups} from 'modules/contact/constants'
 import {routes} from 'modules/contact/routes'
-import {allowedAzureGroups} from 'modules/download-qr/constants'
 import {ModuleSlug, ModuleType, type Module} from 'modules/types'
 
 export const contactModule: Module = {

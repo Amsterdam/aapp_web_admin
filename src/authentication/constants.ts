@@ -26,4 +26,11 @@ export const azureGroups = {
     [Environment.acceptance]: 'ebf967d8-3048-4fa7-a98d-bc73a259120d',
     [Environment.production]: '7741a99c-8bd9-4cdc-b73f-0775b766cc19',
   },
+  [AzureGroup.contactOpeningsTimesPublisher]: {
+    [Environment.local]: '86251e60-49e4-43fd-900a-99d980da6254',
+    [Environment.development]: '86251e60-49e4-43fd-900a-99d980da6254',
+    [Environment.test]: '1695af9b-74b6-42b9-a07d-0c13dec584c3',
+    [Environment.acceptance]: 'bfee3325-1715-4127-807d-75eb040f5238',
+    [Environment.production]: 'ce927ddb-9a75-4a4e-b915-994c2be83f6b',
+  },
 }
