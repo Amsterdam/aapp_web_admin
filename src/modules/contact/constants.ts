@@ -1,6 +1,3 @@
 import {AzureGroup} from 'authentication/types'
 
-export const allowedAzureGroups = [
-  AzureGroup.admin,
-  AzureGroup.contactOpeningsTimesPublisher,
-]
+export const allowedAzureGroups = [AzureGroup.contactOpeningsTimesPublisher]
