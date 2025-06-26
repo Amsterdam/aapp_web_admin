@@ -4,11 +4,31 @@ import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 
-const setCookie = (name: string, value: string, days: number) => {
+/** max safe size per cookie (a bit below 4 kB) */
+const CHUNK_SIZE = 3500
+
+const setChunkedCookie = (name: string, value: string, days = 1) => {
   const date = new Date()
   date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
   const expires = `expires=${date.toUTCString()}`
-  document.cookie = `${name}=${value}; ${expires}; path=/; Secure; SameSite=Strict`
+  const secure = window.location.protocol === 'https:' ? ' Secure; SameSite=Strict;' : ''
+
+  /* clear previous chunks */
+  document.cookie
+    .split('; ')
+    .filter(c => c.startsWith(`${name}.`))
+    .forEach(c => {
+      const [k] = c.split('=')
+      document.cookie = `${k}=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/;`
+    })
+
+  /* write new chunks */
+  for (let i = 0, idx = 0; i < value.length; i += CHUNK_SIZE, idx += 1) {
+    const chunk = value.slice(i, i + CHUNK_SIZE) // keep raw, avoids length-inflation
+    document.cookie = `${name}.${idx}=${chunk}; Expires=${expires}; Path=/;${secure}`
+  }
+  // eslint-disable-next-line no-console
+  console.log('cookies after set →', document.cookie)
 }
 
 const ContactAdminScreen = () => {
@@ -16,7 +36,7 @@ const ContactAdminScreen = () => {
   const [didSetCookie, setDidSetCookie] = useState(false)
   useEffect(() => {
     if (accessToken) {
-      setCookie('__Host-Access-Token', accessToken, 1)
+      setChunkedCookie('AccessToken', accessToken) // handles any token size
       setDidSetCookie(true)
     }
   }, [accessToken])
