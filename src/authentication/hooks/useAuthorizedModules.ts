@@ -1,21 +1,21 @@
 import {useMemo} from 'react'
-import useGetAuthorizedGroups from 'authentication/hooks/useGetAuthorizedGroups'
+import useGetAuthorizedRoles from 'authentication/hooks/useGetAuthorizedRoles'
 import modules from 'modules'
 
 /**
  * Returns the modules that the user is authorized to see.
  */
 const useAuthorizedModules = () => {
-  const authorizedGroups = useGetAuthorizedGroups()
+  const authorizedRoles = useGetAuthorizedRoles()
 
   return useMemo(
     () =>
       modules.filter(module =>
-        module.allowedAzureGroups?.some(group =>
-          authorizedGroups.includes(group),
+        module.allowedAzureRoles?.some(role =>
+          authorizedRoles.includes(role),
         ),
       ),
-    [authorizedGroups],
+    [authorizedRoles],
   )
 }
 

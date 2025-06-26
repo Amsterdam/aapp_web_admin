@@ -1,11 +1,11 @@
-import useGetAuthorizedGroups from 'authentication/hooks/useGetAuthorizedGroups'
-import {AzureGroup} from 'authentication/types'
+import useGetAuthorizedRoles from 'authentication/hooks/useGetAuthorizedRoles'
+import {AzureRole} from 'authentication/types'
 import NavigationButton from 'components/ui/button/NavigationButton'
 import Row from 'components/ui/layout/Row'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 const ConstructionWorkEditorHome = () => {
-  const authorizedGroups = useGetAuthorizedGroups()
+  const authorizedGroups = useGetAuthorizedRoles()
 
   return (
     <Row gutter="md">
@@ -14,7 +14,7 @@ const ConstructionWorkEditorHome = () => {
         label="Werkzaamheden"
         url={ConstructionWorkEditorRoute.projects}
       />
-      {authorizedGroups.includes(AzureGroup.editor) && (
+      {authorizedGroups.includes(AzureRole.constructionWorkEditor) && (
         <NavigationButton
           flex
           label="Publishers"

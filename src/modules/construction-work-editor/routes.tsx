@@ -1,5 +1,5 @@
 import {RouteObject} from 'react-router-dom'
-import {AzureGroup} from 'authentication/types'
+import {AzureRole} from 'authentication/types'
 import constructionWorkEditorModule from 'modules/construction-work-editor'
 import ArticleScreen from 'modules/construction-work-editor/screens/Article.screen'
 import ProjectScreen from 'modules/construction-work-editor/screens/Project.screen'
@@ -9,8 +9,8 @@ import PublisherProjectsScreen from 'modules/construction-work-editor/screens/Pu
 import PublishersScreen from 'modules/construction-work-editor/screens/Publishers.screen'
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
-const loader = () => constructionWorkEditorModule.allowedAzureGroups
-const loaderEditor = () => [AzureGroup.editor]
+const loader = () => constructionWorkEditorModule.allowedAzureRoles
+const loaderEditor = () => [AzureRole.constructionWorkEditor, AzureRole.constructionWorkEditorDeprecated]
 
 export const routes: RouteObject[] = [
   {

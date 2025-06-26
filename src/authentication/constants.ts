@@ -1,36 +1,64 @@
-import {AzureGroup} from 'authentication/types'
+import {AzureRole} from 'authentication/types'
 import {Environment} from 'utils/environment'
 
 /**
- * Azure Entra ID group IDs for each environment
+ * Azure Entra ID role for each environment
  */
-export const azureGroups = {
-  [AzureGroup.admin]: {
-    [Environment.local]: '8394d4d0-d326-4749-861c-d8c56815f13d',
-    [Environment.development]: '8394d4d0-d326-4749-861c-d8c56815f13d',
-    [Environment.test]: '1413ee8e-3fa5-4eda-8a59-b7e393b9561b',
-    [Environment.acceptance]: 'c5b8c56a-e9f0-4069-a8cd-0ba58e29f620',
-    [Environment.production]: 'd51c6a44-9684-420b-b3be-3d5c90daddc5',
+export const AzureRoles = {
+  [AzureRole.admin]: {
+    [Environment.local]: 'o-mbs-admin',
+    [Environment.development]: 'o-mbs-admin',
+    [Environment.test]: 't-mbs-admin',
+    [Environment.acceptance]: 'a-mbs-admin',
+    [Environment.production]: 'p-mbs-admin',
   },
-  [AzureGroup.editor]: {
-    [Environment.local]: 'b02f476b-6f1d-4f9e-86e6-5a935310050b',
-    [Environment.development]: 'b02f476b-6f1d-4f9e-86e6-5a935310050b',
-    [Environment.test]: '4ca0fd55-62b7-4d2b-a1da-1999045eb1c9',
-    [Environment.acceptance]: '3a7d61fa-e932-4e0f-baa5-b7d9dcd6edd9',
-    [Environment.production]: 'c363b4c8-cbab-497b-b761-473332cc0a63',
+  [AzureRole.constructionWorkEditorDeprecated]: {
+    [Environment.local]: 'o-pbs-editor',
+    [Environment.development]: 'o-pbs-editor',
+    [Environment.test]: 't-pbs-editor',
+    [Environment.acceptance]: 'a-pbs-editor',
+    [Environment.production]: 'p-pbs-editor',
   },
-  [AzureGroup.publisher]: {
-    [Environment.local]: '0e7307de-7da8-4124-8e33-f8a0e7901d37',
-    [Environment.development]: '0e7307de-7da8-4124-8e33-f8a0e7901d37',
-    [Environment.test]: 'd08e2387-d6e0-48f8-a900-21d94e65ca18',
-    [Environment.acceptance]: 'ebf967d8-3048-4fa7-a98d-bc73a259120d',
-    [Environment.production]: '7741a99c-8bd9-4cdc-b73f-0775b766cc19',
+  [AzureRole.constructionWorkEditor]: {
+    [Environment.local]: 'o-pbs-editor-delegated',
+    [Environment.development]: 'o-pbs-editor-delegated',
+    [Environment.test]: 't-pbs-editor-delegated',
+    [Environment.acceptance]: 'a-pbs-editor-delegated',
+    [Environment.production]: 'p-pbs-editor-delegated',
   },
-  [AzureGroup.contactOpeningsTimesPublisher]: {
-    [Environment.local]: 'd24e6595-d57c-4ebf-9f84-a7f8079a39ad',
-    [Environment.development]: 'd24e6595-d57c-4ebf-9f84-a7f8079a39ad',
-    [Environment.test]: 'ae154a7c-aac5-47b0-a392-6ad1308b6d4a',
-    [Environment.acceptance]: 'cb22b32f-3a9d-425c-8250-2b8b4d798d52',
-    [Environment.production]: '1f6eed8e-81f1-4ce3-b733-264887964a44',
+  [AzureRole.constructionWorkPublisher]: {
+    [Environment.local]: 'o-pbs-publisher',
+    [Environment.development]: 'o-pbs-publisher',
+    [Environment.test]: 't-pbs-publisher',
+    [Environment.acceptance]: 'a-pbs-publisher',
+    [Environment.production]: 'p-pbs-publisher',
+  },
+  [AzureRole.contactOpeningsTimesDelegated]: {
+    [Environment.local]: 'o-cbs-time-delegated',
+    [Environment.development]: 'o-cbs-time-delegated',
+    [Environment.test]: 't-cbs-time-delegated',
+    [Environment.acceptance]: 'a-cbs-time-delegated',
+    [Environment.production]: 'p-cbs-time-delegated',
+  },
+  [AzureRole.contactOpeningsTimesPublisher]: {
+    [Environment.local]: 'o-cbs-time-publisher',
+    [Environment.development]: 'o-cbs-time-publisher',
+    [Environment.test]: 't-cbs-time-publisher',
+    [Environment.acceptance]: 'a-cbs-time-publisher',
+    [Environment.production]: 'p-cbs-time-publisher',
+  },
+  [AzureRole.cityPassDelegated]: {
+    [Environment.local]: 'o-city-pass-delegated',
+    [Environment.development]: 'o-city-pass-delegated',
+    [Environment.test]: 't-city-pass-delegated',
+    [Environment.acceptance]: 'a-city-pass-delegated',
+    [Environment.production]: 'p-city-pass-delegated',
+  },
+  [AzureRole.cityPassPublisher]: {
+    [Environment.local]: 'o-city-pass-publisher',
+    [Environment.development]: 'o-city-pass-publisher',
+    [Environment.test]: 't-city-pass-publisher',
+    [Environment.acceptance]: 'a-city-pass-publisher',
+    [Environment.production]: 'p-city-pass-publisher',
   },
 }

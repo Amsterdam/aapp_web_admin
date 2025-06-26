@@ -1,3 +1,6 @@
-import {AzureGroup} from 'authentication/types'
+import {AzureRole} from 'authentication/types'
 
-export const allowedAzureGroups = [AzureGroup.contactOpeningsTimesPublisher]
+export const allowedAzureRoles = [
+    AzureRole.contactOpeningsTimesPublisher,
+    AzureRole.contactOpeningsTimesDelegated
+]

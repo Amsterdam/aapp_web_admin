@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react'
 import {useLoaderData} from 'react-router-dom'
-import useGetAuthorizedGroups from 'authentication/hooks/useGetAuthorizedGroups'
-import {AzureGroup} from 'authentication/types'
+import useGetAuthorizedRoles from 'authentication/hooks/useGetAuthorizedRoles'
+import {AzureRole} from 'authentication/types'
 
 const useIsAuthorized = (requireLogin: boolean) => {
   const [isAuthorized, setIsAuthorized] = useState<boolean>()
-  const azureGroups = useLoaderData() as AzureGroup[]
-  const authorizedGroups = useGetAuthorizedGroups()
+  const AzureRoles = useLoaderData() as AzureRole[]
+  const authorizedRoles = useGetAuthorizedRoles()
   useEffect(() => {
     if (!requireLogin) {
       setIsAuthorized(true)
@@ -14,9 +14,9 @@ const useIsAuthorized = (requireLogin: boolean) => {
       return
     }
     setIsAuthorized(
-      azureGroups?.some(group => authorizedGroups.includes(group)),
+      AzureRoles?.some(role => authorizedRoles.includes(role)),
     )
-  }, [azureGroups, authorizedGroups, requireLogin])
+  }, [AzureRoles, authorizedRoles, requireLogin])
 
   return isAuthorized
 }
