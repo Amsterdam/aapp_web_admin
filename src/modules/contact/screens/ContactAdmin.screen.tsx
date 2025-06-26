@@ -36,7 +36,7 @@ const ContactAdminScreen = () => {
   const [didSetCookie, setDidSetCookie] = useState(false)
   useEffect(() => {
     if (accessToken) {
-      setChunkedCookie('AccessToken', accessToken) // handles any token size
+      setChunkedCookie('__Host-Access-Token', accessToken) // handles any token size
       setDidSetCookie(true)
     }
   }, [accessToken])
