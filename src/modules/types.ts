@@ -31,4 +31,5 @@ export enum ModuleSlug {
   home = 'home',
   releases = 'releases',
   contact = 'contact',
+  cityPass = 'city-pass',
 }
