@@ -14,7 +14,9 @@ const ConstructionWorkEditorHome = () => {
         label="Werkzaamheden"
         url={ConstructionWorkEditorRoute.projects}
       />
-      {authorizedGroups.includes(AzureRole.constructionWorkEditor) && (
+      {(authorizedGroups.includes(AzureRole.constructionWorkEditor)
+      || authorizedGroups.includes(AzureRole.constructionWorkEditorDeprecated))
+          && (
         <NavigationButton
           flex
           label="Publishers"
