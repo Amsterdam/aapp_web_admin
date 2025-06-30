@@ -3,7 +3,7 @@ import {swaggerModule} from 'modules/swagger'
 import SwaggerScreen from 'modules/swagger/screens/Swagger.screen'
 import {SwaggerRoute} from 'modules/swagger/types'
 
-const loader = () => swaggerModule.allowedAzureGroups
+const loader = () => swaggerModule.allowedAzureRoles
 
 export const routes: RouteObject[] = [
   {

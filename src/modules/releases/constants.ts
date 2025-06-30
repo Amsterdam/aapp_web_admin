@@ -1,3 +1,3 @@
-import {AzureGroup} from 'authentication/types'
+import {AzureRole} from 'authentication/types'
 
-export const allowedAzureGroups = [AzureGroup.admin]
+export const allowedAzureRoles = [AzureRole.admin]

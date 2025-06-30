@@ -11,7 +11,7 @@ import ModulesScreen from 'modules/releases/screens/Modules.screen'
 import ReleasesScreen from 'modules/releases/screens/Releases.screen'
 import {ReleasesRoute} from 'modules/releases/types/routes'
 
-const loader = () => releasesModule.allowedAzureGroups
+const loader = () => releasesModule.allowedAzureRoles
 
 export const routes: RouteObject[] = [
   {

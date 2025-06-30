@@ -5,7 +5,7 @@ import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
 import {setChunkedCookie} from 'utils/setChunkedCookie'
 
-const ContactAdminScreen = () => {
+const CityPassAdminScreen = () => {
   const accessToken = useAccessToken()
   const [didSetCookie, setDidSetCookie] = useState(false)
   useEffect(() => {
@@ -18,13 +18,13 @@ const ContactAdminScreen = () => {
   return (
     <Screen>
       <Column gutter="lg">
-        <ScreenTitle title="Contact" />
+        <ScreenTitle title="Stadspas" />
         {!!didSetCookie && (
           <iframe
-            src="/contact/admin"
+            src="/city-pass/admin"
             width="100%"
             height="800px"
-            title="Contact admin"
+            title="Stadspas admin"
           />
         )}
       </Column>
@@ -32,4 +32,4 @@ const ContactAdminScreen = () => {
   )
 }
 
-export default ContactAdminScreen
+export default CityPassAdminScreen

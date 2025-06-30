@@ -1,3 +1,9 @@
-import {AzureGroup} from 'authentication/types'
+import {AzureRole} from 'authentication/types'
 
-export const allowedAzureGroups = [AzureGroup.admin, AzureGroup.editor]
+export const allowedAzureRoles = [
+  AzureRole.admin,
+  AzureRole.constructionWorkEditor,
+  AzureRole.constructionWorkEditorDeprecated,
+  AzureRole.cityPassDelegated,
+  AzureRole.contactOpeningsTimesDelegated,
+]

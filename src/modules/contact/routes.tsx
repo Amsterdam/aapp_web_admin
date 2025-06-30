@@ -3,7 +3,7 @@ import ContactAdminScreen from './screens/ContactAdmin.screen'
 import {ContactRoute} from './types'
 import {contactModule} from '.'
 
-const loader = () => contactModule.allowedAzureGroups
+const loader = () => contactModule.allowedAzureRoles
 
 export const routes: RouteObject[] = [
   {
