@@ -11,7 +11,8 @@ const setChunkedCookie = (name: string, value: string, days = 1) => {
   const date = new Date()
   date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
   const expires = `expires=${date.toUTCString()}`
-  const secure = window.location.protocol === 'https:' ? ' Secure; SameSite=Strict;' : ''
+  const secure =
+    window.location.protocol === 'https:' ? ' Secure; SameSite=Strict;' : ''
 
   /* clear previous chunks */
   document.cookie

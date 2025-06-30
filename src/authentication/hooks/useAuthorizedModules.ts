@@ -11,9 +11,7 @@ const useAuthorizedModules = () => {
   return useMemo(
     () =>
       modules.filter(module =>
-        module.allowedAzureRoles?.some(role =>
-          authorizedRoles.includes(role),
-        ),
+        module.allowedAzureRoles?.some(role => authorizedRoles.includes(role)),
       ),
     [authorizedRoles],
   )

@@ -10,7 +10,10 @@ import PublishersScreen from 'modules/construction-work-editor/screens/Publisher
 import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
 
 const loader = () => constructionWorkEditorModule.allowedAzureRoles
-const loaderEditor = () => [AzureRole.constructionWorkEditor, AzureRole.constructionWorkEditorDeprecated]
+const loaderEditor = () => [
+  AzureRole.constructionWorkEditor,
+  AzureRole.constructionWorkEditorDeprecated,
+]
 
 export const routes: RouteObject[] = [
   {

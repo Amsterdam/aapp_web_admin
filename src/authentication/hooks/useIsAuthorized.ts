@@ -13,9 +13,7 @@ const useIsAuthorized = (requireLogin: boolean) => {
 
       return
     }
-    setIsAuthorized(
-      AzureRoles?.some(role => authorizedRoles.includes(role)),
-    )
+    setIsAuthorized(AzureRoles?.some(role => authorizedRoles.includes(role)))
   }, [AzureRoles, authorizedRoles, requireLogin])
 
   return isAuthorized
