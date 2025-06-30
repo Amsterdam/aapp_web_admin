@@ -10,6 +10,6 @@ export const releasesModule: Module<typeof releaseSlice> = {
   reduxSlice: releaseSlice,
   routes,
   slug: ModuleSlug.releases,
-  title: 'App releases',
+  title: 'App releases [DEPRECATED]',
   type: ModuleType.contentManagement,
 }
