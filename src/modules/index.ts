@@ -1,4 +1,5 @@
 import {adminModule} from 'modules/admin'
+import {cityPassModule} from 'modules/city-pass'
 import constructionWorkEditorModule from 'modules/construction-work-editor'
 import {contactModule} from 'modules/contact'
 import {downloadQrModule} from 'modules/download-qr'
@@ -12,6 +13,7 @@ const modules = [
   releasesModule,
   constructionWorkEditorModule,
   contactModule,
+  cityPassModule,
   downloadQrModule,
   swaggerModule,
 ] as const
