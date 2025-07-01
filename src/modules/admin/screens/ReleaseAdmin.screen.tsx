@@ -21,7 +21,7 @@ const ReleaseAdminScreen = () => {
         <ScreenTitle title="App Release" />
         {!!didSetCookie && (
           <iframe
-            src="/admin/admin"
+            src="/modules/admin"
             width="100%"
             height="800px"
             title="Release admin"
