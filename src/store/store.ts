@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import {configureStore, combineReducers} from '@reduxjs/toolkit'
+import {configureStore, combineReducers, Slice} from '@reduxjs/toolkit'
 import {setupListeners} from '@reduxjs/toolkit/query'
 import modules from 'modules'
+import {Module} from 'modules/types'
 import {baseApi} from 'services/baseApi'
 
 const reducers = modules
   .filter(module => !!module.reduxSlice)
   .reduce(
-    (acc, module) => ({
+    (acc, module: Module<Slice<unknown>>) => ({
       ...acc,
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       [module.reduxSlice!.name]: module.reduxSlice!.reducer,
