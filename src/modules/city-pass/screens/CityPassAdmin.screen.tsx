@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import {useAccessToken} from 'authentication/hooks/useAccessToken'
+import Iframe from 'components/ui/Iframe'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
@@ -20,12 +21,7 @@ const CityPassAdminScreen = () => {
       <Column gutter="lg">
         <ScreenTitle title="Stadspas" />
         {!!didSetCookie && (
-          <iframe
-            src="/city-pass/admin"
-            width="100%"
-            height="800px"
-            title="Stadspas admin"
-          />
+          <Iframe src="/city-pass/admin" title="Stadspas admin" />
         )}
       </Column>
     </Screen>

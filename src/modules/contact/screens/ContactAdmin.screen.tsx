@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import {useAccessToken} from 'authentication/hooks/useAccessToken'
+import Iframe from 'components/ui/Iframe'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
@@ -20,12 +21,7 @@ const ContactAdminScreen = () => {
       <Column gutter="lg">
         <ScreenTitle title="Contact" />
         {!!didSetCookie && (
-          <iframe
-            src="/contact/admin"
-            width="100%"
-            height="800px"
-            title="Contact admin"
-          />
+          <Iframe src="/contact/admin" title="Contact admin" />
         )}
       </Column>
     </Screen>
