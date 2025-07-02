@@ -95,7 +95,7 @@
   --size-spacing-xxl: 80px;
   --size-spacing-xxxl: 120px;
 
-  --max-screen-width: 90rem;
+  --max-screen-width: 100vw;
 
   /* border sizes */
   --size-border-md: 1px;

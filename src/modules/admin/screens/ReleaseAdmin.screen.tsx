@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import {useAccessToken} from 'authentication/hooks/useAccessToken'
+import Iframe from 'components/ui/Iframe'
 import Column from 'components/ui/layout/Column'
 import Screen from 'components/ui/layout/Screen'
 import ScreenTitle from 'components/ui/text/ScreenTitle'
@@ -20,12 +21,7 @@ const ReleaseAdminScreen = () => {
       <Column gutter="lg">
         <ScreenTitle title="App Release" />
         {!!didSetCookie && (
-          <iframe
-            src="/modules/admin"
-            width="100%"
-            height="800px"
-            title="Release admin"
-          />
+          <Iframe src="/modules/admin" title="Release admin" />
         )}
       </Column>
     </Screen>
