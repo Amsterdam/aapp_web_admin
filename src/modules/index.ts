@@ -1,15 +1,17 @@
+import {adminModule} from 'modules/admin'
+import {cityPassModule} from 'modules/city-pass'
 import constructionWorkEditorModule from 'modules/construction-work-editor'
 import {contactModule} from 'modules/contact'
 import {downloadQrModule} from 'modules/download-qr'
 import {homeModule} from 'modules/home'
-import {releasesModule} from 'modules/releases'
 import {swaggerModule} from 'modules/swagger'
 
 const modules = [
   homeModule,
-  releasesModule,
+  adminModule,
   constructionWorkEditorModule,
   contactModule,
+  cityPassModule,
   downloadQrModule,
   swaggerModule,
 ] as const

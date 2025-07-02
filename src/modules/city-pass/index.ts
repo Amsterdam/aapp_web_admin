@@ -8,6 +8,6 @@ export const cityPassModule: Module = {
   HomeComponent: CityPassAdminHomeButton,
   routes,
   slug: ModuleSlug.cityPass,
-  title: 'CityPass',
+  title: 'Stadspas',
   type: ModuleType.contentManagement,
 }

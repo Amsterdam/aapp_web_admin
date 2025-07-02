@@ -56,15 +56,12 @@ const PersonalizedHome = () => {
     <Column gutter="xl">
       {contentManagementModules?.length > 0 && (
         <ModulesByType
-          modules={contentManagementModules as Module[]}
+          modules={contentManagementModules}
           type={ModuleType.contentManagement}
         />
       )}
       {otherModules?.length > 0 && (
-        <ModulesByType
-          modules={otherModules as Module[]}
-          type={ModuleType.other}
-        />
+        <ModulesByType modules={otherModules} type={ModuleType.other} />
       )}
     </Column>
   )
