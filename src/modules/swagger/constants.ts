@@ -51,4 +51,9 @@ export const openAPIUrls: OpenAPIUrl[] = [
     name: 'Waste',
     slug: 'waste',
   },
+  {
+    url: '/survey/api/v1/openapi/',
+    name: 'Survey',
+    slug: 'survey',
+  },
 ]
