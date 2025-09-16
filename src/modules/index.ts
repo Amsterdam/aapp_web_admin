@@ -4,6 +4,7 @@ import constructionWorkEditorModule from 'modules/construction-work-editor'
 import {contactModule} from 'modules/contact'
 import {downloadQrModule} from 'modules/download-qr'
 import {homeModule} from 'modules/home'
+import {surveyModule} from 'modules/survey'
 import {swaggerModule} from 'modules/swagger'
 
 const modules = [
@@ -11,6 +12,7 @@ const modules = [
   adminModule,
   constructionWorkEditorModule,
   contactModule,
+  surveyModule,
   cityPassModule,
   downloadQrModule,
   swaggerModule,
