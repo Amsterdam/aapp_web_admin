@@ -3,7 +3,7 @@ import {WasteRoute} from '../types'
 
 const WasteAdminHomeButton = () => (
   <NavigationButton
-    label="Beheer stadspas notificaties"
+    label="Beheer A&G notificaties"
     url={WasteRoute.admin}
   />
 )

@@ -19,8 +19,8 @@ const WasteAdminScreen = () => {
   return (
     <Screen>
       <Column gutter="lg">
-        <ScreenTitle title="Stadspas" />
-        {!!didSetCookie && <Iframe src="/waste/admin" title="Stadspas admin" />}
+        <ScreenTitle title="A&G notificaties" />
+        {!!didSetCookie && <Iframe src="/waste/admin" title="A&G admin" />}
       </Column>
     </Screen>
   )
