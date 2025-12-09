@@ -33,5 +33,6 @@ export enum ModuleSlug {
   contact = 'contact',
   survey = 'survey',
   cityPass = 'city-pass',
+  waste = 'waste',
   admin = 'admin',
 }
