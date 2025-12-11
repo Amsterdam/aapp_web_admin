@@ -9,8 +9,10 @@ export enum AzureRole {
   contactOpeningsTimesPublisher = 'contactOpeningsTimesPublisher', // voor openingstijden van contact
   cityPassDelegated = 'cityPassDelegated', // voor stadspas notificaties, rechten toewijzen
   cityPassPublisher = 'cityPassPublisher', // voor stadspas notificaties
+  surveyDelegated = 'surveyDelegated', // voor vragenlijsten bijwerken, rechten toewijzen
+  surveyPublisher = 'surveyPublisher', // voor vragenlijsten bijwerken
   wasteDelegated = 'wasteDelegated', // voor A&G notificaties, rechten toewijzen
-  wastePublisher = 'wasteDelegated', // voor A&G notificaties
+  wastePublisher = 'wastePublisher', // voor A&G notificaties
 }
 
 export type DecodedJWTToken = {
