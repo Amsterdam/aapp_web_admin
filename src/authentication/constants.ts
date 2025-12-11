@@ -61,6 +61,20 @@ export const AzureRoles = {
     [Environment.acceptance]: 'a-city-pass-publisher',
     [Environment.production]: 'p-city-pass-publisher',
   },
+  [AzureRole.surveyDelegated]: {
+    [Environment.local]: 'o-survey-delegated',
+    [Environment.development]: 'o-survey-delegated',
+    [Environment.test]: 't-survey-delegated',
+    [Environment.acceptance]: 'a-survey-delegated',
+    [Environment.production]: 'p-survey-delegated',
+  },
+  [AzureRole.surveyPublisher]: {
+    [Environment.local]: 'o-survey-publisher',
+    [Environment.development]: 'o-survey-publisher',
+    [Environment.test]: 't-survey-publisher',
+    [Environment.acceptance]: 'a-survey-publisher',
+    [Environment.production]: 'p-survey-publisher',
+  },
   [AzureRole.wasteDelegated]: {
     [Environment.local]: 'o-waste-delegated',
     [Environment.development]: 'o-waste-delegated',
