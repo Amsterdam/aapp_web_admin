@@ -61,4 +61,18 @@ export const AzureRoles = {
     [Environment.acceptance]: 'a-city-pass-publisher',
     [Environment.production]: 'p-city-pass-publisher',
   },
+  [AzureRole.wasteDelegated]: {
+    [Environment.local]: 'o-waste-delegated',
+    [Environment.development]: 'o-waste-delegated',
+    [Environment.test]: 't-waste-delegated',
+    [Environment.acceptance]: 'a-waste-delegated',
+    [Environment.production]: 'p-waste-delegated',
+  },
+  [AzureRole.wastePublisher]: {
+    [Environment.local]: 'o-waste-publisher',
+    [Environment.development]: 'o-waste-publisher',
+    [Environment.test]: 't-waste-publisher',
+    [Environment.acceptance]: 'a-waste-publisher',
+    [Environment.production]: 'p-waste-publisher',
+  },
 }
