@@ -9,4 +9,8 @@ export const allowedAzureRoles = [
   AzureRole.contactOpeningsTimesPublisher,
   AzureRole.cityPassDelegated,
   AzureRole.cityPassPublisher,
+  AzureRole.surveyDelegated,
+  AzureRole.surveyPublisher,
+  AzureRole.wasteDelegated,
+  AzureRole.wastePublisher,
 ]
