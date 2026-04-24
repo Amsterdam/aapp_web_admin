@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-restricted-syntax */
 import {readFileSync} from 'node:fs'
 import {join} from 'node:path'
