@@ -55,7 +55,7 @@ jobs:
             done
 
       - name: Annotate PR with uncovered lines
-        run: node nodescripts/coverage-pr-annotations.mts
+        run: npm exec -- tsx nodescripts/coverage-pr-annotations.mts
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

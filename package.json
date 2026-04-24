@@ -63,13 +63,14 @@
     "patch-package": "^8.0.1",
     "prettier": "^2.8.8",
     "react-scripts": "5.0.1",
+    "tsx": "^4.21.0",
     "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:bundle": "react-scripts build && node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
+    "test:bundle": "GENERATE_SOURCEMAP=false react-scripts build && node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
     "test-ci": "react-scripts test --coverage --reporters default --reporters jest-trx-results-processor",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -100,7 +101,9 @@
   },
   "jest": {
     "coverageReporters": [
-      "cobertura"
+      "cobertura",
+      "json-summary",
+      "json"
     ]
   },
   "proxy": "https://ontw.app.amsterdam.nl/",

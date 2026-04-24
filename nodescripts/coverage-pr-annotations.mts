@@ -17,16 +17,16 @@ type CoverageData = {
 // --- CONFIG ---
 const COVERAGE_FILE = join(process.cwd(), 'coverage', 'coverage-final.json')
 // eslint-disable-next-line no-process-env
-const GITHUB_TOKEN = process.env.GH_TOKEN as string
+const GH_TOKEN = process.env.GH_TOKEN as string
 
-if (!GITHUB_TOKEN) {
+if (!GH_TOKEN) {
   core.setFailed(
-    'GITHUB_TOKEN input is required. Set it as an action input or environment variable.',
+    'GH_TOKEN input is required. Set it as an action input or environment variable.',
   )
   process.exit(1)
 }
 
-const octokit = github.getOctokit(GITHUB_TOKEN)
+const octokit = github.getOctokit(GH_TOKEN)
 const {context} = github
 
 const getChangedFiles = async (): Promise<string[]> => {
