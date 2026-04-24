@@ -33,3 +33,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 With the command `make dev` you build the container locally and the local nginx.conf is synced to the container.
 By running the following command within the container you can load a modified nginx.conf: `nginx -s reload`.
+
+## Test
+
+This entry is to test Slack integration.
