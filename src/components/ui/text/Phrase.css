@@ -1,24 +1,24 @@
 .Phrase,
-.Phrase[data-color="default"] {
+.Phrase[data-color='default'] {
   color: var(--text-color-default);
 }
 
-.Phrase[data-color="error"] {
+.Phrase[data-color='error'] {
   color: var(--text-color-warning);
 }
 
-.Phrase[data-color="inverse"] {
+.Phrase[data-color='inverse'] {
   color: var(--text-color-inverse);
 }
 
-.Phrase[data-color="muted"] {
+.Phrase[data-color='muted'] {
   color: var(--text-color-muted);
 }
 
-.Phrase[data-emphasis="strong"] {
+.Phrase[data-emphasis='strong'] {
   font-weight: 700;
 }
 
-.Phrase[data-emphasis="italic"] {
+.Phrase[data-emphasis='italic'] {
   font-style: italic;
 }

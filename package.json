@@ -69,10 +69,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:bundle": "react-scripts build && node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
     "test-ci": "react-scripts test --coverage --reporters default --reporters jest-trx-results-processor",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "postinstall": "patch-package",
     "prepare": "husky install",
     "typescript": "npx tsc"

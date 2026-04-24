@@ -1,4 +1,4 @@
 .Draggable:hover,
-.Draggable[data-is-dragging="true"] {
+.Draggable[data-is-dragging='true'] {
   background-color: var(--bg-color-dragging);
 }

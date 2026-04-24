@@ -17,46 +17,46 @@
   border-width: var(--border-width);
 }
 
-.Button[data-variant="primary"] {
+.Button[data-variant='primary'] {
   --background-color: var(--bg-color-button);
   --border-color: var(--border-color-button-emphasis);
   --color: var(--text-color-inverse);
 }
 
-.Button[data-variant="primary"]:hover {
+.Button[data-variant='primary']:hover {
   --background-color: var(--bg-color-button-hover);
 }
 
-.Button[data-variant="primary"]:disabled {
+.Button[data-variant='primary']:disabled {
   --background-color: var(--bg-color-button-disabled);
   --border-color: var(--border-color-button-secondary-disabled);
 }
 
-.Button[data-variant="secondary"] {
+.Button[data-variant='secondary'] {
   --background-color: var(--bg-color-cutout);
   --border-color: var(--border-color-button-emphasis);
   --color: var(--text-color-button-secondary);
 }
 
-.Button[data-variant="secondary"]:hover {
+.Button[data-variant='secondary']:hover {
   --background-color: var(--bg-color-cutout);
   --border-color: var(--border-color-button-secondary-hover);
   --border-width: var(--size-border-xl);
   --color: var(--text-color-button-secondary-hover);
 }
 
-.Button[data-variant="secondary"]:disabled {
+.Button[data-variant='secondary']:disabled {
   --border-color: var(--border-color-button-secondary-disabled);
   --color: var(--text-color-button-secondary-disabled);
 }
 
-.Button[data-variant="tertiary"] {
+.Button[data-variant='tertiary'] {
   --background-color: transparent;
   --border-color: transparent;
   --color: var(--text-color-primary);
 }
 
-.Button[data-variant="tertiary"]:hover {
+.Button[data-variant='tertiary']:hover {
   --border-color: var(--border-color-button-tertiary-hover);
   --border-width: var(--size-border-lg);
 }
@@ -65,6 +65,6 @@
   cursor: not-allowed;
 }
 
-.Button[data-flex="true"] {
+.Button[data-flex='true'] {
   flex: 1;
 }
