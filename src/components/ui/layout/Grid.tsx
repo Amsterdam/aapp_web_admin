@@ -7,7 +7,9 @@ type GridProps = {
 }
 
 const Grid = ({children, numColumns}: GridProps) => (
-  <div className="Grid" data-fluid-columns={numColumns}>
+  <div
+    className="Grid"
+    data-fluid-columns={numColumns}>
     {children}
   </div>
 )

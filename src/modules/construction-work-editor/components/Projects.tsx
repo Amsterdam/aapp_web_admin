@@ -37,7 +37,12 @@ const Projects = () => {
     return <ErrorComponent message="Er zijn geen werkzaamheden gevonden." />
   }
 
-  return <ProjectsTable projects={projects} onRowClick={handleRowClick} />
+  return (
+    <ProjectsTable
+      projects={projects}
+      onRowClick={handleRowClick}
+    />
+  )
 }
 
 export default Projects

@@ -21,7 +21,10 @@ const CityPassAdminScreen = () => {
       <Column gutter="lg">
         <ScreenTitle title="Stadspas" />
         {!!didSetCookie && (
-          <Iframe src="/city-pass/admin" title="Stadspas admin" />
+          <Iframe
+            src="/city-pass/admin"
+            title="Stadspas admin"
+          />
         )}
       </Column>
     </Screen>

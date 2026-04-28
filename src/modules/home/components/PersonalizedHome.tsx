@@ -22,7 +22,9 @@ const ModulesByType = ({modules, type}: ModulesByTypeProps) => {
         {modules.map(
           ({HomeComponent, slug, title}) =>
             HomeComponent && (
-              <Column gutter="sm" key={slug}>
+              <Column
+                gutter="sm"
+                key={slug}>
                 <Phrase emphasis="strong">{title}</Phrase>
                 <HomeComponent />
               </Column>
@@ -61,7 +63,10 @@ const PersonalizedHome = () => {
         />
       )}
       {otherModules?.length > 0 && (
-        <ModulesByType modules={otherModules} type={ModuleType.other} />
+        <ModulesByType
+          modules={otherModules}
+          type={ModuleType.other}
+        />
       )}
     </Column>
   )

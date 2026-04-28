@@ -6,7 +6,9 @@ type Props = {
 }
 
 const ListItem = ({children}: Props) => (
-  <li className="ListItem" data-font="body">
+  <li
+    className="ListItem"
+    data-font="body">
     {children}
   </li>
 )

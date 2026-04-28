@@ -20,7 +20,12 @@ const WasteAdminScreen = () => {
     <Screen>
       <Column gutter="lg">
         <ScreenTitle title="A&G notificaties" />
-        {!!didSetCookie && <Iframe src="/waste/admin" title="A&G admin" />}
+        {!!didSetCookie && (
+          <Iframe
+            src="/waste/admin"
+            title="A&G admin"
+          />
+        )}
       </Column>
     </Screen>
   )

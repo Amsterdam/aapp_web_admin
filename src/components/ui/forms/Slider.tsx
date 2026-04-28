@@ -8,7 +8,10 @@ import './Slider.css'
 const Slider = forwardRef<SliderRef, SliderProps<number | number[]>>(
   (props, ref) => (
     <div className="Slider">
-      <RcSlider {...props} ref={ref} />
+      <RcSlider
+        {...props}
+        ref={ref}
+      />
     </div>
   ),
 )

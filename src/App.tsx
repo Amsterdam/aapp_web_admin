@@ -14,7 +14,9 @@ import '@amsterdam/design-system-tokens/dist/index.css'
 
 const router = createBrowserRouter(
   [{element: <ProtectedRoutes />, children: routes}],
-  {basename: BASE_ROUTE},
+  {
+    basename: BASE_ROUTE,
+  },
 )
 
 type Props = {

@@ -17,7 +17,12 @@ const errorMessageNotAuthorized =
   'Je hebt geen rechten om deze pagina te bekijken.'
 
 const ErrorUnauthorized = () => {
-  return <ErrorComponent message={errorMessageNotAuthorized} withHomeButton />
+  return (
+    <ErrorComponent
+      message={errorMessageNotAuthorized}
+      withHomeButton
+    />
+  )
 }
 
 const Screen = ({children, requireLogin = true}: Props) => {
@@ -32,7 +37,9 @@ const Screen = ({children, requireLogin = true}: Props) => {
       <div className="Container">
         <Column gutter="xl">
           <header>
-            <Row align="between" valign="start">
+            <Row
+              align="between"
+              valign="start">
               <Logo />
               <LogoutButton />
             </Row>

@@ -33,7 +33,9 @@ const Button = ({
     // eslint-disable-next-line react/button-has-type
     type={type}
     {...buttonProps}>
-    <Row gutter="sm" valign="center">
+    <Row
+      gutter="sm"
+      valign="center">
       {icon}
       {!!label && <span data-font="body">{label}</span>}
     </Row>

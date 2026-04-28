@@ -21,7 +21,10 @@ const ContactAdminScreen = () => {
       <Column gutter="lg">
         <ScreenTitle title="Contact" />
         {!!didSetCookie && (
-          <Iframe src="/contact/admin" title="Contact admin" />
+          <Iframe
+            src="/contact/admin"
+            title="Contact admin"
+          />
         )}
       </Column>
     </Screen>

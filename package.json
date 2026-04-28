@@ -3,6 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "/beheer/",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:bundle": "GENERATE_SOURCEMAP=false react-scripts build && node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
+    "test-ci": "react-scripts test --coverage --reporters default --reporters jest-trx-results-processor",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt",
+    "postinstall": "patch-package",
+    "prepare": "husky install",
+    "typescript": "npx tsc"
+  },
   "dependencies": {
     "@amsterdam/design-system-assets": "^0.2.2",
     "@amsterdam/design-system-css": "^0.13.1",
@@ -39,7 +54,7 @@
     "@types/lodash.capitalize": "^4.2.9",
     "@types/lodash.isequal": "^4.5.8",
     "@types/lodash.uniqueid": "^4.0.9",
-    "@types/node": "^20.11.13",
+    "@types/node": "^24.12.2",
     "@types/react": "^18.2.48",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.18",
@@ -60,31 +75,10 @@
     "husky": "^8.0.3",
     "jest-trx-results-processor": "^3.0.2",
     "lint-staged": "^15.2.4",
+    "oxfmt": "^0.47.0",
     "patch-package": "^8.0.1",
-    "prettier": "^2.8.8",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:bundle": "GENERATE_SOURCEMAP=false react-scripts build && node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
-    "test-ci": "react-scripts test --coverage --reporters default --reporters jest-trx-results-processor",
-    "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --check .",
-    "format:fix": "prettier --write .",
-    "postinstall": "patch-package",
-    "prepare": "husky install",
-    "typescript": "npx tsc"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -98,6 +92,12 @@
       "last 1 safari version"
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "jest": {
     "coverageReporters": [
       "cobertura",
@@ -105,11 +105,11 @@
       "json"
     ]
   },
+  "volta": {
+    "node": "24.15.0"
+  },
   "proxy": "https://ontw.app.amsterdam.nl/",
-  "proxyAzureTest": "https://test.app.amsterdam.nl/",
   "proxyAzureAcc": "https://acc.app.amsterdam.nl/",
   "proxyAzureProd": "https://app.amsterdam.nl/",
-  "volta": {
-    "node": "20.11.0"
-  }
+  "proxyAzureTest": "https://test.app.amsterdam.nl/"
 }

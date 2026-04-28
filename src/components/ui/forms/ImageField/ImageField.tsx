@@ -45,7 +45,9 @@ const ImageField = ({
   })
 
   return (
-    <div className="ImageField" style={{width: `${outputWidth}px`}}>
+    <div
+      className="ImageField"
+      style={{width: `${outputWidth}px`}}>
       <Controller
         defaultValue={src}
         name={name}

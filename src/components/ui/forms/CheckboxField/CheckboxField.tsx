@@ -28,9 +28,15 @@ const CheckboxField = ({isGroupFormField, label, name}: Props) => {
   }
 
   return (
-    <Column gutter="sm" halign="start">
-      <label className="CheckboxField" htmlFor={label}>
-        <Row gutter="sm" valign="center">
+    <Column
+      gutter="sm"
+      halign="start">
+      <label
+        className="CheckboxField"
+        htmlFor={label}>
+        <Row
+          gutter="sm"
+          valign="center">
           <input
             {...rest}
             hidden

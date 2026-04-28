@@ -25,7 +25,9 @@ const BackToPublishersButton = () => {
     <div
       className="StickToBottom"
       data-hidden={scrollPosition < START_SCROLL_POSITION}>
-      <Box flex flexContainer>
+      <Box
+        flex
+        flexContainer>
         <NavigationButton
           data-flex
           label="Ga terug naar publishers"

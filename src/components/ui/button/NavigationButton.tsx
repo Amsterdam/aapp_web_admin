@@ -11,7 +11,12 @@ type Props<T> = Omit<ButtonProps, 'onClick'> & {
 const NavigationButton = <T,>({url, params, ...buttonProps}: Props<T>) => {
   const navigate = useNavigate()
 
-  return <Button onClick={() => navigate(url, params)} {...buttonProps} />
+  return (
+    <Button
+      onClick={() => navigate(url, params)}
+      {...buttonProps}
+    />
+  )
 }
 
 export default NavigationButton
