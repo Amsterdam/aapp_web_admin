@@ -55,7 +55,7 @@ jobs:
             done
 
       - name: Annotate PR with uncovered lines
-        run: npm exec -- tsx nodescripts/coverage-pr-annotations.mts
+        run: node nodescripts/coverage-pr-annotations.mts
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -88,5 +88,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run react-native bundle
+      - name: Run bundle
         run: npm run test:bundle

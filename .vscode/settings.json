@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "*.yml": "azure-pipelines"
+    "*.yml": "github-actions-workflow"
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
