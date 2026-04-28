@@ -1,9 +1,8 @@
 .List {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
-[data-list-marker="true"] {
+[data-list-marker='true'] {
   margin-inline-start: var(--size-spacing-md);
 }
-

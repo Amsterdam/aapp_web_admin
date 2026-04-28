@@ -51,7 +51,9 @@ const ImageCrop = ({
   return (
     <div className="ImageCrop">
       <Column gutter="sm">
-        <div className="ImageCropImage" style={{aspectRatio}}>
+        <div
+          className="ImageCropImage"
+          style={{aspectRatio}}>
           <Cropper
             cropSize={{width: outputWidth, height: outputWidth / aspectRatio}}
             image={src}
@@ -65,7 +67,9 @@ const ImageCrop = ({
             showGrid={false}
           />
         </div>
-        <Row valign="center" gutter="md">
+        <Row
+          valign="center"
+          gutter="md">
           <Slider
             min={ZOOM_SLIDER_MIN}
             max={ZOOM_SLIDER_MAX}

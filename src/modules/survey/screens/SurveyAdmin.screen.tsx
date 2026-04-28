@@ -21,7 +21,10 @@ const SurveyAdminScreen = () => {
       <Column gutter="lg">
         <ScreenTitle title="Vragenlijsten" />
         {!!didSetCookie && (
-          <Iframe src="/survey/admin" title="Vragenlijsten admin" />
+          <Iframe
+            src="/survey/admin"
+            title="Vragenlijsten admin"
+          />
         )}
       </Column>
     </Screen>

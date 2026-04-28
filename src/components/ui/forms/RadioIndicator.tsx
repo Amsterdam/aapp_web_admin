@@ -12,8 +12,18 @@ const RadioIndicator = ({checked, hasError}: RadioIndicatorProps) => (
     height={24}
     viewBox="0 0 24 24"
     width={24}>
-    <circle cx={12} cy={12} r={11} />
-    {!!checked && <circle cx={12} cy={12} r={8} />}
+    <circle
+      cx={12}
+      cy={12}
+      r={11}
+    />
+    {!!checked && (
+      <circle
+        cx={12}
+        cy={12}
+        r={8}
+      />
+    )}
   </svg>
 )
 

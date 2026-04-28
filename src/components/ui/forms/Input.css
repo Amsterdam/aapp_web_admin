@@ -13,6 +13,6 @@
   --border-width: var(--input-focus-border-width);
 }
 
-.Input[data-has-error="true"] {
+.Input[data-has-error='true'] {
   --border-color: var(--border-color-warning);
 }

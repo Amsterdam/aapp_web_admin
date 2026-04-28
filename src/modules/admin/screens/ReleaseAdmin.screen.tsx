@@ -21,7 +21,10 @@ const ReleaseAdminScreen = () => {
       <Column gutter="lg">
         <ScreenTitle title="App Release" />
         {!!didSetCookie && (
-          <Iframe src="/modules/admin" title="Release admin" />
+          <Iframe
+            src="/modules/admin"
+            title="Release admin"
+          />
         )}
       </Column>
     </Screen>

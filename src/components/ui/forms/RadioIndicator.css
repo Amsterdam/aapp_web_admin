@@ -2,7 +2,7 @@
   --color: var(--border-color-pressable);
 }
 
-.RadioIndicator[data-has-error="true"] {
+.RadioIndicator[data-has-error='true'] {
   --color: var(--border-color-warning);
 }
 

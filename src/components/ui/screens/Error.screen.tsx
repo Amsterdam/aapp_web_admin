@@ -10,7 +10,10 @@ type Props = {
 const ErrorScreen = ({message, withHomeButton}: Props) => (
   <Screen requireLogin={false}>
     <Column gutter="xl">
-      <ErrorComponent message={message} withHomeButton={withHomeButton} />
+      <ErrorComponent
+        message={message}
+        withHomeButton={withHomeButton}
+      />
     </Column>
   </Screen>
 )

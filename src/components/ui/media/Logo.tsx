@@ -6,7 +6,11 @@ import './Logo.css'
 const Logo = () => (
   <Row align="start">
     <BlockLink to="/">
-      <img alt="Gemeente Amsterdam" className="Logo" src={LogoImage} />
+      <img
+        alt="Gemeente Amsterdam"
+        className="Logo"
+        src={LogoImage}
+      />
     </BlockLink>
   </Row>
 )

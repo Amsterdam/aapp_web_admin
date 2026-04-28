@@ -36,11 +36,16 @@ const TextField = ({
       name={name}
       render={({field: {onChange, value}, fieldState: {error}}) => (
         <Column gutter="sm">
-          <label className="TextFieldLabel" data-width={width} htmlFor={id}>
+          <label
+            className="TextFieldLabel"
+            data-width={width}
+            htmlFor={id}>
             <Column gutter="sm">
               <Phrase color="muted">{label}</Phrase>
               {!!description && (
-                <Phrase color="muted" emphasis="italic">
+                <Phrase
+                  color="muted"
+                  emphasis="italic">
                   {description}
                 </Phrase>
               )}
@@ -55,7 +60,10 @@ const TextField = ({
               />
             </Column>
           </label>
-          <CharactersLeftDisplay maxLength={maxLength} value={value} />
+          <CharactersLeftDisplay
+            maxLength={maxLength}
+            value={value}
+          />
           {!!error && <Phrase color="error">{error.message}</Phrase>}
         </Column>
       )}

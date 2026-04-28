@@ -30,7 +30,11 @@ const Article = ({id, projectId}: Props) => {
 
   return (
     <Column gutter="md">
-      <ArticleForm article={article} id={id} projectId={projectId} />
+      <ArticleForm
+        article={article}
+        id={id}
+        projectId={projectId}
+      />
       {!isNewArticle && !!id && !!projectId && (
         <RemoveProjectWarning
           id={id}

@@ -3,7 +3,7 @@
   --color: var(--border-color-pressable);
 }
 
-.CheckboxIndicator[data-checked="true"] {
+.CheckboxIndicator[data-checked='true'] {
   --bg-color: var(--border-color-pressable);
   --color: var(--bg-color-cutout);
 }

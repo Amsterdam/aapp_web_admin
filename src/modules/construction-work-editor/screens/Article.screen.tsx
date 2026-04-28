@@ -28,7 +28,10 @@ const ArticleScreen = () => {
             />
           )
         )}
-        <Article id={Number(id)} projectId={projectId} />
+        <Article
+          id={Number(id)}
+          projectId={projectId}
+        />
       </Column>
     </Screen>
   )

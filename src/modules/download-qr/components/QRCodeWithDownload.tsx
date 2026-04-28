@@ -49,10 +49,19 @@ const QRCodeWithDownload = ({value, fileName}: Props) => {
 
   return (
     <Column gutter="md">
-      <QRCode value={value} ref={qrCodeRef} />
+      <QRCode
+        value={value}
+        ref={qrCodeRef}
+      />
       <Row gutter="md">
-        <Button label="Download PNG" onClick={onPngPress} />
-        <Button label="Download SVG" onClick={onSvgPress} />
+        <Button
+          label="Download PNG"
+          onClick={onPngPress}
+        />
+        <Button
+          label="Download SVG"
+          onClick={onSvgPress}
+        />
       </Row>
     </Column>
   )

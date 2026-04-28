@@ -31,7 +31,10 @@ const Table = <T extends object>(props: TableProps<T>) => {
         />
       )}
       <DesignSystemTable className="Table">
-        <TableHeader config={config} selectable={selectable} />
+        <TableHeader
+          config={config}
+          selectable={selectable}
+        />
         <DesignSystemTable.Body>
           {data.map(obj => (
             <TableRow

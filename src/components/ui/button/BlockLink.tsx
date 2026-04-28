@@ -8,7 +8,9 @@ type Props = {
 }
 
 const BlockLink = ({children, to}: Props) => (
-  <Link className="BlockLink" to={to}>
+  <Link
+    className="BlockLink"
+    to={to}>
     {children}
   </Link>
 )

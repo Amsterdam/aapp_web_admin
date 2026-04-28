@@ -122,9 +122,8 @@ const useSubmitArticle = ({dirtyFields, id, projectId, imageId}: Params) => {
 
           formData.append('description', description)
           // eslint-disable-next-line camelcase
-          const {warning_image_id} = await addProjectWarningImage(
-            formData,
-          ).unwrap()
+          const {warning_image_id} =
+            await addProjectWarningImage(formData).unwrap()
           // eslint-disable-next-line camelcase
           newImageId = warning_image_id
         }

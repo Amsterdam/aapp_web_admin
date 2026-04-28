@@ -13,7 +13,11 @@ type Props = {
 
 const ImageDisplay = ({alt = '', aspectRatio, onDelete, src}: Props) => (
   <figure className="ImageDisplay">
-    <img alt={alt} src={src} style={{aspectRatio}} />
+    <img
+      alt={alt}
+      src={src}
+      style={{aspectRatio}}
+    />
     {!!onDelete && (
       <Button
         className="ImageDisplayDeleteButton"

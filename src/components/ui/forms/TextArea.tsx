@@ -33,7 +33,10 @@ const TextArea = ({
       name={name}
       render={({field: {onChange, value}, fieldState: {error}}) => (
         <Column gutter="sm">
-          <label className="TextAreaLabel" data-width={width} htmlFor={id}>
+          <label
+            className="TextAreaLabel"
+            data-width={width}
+            htmlFor={id}>
             <Column gutter="sm">
               <Phrase color="muted">{label}</Phrase>
               <textarea
@@ -48,7 +51,10 @@ const TextArea = ({
               />
             </Column>
           </label>
-          <CharactersLeftDisplay maxLength={maxLength} value={value} />
+          <CharactersLeftDisplay
+            maxLength={maxLength}
+            value={value}
+          />
           {!!error && <Phrase color="error">{error.message}</Phrase>}
         </Column>
       )}
