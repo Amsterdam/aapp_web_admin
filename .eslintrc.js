@@ -30,6 +30,22 @@ module.exports = {
   ],
   rules: {
     semi: ['error', 'never'],
+    'object-curly-spacing': 'off',
+    'object-curly-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'function-paren-newline': 'off',
+    'arrow-parens': 'off',
+    'operator-linebreak': 'off',
+    'arrow-body-style': 'off',
+    'no-confusing-arrow': 'off',
+    'comma-spacing': 'off',
+    indent: 'off',
+    quotes: 'off',
+    'react/jsx-closing-bracket-location': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-curly-newline': 'off',
+    'react/jsx-wrap-multilines': 'off',
+    'react/jsx-closing-tag-location': 'off',
     'max-len': [
       'error',
       {
