@@ -10,7 +10,6 @@ module.exports = {
     'airbnb',
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:prettier/recommended',
     'plugin:react/jsx-runtime',
   ],
   ignorePatterns: ['node_modules/', 'build/', 'dist/'],
@@ -30,7 +29,7 @@ module.exports = {
     'prefer-arrow-functions',
   ],
   rules: {
-    'prettier/prettier': 'warn',
+    semi: ['error', 'never'],
     'max-len': [
       'error',
       {
