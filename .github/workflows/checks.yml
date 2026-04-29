@@ -89,4 +89,4 @@ jobs:
         run: npm ci
 
       - name: Run bundle
-        run: npm run test:bundle
+        run: npm run build
