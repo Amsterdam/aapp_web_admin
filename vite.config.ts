@@ -22,7 +22,7 @@ export default defineConfig({
     strictPort: true,
     open: '/beheer',
     proxy: {
-      '/': {
+      '^/(?!beheer(?:/|$)).*': {
         target: 'https://ontw.app.amsterdam.nl',
         changeOrigin: true,
         secure: true,

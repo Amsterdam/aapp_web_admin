@@ -11,13 +11,22 @@ type Props = {
   value: FieldPathValue<FieldValues, FieldPath<FieldValues>>
 }
 
-const Input = ({hasError, id, maxLength, onChange, type, value}: Props) => (
+const Input = ({
+  hasError,
+  id,
+  maxLength,
+  name,
+  onChange,
+  type,
+  value,
+}: Props) => (
   <input
     className="Input"
     data-font="body"
     data-has-error={hasError}
     id={id}
     maxLength={maxLength}
+    name={name}
     onChange={onChange}
     type={type}
     value={value}
