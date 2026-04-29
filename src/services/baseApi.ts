@@ -9,8 +9,7 @@ import {loginRequest} from '@/authentication/authConfig'
 import {msalInstance} from '@/index'
 import {ApiDirectory} from './types'
 
-const API_KEY = import.meta.env.VITE_API_KEY
-
+const API_KEY = import.meta.env.VITE_API_KEY as string | undefined
 const baseQuery: BaseQueryFn<
   FetchArgs & {directory: ApiDirectory},
   unknown,

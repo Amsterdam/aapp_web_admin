@@ -8,8 +8,8 @@
     "build": "vite build",
     "test": "jest",
     "test-ci": "jest --coverage --reporters default --reporters jest-trx-results-processor",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
     "format": "oxfmt --check",
     "format:fix": "oxfmt",
     "postinstall": "patch-package",
@@ -23,6 +23,7 @@
     "@amsterdam/design-system-tokens": "^0.13.0",
     "@azure/msal-browser": "^3.7.1",
     "@azure/msal-react": "^2.0.10",
+    "@eslint/compat": "^2.0.5",
     "@reduxjs/toolkit": "^2.1.0",
     "@sentry/react": "^7.120.4",
     "html-to-image": "^1.11.11",
@@ -57,24 +58,18 @@
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.18",
     "@types/swagger-ui-react": "^4.18.3",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^8.56.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-jsx-expressions": "github:oberonamsterdam/eslint-plugin-jsx-expressions",
-    "eslint-plugin-prefer-arrow-functions": "^3.2.4",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
     "jest-trx-results-processor": "^3.0.2",
     "lint-staged": "^15.2.4",
     "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
     "patch-package": "^8.0.1",
-    "typescript": "^4.9.5",
+    "ts-jest": "^29.4.9",
+    "typescript": "^5.9.3",
     "vite": "^8.0.10",
     "vite-tsconfig-paths": "^6.1.1"
   },
@@ -91,8 +86,19 @@
     ]
   },
   "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(ts|tsx|js|jsx)$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.json"
+        }
+      ]
+    },
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "\\.(gif|png|jpg|jpeg|svg|eot|otf|ttf|woff|woff2)$": "<rootDir>/src/__mocks__/fileMock.ts"
     },
     "coverageReporters": [
       "cobertura",
