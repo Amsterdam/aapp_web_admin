@@ -894,7 +894,7 @@
             "patterns": [
               {
                 "group": ["../*"],
-                "message": "Barrelfile imports should stats with './' or '@/'"
+                "message": "Barrelfile imports should start with './' or '@/'"
               }
             ],
             "paths": [
