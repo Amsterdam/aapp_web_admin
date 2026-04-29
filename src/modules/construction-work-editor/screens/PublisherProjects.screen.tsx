@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom'
-import Screen from 'components/ui/layout/Screen'
+import Screen from '@/components/ui/layout/Screen'
 import BackToPublishersButton from '../components/Publisher/BackToPublishersButton'
 import EditPublisherProjects from '../components/Publisher/EditPublisherProjects'
 

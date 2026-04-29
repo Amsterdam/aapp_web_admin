@@ -5,8 +5,8 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
-import {loginRequest} from 'authentication/authConfig'
-import {msalInstance} from 'index'
+import {loginRequest} from '@/authentication/authConfig'
+import {msalInstance} from '@/index'
 import {ApiDirectory} from './types'
 
 const API_KEY = import.meta.env.VITE_API_KEY

@@ -1,9 +1,9 @@
 import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
-import CheckboxToggle from 'components/ui/forms/CheckboxField/CheckboxToggle'
-import {defaultRenderer} from 'components/ui/table/utils'
-import type {TableRowProps} from 'components/ui/table/types'
-import 'components/ui/button/BlockLink.css'
-import 'components/ui/table/TableRow.css'
+import CheckboxToggle from '@/components/ui/forms/CheckboxField/CheckboxToggle'
+import {defaultRenderer} from '@/components/ui/table/utils'
+import type {TableRowProps} from '@/components/ui/table/types'
+import '@/components/ui/button/BlockLink.css'
+import '@/components/ui/table/TableRow.css'
 
 const TableRow = <T extends object>({
   config,

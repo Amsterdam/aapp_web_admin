@@ -1,7 +1,7 @@
-import SwaggerHome from 'modules/swagger/components/SwaggerHome'
-import {allowedAzureRoles} from 'modules/swagger/constants'
-import {routes} from 'modules/swagger/routes'
-import {ModuleSlug, ModuleType, type Module} from 'modules/types'
+import SwaggerHome from '@/modules/swagger/components/SwaggerHome'
+import {allowedAzureRoles} from '@/modules/swagger/constants'
+import {routes} from '@/modules/swagger/routes'
+import {ModuleSlug, ModuleType, type Module} from '@/modules/types'
 
 export const swaggerModule: Module = {
   allowedAzureRoles,

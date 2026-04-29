@@ -1,5 +1,5 @@
-import Button from 'components/ui/button/Button'
-import Icon from 'components/ui/media/Icon'
+import Button from '@/components/ui/button/Button'
+import Icon from '@/components/ui/media/Icon'
 import 'react-image-upload/dist/index.css'
 
 import './ImageDisplay.css'

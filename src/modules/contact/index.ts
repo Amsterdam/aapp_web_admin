@@ -1,7 +1,7 @@
-import ContactAdminHomeButton from 'modules/contact/components/ContactAdminHomeButton'
-import {allowedAzureRoles} from 'modules/contact/constants'
-import {routes} from 'modules/contact/routes'
-import {ModuleSlug, ModuleType, type Module} from 'modules/types'
+import ContactAdminHomeButton from '@/modules/contact/components/ContactAdminHomeButton'
+import {allowedAzureRoles} from '@/modules/contact/constants'
+import {routes} from '@/modules/contact/routes'
+import {ModuleSlug, ModuleType, type Module} from '@/modules/types'
 
 export const contactModule: Module = {
   allowedAzureRoles,

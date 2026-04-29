@@ -1,8 +1,8 @@
 import {useMemo} from 'react'
-import useAuthorizedModules from 'authentication/hooks/useAuthorizedModules'
-import Column from 'components/ui/layout/Column'
-import Phrase from 'components/ui/text/Phrase'
-import {Module, ModuleType} from 'modules/types'
+import useAuthorizedModules from '@/authentication/hooks/useAuthorizedModules'
+import Column from '@/components/ui/layout/Column'
+import Phrase from '@/components/ui/text/Phrase'
+import {Module, ModuleType} from '@/modules/types'
 
 type ModulesByTypeProps = {
   modules: Module[]

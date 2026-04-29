@@ -1,8 +1,8 @@
 import {useMemo} from 'react'
-import {AzureRoles} from 'authentication/constants'
-import useGetDecodedAccessToken from 'authentication/hooks/useGetDecodedAccessToken'
-import {AzureRole} from 'authentication/types'
-import {environment} from 'utils/environment'
+import {AzureRoles} from '@/authentication/constants'
+import useGetDecodedAccessToken from '@/authentication/hooks/useGetDecodedAccessToken'
+import {AzureRole} from '@/authentication/types'
+import {environment} from '@/utils/environment'
 
 const useGetAuthorizedRoles = () => {
   const decodedToken = useGetDecodedAccessToken()

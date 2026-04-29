@@ -1,5 +1,5 @@
 import ImageUploader from 'react-image-upload'
-import Icon from 'components/ui/media/Icon'
+import Icon from '@/components/ui/media/Icon'
 import 'react-image-upload/dist/index.css'
 
 import './ImageUpload.css'

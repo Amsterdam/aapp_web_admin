@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react'
-import NavigationButton from 'components/ui/button/NavigationButton'
-import Box from 'components/ui/layout/Box'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
-import 'modules/construction-work-editor/components/Publisher/BackToPublishersButton.css'
+import NavigationButton from '@/components/ui/button/NavigationButton'
+import Box from '@/components/ui/layout/Box'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
+import '@/modules/construction-work-editor/components/Publisher/BackToPublishersButton.css'
 
 const START_SCROLL_POSITION = 100
 

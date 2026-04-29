@@ -1,5 +1,5 @@
-import {AzureRole} from 'authentication/types'
-import {Environment} from 'utils/environment'
+import {AzureRole} from '@/authentication/types'
+import {Environment} from '@/utils/environment'
 
 /**
  * Azure Entra ID role for each environment

@@ -1,6 +1,6 @@
 import {useMsal} from '@azure/msal-react'
 import {useState, useEffect} from 'react'
-import {currentClientId} from 'utils/environment'
+import {currentClientId} from '@/utils/environment'
 
 export const useAccessToken = () => {
   const {accounts, instance} = useMsal()

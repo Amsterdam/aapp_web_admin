@@ -1,13 +1,13 @@
 import {RouteObject} from 'react-router-dom'
-import {AzureRole} from 'authentication/types'
-import constructionWorkEditorModule from 'modules/construction-work-editor'
-import ArticleScreen from 'modules/construction-work-editor/screens/Article.screen'
-import ProjectScreen from 'modules/construction-work-editor/screens/Project.screen'
-import ProjectsScreen from 'modules/construction-work-editor/screens/Projects.screen'
-import PublisherScreen from 'modules/construction-work-editor/screens/Publisher.screen'
-import PublisherProjectsScreen from 'modules/construction-work-editor/screens/PublisherProjects.screen'
-import PublishersScreen from 'modules/construction-work-editor/screens/Publishers.screen'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import {AzureRole} from '@/authentication/types'
+import constructionWorkEditorModule from '@/modules/construction-work-editor'
+import ArticleScreen from '@/modules/construction-work-editor/screens/Article.screen'
+import ProjectScreen from '@/modules/construction-work-editor/screens/Project.screen'
+import ProjectsScreen from '@/modules/construction-work-editor/screens/Projects.screen'
+import PublisherScreen from '@/modules/construction-work-editor/screens/Publisher.screen'
+import PublisherProjectsScreen from '@/modules/construction-work-editor/screens/PublisherProjects.screen'
+import PublishersScreen from '@/modules/construction-work-editor/screens/Publishers.screen'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
 
 const loader = () => constructionWorkEditorModule.allowedAzureRoles
 const loaderEditor = () => [

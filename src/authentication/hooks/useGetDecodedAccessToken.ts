@@ -1,8 +1,8 @@
 import {useMsal} from '@azure/msal-react'
 import {jwtDecode} from 'jwt-decode'
 import {useEffect, useState} from 'react'
-import {DecodedJWTToken} from 'authentication/types'
-import {currentClientId} from 'utils/environment'
+import {DecodedJWTToken} from '@/authentication/types'
+import {currentClientId} from '@/utils/environment'
 
 const useGetDecodedAccessToken = () => {
   const {accounts, instance} = useMsal()

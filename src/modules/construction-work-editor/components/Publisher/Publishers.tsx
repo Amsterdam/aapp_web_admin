@@ -1,10 +1,10 @@
 import {useCallback, useMemo} from 'react'
-import NavigationButton from 'components/ui/button/NavigationButton'
-import useNavigate from 'hooks/useNavigate'
-import {useGetPublishersQuery} from 'modules/construction-work-editor/services/publishers'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import NavigationButton from '@/components/ui/button/NavigationButton'
+import useNavigate from '@/hooks/useNavigate'
+import {useGetPublishersQuery} from '@/modules/construction-work-editor/services/publishers'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
 import PublishersTable from './PublishersTable'
-import type {Publisher} from 'modules/construction-work-editor/types/publisher'
+import type {Publisher} from '@/modules/construction-work-editor/types/publisher'
 
 const Publishers = () => {
   const navigate = useNavigate()

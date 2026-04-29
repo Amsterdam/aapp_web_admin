@@ -1,9 +1,9 @@
 import uniqueId from 'lodash.uniqueid'
 import {HTMLProps} from 'react'
 import {Controller, UseControllerProps} from 'react-hook-form'
-import Input from 'components/ui/forms/Input'
-import Column from 'components/ui/layout/Column'
-import Phrase from 'components/ui/text/Phrase'
+import Input from '@/components/ui/forms/Input'
+import Column from '@/components/ui/layout/Column'
+import Phrase from '@/components/ui/text/Phrase'
 import './TextField.css'
 import CharactersLeftDisplay from './CharactersLeftDisplay'
 

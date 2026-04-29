@@ -1,9 +1,9 @@
 import {toPng} from 'html-to-image'
 import {useCallback, useRef} from 'react'
 import QRCode from 'react-qr-code'
-import Button from 'components/ui/button/Button'
-import Column from 'components/ui/layout/Column'
-import Row from 'components/ui/layout/Row'
+import Button from '@/components/ui/button/Button'
+import Column from '@/components/ui/layout/Column'
+import Row from '@/components/ui/layout/Row'
 
 type Props = {
   value: string

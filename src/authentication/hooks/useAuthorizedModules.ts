@@ -1,6 +1,6 @@
 import {useMemo} from 'react'
-import useGetAuthorizedRoles from 'authentication/hooks/useGetAuthorizedRoles'
-import modules from 'modules'
+import useGetAuthorizedRoles from '@/authentication/hooks/useGetAuthorizedRoles'
+import modules from '@/modules'
 
 /**
  * Returns the modules that the user is authorized to see.

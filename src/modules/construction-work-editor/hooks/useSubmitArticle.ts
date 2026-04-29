@@ -1,13 +1,13 @@
 import {useCallback, useState} from 'react'
-import useNavigate from 'hooks/useNavigate'
-import {ArticleFormData} from 'modules/construction-work-editor/components/Article/ArticleForm'
+import useNavigate from '@/hooks/useNavigate'
+import {ArticleFormData} from '@/modules/construction-work-editor/components/Article/ArticleForm'
 import {
   useAddProjectWarningImageMutation,
   useAddProjectWarningMutation,
   useEditProjectWarningMutation,
-} from 'modules/construction-work-editor/services/articles'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
-import {escapeHtml} from 'utils/escapeHtml'
+} from '@/modules/construction-work-editor/services/articles'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
+import {escapeHtml} from '@/utils/escapeHtml'
 
 type RequestBodyBase = {
   body: string

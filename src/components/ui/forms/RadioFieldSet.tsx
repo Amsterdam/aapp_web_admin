@@ -1,7 +1,7 @@
 import {UseControllerProps, useFormState} from 'react-hook-form'
-import RadioField from 'components/ui/forms/RadioField'
-import Column from 'components/ui/layout/Column'
-import Phrase from 'components/ui/text/Phrase'
+import RadioField from '@/components/ui/forms/RadioField'
+import Column from '@/components/ui/layout/Column'
+import Phrase from '@/components/ui/text/Phrase'
 
 type RadioGroupProps = {
   label: string

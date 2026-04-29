@@ -1,6 +1,6 @@
 import {Configuration, SilentRequest} from '@azure/msal-browser'
 
-import {currentClientId, currentRedirectUri} from 'utils/environment'
+import {currentClientId, currentRedirectUri} from '@/utils/environment'
 
 export const msalConfig: Configuration = {
   auth: {

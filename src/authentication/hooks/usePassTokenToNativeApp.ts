@@ -1,6 +1,6 @@
 import {useAccount, useMsal} from '@azure/msal-react'
 import {useEffect} from 'react'
-import {loginRequest} from 'authentication/authConfig'
+import {loginRequest} from '@/authentication/authConfig'
 
 declare const window: Window &
   typeof globalThis & {

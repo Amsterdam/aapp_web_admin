@@ -1,6 +1,6 @@
 import {useParams} from 'react-router-dom'
-import Screen from 'components/ui/layout/Screen'
-import Project from 'modules/construction-work-editor/components/Project'
+import Screen from '@/components/ui/layout/Screen'
+import Project from '@/modules/construction-work-editor/components/Project'
 
 type Params = {
   projectId: string

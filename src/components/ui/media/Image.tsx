@@ -1,4 +1,4 @@
-import type {ApiImage} from 'modules/construction-work-editor/types/image'
+import type {ApiImage} from '@/modules/construction-work-editor/types/image'
 
 enum ImageVariant {
   table = 'table',

@@ -1,5 +1,5 @@
 import {Table as DesignSystemTable} from '@amsterdam/design-system-react'
-import type {TableHeaderProps} from 'components/ui/table/types'
+import type {TableHeaderProps} from '@/components/ui/table/types'
 
 const TableHeader = <T extends object>({
   config,

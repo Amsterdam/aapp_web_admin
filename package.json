@@ -91,6 +91,9 @@
     ]
   },
   "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
     "coverageReporters": [
       "cobertura",
       "json-summary",

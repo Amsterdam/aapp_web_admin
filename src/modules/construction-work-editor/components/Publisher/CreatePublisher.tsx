@@ -1,9 +1,9 @@
 import {Paragraph} from '@amsterdam/design-system-react'
-import NavigationButton from 'components/ui/button/NavigationButton'
-import Column from 'components/ui/layout/Column'
-import ScreenTitle from 'components/ui/text/ScreenTitle'
-import PublisherForm from 'modules/construction-work-editor/components/Publisher/PublisherForm'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import NavigationButton from '@/components/ui/button/NavigationButton'
+import Column from '@/components/ui/layout/Column'
+import ScreenTitle from '@/components/ui/text/ScreenTitle'
+import PublisherForm from '@/modules/construction-work-editor/components/Publisher/PublisherForm'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
 
 const CreatePublisher = () => (
   <Column gutter="lg">

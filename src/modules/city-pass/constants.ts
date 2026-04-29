@@ -1,4 +1,4 @@
-import {AzureRole} from 'authentication/types'
+import {AzureRole} from '@/authentication/types'
 
 export const allowedAzureRoles = [
   AzureRole.cityPassPublisher,

@@ -1,4 +1,4 @@
-import dateToNumber from 'utils/dateToNumber'
+import dateToNumber from '@/utils/dateToNumber'
 
 describe('dateToNumber', () => {
   it('should return correct timestamp for valid date string in YYYY-MM-DD format', () => {
