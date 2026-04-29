@@ -1,8 +1,7 @@
-// To fix the typing of the application insights npm package
-// Open PR: https://github.com/microsoft/applicationinsights-react-native/pull/50
-// When this PR is merged and this package is updated then this can be removed
-import fs from 'fs'
-import path from 'path'
+// oxlint-disable no-console
+// To fix the typing of the react-image-upload npm package
+import fs from 'node:fs'
+import path from 'node:path'
 
 // Path to the JSON filea
 const filePath = path.join(

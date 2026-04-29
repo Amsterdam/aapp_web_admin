@@ -46,10 +46,12 @@
   "devDependencies": {
     "@actions/core": "^3.0.1",
     "@actions/github": "^9.1.1",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-typescript": "^7.28.5",
     "@testing-library/jest-dom": "^6.4.0",
     "@testing-library/react": "^14.2.0",
     "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^29.5.11",
+    "@types/jest": "^30.0.0",
     "@types/lodash.capitalize": "^4.2.9",
     "@types/lodash.isequal": "^4.5.8",
     "@types/lodash.uniqueid": "^4.0.9",
@@ -68,8 +70,7 @@
     "oxfmt": "^0.47.0",
     "oxlint": "^1.62.0",
     "patch-package": "^8.0.1",
-    "ts-jest": "^29.4.9",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "vite": "^8.0.10",
     "vite-tsconfig-paths": "^6.1.1"
   },
@@ -83,27 +84,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.(ts|tsx|js|jsx)$": [
-        "ts-jest",
-        {
-          "tsconfig": "tsconfig.json"
-        }
-      ]
-    },
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1",
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-      "\\.(gif|png|jpg|jpeg|svg|eot|otf|ttf|woff|woff2)$": "<rootDir>/src/__mocks__/fileMock.ts"
-    },
-    "coverageReporters": [
-      "cobertura",
-      "json-summary",
-      "json"
     ]
   },
   "volta": {
