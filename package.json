@@ -12,7 +12,7 @@
     "lint:fix": "oxlint --fix",
     "format": "oxfmt --check",
     "format:fix": "oxfmt",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && node nodescripts/patch-react-image-upload.mts",
     "prepare": "husky install",
     "typescript": "npx tsc"
   },
