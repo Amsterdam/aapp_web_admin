@@ -1,11 +1,11 @@
 import {useCallback} from 'react'
-import ErrorComponent from 'components/ui/Error'
-import Loading from 'components/ui/Loading'
-import useNavigate from 'hooks/useNavigate'
-import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import ErrorComponent from '@/components/ui/Error'
+import Loading from '@/components/ui/Loading'
+import useNavigate from '@/hooks/useNavigate'
+import {useGetProjectsQuery} from '@/modules/construction-work-editor/services/projects'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
 import ProjectsTable from './ProjectsTable'
-import type {ProjectsItem} from 'modules/construction-work-editor/types/project'
+import type {ProjectsItem} from '@/modules/construction-work-editor/types/project'
 
 const Projects = () => {
   const navigate = useNavigate()

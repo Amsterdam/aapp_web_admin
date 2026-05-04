@@ -1,4 +1,4 @@
-import NavigationButton from 'components/ui/button/NavigationButton'
+import NavigationButton from '@/components/ui/button/NavigationButton'
 import {ContactRoute} from '../types'
 
 const ContactAdminHomeButton = () => (

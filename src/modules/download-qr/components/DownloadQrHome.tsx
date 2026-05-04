@@ -1,5 +1,5 @@
-import NavigationButton from 'components/ui/button/NavigationButton'
-import {DownloadQRCodeRoute} from 'modules/download-qr/types'
+import NavigationButton from '@/components/ui/button/NavigationButton'
+import {DownloadQRCodeRoute} from '@/modules/download-qr/types'
 
 const DownloadQrHome = () => (
   <NavigationButton

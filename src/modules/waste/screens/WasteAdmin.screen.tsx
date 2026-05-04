@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react'
-import {useAccessToken} from 'authentication/hooks/useAccessToken'
-import Iframe from 'components/ui/Iframe'
-import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
-import ScreenTitle from 'components/ui/text/ScreenTitle'
-import {setChunkedCookie} from 'utils/setChunkedCookie'
+import {useAccessToken} from '@/authentication/hooks/useAccessToken'
+import Iframe from '@/components/ui/Iframe'
+import Column from '@/components/ui/layout/Column'
+import Screen from '@/components/ui/layout/Screen'
+import ScreenTitle from '@/components/ui/text/ScreenTitle'
+import {setChunkedCookie} from '@/utils/setChunkedCookie'
 
 const WasteAdminScreen = () => {
   const accessToken = useAccessToken()

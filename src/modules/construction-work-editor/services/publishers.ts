@@ -1,12 +1,12 @@
-import {ConstructionWorkEndpointName} from 'modules/construction-work-editor/types/api'
+import {ConstructionWorkEndpointName} from '@/modules/construction-work-editor/types/api'
 import {
   Publisher,
   AddPublisherQueryArgs,
   PublisherProjectsQueryArgs,
   EditPublisherQueryArgs,
-} from 'modules/construction-work-editor/types/publisher'
-import {baseApi} from 'services/baseApi'
-import {ApiDirectory} from 'services/types'
+} from '@/modules/construction-work-editor/types/publisher'
+import {baseApi} from '@/services/baseApi'
+import {ApiDirectory} from '@/services/types'
 
 export const publishersApi = baseApi.injectEndpoints({
   endpoints: builder => ({

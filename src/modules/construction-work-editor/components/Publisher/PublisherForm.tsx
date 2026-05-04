@@ -1,21 +1,21 @@
 import {useCallback} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
-import ErrorComponent from 'components/ui/Error'
-import Button from 'components/ui/button/Button'
-import Loader from 'components/ui/containers/Loader'
-import TextField from 'components/ui/forms/TextField'
-import Column from 'components/ui/layout/Column'
-import useNavigate from 'hooks/useNavigate'
+import ErrorComponent from '@/components/ui/Error'
+import Button from '@/components/ui/button/Button'
+import Loader from '@/components/ui/containers/Loader'
+import TextField from '@/components/ui/forms/TextField'
+import Column from '@/components/ui/layout/Column'
+import useNavigate from '@/hooks/useNavigate'
 import {
   useAddPublisherMutation,
   useEditPublisherMutation,
-} from 'modules/construction-work-editor/services/publishers'
+} from '@/modules/construction-work-editor/services/publishers'
 import {
   AddPublisherQueryArgs,
   EditPublisherQueryArgs,
   Publisher,
-} from 'modules/construction-work-editor/types/publisher'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+} from '@/modules/construction-work-editor/types/publisher'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
 
 type Props = Partial<Publisher>
 

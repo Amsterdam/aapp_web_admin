@@ -14,8 +14,8 @@ type Props = {
 const Input = ({
   hasError,
   id,
-  name,
   maxLength,
+  name,
   onChange,
   type,
   value,
@@ -26,6 +26,7 @@ const Input = ({
     data-has-error={hasError}
     id={id}
     maxLength={maxLength}
+    name={name}
     onChange={onChange}
     type={type}
     value={value}

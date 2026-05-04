@@ -1,9 +1,9 @@
 import {toPng} from 'html-to-image'
 import {useCallback, useRef} from 'react'
-import QRCode from 'react-qr-code'
-import Button from 'components/ui/button/Button'
-import Column from 'components/ui/layout/Column'
-import Row from 'components/ui/layout/Row'
+import {QRCode as ReactQRCode} from 'react-qr-code'
+import Button from '@/components/ui/button/Button'
+import Column from '@/components/ui/layout/Column'
+import Row from '@/components/ui/layout/Row'
 
 type Props = {
   value: string
@@ -22,7 +22,7 @@ const svgToDataURL = (svgData: string) => {
 }
 
 const QRCodeWithDownload = ({value, fileName}: Props) => {
-  const qrCodeRef = useRef<SVGSVGElement & QRCode & HTMLElement>(null)
+  const qrCodeRef = useRef<SVGSVGElement & ReactQRCode & HTMLElement>(null)
   const onPngPress = useCallback(() => {
     if (qrCodeRef.current) {
       toPng(qrCodeRef.current)
@@ -49,7 +49,7 @@ const QRCodeWithDownload = ({value, fileName}: Props) => {
 
   return (
     <Column gutter="md">
-      <QRCode
+      <ReactQRCode
         value={value}
         ref={qrCodeRef}
       />

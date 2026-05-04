@@ -1,9 +1,9 @@
 import {
   ArticleNews,
   ArticleWarning,
-} from 'modules/construction-work-editor/types/article'
-import {PublisherBase} from 'modules/construction-work-editor/types/publisher'
-import type {ApiImage} from 'modules/construction-work-editor/types/image'
+} from '@/modules/construction-work-editor/types/article'
+import {PublisherBase} from '@/modules/construction-work-editor/types/publisher'
+import type {ApiImage} from '@/modules/construction-work-editor/types/image'
 
 export type ProjectContact = {
   address: string | null // @TODO: not in API definition (100764)

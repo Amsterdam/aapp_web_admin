@@ -1,4 +1,4 @@
-import {ConstructionWorkEndpointName} from 'modules/construction-work-editor/types/api'
+import {ConstructionWorkEndpointName} from '@/modules/construction-work-editor/types/api'
 import {
   AddProjectWarningQueryArgs,
   ArticleWarning,
@@ -6,9 +6,9 @@ import {
   EditProjectWarningQueryArgs,
   AddProjectWarningImageQueryArgs,
   AddProjectWarningImageResponse,
-} from 'modules/construction-work-editor/types/article'
-import {baseApi} from 'services/baseApi'
-import {ApiDirectory} from 'services/types'
+} from '@/modules/construction-work-editor/types/article'
+import {baseApi} from '@/services/baseApi'
+import {ApiDirectory} from '@/services/types'
 
 export const articlesApi = baseApi.injectEndpoints({
   endpoints: builder => ({

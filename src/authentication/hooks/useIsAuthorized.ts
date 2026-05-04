@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useLoaderData} from 'react-router-dom'
-import useGetAuthorizedRoles from 'authentication/hooks/useGetAuthorizedRoles'
-import {AzureRole} from 'authentication/types'
+import useGetAuthorizedRoles from '@/authentication/hooks/useGetAuthorizedRoles'
+import {AzureRole} from '@/authentication/types'
 
 const useIsAuthorized = (requireLogin: boolean) => {
   const [isAuthorized, setIsAuthorized] = useState<boolean>()

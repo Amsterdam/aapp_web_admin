@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react'
-import ErrorComponent from 'components/ui/Error'
-import Loading from 'components/ui/Loading'
-import {useGetProjectsQuery} from 'modules/construction-work-editor/services/projects'
+import ErrorComponent from '@/components/ui/Error'
+import Loading from '@/components/ui/Loading'
+import {useGetProjectsQuery} from '@/modules/construction-work-editor/services/projects'
 import {
   useGetPublisherQuery,
   useAddProjectsForPublisherMutation,
   useRemoveProjectsForPublisherMutation,
-} from 'modules/construction-work-editor/services/publishers'
-import {ProjectsItem} from 'modules/construction-work-editor/types/project'
-import {Publisher} from 'modules/construction-work-editor/types/publisher'
+} from '@/modules/construction-work-editor/services/publishers'
+import {ProjectsItem} from '@/modules/construction-work-editor/types/project'
+import {Publisher} from '@/modules/construction-work-editor/types/publisher'
 import ProjectsTable from '../ProjectsTable'
 
 type Props = {

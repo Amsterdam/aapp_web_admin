@@ -1,9 +1,9 @@
 import {PublicClientApplication} from '@azure/msal-browser'
 import * as Sentry from '@sentry/react'
 import ReactDOM from 'react-dom/client'
-import App from 'App'
-import {msalConfig} from 'authentication/authConfig'
-import {Environment, environment} from 'utils/environment'
+import App from '@/App'
+import {msalConfig} from '@/authentication/authConfig'
+import {Environment, environment} from '@/utils/environment'
 import './index.css'
 
 if (environment !== Environment.local) {

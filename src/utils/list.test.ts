@@ -1,4 +1,4 @@
-import {addToList} from 'utils/list'
+import {addToList} from '@/utils/list'
 
 describe('addToList', () => {
   test('add an element to an empty list', () => {

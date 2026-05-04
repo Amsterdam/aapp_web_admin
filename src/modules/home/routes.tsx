@@ -1,8 +1,8 @@
 import {RouteObject} from 'react-router-dom'
-import ErrorScreen from 'components/ui/screens/Error.screen'
-import {homeModule} from 'modules/home'
-import HomeScreen from 'modules/home/screens/Home.screen'
-import {HomeRoute} from 'modules/home/types'
+import ErrorScreen from '@/components/ui/screens/Error.screen'
+import {homeModule} from '@/modules/home'
+import HomeScreen from '@/modules/home/screens/Home.screen'
+import {HomeRoute} from '@/modules/home/types'
 
 const loader = () => homeModule.allowedAzureRoles
 

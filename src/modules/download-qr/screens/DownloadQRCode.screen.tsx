@@ -1,10 +1,10 @@
 import {FormProvider, useForm} from 'react-hook-form'
-import TextField from 'components/ui/forms/TextField'
-import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
-import Phrase from 'components/ui/text/Phrase'
-import ScreenTitle from 'components/ui/text/ScreenTitle'
-import QRCodeWithDownload from 'modules/download-qr/components/QRCodeWithDownload'
+import TextField from '@/components/ui/forms/TextField'
+import Column from '@/components/ui/layout/Column'
+import Screen from '@/components/ui/layout/Screen'
+import Phrase from '@/components/ui/text/Phrase'
+import ScreenTitle from '@/components/ui/text/ScreenTitle'
+import QRCodeWithDownload from '@/modules/download-qr/components/QRCodeWithDownload'
 
 type DownloadQRCodeForm = {
   source: string

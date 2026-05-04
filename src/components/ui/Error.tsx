@@ -1,6 +1,6 @@
-import Column from 'components/ui/layout/Column'
-import Phrase from 'components/ui/text/Phrase'
-import {HomeRoute} from 'modules/home/types'
+import Column from '@/components/ui/layout/Column'
+import Phrase from '@/components/ui/text/Phrase'
+import {HomeRoute} from '@/modules/home/types'
 import NavigationButton from './button/NavigationButton'
 
 type Props = {

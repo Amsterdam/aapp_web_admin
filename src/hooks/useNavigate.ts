@@ -3,7 +3,7 @@ import {
   // eslint-disable-next-line no-restricted-imports
   useNavigate as useNavigateReactRouter,
 } from 'react-router-dom'
-import getUrl, {ExtractParams} from 'utils/getUrl'
+import getUrl, {ExtractParams} from '@/utils/getUrl'
 
 const useNavigate = () => {
   const navigate = useNavigateReactRouter()

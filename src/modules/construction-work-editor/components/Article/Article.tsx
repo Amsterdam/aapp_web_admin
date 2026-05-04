@@ -1,11 +1,11 @@
 import {skipToken} from '@reduxjs/toolkit/query'
 import {useState} from 'react'
-import ErrorComponent from 'components/ui/Error'
-import Loading from 'components/ui/Loading'
-import Column from 'components/ui/layout/Column'
-import ArticleForm from 'modules/construction-work-editor/components/Article/ArticleForm'
-import RemoveProjectWarning from 'modules/construction-work-editor/components/Article/RemoveProjectWarning'
-import {useGetProjectWarningQuery} from 'modules/construction-work-editor/services/articles'
+import ErrorComponent from '@/components/ui/Error'
+import Loading from '@/components/ui/Loading'
+import Column from '@/components/ui/layout/Column'
+import ArticleForm from '@/modules/construction-work-editor/components/Article/ArticleForm'
+import RemoveProjectWarning from '@/modules/construction-work-editor/components/Article/RemoveProjectWarning'
+import {useGetProjectWarningQuery} from '@/modules/construction-work-editor/services/articles'
 
 type Props = {
   id?: number

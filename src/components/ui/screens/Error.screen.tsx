@@ -1,6 +1,6 @@
-import ErrorComponent from 'components/ui/Error'
-import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
+import ErrorComponent from '@/components/ui/Error'
+import Column from '@/components/ui/layout/Column'
+import Screen from '@/components/ui/layout/Screen'
 
 type Props = {
   message: string

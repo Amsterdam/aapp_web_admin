@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {configureStore, combineReducers, Slice} from '@reduxjs/toolkit'
 import {setupListeners} from '@reduxjs/toolkit/query'
-import modules from 'modules'
-import {Module} from 'modules/types'
-import {baseApi} from 'services/baseApi'
+import modules from '@/modules'
+import {Module} from '@/modules/types'
+import {baseApi} from '@/services/baseApi'
 
 const reducers = modules
   .filter(module => !!module.reduxSlice)

@@ -1,4 +1,4 @@
-import Phrase from 'components/ui/text/Phrase'
+import Phrase from '@/components/ui/text/Phrase'
 
 /**
  * Will be used to get a unique key if no getter is added via the Table props

@@ -5,12 +5,11 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
-import {loginRequest} from 'authentication/authConfig'
-import {msalInstance} from 'index'
+import {loginRequest} from '@/authentication/authConfig'
+import {msalInstance} from '@/index'
 import {ApiDirectory} from './types'
 
-const {REACT_APP_API_KEY: API_KEY} = process.env
-
+const API_KEY = import.meta.env.VITE_API_KEY as string | undefined
 const baseQuery: BaseQueryFn<
   FetchArgs & {directory: ApiDirectory},
   unknown,
@@ -27,7 +26,7 @@ const baseQuery: BaseQueryFn<
       })
       headers.set('Authorization', `Bearer ${accessToken}`)
 
-      // TODO: Remove this once the new endpoint is available.
+      // Remove this once the new endpoint is available.
       if (API_KEY && args.directory === ApiDirectory.constructionWork) {
         headers.set('X-API-KEY', API_KEY)
         headers.set('deviceid', 'random-device-id')

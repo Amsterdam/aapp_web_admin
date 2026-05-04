@@ -1,16 +1,16 @@
 import {useMemo, useState} from 'react'
-import Image from 'components/ui/media/Image'
-import Table from 'components/ui/table/Table'
-import Phrase from 'components/ui/text/Phrase'
-import Title from 'components/ui/text/Title'
-import getDateFromString from 'utils/getDateFromString'
+import Image from '@/components/ui/media/Image'
+import Table from '@/components/ui/table/Table'
+import Phrase from '@/components/ui/text/Phrase'
+import Title from '@/components/ui/text/Title'
+import getDateFromString from '@/utils/getDateFromString'
 import {
   WithSearchString,
   addSearchString,
   filterBySearchStringMatch,
-} from 'utils/searchString'
-import type {ColumnConfig, TableProps} from 'components/ui/table/types'
-import type {ProjectsItem} from 'modules/construction-work-editor/types/project'
+} from '@/utils/searchString'
+import type {ColumnConfig, TableProps} from '@/components/ui/table/types'
+import type {ProjectsItem} from '@/modules/construction-work-editor/types/project'
 
 type Props = {
   projects: ProjectsItem[]

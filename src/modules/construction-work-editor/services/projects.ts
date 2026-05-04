@@ -1,10 +1,10 @@
-import {ConstructionWorkEndpointName} from 'modules/construction-work-editor/types/api'
-import {baseApi} from 'services/baseApi'
-import {ApiDirectory} from 'services/types'
+import {ConstructionWorkEndpointName} from '@/modules/construction-work-editor/types/api'
+import {baseApi} from '@/services/baseApi'
+import {ApiDirectory} from '@/services/types'
 import type {
   Project,
   ProjectsItem,
-} from 'modules/construction-work-editor/types/project'
+} from '@/modules/construction-work-editor/types/project'
 
 export const projectsApi = baseApi.injectEndpoints({
   endpoints: builder => ({

@@ -1,5 +1,5 @@
 import {ReactNode} from 'react'
-import {SpacingToken} from 'components/ui/layout/types'
+import {SpacingToken} from '@/components/ui/layout/types'
 import './inset.css'
 import './Box.css'
 

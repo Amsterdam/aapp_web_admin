@@ -1,11 +1,11 @@
 import {useState} from 'react'
 import {Controller, useController} from 'react-hook-form'
-import Stepper, {Step} from 'components/ui/containers/Stepper'
-import ImageCrop from 'components/ui/forms/ImageField/ImageCrop'
-import ImageDisplay from 'components/ui/forms/ImageField/ImageDisplay'
-import ImageUpload from 'components/ui/forms/ImageField/ImageUpload'
-import Column from 'components/ui/layout/Column'
-import Phrase from 'components/ui/text/Phrase'
+import Stepper, {Step} from '@/components/ui/containers/Stepper'
+import ImageCrop from '@/components/ui/forms/ImageField/ImageCrop'
+import ImageDisplay from '@/components/ui/forms/ImageField/ImageDisplay'
+import ImageUpload from '@/components/ui/forms/ImageField/ImageUpload'
+import Column from '@/components/ui/layout/Column'
+import Phrase from '@/components/ui/text/Phrase'
 import TextField from '../TextField'
 
 type Props = {

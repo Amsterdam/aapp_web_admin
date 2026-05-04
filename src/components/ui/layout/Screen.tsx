@@ -1,11 +1,11 @@
 import {ReactNode} from 'react'
-import LogoutButton from 'authentication/components/LogoutButton'
-import useIsAuthorized from 'authentication/hooks/useIsAuthorized'
-import ErrorComponent from 'components/ui//Error'
-import Column from 'components/ui/layout/Column'
-import Row from 'components/ui/layout/Row'
-import Logo from 'components/ui/media/Logo'
-import 'components/ui/layout/Screen.css'
+import LogoutButton from '@/authentication/components/LogoutButton'
+import useIsAuthorized from '@/authentication/hooks/useIsAuthorized'
+import ErrorComponent from '@/components/ui/Error'
+import Column from '@/components/ui/layout/Column'
+import Row from '@/components/ui/layout/Row'
+import Logo from '@/components/ui/media/Logo'
+import '@/components/ui/layout/Screen.css'
 
 type Props = {
   children: ReactNode

@@ -1,7 +1,7 @@
-import LoadingButton from 'components/ui/button/LoadingButton'
-import useNavigate from 'hooks/useNavigate'
-import {useRemovePublisherMutation} from 'modules/construction-work-editor/services/publishers'
-import {ConstructionWorkEditorRoute} from 'modules/construction-work-editor/types/routes'
+import LoadingButton from '@/components/ui/button/LoadingButton'
+import useNavigate from '@/hooks/useNavigate'
+import {useRemovePublisherMutation} from '@/modules/construction-work-editor/services/publishers'
+import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
 
 type Props = {
   id: number

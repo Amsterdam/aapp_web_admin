@@ -1,5 +1,5 @@
 import {ButtonHTMLAttributes, ReactNode} from 'react'
-import Row from 'components/ui/layout/Row'
+import Row from '@/components/ui/layout/Row'
 import './Button.css'
 
 export enum ButtonVariant {

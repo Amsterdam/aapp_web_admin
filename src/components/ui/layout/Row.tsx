@@ -3,7 +3,7 @@ import {
   CrossAxisAlignment,
   MainAxisAlignment,
   SpacingToken,
-} from 'components/ui/layout/types'
+} from '@/components/ui/layout/types'
 import './gutter.css'
 import './Row.css'
 

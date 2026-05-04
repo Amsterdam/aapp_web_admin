@@ -1,9 +1,9 @@
 import {useParams} from 'react-router-dom'
-import Loading from 'components/ui/Loading'
-import Column from 'components/ui/layout/Column'
-import Screen from 'components/ui/layout/Screen'
-import ScreenTitle from 'components/ui/text/ScreenTitle'
-import Article from 'modules/construction-work-editor/components/Article/Article'
+import Loading from '@/components/ui/Loading'
+import Column from '@/components/ui/layout/Column'
+import Screen from '@/components/ui/layout/Screen'
+import ScreenTitle from '@/components/ui/text/ScreenTitle'
+import Article from '@/modules/construction-work-editor/components/Article/Article'
 import {useGetProjectQuery} from '../services/projects'
 
 export type ArticleScreenParams = {

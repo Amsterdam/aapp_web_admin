@@ -1,5 +1,5 @@
-import {ApiImage} from 'modules/construction-work-editor/types/image'
-import {PublisherBase} from 'modules/construction-work-editor/types/publisher'
+import {ApiImage} from '@/modules/construction-work-editor/types/image'
+import {PublisherBase} from '@/modules/construction-work-editor/types/publisher'
 
 export enum ArticleType {
   article = 'article',

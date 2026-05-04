@@ -1,9 +1,9 @@
 import {SerializedError} from '@reduxjs/toolkit'
 import {FetchBaseQueryError} from '@reduxjs/toolkit/query'
-import Button, {ButtonProps} from 'components/ui/button/Button'
-import Column from 'components/ui/layout/Column'
-import Icon from 'components/ui/media/Icon'
-import Phrase from 'components/ui/text/Phrase'
+import Button, {ButtonProps} from '@/components/ui/button/Button'
+import Column from '@/components/ui/layout/Column'
+import Icon from '@/components/ui/media/Icon'
+import Phrase from '@/components/ui/text/Phrase'
 
 type Props = {
   error?: FetchBaseQueryError | SerializedError

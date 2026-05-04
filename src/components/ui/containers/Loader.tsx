@@ -1,5 +1,5 @@
 import {ReactNode} from 'react'
-import Icon from 'components/ui/media/Icon'
+import Icon from '@/components/ui/media/Icon'
 
 import './Loader.css'
 

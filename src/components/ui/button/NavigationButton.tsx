@@ -1,7 +1,7 @@
-import Button from 'components/ui/button/Button'
-import useNavigate from 'hooks/useNavigate'
-import {ExtractParams} from 'utils/getUrl'
-import type {ButtonProps} from 'components/ui/button/Button'
+import Button from '@/components/ui/button/Button'
+import useNavigate from '@/hooks/useNavigate'
+import {ExtractParams} from '@/utils/getUrl'
+import type {ButtonProps} from '@/components/ui/button/Button'
 
 type Props<T> = Omit<ButtonProps, 'onClick'> & {
   url: string

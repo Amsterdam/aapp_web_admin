@@ -1,14 +1,14 @@
 import {useCallback, useState} from 'react'
 import Cropper, {type Area} from 'react-easy-crop'
-import Button from 'components/ui/button/Button'
-import ScrollIntoView from 'components/ui/containers/ScrollIntoView'
-import {getCroppedImage} from 'components/ui/forms/ImageField/utils'
-import Slider from 'components/ui/forms/Slider'
-import Column from 'components/ui/layout/Column'
-import Row from 'components/ui/layout/Row'
+import Button from '@/components/ui/button/Button'
+import ScrollIntoView from '@/components/ui/containers/ScrollIntoView'
+import {getCroppedImage} from '@/components/ui/forms/ImageField/utils'
+import Slider from '@/components/ui/forms/Slider'
+import Column from '@/components/ui/layout/Column'
+import Row from '@/components/ui/layout/Row'
 
-import 'components/ui/forms/ImageField/ImageCrop.css'
-import Phrase from 'components/ui/text/Phrase'
+import '@/components/ui/forms/ImageField/ImageCrop.css'
+import Phrase from '@/components/ui/text/Phrase'
 
 type Props = {
   aspectRatio: number

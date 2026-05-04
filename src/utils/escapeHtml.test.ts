@@ -1,4 +1,4 @@
-import {escapeHtml, unescapeHtml} from 'utils/escapeHtml'
+import {escapeHtml, unescapeHtml} from '@/utils/escapeHtml'
 
 describe('escapeHtml', () => {
   test('escapes & to &amp;', () => {

@@ -1,4 +1,4 @@
-import {BASE_ROUTE} from 'constants/routes'
+import {BASE_ROUTE} from '@/constants/routes'
 
 export enum Environment {
   local = 'local',
