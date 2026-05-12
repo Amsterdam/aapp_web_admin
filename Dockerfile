@@ -1,4 +1,4 @@
-FROM node:20-alpine as app
+FROM node:24.15.0-alpine as app
 
 # Add source
 COPY . /code
