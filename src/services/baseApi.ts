@@ -9,7 +9,6 @@ import {loginRequest} from '@/authentication/authConfig'
 import {msalInstance} from '@/index'
 import {ApiDirectory} from './types'
 
-const API_KEY = import.meta.env.VITE_API_KEY as string | undefined
 const baseQuery: BaseQueryFn<
   FetchArgs & {directory: ApiDirectory},
   unknown,
@@ -25,12 +24,6 @@ const baseQuery: BaseQueryFn<
         account: activeAccount || accounts[0],
       })
       headers.set('Authorization', `Bearer ${accessToken}`)
-
-      // Remove this once the new endpoint is available.
-      if (API_KEY && args.directory === ApiDirectory.constructionWork) {
-        headers.set('X-API-KEY', API_KEY)
-        headers.set('deviceid', 'random-device-id')
-      }
 
       return headers
     },
