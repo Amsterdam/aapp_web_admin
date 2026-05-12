@@ -42,6 +42,11 @@ export const openAPIUrls: OpenAPIUrl[] = [
     slug: 'modules',
   },
   {
+    url: '/news/api/v1/openapi/',
+    name: 'News',
+    slug: 'news',
+  },
+  {
     url: '/notification/api/v1/openapi/',
     name: 'Notification',
     slug: 'notification',
