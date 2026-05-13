@@ -112,7 +112,7 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
               required: 'E-mailadres is verplicht.',
               validate: {
                 isNewPublisher: input => isNewPublisher(input, publishers),
-                isAmsterdamEmail: input => isAmsterdamEmail(input),
+                isAmsterdamEmail,
               },
             }}
             width="half"
