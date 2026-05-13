@@ -9,6 +9,7 @@ import useNavigate from '@/hooks/useNavigate'
 import {
   useAddPublisherMutation,
   useEditPublisherMutation,
+  useGetPublishersQuery,
 } from '@/modules/construction-work-editor/services/publishers'
 import {
   AddPublisherQueryArgs,
@@ -16,6 +17,8 @@ import {
   Publisher,
 } from '@/modules/construction-work-editor/types/publisher'
 import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
+import {isAmsterdamEmail} from '../../utils/isAmsterdamEmail'
+import {isNewPublisher} from '../../utils/isNewPublisher'
 
 type Props = Partial<Publisher>
 
@@ -24,19 +27,30 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
   const form = useForm<AddPublisherQueryArgs>({
     defaultValues: {name: propsName ?? '', email: propsEmail ?? ''},
   })
+
   const {
     formState: {isDirty},
     handleSubmit,
   } = form
 
+  const {
+    data: publishers = [],
+    isError: isErrorGettingPublishers,
+    isLoading: isLoadingGettingPublishers,
+  } = useGetPublishersQuery()
+
   const [
     createPublisher,
     {isLoading: isCreateLoading, isError: isCreateError},
   ] = useAddPublisherMutation()
+
   const [editPublisher, {isLoading: isEditLoading, isError: isEditError}] =
     useEditPublisherMutation()
+
   const isError = isCreateError || isEditError
-  const isLoading = isCreateLoading || isEditLoading
+  const isLoading =
+    isCreateLoading || isEditLoading || isLoadingGettingPublishers
+
   const navigateToPublisherProjects = useCallback(
     (publisherId: number) =>
       navigate(ConstructionWorkEditorRoute.publisherProjects, {
@@ -73,6 +87,12 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
     return <ErrorComponent message="Er is iets misgegaan bij het opslaan." />
   }
 
+  if (isErrorGettingPublishers) {
+    return (
+      <ErrorComponent message="Er is iets misgegaan bij het ophalen van bestaande publishers" />
+    )
+  }
+
   return (
     <Loader loading={isLoading}>
       <FormProvider {...form}>
@@ -90,6 +110,10 @@ const PublisherForm = ({email: propsEmail, id, name: propsName}: Props) => {
             name="email"
             rules={{
               required: 'E-mailadres is verplicht.',
+              validate: {
+                isNewPublisher: input => isNewPublisher(input, publishers),
+                isAmsterdamEmail: input => isAmsterdamEmail(input),
+              },
             }}
             width="half"
           />
