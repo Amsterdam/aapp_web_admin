@@ -17,8 +17,8 @@ import {
   Publisher,
 } from '@/modules/construction-work-editor/types/publisher'
 import {ConstructionWorkEditorRoute} from '@/modules/construction-work-editor/types/routes'
-import {isAmsterdamEmail} from '../../utils/isAmsterdamEmail'
-import {isNewPublisher} from '../../utils/isNewPublisher'
+import {isAmsterdamEmail} from '@/modules/construction-work-editor/utils/isAmsterdamEmail'
+import {isNewPublisher} from '@/modules/construction-work-editor/utils/isNewPublisher'
 
 type Props = Partial<Publisher>
 

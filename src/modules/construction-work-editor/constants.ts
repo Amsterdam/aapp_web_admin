@@ -6,4 +6,4 @@ export const allowedAzureRoles = [
   AzureRole.constructionWorkPublisher,
 ]
 
-export const AMSTERDAM_EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@amsterdam.nl$/
+export const AMSTERDAM_EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@amsterdam\.nl$/
