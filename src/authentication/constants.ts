@@ -89,4 +89,32 @@ export const AzureRoles = {
     [Environment.acceptance]: 'a-waste-publisher',
     [Environment.production]: 'p-waste-publisher',
   },
+  [AzureRole.wasteRecycleDelegated]: {
+    [Environment.local]: 'o-waste-recycle-delegated',
+    [Environment.development]: 'o-waste-recycle-delegated',
+    [Environment.test]: 't-waste-recycle-delegated',
+    [Environment.acceptance]: 'a-waste-recycle-delegated',
+    [Environment.production]: 'p-waste-recycle-delegated',
+  },
+  [AzureRole.wasteRecyclePublisher]: {
+    [Environment.local]: 'o-waste-publisher',
+    [Environment.development]: 'o-waste-recycle-publisher',
+    [Environment.test]: 't-waste-recycle-publisher',
+    [Environment.acceptance]: 'a-waste-recycle-publisher',
+    [Environment.production]: 'p-waste-recycle-publisher',
+  },
+  [AzureRole.wasteNotificationDelegated]: {
+    [Environment.local]: 'o-waste-delegated',
+    [Environment.development]: 'o-waste-notification-delegated',
+    [Environment.test]: 't-waste-notification-delegated',
+    [Environment.acceptance]: 'a-waste-notification-delegated',
+    [Environment.production]: 'p-waste-notification-delegated',
+  },
+  [AzureRole.wasteNotificationPublisher]: {
+    [Environment.local]: 'o-waste-notification-publisher',
+    [Environment.development]: 'o-waste-notification-publisher',
+    [Environment.test]: 't-waste-notification-publisher',
+    [Environment.acceptance]: 'a-waste-notification-publisher',
+    [Environment.production]: 'p-waste-notification-publisher',
+  },
 }

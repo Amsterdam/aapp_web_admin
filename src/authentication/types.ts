@@ -11,8 +11,12 @@ export enum AzureRole {
   cityPassPublisher = 'cityPassPublisher', // voor stadspas notificaties
   surveyDelegated = 'surveyDelegated', // voor vragenlijsten bijwerken, rechten toewijzen
   surveyPublisher = 'surveyPublisher', // voor vragenlijsten bijwerken
-  wasteDelegated = 'wasteDelegated', // voor A&G notificaties, rechten toewijzen
-  wastePublisher = 'wastePublisher', // voor A&G notificaties
+  wasteDelegated = 'wasteDelegated', // voor A&G notificaties en recycle, rechten toewijzen
+  wastePublisher = 'wastePublisher', // voor A&G notificaties en recycle
+  wasteRecycleDelegated = 'wasteRecycleDelegated', // voor A&G recycle, rechten toewijzen
+  wasteRecyclePublisher = 'wasteRecyclePublisher', // voor A&G recycle
+  wasteNotificationDelegated = 'wasteNotificationDelegated', // voor A&G notificaties, rechten toewijzen
+  wasteNotificationPublisher = 'wasteNotificationPublisher', // voor A&G notificaties
 }
 
 export type DecodedJWTToken = {

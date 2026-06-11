@@ -13,4 +13,8 @@ export const allowedAzureRoles = [
   AzureRole.surveyPublisher,
   AzureRole.wasteDelegated,
   AzureRole.wastePublisher,
+  AzureRole.wasteRecycleDelegated,
+  AzureRole.wasteRecyclePublisher,
+  AzureRole.wasteNotificationDelegated,
+  AzureRole.wasteNotificationPublisher,
 ]
