@@ -17,10 +17,10 @@
     "typescript": "npx tsc"
   },
   "dependencies": {
-    "@amsterdam/design-system-assets": "^2.5.0",
-    "@amsterdam/design-system-css": "^4.3.0",
-    "@amsterdam/design-system-react": "^4.3.0",
-    "@amsterdam/design-system-tokens": "^4.2.0",
+    "@amsterdam/design-system-assets": "2.5.0",
+    "@amsterdam/design-system-css": "4.3.0",
+    "@amsterdam/design-system-react": "4.3.0",
+    "@amsterdam/design-system-tokens": "4.2.0"
     "@azure/msal-browser": "^3.7.1",
     "@azure/msal-react": "^2.0.10",
     "@eslint/compat": "^2.0.5",
