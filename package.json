@@ -17,10 +17,10 @@
     "typescript": "npx tsc"
   },
   "dependencies": {
-    "@amsterdam/design-system-assets": "^0.2.2",
-    "@amsterdam/design-system-css": "^0.13.1",
-    "@amsterdam/design-system-react": "^0.13.1",
-    "@amsterdam/design-system-tokens": "^0.13.0",
+    "@amsterdam/design-system-assets": "^2.5.0",
+    "@amsterdam/design-system-css": "^4.3.0",
+    "@amsterdam/design-system-react": "^4.3.0",
+    "@amsterdam/design-system-tokens": "^4.2.0",
     "@azure/msal-browser": "^3.7.1",
     "@azure/msal-react": "^2.0.10",
     "@eslint/compat": "^2.0.5",
@@ -41,7 +41,7 @@
     "react-qr-code": "^2.0.12",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.30.4",
-    "swagger-ui-react": "^5.32.6"
+    "swagger-ui-react": "^5.32.9"
   },
   "devDependencies": {
     "@actions/core": "^3.0.1",
