@@ -41,7 +41,7 @@
     "react-qr-code": "^2.0.12",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.30.4",
-    "swagger-ui-react": "^5.32.9"
+    "swagger-ui-react": "^5.32.11"
   },
   "devDependencies": {
     "@actions/core": "^3.0.1",
