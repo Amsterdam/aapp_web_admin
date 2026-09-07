@@ -30,12 +30,14 @@ setupListeners(store.dispatch)
 type Modules = typeof modules
 
 type SliceStates = {
-  // @ts-ignore
-  [P in keyof Modules as Exclude<
+  [
     // @ts-ignore
-    Modules[P]['reduxSlice'],
-    never | undefined
-  >['name']]: ReturnType<
+    P in keyof Modules as Exclude<
+      // @ts-ignore
+      Modules[P]['reduxSlice'],
+      never | undefined
+    >['name']
+  ]: ReturnType<
     // @ts-ignore
     Exclude<Modules[P]['reduxSlice'], never | undefined>['getInitialState']
   >
