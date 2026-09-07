@@ -45,7 +45,8 @@
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.addMissingImports.ts": "explicit",
-    "source.fixAll.eslint": "always"
+    "source.fixAll.oxc": "always",
+    "source.format.oxc": "always"
   },
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
