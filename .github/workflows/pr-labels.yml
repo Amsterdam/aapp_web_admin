@@ -36,7 +36,7 @@ jobs:
               name: 'dependencies'
               color: '#634991'
               description: 'Dependency related'
-            '^src/modules/([^/]+)//':
+            '^src/modules/([^/]+)/':
               name: 'module:$1'
               color: '#0366d6'
               description: 'Module $1 related'
