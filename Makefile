@@ -1,4 +1,4 @@
-.PHONY: manifests deploy
+.PHONY: manifests deploy build
 
 UID:=$(shell id --user)
 GID:=$(shell id --group)
