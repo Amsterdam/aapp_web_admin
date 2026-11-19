@@ -9,7 +9,7 @@ RUN cd /code \
     && npm run build
 
 ##################################################
-FROM nginx:alpine as deploy
+FROM nginx:1.31-alpine as deploy
 
 WORKDIR /app
 
